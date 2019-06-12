@@ -96,21 +96,25 @@
                             <h3 class="my-4">สุนัข ทั้งหมด</h3>
 
                           @foreach ($Dogs as $Dogs)
-                          <!-- Page Features -->
-                          <div class="row text-center">
+                            <!-- Page Features -->
+                            <div class="row text-center">
 
-                            <div class="col-lg-3 col-md-6 mb-4">
-                              <div class="card h-100">
-                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                                <div class="card-body">
-                                <h4 class="card-title">{{$Dogs->Breed}}</h4>
-                                <p class="card-text">{{$Dogs->Detail}}</p>
-                                </div>
-                                <div class="card-footer">
-                                  <a href="#" class="btn btn-primary">hello world</a>
+                              <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="card h-100">
+                                  
+                                <img class="card-img-top" src="{{$Dogs->imagedog}}" alt="">
+                                  
+                                  <div class="card-body">
+                                  <h4 class="card-title">{{$Dogs->Breed}}</h4>
+                                  <img class="img-fluid img-thumbnail" src="{{$Dogs->imagedog}}" style="width = 50px  height: 50px border-radius: 50%">
+                                  
+                                  <p class="card-text">{{$Dogs->Detail}}</p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <a href="#" class="btn btn-light">ดูรายละเอียดเพิ่มเติม</a>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
 
 
                           </div>
@@ -118,9 +122,9 @@
 
                         
                             
-                          @endforeach
-                            </div>
-                            <!-- /.container -->  
+                    @endforeach
+                    </div>
+                    <!-- /.container -->  
                           
                 </div>
         </div>

@@ -45,9 +45,12 @@ class DogController extends Controller
     {
         $this->validate($request, [
             
-            'cover_image' => 'image|nullable|max:12288'
+            'cover_image' => 'image|nullable|max:2048',
+            'cover_image1' => 'image|nullable|max:2048',
+            'cover_image2' => 'image|nullable|max:2048'
         ]);
-        // Handle File Upload
+       
+             // Handle File Upload
         if($request->hasFile('cover_image')){
             // Get filename with the extension
             $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
@@ -59,9 +62,14 @@ class DogController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $request->file('cover_image')->storeAs('public/imagedog/cover_images', $fileNameToStore);
-        } else {
+        }
+
+        
+        else {
             $fileNameToStore = 'noimage.jpg';
         }
+        
+       
 
 
 
@@ -86,13 +94,10 @@ class DogController extends Controller
         $Dog->user_id = auth()->user()->id;
         $Dog->save();
 
-              
-        
-        
         error_log('storedog1');
         
 
-        return redirect('user/{id}')->with($Dog,'Dog');
+        return redirect('user/{id}');
     }
 
     /**

@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupDetail"> รายละเอียดการเกี่ยวสุนัข </label>
-                                    <textarea class="form-control" rows="5" id="comment" name="Detail" placeholder="รายละเอียดการเกี่ยวสุนัข" required ></textarea>
+                                    <textarea type="text" class="form-control" rows="5" id="comment" name="Detail" placeholder="รายละเอียดการเกี่ยวสุนัข" required ></textarea>
                                 </div>
                 
                                 <div class="form-group">
@@ -53,10 +53,9 @@
                                 <div class="form-group">
                                     <label for="formGroup Gender"> เพศ </label>
                                     <select class="form-control" id="SEX" name="SEX">
-                                        <option></option>
-                                        <option>ชาย</option>
-                                   
-                                        <option>หญิง</option>
+                                        
+                                        <option selected>ผู้</option>
+                                        <option>เมีย</option>
 
                                       </select>
                                     
@@ -96,8 +95,8 @@
                                     <label  for="formGroup File">อัพโหลดรูปRC</label>
                                     
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="imageRC" accept=".png, .jpg, .jpeg"  >
-                                        <label class="custom-file-label" for="imageRC">Choose file</label>
+                                        <input type="file" class="custom-file-input" name="cover_image2" accept=".png, .jpg, .jpeg"  >
+                                        <label class="custom-file-label" for="cover_image2">Choose file</label>
                                     </div>
                                 </div>
                                 
@@ -108,15 +107,15 @@
                                 <div class="form-group ">
                                     <label  for="formGroup File">อัพโหลดรูปCP</label>
                                     <div class="custom-file">
-                                        <input type="file" name="imageCP" id="imageCP" class="custom-file-input"  >
-                                        <label class="custom-file-label" for="imageCP">Choose file มีก็ได้ไม่มีก็ได้</label>
+                                        <input type="file" name="cover_image1" id="cover_image1" class="custom-file-input"  >
+                                        <label class="custom-file-label" for="cover_image1">Choose file มีก็ได้ไม่มีก็ได้</label>
                                     </div>
                                 </div> <br> 
                                 <div class="form-group ">
                                     <label  for="formGroup File">อัพโหลดรูปสุนัข</label>
                                     <div class="custom-file">
                                             
-                                        <input type="file" name="cover_image"  class="custom-file-input"  multiple  >
+                                        <input type="file" name="cover_image"  class="custom-file-input"  multiple accept=".png, .jpg, .jpeg" >
                                         <label class="custom-file-label" for="cover_image">Choose file</label>
                                     </div>
                                 </div> 
