@@ -107,7 +107,7 @@
                                 <p class="card-text">{{$Dogs->Detail}}</p>
                                 </div>
                                 <div class="card-footer">
-                                  <a href="#" class="btn btn-primary">Find Out More!</a>
+                                  <a href="#" class="btn btn-primary">hello world</a>
                                 </div>
                               </div>
                             </div>
