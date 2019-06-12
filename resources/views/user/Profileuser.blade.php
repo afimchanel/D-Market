@@ -88,41 +88,44 @@
                                 <!-- /.row -->
                         </div>
                               <!-- /.container -->
+                              
                 </div>
                 
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">.
 
                             <!-- Related Projects Row -->
                             <h3 class="my-4">สุนัข ทั้งหมด</h3>
-
-                          @foreach ($Dogs as $Dogs)
-                            <!-- Page Features -->
-                            <div class="row text-center">
-
-                              <div class="col-lg-3 col-md-6 mb-4">
-                                <div class="card h-100">
-                                  
-                                <img class="card-img-top" src="{{$Dogs->imagedog}}" alt="">
-                                  
-                                  <div class="card-body">
-                                  <h4 class="card-title">{{$Dogs->Breed}}</h4>
-                                  <img class="img-fluid img-thumbnail" src="{{$Dogs->imagedog}}" style="width = 50px  height: 50px border-radius: 50%">
-                                  
-                                  <p class="card-text">{{$Dogs->Detail}}</p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <a href="#" class="btn btn-light">ดูรายละเอียดเพิ่มเติม</a>
+                        <div class="card-header">
+                            @foreach ($Dogs as $Dogs)
+                            <div class="container ">
+                              <!-- Page Features -->
+                              <div class="row text-center">
+  
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                  <div class="card h-100">
+                                    
+                                  <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dogs->imagedog}}" alt="">
+                                    
+                                    <div class="card-body">
+                                    <h4 class="card-title">{{$Dogs->Breed}}</h4>
+                                    
+                                    <p class="card-text">{{$Dogs->Detail}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                      <a href="#" class="btn btn-light">ดูรายละเอียดเพิ่มเติม</a>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-
-
+  
+  
+                            </div>
+                            <!-- /.row -->
                           </div>
-                          <!-- /.row -->
-
-                        
-                            
-                    @endforeach
+                          
+                              
+                      @endforeach 
+                        </div>
+                          
                     </div>
                     <!-- /.container -->  
                           
