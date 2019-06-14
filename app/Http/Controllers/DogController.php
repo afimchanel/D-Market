@@ -43,27 +43,25 @@ class DogController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            
-            'cover_image' => 'required|image|nullable|max:2048',
-
-        ]);
-       
+        
+        
+        $files = $request->file('cover_image');
+        
              // Handle File Upload
         if($request->hasFile('cover_image')){
             
-                // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+                error_log('storedog0');
+                 // Get filename with the extension
+            $filenameWithExt = $files->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            $extension = $files->getClientOriginalExtension();
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/imagedog/cover_images', $fileNameToStore);
-                # code...
-            
+            $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
+                
             
 
         }

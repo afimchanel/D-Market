@@ -5,14 +5,18 @@
 
     <!-- ด้านบนหน้าร้าน -->
    
-        <div class="jumbotron jumbotron-fluid bg-light" >
+        <div class="jumbotron jumbotron-fluid " >
                
 
                 <div class="container ">
                     
                     <div class="container">
                 
-                        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์  {{ Auth::user()->name }}</h1>
+                        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์  {{ Auth::user()->name }} 
+                          <div class="col-md-7"> <a href="{{ route('dog.create')}}" class="btn btn-primary">เพิ่มสุนัข</a>
+                        
+                          @csrf
+                          </div> </h1>
                 
                             <hr class="mt-2 mb-5">
 
@@ -36,19 +40,17 @@
 
                         @csrf
                         </div> 
-                        <div class="col-md-7"> <a href="{{ route('dog.create')}}" class="btn btn-primary">เพิ่มสุนัข</a>
                         
-                            @csrf
-                            </div> 
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Header -->
-    <header class="bg-primary text-center py-5 mb-4">
-        <div class="container">
-          <h1 class="font-weight-light text-white">ข้อมูล ของคุณ</h1>
+    <header class="bg-warning
+    text-center py-5 mb-4">
+        <div class="container bg-warning">
+          <h1 class="font-weight-light text-white ">ข้อมูล ของคุณ</h1>
         </div>
       </header>
 
@@ -73,6 +75,7 @@
                                 <div class="row">
                                   <!-- Team Member 1 -->
                                   <div class="col-xl-3 col-md-6 mb-4">
+                                    
                                     <div class="card border-0 shadow">
                                   
                                       <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
@@ -94,36 +97,46 @@
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">.
 
                             <!-- Related Projects Row -->
-                            <h3 class="my-4">สุนัข ทั้งหมด</h3>
-                        <div class="card-header">
-                            @foreach ($Dogs as $Dogs)
-                            <div class="container ">
-                              <!-- Page Features -->
-                              <div class="row text-center">
-  
+                          
+                      <div class="card-header">
+
+                          <div class="container ">
+                            <!-- Page Features -->
+                            
+                            <div class="row text-center">
+                              
+                                @foreach ($Dogs as $Dogs)
                                 <div class="col-lg-3 col-md-6 mb-4">
                                   <div class="card h-100">
                                     
-                                  <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dogs->imagedog}}" alt="">
+
+                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dogs->imagedog}}" style="width:250px; height:250px;" >
+                                  
                                     
                                     <div class="card-body">
                                     <h4 class="card-title">{{$Dogs->Breed}}</h4>
                                     
                                     <p class="card-text">{{$Dogs->Detail}}</p>
+
                                     </div>
                                     <div class="card-footer">
-                                      <a href="#" class="btn btn-light">ดูรายละเอียดเพิ่มเติม</a>
+                                        <a href="#" class="btn btn-light">เเก้ไข</a>
+                                        <a href="#" class="btn btn-light">โพสขาย</a>
+                                      
                                     </div>
                                   </div>
                                 </div>
   
-  
+                                @endforeach 
+                              
+                               
                             </div>
                             <!-- /.row -->
+                           
                           </div>
                           
                               
-                      @endforeach 
+                      
                         </div>
                           
                     </div>

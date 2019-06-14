@@ -16,7 +16,13 @@ Route::get('/', function () {
 }); 
 
 
+Route::get('/aa', function () {
+    return view('Dog.postdog11');
+}); 
 
+Route::get('/as', function () {
+    return view('user.EditProfileuser1');
+}); 
 
 Route::resource('books', 'BookController');
 

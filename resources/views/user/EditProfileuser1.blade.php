@@ -22,9 +22,9 @@
                                 <img class="img-fluid img-thumbnail" src="/storage/avatars/{{ Auth::user()->Avatar }}" alt="" style="width:224px; height:224px;"> 
                                   <form action="/{id}/updateavater" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group">
-                                        <input type="file" class="form-control-file" name="avatar" id="avatarFile" aria-describedby="fileHelp">
-                                        <small id="fileHelp" class="form-text text-muted">โปรดอัพรูปไม่เกิน 2MB.</small>
+                                    <div class="custom-file">
+                                        <input type="file" class="" name="avatar" id="avatarFile" aria-describedby="fileHelp">
+                                        <small id="fileHelp" class="">โปรดอัพรูปไม่เกิน 2MB.</small>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                   </form>
@@ -33,9 +33,13 @@
                               <div class="form-group">
                                   @csrf
 
-                                  <label for="name">Name :</label>
+                                  <label for="name">ชื่อ-นามสกุล:</label>
                                   <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}"/>
                               </div>
+                              <div class="form-group">
+                                    <label for="Tel">เพศ:</label>
+                                    <input type="text" class="form-control" name="Tel" value="{{ Auth::user()->SEX }}"/>
+                                </div>
                               <div class="form-group">
                                   <label for="Tel">เบอร์โทรศัพท์ :</label>
                                   <input type="text" class="form-control" name="Tel" value="{{ Auth::user()->Tel }}"/>
@@ -47,13 +51,18 @@
                               <div class="form-group">
                                 <label for="address">ที่อยู่ :</label>
                                 <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}"/>
-
-                            </div>
+                                
+                            </div> 
+                            <label for="">อัปโหลดบัตรประชาชน</label>
+                            <input type="file" class="" name="avatar" id="avatarFile" aria-describedby="fileHelp">
+                            
+                            
                               <button type="submit" class="btn btn-primary">Update</button>
                           </form>
                             </div> 
                     </div>
                 </div>
+                
             </div>
         </div>
 

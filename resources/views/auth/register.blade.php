@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ชื่อ-นามสกุล') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="DateofBirth" class="col-md-4 col-form-label text-md-right">{{ __('DateofBirth') }}</label>
+                            <label for="DateofBirth" class="col-md-4 col-form-label text-md-right">{{ __('วันเดือนปีเกิด') }}</label>
 
                             <div class="col-md-6">
                                 <input id="DateofBirth" type="date" class="form-control @error('DateofBirth') is-invalid @enderror" name="DateofBirth" value="{{ old('DateofBirth') }}" required autocomplete="DateofBirth" autofocus>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="SEX" class="col-md-4 col-form-label text-md-right">{{ __('SEX') }}</label>
+                            <label for="SEX" class="col-md-4 col-form-label text-md-right">{{ __('เพศ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="SEX" type="text" class="form-control @error('SEX') is-invalid @enderror" name="SEX" value="{{ old('SEX') }}" required autocomplete="SEX" autofocus>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="Tel" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
+                            <label for="Tel" class="col-md-4 col-form-label text-md-right">{{ __('เบอร์โทรศัพท์') }}</label>
 
                             <div class="col-md-6">
                                 <input id="Tel" type="text" class="form-control @error('Tel') is-invalid @enderror" name="Tel" value="{{ old('Tel') }}" required autocomplete="Tel" autofocus>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="IDcardnumber" class="col-md-4 col-form-label text-md-right">{{ __('IDcardnumber') }}</label>
+                            <label for="IDcardnumber" class="col-md-4 col-form-label text-md-right">{{ __('รหัสบัตรประชาชน') }}</label>
 
                             <div class="col-md-6">
                                 <input id="IDcardnumber" type="text" class="form-control @error('IDcardnumber') is-invalid @enderror" name="IDcardnumber" value="{{ old('IDcardnumber') }}" required autocomplete="IDcardnumber" autofocus>
@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('ที่อยู') }}</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
@@ -98,7 +98,7 @@
 
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address แก้ไขไม่ได้') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
