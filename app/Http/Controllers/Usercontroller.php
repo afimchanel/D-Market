@@ -74,6 +74,7 @@ class Usercontroller extends Controller
         
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
+
         return view('user.Profileuser')->with('Dogs',$user->Dogs);
         
     }

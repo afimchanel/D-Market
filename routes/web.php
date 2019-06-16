@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/{id}/edit', 'UserController@edit');
     Route::post('/{id}/updateavater','UserController@update_avatar');
     Route::post('/{id}/update', 'UserController@update');
+    Route::post('/{ID_dog}/post', 'DogController@post');
+
     //Route::get('');
 });
 

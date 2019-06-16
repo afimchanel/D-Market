@@ -183,7 +183,7 @@
                                 
                                   
                         
-                        <button class="btn btn-primary" type="submit">เพิ่ม</button>
+                        <button class="btn btn-primary col-8" type="submit">เพิ่ม</button>
                       </form>
         </div>
     </div>

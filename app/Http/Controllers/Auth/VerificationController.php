@@ -25,7 +25,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/indexuser';
+    protected $redirectTo = '/user/{id}';
     
   
 

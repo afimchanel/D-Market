@@ -44,7 +44,22 @@ class DogController extends Controller
     public function store(Request $request)
     {
         
-        
+        $this->validate($request, [
+            'สายพันธุ์สุนัข(ภาษาไทย)' => 'required',
+            'ไอดีสุนัข' => 'required',
+            'เลขทะเบียนพันธุ์' => 'required',
+            'เลขไมโครชิพ' => 'required',
+            'สี' => 'required',
+            'เพศสุนัข' => 'required',
+            'พ่อพันธุ์สุนัข' => 'required',
+            'แม่พันธุ์สุนัข' => 'required',
+            'วันเกิดสุนัช' => 'required',
+            'ชื่อผู้เพาะพันธุ์' => 'required',
+            'เจ้าของ' => 'required',
+            'วันออกทะเบียน' => 'required',
+            'รูปสุนัข ' => 'image|nullable|max:8000'
+        ]);
+
         $files = $request->file('cover_image');
         
              // Handle File Upload
@@ -71,10 +86,6 @@ class DogController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
         
-       
-
-
-
 
         //Create
         $Dog = new Dog;
@@ -149,5 +160,18 @@ class DogController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+    public function post($id)
+    {
+        error_log('postdog');
+        
+        $post= Dog::find($id);
+        $post->Status = request()->input('Status');
+        $post->save();
+
+        return redirect('user/{id}')->with('Doogs',$post->Doogs);;
     }
 }
