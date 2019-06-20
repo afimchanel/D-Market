@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 @if (count($errors) > 0)
 <div class="alert alert-danger">
@@ -11,118 +12,152 @@
   </ul>
 </div>
 @endif
+        
+    <div class="container ">
+           
+            <h3 class="text-center">แก้ไขข้อมูลสุนัข</h3>
 
-        <div class="container h-100">
-
-            <br><br>
-            <h3 class="text-center">แก้ไขข้อมูลใบเพ็ด</h3>
-            <h6 class="text-center">REGISTRATION CERTIFICATE</h6>
-            <br><br>
-           <div class="row h-100 justify-content-center align-items-center">
-                <form method="post" action="{{ route('dog.update',$Dogs->id) }}">
+            
+            <div class="form-group ">
+            <form method="post" action="/dog/{{$Dog->ID_dog}}/update" enctype="multipart/form-data" class="needs-validation" novalidate >
                         @csrf
-                            <div class="form-group">
-                                    <label for="formGroup Gene">สายพันธุ์สุนัข</label>
-                                    <input type="text" class="form-control" id="formGroup Gene" name="Breed"placeholder="สายพันธุ์สุนัข" value="{{$Dog->Breed}} >
+                        <div class="form-row">
+
+
+                                <div class="col-md-4 mb-3">
+                                  <label for="formGroup Gen">สายพันธุ์สุนัข</label>
+                                  <input type="text" class="form-control" id="formGroup Gen" name="Breed" value='{{$Dog->Breed}}' required>
+                                  <div class="valid-tooltip">
+                                    Looks good!
+                                  </div>
                                 </div>
-                        
-                                <div class="form-group">
-                                    <label for="formGroup IDdog"> ไอดีสุนัข </label>
-                                    <input type="text" class="form-control" id="formGroup IDdog" name="IDthedog" placeholder="ไอดีสุนัข">
+                                <div class="col-md-4 mb-3">
+                                  <label for="validationTooltip02">IDสุนัข</label>
+                                  <input type="text" class="form-control" id="validationTooltip02" name="IDthedog"value='{{$Dog->IDthedog}}' required>
+                                  <div class="valid-tooltip">
+                                    Looks good!
+                                  </div>
                                 </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup id"> เลขทะเบียนพันธุ์ </label>
-                                    <input type="text" class="form-control" id="formGroup id" name="Registrationspecies" placeholder="เลขทะเบียนพันธุ์">
+                                <div class="col-md-4 mb-3">
+                                      <label for="formGroup id">เลขทะเบียนพันธุ์</label>
+                                      <input type="text" class="form-control" id="formGroup id"  name="Registrationspecies"value='{{$Dog->Registrationspecies}}' required>
+                                      <div class="valid-tooltip">
+                                          Looks good!
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4 mb-3">
+                                      <label for="formGroupNum">เลขไมโครชิพ</label>
+                                      <input type="text" class="form-control" id="formGroupNum"  name="Nomicrochip"value='{{$Dog->Nomicrochip}}' required>
+                                      <div class="valid-tooltip">
+                                          Looks good!
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4 mb-3">
+                                      <label for="formGroupColor">สี</label>
+                                      <input type="text" class="form-control" id="formGroupColor"  name="color"value='{{$Dog->color}}' required>
+                                      <div class="valid-tooltip">
+                                          Looks good!
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
+                                          <select class="custom-select" name='SEX'  required>
+                                            <option value="{{$Dog->SEX}}">{{$Dog->SEX}}</option>
+                                            <option value="1">ตัวผู้</option>
+                                            <option value="2">ตัวเมีย</option>
+                                           
+                                          </select>
+                                          <div class="invalid-feedback">กรุณาเลือกเพศ</div>
+                                  </div>
+                                  <div class="col-md-4 mb-3">
+                                      <label for="formGroupFather">พ่อพันธุ์</label>
+                                      <input type="text" class="form-control" id="formGroupFather"  name="Father"value='{{$Dog->Father}}' required>
+                                      <div class="valid-tooltip">
+                                          Looks good!
+                                      </div>
+                                  </div>
+      
+                                  <div class="col-md-4 mb-3">
+                                      <label for="formGroupMather">แม่พันธุ์</label>
+                                      <input type="text" class="form-control" id="formGroupMather"  name="Momher" value='{{$Dog->Momher}}' required>
+                                      <div class="valid-tooltip">
+                                          Looks good!
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4 mb-3">
+                                      <label for="formGroupMather">วันเกิดสุนัช</label>
+                                      <input type="date" class="form-control" id="formGroupMather"  name="birthday" value='{{$Dog->birthday}}' required>
+                                      <div class="valid-tooltip">
+                                          Looks good!
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4 mb-3">
+                                  <label for="formGroupMather">ชื่อผู้เพาะพันธุ์ </label>
+                                  <input type="text" class="form-control" id="formGroupMather"  name="Breedername" value='{{$Dog->Breedername}}'required>
+                                  
+                                  </div>   
+                                  <div class="col-md-4 mb-3">
+                                      <label for="formGroup Owder">เจ้าของ</label>
+                                      <input type="text" class="form-control" id="formGroup Owder" name="Owner" value='{{$Dog->Owner}}' required >
+                                  </div>
+                                  
+                                  <div class="col-md-4 mb-3">
+                                  <label for="formGroup Regis">วันออกทะเบียน </label>
+                                  <input type="date" class="form-control" id="formGroup Regis" name="Registrationdate" value='{{$Dog->Registrationdate}}' required >
+                                                          
+                                  </div> 
+           
+                                  <div class="form-group ">
+                                      <label  for="formGroup File">อัพโหลดรูป</label>
+                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imageRC}}" style="width:250px; height:250px;" >
+                                      <div class="custom-file">
+                                          <input type="file" class="custom-file-input" name="cover_image2" accept=".png, .jpg, .jpeg"  >
+                                          <label class="custom-file-label" for="cover_image2">อัปโหลดรูปREGISTRATION CERTIFICATE</label>
+                                      </div>
+                                  </div>
+      
+                                
+                              </div>
+                              <h6 class="text-center">CERTIFIED PEDIGREE</h6>
+                              <div class="form-row">
+                                  
+                                <div class="col-md-4 mb-3">
+                                      <label  for="formGroup File">อัพโหลดใบCP</label>
+                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imageCP}}" style="width:250px; height:250px;" >
+                                      <div class="custom-file">
+                                      <input type="file" name="cover_image1" id="cover_image1" class="custom-file-input"accept=".png, .jpg, .jpeg"  >
+                                      <label class="custom-file-label" for="cover_image1">อัปโหลดรูปCERTIFIED PEDIGREE</label>
+                                  </div>
                                 </div>
-                            
-                                <div class="form-group">
-                                    <label for="formGroup Num"> เลขไมโครชิพ </label>
-                                    <input type="text" class="form-control" id="formGroupNum" name="Nomicroship" placeholder="เลขไมโครชิพ">
+                                <div class="col-md-3 mb-3">
+                                      <label  for="formGroup File">อัพโหลดรูปสุนัข</label>
+                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imagedog}}" style="width:250px; height:250px;" >
+                                      <div class="custom-file">
+                                          <input type="file" name="cover_image"  class="custom-file-input"  multiple accept=".png, .jpg, .jpeg" >
+                                          <label class="custom-file-label" for="cover_image">Choose file</label>
+                                      </div>
                                 </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Color"> สี </label>
-                                    <input type="text" class="form-control" id="formGroup Color" name="color" placeholder="สี">
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Gender"> เพศ </label>
-                                    <input type="text" class="form-control" id="formGroup Gender" name="SEX" placeholder="เพศ">
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Father"> พ่อพันธุ์ </label>
-                                    <input type="text" class="form-control" id="formGroup Father" name="Fathet" placeholder="พ่อพันธุ์">
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Mather"> แม่พันธุ์ </label>
-                                    <input type="text" class="form-control" id="formGroup Mather" name="Momher" placeholder="แม่พันธุ์">
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Birth"> วันเกิด </label>
-                                    <input type="text" class="form-control" id="formGroup Birth" name="birthday" placeholder="วันเกิด">
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Nbreeder"> ชื่อผู้เพาะพันธุ์ </label>
-                                    <input type="text" class="form-control" id="formGroup Nbreeder" name="Breedername" placeholder="ชื่อผู้เพาะพันธุ์">
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Owner"> เจ้าของ </label>
-                                    <input type="text" class="form-control" id="formGroup Owder" name=" Owner" placeholder="เจ้าของ">
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="formGroup Regis"> วันออกทะเบียน</label>
-                                    <input type="text" class="form-control" id="formGroup Regis" name="Registration date" placeholder="วันออกทะเบียน">
-                                </div>
-                
-                                <div class="form-group ">
-                                    <label  for="formGroup File">อัพโหลดไฟล์</label>
-                                    <div class="custom-file">
-                                        <input type="file" name="imageRC" id="formGroup File" id="filepicture" class="custom-file-input">
-                                        <label class="custom-file-label" for="filepicture">Choose file</label>
+                              </div>
+                              
+                              <div class="container">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                        <button type="submit" class="btn btn-primary">ตกลง</button>
+                                        </div>
                                     </div>
                                 </div>
                                 
-                                <hr>
-                                <h6 class="text-center">CERTIFIED PEDIGREE</h6>
-                        <br><br>
+                                 
+                            </form>         
+                         
+                        </div>
+                        
+                           
+                                                
+              
 
-                        <div class="form-group ">
-                            <label  for="formGroup File">อัพโหลดไฟล์</label>
-                            <div class="custom-file">
-                                <input type="file" name="imageCP" id="filepicture" class="custom-file-input">
-                                <label class="custom-file-label" for="filepicture">Choose file</label>
-                            </div>
-                        </div> <br> 
-                        <div class="form-group ">
-                                <label  for="formGroup File">อัพโหลดรูปสุนัข</label>
-                                <div class="custom-file">
-                                    <input type="file" name="imagedog" id="filepicture" class="custom-file-input">
-                                    <label class="custom-file-label" for="filepicture">Choose file</label>
-                                </div>
-                            </div> <br> 
-        
-                        <div class="container">
-                            <div class="row">
-                                <div class="col text-center">
-                                <button type="submit" class="btn btn-primary">ตกลง</button>
-                                </div>
-                            </div>
-                         </div><br><br><br>
-                                                        
-                    </form>
-                </div>
-               
-                 </div>
-
-            </form>
-        </div>
-    </div>
+            
+        </div></div>
+    
 
 @endsection

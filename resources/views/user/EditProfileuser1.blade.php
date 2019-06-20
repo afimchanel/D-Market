@@ -56,7 +56,13 @@
                             <label for="">อัปโหลดบัตรประชาชน</label>
                             <input type="file" class="" name="avatar" id="avatarFile" aria-describedby="fileHelp">
                             
-                            
+                            <div class="col-5">
+                               
+                                <div class="custom-file input-group mb-2">
+                                    <input type="file" name=""  class="custom-file-input"  accept=".png, .jpg, .jpeg" >
+                                    <label class="custom-file-label" for="">ใบอนุญาตจากสมาคม(ถ้ำมี)</label>
+                                </div>
+                          </div>
                               <button type="submit" class="btn btn-primary">Update</button>
                           </form>
                             </div> 

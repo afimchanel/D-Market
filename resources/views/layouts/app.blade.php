@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'D-Market') }}</title>
+    <title>{{ config('app.name','D-Market') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer>
@@ -20,9 +20,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 	
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Styles -->
+	
+    <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
             <!-- Styles -->
             <style>
@@ -39,161 +40,51 @@
                     background-size: cover;
 
                     }
-                    /* กำหนดขนาดรูแภาพให้เป็นวงกลม */
-		.circle {
-			/* ชื่อคลาสต้องตรงกับ <img class="circle"... */
-			height: 150px;
-			/* ความสูงปรับให้เป็นออโต้ */
-			width: 150px;
-			/* ความสูงปรับให้เป็นออโต้ */
-			border: 3px solid #fff;
-			/* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
-			border-radius: 100px;
-			/* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/
+                   
+					body {
+  overflow-x: hidden;
+}
 
-		}
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
 
-		/* บล็อกกรอบของทั้งรูปภาพ */
-		.carousel .thumb-wrapper {
-			padding: 25px 15px;
-			background: #fff;
-			border-radius: 6px;
-			text-align: center;
-			position: relative;
-			box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-		}
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
 
-		/* บล็อกรูปภาพ */
-		.carousel .item .img-box {
-			height: 120px;
-			margin-bottom: 20px;
-			width: 100%;
-			position: relative;
-		}
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
 
-		/* การกำหนดสไลด์ว่าจะให้อยู่ตรงไหน */
-		.col-center {
-			margin: 0 auto;
-			float: none !important;
-		}
+#page-content-wrapper {
+  min-width: 100vw;
+}
 
-		/* การกำหนดระยะของปุ่มกดเลือน */
-		.carousel {
-			margin: 30px auto 60px;
-			padding: 0 80px;
-		}
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
 
-		/* ยังไม่รู้ */
-		.carousel .item {
-			text-align: center;
-			overflow: hidden;
-		}
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
 
-		/* ตัวหนังสือ */
-		.carousel .item h4 {
-			font-family: 'Varela Round', sans-serif;
-		}
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
 
-		/* บล็อกรูปภาพ */
-		.carousel .item .img-box {
-			height: 120px;
-			margin-bottom: 20px;
-			width: 100%;
-			position: relative;
-		}
-
-		/* บล็อกของกรอบ */
-		.carousel .thumb-wrapper {
-			margin: 5px;
-			text-align: center;
-			background: #fff;
-			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-		}
-
-		/* ขนาดกรอบของแต่ละกรอบ */
-		.carousel .thumb-content {
-			padding: 15px;
-			font-size: 13px;
-		}
-
-		/* กรอบของสไลด์ */
-		.carousel .carousel-control {
-			height: 44px;
-			width: 44px;
-			background: none;
-			margin: auto 0;
-			border-radius: 50%;
-			border: 3px solid rgba(0, 0, 0, 0.8);
-		}
-
-		/* ขนาดของตัวคลิกเพื่อเลือนไปยังหน้าอื่น */
-		.carousel .carousel-control i {
-			font-size: 36px;
-			position: absolute;
-			top: 50%;
-			display: inline-block;
-			margin: -19px 0 0 0;
-			z-index: 5;
-			left: 0;
-			right: 0;
-			color: rgba(0, 0, 0, 0.8);
-			text-shadow: none;
-			font-weight: bold;
-		}
-
-		/* ระยะการวางจุดเลือน */
-		.carousel .carousel-control.left i {
-			margin-left: -3px;
-		}
-
-		.carousel .carousel-control.right i {
-			margin-right: -3px;
-		}
-
-		.carousel .carousel-indicators {
-			bottom: -50px;
-		}
-
-		/* ระยะการวางจุดเลือน */
-		.carousel1 .carousel-control.left i {
-			margin-left: -3px;
-		}
-
-		.carousel1 .carousel-control.left i {
-			margin-right: -3px;
-		}
-
-		.carousel1 .carousel-indicators {
-			bottom: -50px;
-		}
-
-		/* สีของจุดเลื่อน */
-		.carousel-indicators li {
-			background: #ababab;
-		}
-
-		.carousel-indicators li.active {
-			background: #555;
-		}
-
-		/* แบบของตัว Add to cart */
-		.carousel .thumb-content .btn {
-			color: #a177ff;
-			font-size: 11px;
-			text-transform: uppercase;
-			font-weight: bold;
-			background: none;
-			border: 1px solid #a177ff;
-			padding: 6px 14px;
-			margin-top: 5px;
-			line-height: 16px;
-			border-radius: 20px;
-		}
-
-		/* กดหัวใจ */
-		.carousel .wish-icon .fa-heart {
-			color: #ff6161;
-		}
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
                 </style>
     
 

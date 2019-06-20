@@ -47,6 +47,13 @@
                               <div class="form-group">
                                 <label for="address">ที่อยู่ :</label>
                                 <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}"/>
+                                <div class="col-4">
+                                    <div class="custom-file input-group mb-2">
+                                        <input type="file" name="license"  class="custom-file-input"  accept=".png, .jpg, .jpeg" >
+                                        <label class="custom-file-label" for="">ใบอนุญาตจากสมาคม(ถ้ามี)</label>
+                                    </div>
+                            </div>
+                                
 
                             </div>
                               <button type="submit" class="btn btn-primary">Update</button>

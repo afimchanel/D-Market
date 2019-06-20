@@ -16,12 +16,10 @@ Route::get('/', function () {
 }); 
 
 
-Route::get('/aa', function () {
-    return view('Dog.postdog11');
-}); 
+
 
 Route::get('/as', function () {
-    return view('user.EditProfileuser1');
+    return view('post.post');
 }); 
 
 Route::resource('books', 'BookController');
@@ -38,13 +36,18 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-    
+    Route::get('user', 'UserController@index');
     Route::get('user/{id}', 'UserController@show');
     Route::get('/{id}/edit', 'UserController@edit');
     Route::post('/{id}/updateavater','UserController@update_avatar');
     Route::post('/{id}/update', 'UserController@update');
-    Route::post('/{ID_dog}/post', 'DogController@post');
-
+        Route::get('/post/dog/{iddog}', 'DogController@post');
+        Route::post('/update/dog/{ID_dog}', 'DogController@update');
+        Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
+        Route::get('/view/dog/{id}/{ID_dog}', 'DogController@show');
+            //Route::get('/{ID_dog}/view/post', 'postController@show');
+            Route::post('/post/{id}/{ID_dog}/post', 'postController@store');
+    
     //Route::get('');
 });
 

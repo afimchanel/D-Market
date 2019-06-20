@@ -41,170 +41,9 @@
             <!--สไลด์ -->
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 py-6">
                         <h2>หมวดหมู่สุนัข</h2>
-                        <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
-                            <!-- Carousel indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel1" data-slide-to="1"></li>
-                                <li data-target="#myCarousel1" data-slide-to="2"></li>
-                            </ol>
-                            <!-- Wrapper for carousel items -->
-                            <div class="carousel-inner">
-                                <div class="item carousel-item active">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Apple iPad</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Sony Headphone</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Macbook Air</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Nikon DSLR</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item carousel-item">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Sony Play Station</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Macbook Pro</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Bose Speaker</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Bose Speaker</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item carousel-item">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Apple iPhone</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Canon DSLR</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Google Pixel</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="thumb-wrapper">
-                                                <div class="img-box">
-                                                    <img class="circle" src="img/Pug-in-bed-with-confused-or-sad-cute-face.jpg"
-                                                        width="120" height="120 " class="img-responsive img-fluid" alt="">
-                                                </div>
-                                                <div class="thumb-content">
-                                                    <h4>Apple Watch</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Carousel controls -->
-                            <a class="carousel-control left carousel-control-prev" href="#myCarousel1" data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a class="carousel-control right carousel-control-next" href="#myCarousel1" data-slide="next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -219,69 +58,52 @@
         <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">สายพันธุ์ยอดฮิต</h1>
 
             <hr class="mt-2 mb-5">
-
+            @foreach ($user as $item)
             <div class="row text-center text-lg-left">
-
-            <div class="col-lg-3 col-md-4 col-6">
-                <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid img-thumbnail" src="/image/pug.jpg" alt="">
-                    </a>
+                
+                <div class="col-lg-3 col-md-4 col-6">
                     
-            </div>
-            <div class="col-lg-3 col-md-4 col-6">
-                <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid img-thumbnail" src="/image/Siberian2.jpg" width="400px" height="300px" alt="">
-                    </a>
-            </div>
-
+                    <a href="" class="d-block mb-4 h-100">
+                        
+                        <img class="img-fluid img-thumbnail" src="" alt="เอามาจากเเท้กสายพัน">
+                        </a>
+                        
+                </div>
+                </div>
+                
+            @endforeach
             
-            </div>
+
+
         </div>
 
         <!-- ส่วนของขายดีประจำสัปดาห์-->
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="container">
-                        <h1 class="my-4">ขายดีประจำสัปดาห์</h1>
+                <h1 class="my-4">ขายดีประจำสัปดาห์</h1>
+                @foreach ($user as $item) <div class="container">
+                        
+                        
                         <div class="row">
                             <div class="col-lg-4 col-sm-6 mb-4">
-                            <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="/image/Siberian2.jpg" alt=""></a>
-                                <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">ไซบีเรียน ขายดี</a>
-                                </h4>
-                                <p class="card-text">ไม่เหาไม่กัดนิสัยดี</p>
-                                </div>
-                            </div>
-                            </div>
-            
-                            <div class="col-lg-4 col-sm-6 mb-4">
-                            <div class="card h-100">
-                                <a href="#"><img class="card-img-top"  height="300" src="/image/Chihuahua1.jpg" alt=""></a>
-                                <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">ชิวาวา</a>
-                                </h4>
-                                <p class="card-text">พร้อมขาย</p>
-                                </div>
-                            </div>
+                                
+                                <div class="card h-100">
+                                        <a href="#"><img class="card-img-top" src="/image/Siberian2.jpg" alt=""></a>
+                                        <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#">ไซบีเรียน ขายดี</a>
+                                        </h4>
+                                        <p class="card-text">ไม่เหาไม่กัดนิสัยดี</p>
+                                        </div>
+                                    </div>
+                                
                             
                             </div>
-                            <div class="col-lg-4 col-sm-6 mb-4">
-                            <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="/image/pug.jpg" alt=""></a>
-                                <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">ปั้ก</a></a>
-                                </h4>
-                                <p class="card-text">พร้อมขาย</p>
-                                </div>
-                            </div>
-                            </div>
+            
+                         
             
                         </div>
                     </div>
-
+                    @endforeach
 
         </div>
         

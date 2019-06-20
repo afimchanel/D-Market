@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -28,7 +28,9 @@ class HomeController extends Controller
         if(auth()->user()->isAdmin()) {
             return view('admin/dashboard');
         } else {
-            return view('home');
+            $user = User::all();
+            return view('/home', compact('user'));
         }
     }
+
 }

@@ -61,8 +61,8 @@
                                           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
                                           <select class="custom-select" name='SEX'  required>
                                             <option value="">เลือกเพศสุนัข</option>
-                                            <option value="ตัวผู้">ตัวผู้</option>
-                                            <option value="ตัวเมีย">ตัวเมีย</option>
+                                            <option value="1">ตัวผู้</option>
+                                            <option value="2">ตัวเมีย</option>
                                            
                                           </select>
                                           <div class="invalid-feedback">กรุณาเลือกเพศ</div>
@@ -101,14 +101,15 @@
                                   
                                   <div class="col-md-4 mb-3">
                                   <label for="formGroup Regis">วันออกทะเบียน </label>
-                                  <input type="date" class="form-control" id="formGroup Regis" placeholder="วันออกทะเบียน" name="Registrationdate"  required>
+                                  <input type="date" class="form-control" id="formGroup Regis" placeholder="วันออกทะเบียน" name="Registrationdate"  required >
                                                           
-                                  </div>             
+                                  </div> 
+           
                                   <div class="form-group ">
                                       <label  for="formGroup File">อัพโหลดรูป</label>
                                       
                                       <div class="custom-file">
-                                          <input type="file" class="custom-file-input" name="cover_image2" accept=".png, .jpg, .jpeg"  >
+                                          <input type="file" class="custom-file-input" name="imageRC" accept=".png, .jpg, .jpeg"  >
                                           <label class="custom-file-label" for="cover_image2">อัปโหลดรูปREGISTRATION CERTIFICATE</label>
                                       </div>
                                   </div>
@@ -121,8 +122,8 @@
                                 <div class="col-md-4 mb-3">
                                       <label  for="formGroup File">อัพโหลดใบCP</label>
                                       <div class="custom-file">
-                                      <input type="file" name="cover_image1" id="cover_image1" class="custom-file-input"  >
-                                      <label class="custom-file-label" for="cover_image1">อัปโหลดรูปCERTIFIED PEDIGREE</label>
+                                      <input type="file" name="imageCP" id="imageCP" class="custom-file-input"  >
+                                      <label class="custom-file-label" for="imageCP">อัปโหลดรูปCERTIFIED PEDIGREE</label>
                                   </div>
                                 </div>
                                 <div class="col-md-3 mb-3">
@@ -133,20 +134,20 @@
                                       </div>
                                 </div>
                               </div>
-                           
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col text-center">
-                                        <button type="submit" class="btn btn-primary">ตกลง</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                              
+                              <button type="submit" class="btn btn-primary" >ตกลง</button>
+                                    
                                  
                                                           
               
-
-            </form>
+                            </form>
+    
+                         
+                        </div>
+                        
+                           
+                                
+                                      
         </div></div>
     
 

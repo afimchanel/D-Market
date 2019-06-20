@@ -9,6 +9,7 @@ use Validator;
 use Redirect;
 use View;
 use App\User;
+use App\post;
 class DogController extends Controller
 {
     /**
@@ -44,21 +45,6 @@ class DogController extends Controller
     public function store(Request $request)
     {
         
-        $this->validate($request, [
-            'สายพันธุ์สุนัข(ภาษาไทย)' => 'required',
-            'ไอดีสุนัข' => 'required',
-            'เลขทะเบียนพันธุ์' => 'required',
-            'เลขไมโครชิพ' => 'required',
-            'สี' => 'required',
-            'เพศสุนัข' => 'required',
-            'พ่อพันธุ์สุนัข' => 'required',
-            'แม่พันธุ์สุนัข' => 'required',
-            'วันเกิดสุนัช' => 'required',
-            'ชื่อผู้เพาะพันธุ์' => 'required',
-            'เจ้าของ' => 'required',
-            'วันออกทะเบียน' => 'required',
-            'รูปสุนัข ' => 'image|nullable|max:8000'
-        ]);
 
         $files = $request->file('cover_image');
         
@@ -76,8 +62,6 @@ class DogController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
-                
-            
 
         }
 
@@ -85,7 +69,50 @@ class DogController extends Controller
         else {
             $fileNameToStore = 'noimage.jpg';
         }
-        
+        $imageCP = $request->file('imageCP');
+            if($request->hasFile('imageCP')){
+                
+                error_log('updatedog0');
+                // Get filename with the extension
+            $filenameWithExt = $imageCP->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $imageCP->getClientOriginalExtension();
+            // Filename to store
+            $imageCPStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $imageCP->storeAs('public/imagedog/cover_images', $imageCPStore);
+
+            }
+
+
+            else {
+            $imageCPStore = 'noimage.jpg';
+            }
+
+            $imageRC = $request->file('imageRC');
+                if($request->hasFile('imageRC')){
+                    
+                    error_log('updatedog0');
+                    // Get filename with the extension
+                $filenameWithExt = $imageRC->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $imageRC->getClientOriginalExtension();
+                // Filename to store
+                $imageRCStore= $filename.'_'.time().'.'.$extension;
+                // Upload Image
+                $path = $imageRC->storeAs('public/imagedog/cover_images', $imageRCStore);
+
+                }
+
+
+                else {
+                $imageRCStore = 'noimage.jpg';
+                }
+
 
         //Create
         $Dog = new Dog;
@@ -104,6 +131,8 @@ class DogController extends Controller
         $Dog->Owner = $request->Owner;
         $Dog->Registrationdate = $request->Registrationdate;
         $Dog->imagedog = $fileNameToStore;
+        $Dog->imageRC = $imageRCStore;
+        $Dog->imageCP = $imageCPStore;
         $Dog->user_id = auth()->user()->id;
         $Dog->save();
 
@@ -119,9 +148,13 @@ class DogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$iddog)
     {
-        //
+        error_log('showdog');
+        
+        $Dog = Dog::find($iddog);
+        $user = User::find($id);
+        return view('Dog.dog-details',compact('Dog','user'));
     }
 
     /**
@@ -130,13 +163,12 @@ class DogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($iddog)
     {
-        error_log('edit');
+        error_log('editdog');
         
-        //$Dogs = Dog::findOrFail($id); 
-       // return view('Dog.editdog', compact('Dogs')
-    //);
+        $Dog = Dog::find($iddog); 
+       return view('Dog.editdog', compact('Dog',$Dog));
     }
 
     /**
@@ -146,9 +178,28 @@ class DogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request,$ID_dog)
+    {        
+        $validatedData = $request->validate([
+        'Breed' => 'required',
+        'IDthedog' => 'required',
+        'Registrationspecies' => 'required',
+        'Nomicrochip' => 'required',
+        'color' => 'required',
+        'SEX' => 'required',
+        'Father' => 'required',
+        'Momher' => 'required',
+        'birthday' => 'required',
+        'Breedername' => 'required',
+        'Owner' => 'required',
+        'Registrationdate' => 'required',
 
+        
+
+    ]);
+        Dog::whereId($ID_dog)->update($validatedData);
+
+        return redirect('user/{id}');
     }
 
     /**
@@ -164,14 +215,47 @@ class DogController extends Controller
 
 
 
-    public function post($id)
+    public function post($iddog)
+    {
+        error_log($iddog);
+        
+        $post = Dog::findOrFail($iddog);
+       
+       
+        
+        return view('post.post',compact('post',$post));
+
+      
+            
+        
+        
+        
+        //return redirect('user/{id}')->with('Dogs',$post->Dogs);
+    }
+    public function postdog(Request $request,$ID_dog)
     {
         error_log('postdog');
         
-        $post= Dog::find($id);
-        $post->Status = request()->input('Status');
+        //$post->id_the_Dog = $post->ID_dog;
+        $post = new post;
+        
+        $post->title_post = $request->title_post;
+        $post->id_the_dog = $ID_dog;
+        $post->Detail_Dog= $request->Detail_Dog;
+        $post->type_dog= $request->type_dog;
+        $post->price= $request->price;
+        $post->Age_Dog= $request->Age_Dog;
+        $post->Farm_name= $request->Farm_name;
+        $post->tel_post= $request->tel_post;
+        $post->vaccine= $request->vaccine;
+        
         $post->save();
 
-        return redirect('user/{id}')->with('Doogs',$post->Doogs);;
+        error_log('postdog1');
+        
+
+        return redirect('user/{id}',compact('post',$post));
+       
     }
+
 }
