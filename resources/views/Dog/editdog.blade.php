@@ -19,7 +19,7 @@
 
             
             <div class="form-group ">
-            <form method="post" action="/dog/{{$Dog->ID_dog}}/update" enctype="multipart/form-data" class="needs-validation" novalidate >
+            <form method="post" action="/update/dog/{{$Dog->ID_dog}}" enctype="multipart/form-data" class="needs-validation" novalidate >
                         @csrf
                         <div class="form-row">
 
@@ -111,8 +111,8 @@
                                       <label  for="formGroup File">อัพโหลดรูป</label>
                                       <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imageRC}}" style="width:250px; height:250px;" >
                                       <div class="custom-file">
-                                          <input type="file" class="custom-file-input" name="cover_image2" accept=".png, .jpg, .jpeg"  >
-                                          <label class="custom-file-label" for="cover_image2">อัปโหลดรูปREGISTRATION CERTIFICATE</label>
+                                          <input type="file" class="custom-file-input" name="imageRC" accept=".png, .jpg, .jpeg"  >
+                                          <label class="custom-file-label" for="imageRC">อัปโหลดรูปREGISTRATION CERTIFICATE</label>
                                       </div>
                                   </div>
       
@@ -125,7 +125,7 @@
                                       <label  for="formGroup File">อัพโหลดใบCP</label>
                                       <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imageCP}}" style="width:250px; height:250px;" >
                                       <div class="custom-file">
-                                      <input type="file" name="cover_image1" id="cover_image1" class="custom-file-input"accept=".png, .jpg, .jpeg"  >
+                                      <input type="file" name="imageCP" id="imageCP" class="custom-file-input"accept=".png, .jpg, .jpeg"  >
                                       <label class="custom-file-label" for="cover_image1">อัปโหลดรูปCERTIFIED PEDIGREE</label>
                                   </div>
                                 </div>

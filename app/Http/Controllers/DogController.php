@@ -119,7 +119,7 @@ class DogController extends Controller
         error_log('storedog');
         $Dog->Breed = $request->Breed;
         $Dog->IDthedog = $request->IDthedog;
-        $Dog->Detail = $request->Detail;
+        
         $Dog->Registrationspecies = $request->Registrationspecies;
         $Dog->Nomicrochip = $request->Nomicrochip;
         $Dog->color = $request->color;
@@ -178,7 +178,7 @@ class DogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$ID_dog)
+    public function update(Request $request,$Iddog, Dog $Dog)
     {        
         $validatedData = $request->validate([
         'Breed' => 'required',
@@ -197,7 +197,96 @@ class DogController extends Controller
         
 
     ]);
-        Dog::whereId($ID_dog)->update($validatedData);
+    $files = $request->file('cover_image');
+        
+             // Handle File Upload
+        if($request->hasFile('cover_image')){
+            
+                error_log('storedog0');
+                 // Get filename with the extension
+            $filenameWithExt = $files->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $files->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
+
+        }
+
+        
+        else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        $imageCP = $request->file('imageCP');
+            if($request->hasFile('imageCP')){
+                
+                error_log('updatedog0');
+                // Get filename with the extension
+            $filenameWithExt = $imageCP->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $imageCP->getClientOriginalExtension();
+            // Filename to store
+            $imageCPStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $imageCP->storeAs('public/imagedog/cover_images', $imageCPStore);
+
+            }
+
+
+            else {
+            $imageCPStore = 'noimage.jpg';
+            }
+
+            $imageRC = $request->file('imageRC');
+                if($request->hasFile('imageRC')){
+                    
+                    error_log('updatedog0');
+                    // Get filename with the extension
+                $filenameWithExt = $imageRC->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $imageRC->getClientOriginalExtension();
+                // Filename to store
+                $imageRCStore= $filename.'_'.time().'.'.$extension;
+                // Upload Image
+                $path = $imageRC->storeAs('public/imagedog/cover_images', $imageRCStore);
+
+                }
+
+
+                else {
+                $imageRCStore = 'noimage.jpg';
+                }
+        $Dog = Dog::find($Iddog);
+        $Dog->Breed = $request->Breed;
+        $Dog->IDthedog = $request->IDthedog;
+        
+        $Dog->Registrationspecies = $request->Registrationspecies;
+        $Dog->Nomicrochip = $request->Nomicrochip;
+        $Dog->color = $request->color;
+        $Dog->SEX = $request->SEX;
+        $Dog->Father = $request->Father;
+        $Dog->Momher = $request->Momher;
+        $Dog->birthday = $request->birthday;
+        $Dog->Breedername = $request->Breedername;
+        $Dog->Owner = $request->Owner;
+        $Dog->Registrationdate = $request->Registrationdate;
+        $Dog->imagedog = $fileNameToStore;
+        $Dog->imageRC = $imageRCStore;
+        $Dog->imageCP = $imageCPStore;
+        
+      
+        $Dog->save();
+
+    error_log($Iddog);
+        
+        
 
         return redirect('user/{id}');
     }

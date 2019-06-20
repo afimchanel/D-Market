@@ -25,7 +25,7 @@
                     
                     </div>
                 </div>
-        <form method="post" action="/post/{{{auth()->user()->id}}}/{{$post->ID_dog}}/post" enctype="multipart/form-data" class="text-center" novalidate >
+        <form method="post" action="/{{{auth()->user()->id}}}/{{$post->ID_dog}}/post" enctype="multipart/form-data" class="text-center" novalidate >
                         @csrf
                         
                         <div class="">
