@@ -12,7 +12,7 @@
                     
                     <div class="container">
                 
-                        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์  {{ Auth::user()->name }} 
+                        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์  {{ $users->name }} 
                         </h1>
                 
                             <hr class="mt-2 mb-5">
@@ -20,17 +20,17 @@
                             <div class="row text-center text-lg-left">
                                     
                             <div class="col-sm-3">          
-                                <img class="img-fluid img-thumbnail" src="/storage/avatars/{{Auth::user()->Avatar}}" style="width:300px; height:250px;"> 
+                                <img class="img-fluid img-thumbnail" src="/storage/avatars/{{$users->Avatar}}" style="width:300px; height:250px;"> 
                             </div> 
 
                         <div class="" >
-                            E_mail :    {{ Auth::user()->email }}   <br>
-                            ชื่อ-นาสกุล :  {{ Auth::user()->name }}  <br>
-                            เบอร์โทรศัพท์ : {{ Auth::user()->Tel }} <br>
-                            วันเดือนปีเกิด : {{ Auth::user()->DateofBirth }} <br>
+                            E_mail :    {{ $users->email }}   <br>
+                            ชื่อ-นาสกุล :  {{ $users->name }}  <br>
+                            เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
+                            วันเดือนปีเกิด : {{ $users->DateofBirth }} <br>
                             ใบทะเบียนจากสมาคม : สถานะ มี <br>
-                            เลขบัตรประชาชน : {{ Auth::user()->IDcardnumber }}<br>
-                            ที่อยู่: {{ Auth::user()->address }}
+                            เลขบัตรประชาชน : {{ $users->IDcardnumber }}<br>
+                            ที่อยู่: {{ $users->address }}
                             
                         </div>
                        
@@ -70,56 +70,39 @@
                   
                       <!-- Page Content -->
                       <div class="container">
-                              <div class="row text-center">
+                              
                                  <!-- Sidebar -->
 
                                  
                                 <!-- Team Member 1 -->
-                               @foreach ($Dogs as $Dog)
-                                @if ($Dog->Status == 1)
-                                <div class="col-lg-3 col-md-6 mb-4">
+                             
+                               @foreach ($users->posts as $item)
+                               <div class="row">
+                                <div class="col-lg-4 col-sm-6 mb-4">
                                   <div class="card h-100">
-                                    
-
-                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imagedog}}" style="width:250px; height:250px;" >
-                                  
-                                    
+                                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                                     <div class="card-body">
-                                    <h4 class="card-title">{{$Dog->Breed}}</h4>
-                                    
-                                    <p class="card-text">{{$Dog->Detail}}</p>
-
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="/edit/dog/{{$Dog->ID_dog}}" class="btn btn-light">เเก้ไข</a>
-                                        <a href="/view/dog/{{auth()->user()->id}}/{{$Dog->ID_dog}}" class="btn btn-light">ดูรายละเอียด</a>
-                                        <a href="/{{$Dog->ID_dog}}/post/dog" class="btn btn-light" 
-                                                  onclick="event.preventDefault();
-                                                  document.getElementById('post-formm').submit();">
-                                    {{ __('ยกเลิกการขาย') }}
-                                        </a>
-                                        <form id="post-formm" action="/{{$Dog->ID_dog}}/post/dog" method="POST" style="display: none;">
-                                            @csrf
-                                            <input type="text" class="form-control" name="Status" value="0"/>
-                                        </form>
-
-
-
+                                      <h4 class="card-title">
+                                      <a href="#"></a>
+                                      </h4>
+                                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
                                     </div>
                                   </div>
                                 </div>
-                                
-                                @endif
+                              </div>
                                @endforeach
-
                                
+                               
+                               
+                               
+                                
+                                 
                                    
                                
                                
                                 
-                                
-                              </div>
-                              <!-- /.row -->
+                              
+                             
                       </div>
                             <!-- /.container -->
                             
@@ -137,39 +120,45 @@
                           
                           <div class="row text-center">
 
+                          
 
-                                @foreach ($Dogs as $Dogs)
+                            @foreach ($Dogs as $item) 
+                                    
+                                
                               
                                 <div class="col-lg-3 col-md-6 mb-4 ">
                                     <div class="card h-100">
                                       
 
-                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dogs->imagedog}}" style="width:250px; height:250px;" >
+                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" style="width:250px; height:250px;" >
                                     
                                       
                                       <div class="card-body">
-                                      <h4 class="card-title">{{$Dogs->Breed}}</h4>
+                                      <h4 class="card-title">{{$item->Breed}}</h4>
                                       
-                                      <p class="card-text">{{$Dogs->Detail}}</p>
-
+                                      <p class="card-text">{{$item->user->address}}</p>
                                       </div>
 
-                                            
-                                      <div class="card-footer">
+                                              @if ($item->user->id == auth()->user()->id)
+                                                  
+                                              <div class="card-footer">
                                         
-                                          <a href="/edit/dog/{{$Dogs->ID_dog}}" class="btn btn-light">เเก้ไข</a>
-                                          <a href="/view/dog/{{auth()->user()->id}}/{{$Dogs->ID_dog}}" class="btn btn-light" >ดูรายละเอียด</a>
-                                          <a href="/post/dog/{{$Dogs->ID_dog}}" class="btn btn-light" 
-                                                    >
-                                      {{ __('โพสขาย') }}
-                                          </a>
-                                          
-                                          <!-- The Modal -->
-                                                    
-
-
-
-                                      </div>
+                                                <a href="/edit/dog/{{$item->ID_dog}}" class="btn btn-light">เเก้ไข</a>
+                                                <a href="/view/dog/{{auth()->user()->id}}/{{$item->ID_dog}}" class="btn btn-light" >ดูรายละเอียด</a>
+                                                <a href="/post/dog/{{$item->ID_dog}}" class="btn btn-danger" 
+                                                          >
+                                            {{ __('โพสขาย') }}
+                                                </a>
+                                                
+                                                <!-- The Modal -->
+                                                          
+      
+      
+      
+                                            </div>
+                                                  
+                                              @endif
+                                   
                                     </div>
                                   </div>
                                   
@@ -180,7 +169,7 @@
                                   
 
                                 @endforeach 
-                            
+                                
                           
                           </div>
                           <!-- /.row -->

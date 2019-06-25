@@ -7,6 +7,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Auth;
 use DB;
+use App\post;
+use App\Dog;
 
 class Usercontroller extends Controller
 {
@@ -73,10 +75,11 @@ class Usercontroller extends Controller
     {
         error_log('showuser');
         
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
+        
+        $users = User::find($id);
+        
 
-        return view('user.Profileuser')->with('Dogs',$user->Dogs);
+        return view('user.Profileuser',compact('users'))->with('Dogs',$users->Dogs);
         
     }
 

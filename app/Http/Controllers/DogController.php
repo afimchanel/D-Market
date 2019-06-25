@@ -21,7 +21,7 @@ class DogController extends Controller
     {
         error_log('indexdog');
         $Dog = Dog::all();
-        return view('user/{id}',compact('Dog',$Dog));
+        return view('user.Profileuser',compact('Dog'));
 
     }
 
@@ -168,7 +168,7 @@ class DogController extends Controller
         error_log('editdog');
         
         $Dog = Dog::find($iddog); 
-       return view('Dog.editdog', compact('Dog',$Dog));
+       return view('Dog.editdog',compact('Dog',$Dog));
     }
 
     /**
@@ -263,26 +263,26 @@ class DogController extends Controller
                 else {
                 $imageRCStore = 'noimage.jpg';
                 }
-        $Dog = Dog::find($Iddog);
-        $Dog->Breed = $request->Breed;
-        $Dog->IDthedog = $request->IDthedog;
+        $Dogs = Dog::find($Iddog);
+        $Dogs->Breed = $request->Breed;
+        $Dogs->IDthedog = $request->IDthedog;
         
-        $Dog->Registrationspecies = $request->Registrationspecies;
-        $Dog->Nomicrochip = $request->Nomicrochip;
-        $Dog->color = $request->color;
-        $Dog->SEX = $request->SEX;
-        $Dog->Father = $request->Father;
-        $Dog->Momher = $request->Momher;
-        $Dog->birthday = $request->birthday;
-        $Dog->Breedername = $request->Breedername;
-        $Dog->Owner = $request->Owner;
-        $Dog->Registrationdate = $request->Registrationdate;
-        $Dog->imagedog = $fileNameToStore;
-        $Dog->imageRC = $imageRCStore;
-        $Dog->imageCP = $imageCPStore;
+        $Dogs->Registrationspecies = $request->Registrationspecies;
+        $Dogs->Nomicrochip = $request->Nomicrochip;
+        $Dogs->color = $request->color;
+        $Dogs->SEX = $request->SEX;
+        $Dogs->Father = $request->Father;
+        $Dogs->Momher = $request->Momher;
+        $Dogs->birthday = $request->birthday;
+        $Dogs->Breedername = $request->Breedername;
+        $Dogs->Owner = $request->Owner;
+        $Dogs->Registrationdate = $request->Registrationdate;
+        $Dogs->imagedog = $fileNameToStore;
+        $Dogs->imageRC = $imageRCStore;
+        $Dogs->imageCP = $imageCPStore;
         
       
-        $Dog->save();
+        $Dogs->save();
 
     error_log($Iddog);
         
@@ -321,30 +321,6 @@ class DogController extends Controller
         
         //return redirect('user/{id}')->with('Dogs',$post->Dogs);
     }
-    public function postdog(Request $request,$ID_dog)
-    {
-        error_log('postdog');
-        
-        //$post->id_the_Dog = $post->ID_dog;
-        $post = new post;
-        
-        $post->title_post = $request->title_post;
-        $post->id_the_dog = $ID_dog;
-        $post->Detail_Dog= $request->Detail_Dog;
-        $post->type_dog= $request->type_dog;
-        $post->price= $request->price;
-        $post->Age_Dog= $request->Age_Dog;
-        $post->Farm_name= $request->Farm_name;
-        $post->tel_post= $request->tel_post;
-        $post->vaccine= $request->vaccine;
-        
-        $post->save();
-
-        error_log('postdog1');
-        
-
-        return redirect('user/{id}',compact('post',$post));
-       
-    }
+   
 
 }

@@ -50,28 +50,30 @@
 
 
 
+            <h1 class="container font-weight-light text-center text-lg-left mt-4 mb-0">โพสขาย</h1>
 
+            <hr class="mt-2 mb-5">
 
         <!-- ส่วนของโชว์สายพันยอดฮิต-->
         <div class="container">
         
-        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">สายพันธุ์ยอดฮิต</h1>
-
-            <hr class="mt-2 mb-5">
-            @foreach ($user as $item)
-            <div class="row text-center text-lg-left">
-                
-                <div class="col-lg-3 col-md-4 col-6">
+            <div class="row -md-4 mb-5">
+                @foreach ($posts as $item)
+                <div class="card" style="width: 18rem;">
                     
-                    <a href="" class="d-block mb-4 h-100">
-                        
-                        <img class="img-fluid img-thumbnail" src="" alt="เอามาจากเเท้กสายพัน">
-                        </a>
-                        
-                </div>
-                </div>
-                
-            @endforeach
+                    <div class="card-body">
+                        <a href="/{{$item->Post_id}}/view/post"><h6 class="card-text">{{$item->title_post}}</h6></a>
+                    <p class="card-subtitle mb-2 text-muted">{{$item->Detail_Dog}}</p>
+                    </div>
+                    <div class="card-footer">
+                    <p  class="primary sm">ราคา : {{$item->price}}</p>
+                      </div>
+                  </div>
+               @endforeach
+                   
+            </div>
+           
+             
             
 
 
@@ -80,19 +82,20 @@
         <!-- ส่วนของขายดีประจำสัปดาห์-->
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <h1 class="my-4">ขายดีประจำสัปดาห์</h1>
-                @foreach ($user as $item) <div class="container">
+                @foreach ($users as $item) 
+                <div class="container">
                         
-                        
+                    @if ($item->type ==0)
                         <div class="row">
                             <div class="col-lg-4 col-sm-6 mb-4">
                                 
                                 <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="/image/Siberian2.jpg" alt=""></a>
+                                        <a href="user/{{$item->id}}"><img class="card-img-top" src="/storage/avatars/{{$item->Avatar}}" alt=""></a>
                                         <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="#">ไซบีเรียน ขายดี</a>
+                                            <a href="user/{{$item->id}}">{{$item->name}}</a>
                                         </h4>
-                                        <p class="card-text">ไม่เหาไม่กัดนิสัยดี</p>
+                                        
                                         </div>
                                     </div>
                                 
@@ -103,6 +106,7 @@
             
                         </div>
                     </div>
+                    @endif
                     @endforeach
 
         </div>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dog extends Model
 {
     protected $guarded = [];
+    //protected $table = 'Dogs';
     protected $primaryKey = 'ID_dog';
     //protected $fillable = ['IDthedog', 'Breed','Registrationspecies','Nomicrochip','color','SEX','Father','Momher','birthday',
     //'Breedername','Owner','Registrationdate',];

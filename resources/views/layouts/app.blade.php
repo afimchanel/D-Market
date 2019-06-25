@@ -18,7 +18,9 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 	
 	
     <!-- Bootstrap core CSS -->
@@ -128,8 +130,8 @@
 								 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 									
-									<a class="dropdown-item" href='{{'/user/{id}'}}' >Profile</a>
-									<a class="dropdown-item" href='{{'/{id}/edit'}}'  >Editprofile</a>
+									<a class="dropdown-item" href='/user/{{ Auth::user()->id }}' >Profile</a>
+									<a class="dropdown-item" href='/{{ Auth::user()->id }}/edit'  >Editprofile</a>
 									<a class="dropdown-item" href="{{ route('dog.create')}}" >Add_dog</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -146,13 +148,20 @@
 							</li>
 							<li class="nav-item dropdown ">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span class="">เเจ้งเตือน</span>
+                                    <span class="fa fa-bell"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right glyphicon glyphicon-star" aria-labelledby="navbarDropdown">
                                 
                                    
                                 </div>
+                            </li>
+                            <li class="nav-item  ">
+                                <a id="navbar" class="nav-link  " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span class="fa fa-shopping-cart"></span>
+                                </a>
+
+                                
                             </li>
                         @endguest
                     </ul>

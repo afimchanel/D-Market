@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\post;
 class HomeController extends Controller
 {
     /**
@@ -28,9 +29,15 @@ class HomeController extends Controller
         if(auth()->user()->isAdmin()) {
             return view('admin/dashboard');
         } else {
-            $user = User::all();
-            return view('/home', compact('user'));
+            $users = User::all();
+            $posts = post::all();
+            return view('/home', compact('users','posts'));
         }
     }
 
+    public function Product()
+    {
+//
+        
+    }
 }

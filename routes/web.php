@@ -19,12 +19,12 @@ Route::get('/', function () {
 
 
 Route::get('/as', function () {
-    return view('post.post');
+    return view('post.postDetail');
 }); 
 
 Route::resource('books', 'BookController');
 
-
+Route::resource('post', 'postController');
 Route::resource('dog','DogController');
 
 
@@ -45,8 +45,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/update/dog/{ID_dog}', 'DogController@update');
         Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
         Route::get('/view/dog/{id}/{ID_dog}', 'DogController@show');
-            //Route::get('/{ID_dog}/view/post', 'postController@show');
-            Route::post('/{id}/{ID_dog}/post', 'postController@store');
+            Route::get('/{Post_id}/view/post', 'postController@show');
+            Route::post('/{id}/{ID_dog}/create/post', 'postController@store');
     
     //Route::get('');
 });

@@ -16,7 +16,7 @@
 
                                 <!-- Portfolio Item Heading -->
                                 <h1 class="my-4">เจ้าของสุนัข
-                                <small><a href="/user/{{auth()->user()->id}}">{{$user->name}}</a></small>
+                                <small><a href="/user/{{$user->id}}">{{$user->name}}</a></small>
                                 </h1>
                                 <h4>ชื่อtitle โพส</h4>
                         <!-- Portfolio Item Row -->

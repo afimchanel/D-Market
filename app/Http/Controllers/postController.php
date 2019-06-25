@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Dog;
 use Illuminate\Http\Request;
 use App\post;
-
+use App\User;
 class postController extends Controller
 {
     /**
@@ -14,7 +14,10 @@ class postController extends Controller
      */
     public function index()
     {
-        //
+        
+        $post = post::all();
+        $Dogs = Dog::all();
+        return view('category', compact('post',$post));
     }
 
     /**
@@ -56,7 +59,7 @@ class postController extends Controller
         error_log('postdog1');
         
 
-        return redirect('user/{id}',compact('post',$post));
+        return redirect('user/{id}')->with('post',$post);
     }
 
     /**
@@ -67,7 +70,7 @@ class postController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('post.postDetail');
     }
 
     /**

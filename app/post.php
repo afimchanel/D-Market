@@ -10,7 +10,12 @@ class post extends Model
     protected $primaryKey = 'Post_id';
 
     public function Dog()
-   {
-       return $this->belongsTo('App\Dog');
-   }
+    {
+        return $this->belongsTo('App\Dog');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+   
 }
