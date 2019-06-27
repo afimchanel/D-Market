@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\post;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -29,9 +30,12 @@ class HomeController extends Controller
         if(auth()->user()->isAdmin()) {
             return view('admin/dashboard');
         } else {
-            $users = User::all();
-            $posts = post::all();
-            return view('/home', compact('users','posts'));
+            $post = DB::table('posts')
+            ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('users.*', 'dogs.*', 'posts.*')
+            ->get();
+            return view('/home', compact('post'));
         }
     }
 

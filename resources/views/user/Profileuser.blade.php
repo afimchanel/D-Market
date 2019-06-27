@@ -58,7 +58,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                  aria-controls="pills-profile" aria-selected="false" >สุนัขทั้งหมดของคุณ</a>
+                  aria-controls="pills-profile" aria-selected="false" >สุนัขทั้งหมด</a>
 
               </li>
              
@@ -80,12 +80,12 @@
                                <div class="row">
                                 <div class="col-lg-4 col-sm-6 mb-4">
                                   <div class="card h-100">
-                                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                                    <a href="/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/" alt=""></a>
                                     <div class="card-body">
                                       <h4 class="card-title">
-                                      <a href="#"></a>
+                                      <a href="/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
                                       </h4>
-                                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                                      <p class="card-text">{{$item->Detail_Dog}}</p>
                                     </div>
                                   </div>
                                 </div>

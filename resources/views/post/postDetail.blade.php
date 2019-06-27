@@ -18,17 +18,19 @@
 
                 <!-- Heading Row -->
                 <div class="row align-items-center my-5">
+                  
                   <div class="col-lg-7">
                     <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
                   </div>
                   <!-- /.col-lg-8 -->
                   <div class="col-lg-5">
-                    <h1 class="font-weight-light">ชื่อไตเติ้ลโพส</h1>
-                    <p>รายละเอียด</p>
-                    <li>ลักษณะ</li>
+
+                  <h1 class="font-weight-light">{{$posts->title_post}}</h1>
+                    <p>{{$posts->Detail_Dog}}</p>
+                    <li>{{$posts->type_dog}}</li>
                     
-                    <li>ราคา</li>
-                    <a class="btn btn-primary" href="#">ชื้อ</a>
+                    <li>ราคา : {{$posts->price}}</li>
+                    <a class="btn btn-success" href="">ชื้อ</a>
                   </div>
                   <!-- /.col-md-4 -->
                 </div>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Dog;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\post;
 use App\User;
+
 class postController extends Controller
 {
     /**
@@ -14,10 +16,13 @@ class postController extends Controller
      */
     public function index()
     {
-        
-        $post = post::all();
-        $Dogs = Dog::all();
-        return view('category', compact('post',$post));
+        $post = DB::table('posts')
+        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('users.*', 'dogs.*', 'posts.*')
+        ->get();
+     
+        return view('category', compact('post'));
     }
 
     /**
@@ -59,7 +64,7 @@ class postController extends Controller
         error_log('postdog1');
         
 
-        return redirect('user/{id}')->with('post',$post);
+        return redirect('user/{id}');
     }
 
     /**
@@ -70,7 +75,33 @@ class postController extends Controller
      */
     public function show($id)
     {
-        return view('post.postDetail');
+        
+        //$post = post::find($id);
+        
+        //$post = new post;
+        //$post -> title_post = 'Watson';
+        
+        $posts = post::find($id)
+        //->dogs()
+        
+        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        
+        //->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        //->join('users', 'posts.user_id', '=', 'users.id')
+        //->where('posts.Post_id', '=', '6')
+    
+        //->select('Post_id')
+        //->where('Post_id',[$Post_id])+
+        
+
+        //->select('posts.*')
+        
+        ->get(['posts.*','dogs.*']);
+       
+        //$post -> title_post = 'Watson';
+
+        return view('post.postDetail',compact('posts'));
+
     }
 
     /**

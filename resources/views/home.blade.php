@@ -58,11 +58,13 @@
         <div class="container">
         
             <div class="row -md-4 mb-5">
-                @foreach ($posts as $item)
+                @foreach ($post as $item)
                 <div class="card" style="width: 18rem;">
                     
                     <div class="card-body">
-                        <a href="/{{$item->Post_id}}/view/post"><h6 class="card-text">{{$item->title_post}}</h6></a>
+                        <a href="/{{$item->Post_id}}/view/post">
+                            <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt="">
+                            <h3 class="card-text">{{$item->title_post}}</h3></a>
                     <p class="card-subtitle mb-2 text-muted">{{$item->Detail_Dog}}</p>
                     </div>
                     <div class="card-footer">
@@ -82,7 +84,7 @@
         <!-- ส่วนของขายดีประจำสัปดาห์-->
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <h1 class="my-4">ขายดีประจำสัปดาห์</h1>
-                @foreach ($users as $item) 
+                @foreach ($post as $item) 
                 <div class="container">
                         
                     @if ($item->type ==0)
