@@ -73,7 +73,7 @@ class postController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($iddog,$id)
     {
         
         //$post = post::find($id);
@@ -81,10 +81,11 @@ class postController extends Controller
         //$post = new post;
         //$post -> title_post = 'Watson';
         
-        $posts = post::find($id)
+        $post = post::find($id);
+        $dog = Dog::find($iddog);
         //->dogs()
         
-        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        //->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
         
         //->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
         //->join('users', 'posts.user_id', '=', 'users.id')
@@ -96,11 +97,11 @@ class postController extends Controller
 
         //->select('posts.*')
         
-        ->get(['posts.*','dogs.*']);
+        //->get(['posts.*','dogs.*']);
        
         //$post -> title_post = 'Watson';
 
-        return view('post.postDetail',compact('posts'));
+        return view('post.postDetail',compact('post','dog'));
 
     }
 

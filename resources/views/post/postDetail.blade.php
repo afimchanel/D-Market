@@ -20,17 +20,18 @@
                 <div class="row align-items-center my-5">
                   
                   <div class="col-lg-7">
-                    <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="/storage/public/imagedog/cover_images/{{$dog->imagedog}}" style="width:900px; height:400px;">
                   </div>
                   <!-- /.col-lg-8 -->
                   <div class="col-lg-5">
 
-                  <h1 class="font-weight-light">{{$posts->title_post}}</h1>
-                    <p>{{$posts->Detail_Dog}}</p>
-                    <li>{{$posts->type_dog}}</li>
+                  <h1 class="font-weight-light">{{$dog->Breed}}{{$post->title_post}}</h1>
+                    <p>รายละเอียด : {{$post->Detail_Dog}}</p>
+                    <li>ลักษณะ : {{$post->type_dog}}</li>
                     
-                    <li>ราคา : {{$posts->price}}</li>
-                    <a class="btn btn-success" href="">ชื้อ</a>
+                    <li>ราคา : {{$post->price}}</li>
+                    <a class="btn btn-success" href="/create/order/{{ Auth::user()->id}}/{{ $dog->ID_dog }}/{{$post->Post_id}}"
+                      >ชื้อ</a>
                   </div>
                   <!-- /.col-md-4 -->
                 </div>
@@ -39,8 +40,19 @@
                 <!-- Call to Action Well -->
                 <div class="card text-dark bg-light my-5 py-4 text-center">
                   <div class="card-body">
-                    <p class="text-dark m-0">รายละเอียดกเกี่ยวกับสุนัขตัวนี้ </p>
-                    ะประกอบด้วย พันธุ์สุนัข,รำคำ,วัคชีน, ใบอนุญำตจำกสมำคม(ถ้ำมี),ชื่อฟำร์ม,เพศของสุนัข,เลขทะเบียน,สีสุนัข,    วันที่เกิด,ผู้เพำะพันธุ์,พ่อพันธุ์,แม่พันธุ์,ที่อยู่ฟำร์ม,รูปภำพ,วีดิโอ,รำยละเอียด เพิ่มเติมของสุนัข,เบอร์ตดิต่อ
+                    <p class="text-dark m-0">รายละเอียดกเกี่ยวกับสุนัขตัวนี้ {{$post->Detail_Dog}} </p>
+                    <p class="text-dark m-0">พันธุ์สุนัข : {{$dog->Breed}} </p>
+                    <p class="text-dark m-0">ราคา : {{$post->Breed}} </p>
+                    <p class="text-dark m-0">ใบอนุญาตจากสมาคม(ถ้ามี) : {{$post->Breed}} </p>
+                    <p class="text-dark m-0">ชื่อ ฟาร์ม : {{$dog->Farm_name}} </p>
+                    <p class="text-dark m-0">เพศ : {{$dog->Breed}} </p>
+                    <p class="text-dark m-0">สีสุนัข : {{$post->Breed}} </p>
+                    <p class="text-dark m-0">วันที่เกิด : {{$dog->birthday}} </p>
+                    <p class="text-dark m-0">ผู้เพาะพันธุ์ : {{$dog->Owner}} </p>
+                    <p class="text-dark m-0">พ่อพันธุ์ : {{$dog->Father}} </p>
+                    <p class="text-dark m-0">แม่พันธุ์ : {{$dog->Momher}} </p>
+                    <p class="text-dark m-0">อยู่ที่ฟาร์ม : {{$dog->Registrationdate}} </p>
+                    <p class="text-dark m-0">เบอร์โทรติดต่อ : {{$post->Breed}} </p>
                     
                   </div>
                 </div>

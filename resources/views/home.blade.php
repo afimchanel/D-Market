@@ -62,8 +62,8 @@
                 <div class="card" style="width: 18rem;">
                     
                     <div class="card-body">
-                        <a href="/{{$item->Post_id}}/view/post">
-                            <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt="">
+                    <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">
+                            <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}"style="width:250px; height:250px;">
                             <h3 class="card-text">{{$item->title_post}}</h3></a>
                     <p class="card-subtitle mb-2 text-muted">{{$item->Detail_Dog}}</p>
                     </div>
@@ -92,7 +92,7 @@
                             <div class="col-lg-4 col-sm-6 mb-4">
                                 
                                 <div class="card h-100">
-                                        <a href="user/{{$item->id}}"><img class="card-img-top" src="/storage/avatars/{{$item->Avatar}}" alt=""></a>
+                                        <a href="user/{{$item->id}}"><img class="card-img-top" src="/storage/avatars/{{$item->Avatar}}" style="width:300px; height:250px;"></a>
                                         <div class="card-body">
                                         <h4 class="card-title">
                                             <a href="user/{{$item->id}}">{{$item->name}}</a>

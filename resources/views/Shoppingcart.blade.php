@@ -174,72 +174,18 @@
     @section('content')
     <div class="container">
             
-					<div class="page-header">
-					  <h1>Horizontal timeline</h1>
-					</div>
-					<div style="display:inline-block;width:100%;overflow-y:auto;">
-					<ul class="timeline timeline-horizontal">
-						<li class="timeline-item">
-							<div class="timeline-badge primary"><i class="glyphicon glyphicon-check"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">ชำระเงิน</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> รอการยืนยัน</small></p>
-								</div>
-								
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">Mussum ipsum cacilds 2</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Mussum ipsum cacilds, vidis faiz elementum girarzis, nisi eros gostis.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge info"><i class="glyphicon glyphicon-check"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">Mussum ipsum cacilds 3</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipisci. Mé faiz elementum girarzis, nisi eros gostis.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge danger"><i class="glyphicon glyphicon-check"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">Mussum ipsum cacilds 4</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.</p>
-								</div>
-							</div>
-						</li>
-						
-						
-					</ul>
-				</div>
-				
-			</div>
+					
         <div class="card shopping-cart">
                  <div class="card-header bg-dark text-light">
                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                      Shipping cart
-                     <a href="" class="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
+                     <a href="/view/category" class="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
                      <div class="clearfix"></div>
                  </div>
                  <div class="card-body">
                      
+                       
+                      
                          <!-- PRODUCT -->
                          <div class="row">
                              <div class="col-12 col-sm-12 col-md-2 text-center">
@@ -253,48 +199,9 @@
                              </div>
                              <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                                  <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                     <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                                     <h6><strong>25.00 </strong></h6>
                                  </div>
-                                 <div class="col-4 col-sm-4 col-md-4">
-                                     <div class="quantity">
-                                         <input type="button" value="+" class="plus">
-                                         <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                                size="4">
-                                         <input type="button" value="-" class="minus">
-                                     </div>
-                                 </div>
-                                 <div class="col-2 col-sm-2 col-md-2 text-right">
-                                     <button type="button" class="btn btn-outline-danger btn-xs">
-                                         <i class="fa fa-trash" aria-hidden="true"></i>
-                                     </button>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr>
-                         <!-- END PRODUCT -->
-                         <!-- PRODUCT -->
-                         <div class="row">
-                             <div class="col-12 col-sm-12 col-md-2 text-center">
-                                     <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80">
-                             </div>
-                             <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                                 <h4 class="product-name"><strong>Product Name</strong></h4>
-                                 <h4>
-                                     <small>Product description</small>
-                                 </h4>
-                             </div>
-                             <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                                 <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                     <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-                                 </div>
-                                 <div class="col-4 col-sm-4 col-md-4">
-                                     <div class="quantity">
-                                         <input type="button" value="+" class="plus">
-                                         <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                                size="4">
-                                         <input type="button" value="-" class="minus">
-                                     </div>
-                                 </div>
+                               
                                  <div class="col-2 col-sm-2 col-md-2 text-right">
                                      <button type="button" class="btn btn-outline-danger btn-xs">
                                          <i class="fa fa-trash" aria-hidden="true"></i>

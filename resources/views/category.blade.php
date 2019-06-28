@@ -85,10 +85,10 @@
               
               <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                  <a href="#"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt=""></a>
+                  <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt=""></a>
                   <div class="card-body">
                     <h4 class="card-title">
-                      <a href="#">{{$item->title_post}} {{$item->Breed}}</a>	
+                      <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}} {{$item->Breed}}</a>	
                     
                     </h4>
                     <h5>ราคา : {{$item->price}}</h5>

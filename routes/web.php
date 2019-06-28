@@ -19,14 +19,14 @@ Route::get('/', function () {
 
 
 Route::get('/as', function () {
-    return view('post.postDetail');
+    return view('payment');
 }); 
 
-Route::resource('books', 'BookController');
+
 
 Route::resource('post', 'postController');
+Route::resource('order','OrderController');
 Route::resource('dog','DogController');
-
 
 
 Auth::routes(['verify' => true]);
@@ -45,8 +45,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/update/dog/{ID_dog}', 'DogController@update');
         Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
         Route::get('/view/dog/{id}/{ID_dog}', 'DogController@show');
-            Route::get('/{Post_id}/view/post', 'postController@show');
-            Route::post('/{id}/{ID_dog}/create/post', 'postController@store');
+            Route::get('/view/category', 'PostController@index');
+            Route::get('/{ID_dog}/{Post_id}/view/post', 'PostController@show');
+            Route::post('/{id}/{ID_dog}/create/post', 'PostController@store');
+                Route::get('/create/order/{id}/{ID_dog}/{id_post}', 'OrderController@store');
     
     //Route::get('');
 });
