@@ -157,7 +157,7 @@
                                 </div>
                             </li>
                             <li class="nav-item  ">
-                                <a id="navbar" class="nav-link  " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbar" class="nav-link  " href="/show/order/{{ Auth::user()->id}}" role="button"  >
                                     <span class="fa fa-shopping-cart"></span>
                                 </a>
 

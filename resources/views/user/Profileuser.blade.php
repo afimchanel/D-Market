@@ -28,8 +28,13 @@
                             ชื่อ-นาสกุล :  {{ $users->name }}  <br>
                             เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
                             วันเดือนปีเกิด : {{ $users->DateofBirth }} <br>
+                            @if ($users->license = 'noimage.jpg'	)
+                            ใบทะเบียนจากสมาคม : สถานะ ไม่มี <br>
+                            @else
                             ใบทะเบียนจากสมาคม : สถานะ มี <br>
-                            เลขบัตรประชาชน : {{ $users->IDcardnumber }}<br>
+                            @endif
+                            
+                            
                             ที่อยู่: {{ $users->address }}
                             
                         </div>
@@ -75,12 +80,16 @@
 
                                  
                                 <!-- Team Member 1 -->
-                             
+                                <div class="row">
                                @foreach ($users->posts as $item)
-                               <div class="row">
+                               
                                 <div class="col-lg-4 col-sm-6 mb-4">
                                   <div class="card h-100">
-                                    <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/" alt=""></a>
+                                  <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">
+                                    
+                                    <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt="">
+                                  
+                                  </a>
                                     <div class="card-body">
                                       <h4 class="card-title">
                                       <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
@@ -89,8 +98,9 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              
                                @endforeach
+                              </div>
                                
                                
                                
@@ -145,12 +155,15 @@
                                         
                                                 <a href="/edit/dog/{{$item->ID_dog}}" class="btn btn-light">เเก้ไข</a>
                                                 <a href="/view/dog/{{auth()->user()->id}}/{{$item->ID_dog}}" class="btn btn-light" >ดูรายละเอียด</a>
-                                                <a href="/post/dog/{{$item->ID_dog}}" class="btn btn-danger" 
-                                                          >
+                                                <a href="/post/dog/{{$item->ID_dog}}" class="btn btn-success" >
                                             {{ __('โพสขาย') }}
                                                 </a>
-                                                
-                                                <!-- The Modal -->
+                                                <form action="{{ route('dog.destroy',$item->ID_dog) }}" method="GET">
+                                                  @csrf
+                                                  @method('DELETE')
+                      
+                                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                              </form>
                                                           
       
       

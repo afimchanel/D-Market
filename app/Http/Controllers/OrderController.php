@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\order;
+use App\User;
 use Illuminate\Http\Request;
 
 class ordercontroller extends Controller
@@ -51,9 +52,12 @@ class ordercontroller extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
+    public function show($id_user)
     {
-        //
+        //$post = post::find($id_post);
+        //$dog = Dog::find($id_dog);
+        $user = User::find($id_user);
+        return view('Shoppingcart',compact('user'));
     }
 
     /**

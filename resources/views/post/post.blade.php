@@ -13,22 +13,14 @@
 </div>
 @endif
         
-    <div class="container form-lg-left text-center ">
+    <div class="container  text-center ">
            
-            <h1 class="text-center">กรอกข้อมูลโพสสุนัขเพื่อขาย</h1>
-        
-            
-            <div class="">
-
-                    <div class="col-md-8">
-                    <img class="img-fluid img-thumbnai" src="/storage/public/imagedog/cover_images/{{$post->imagedog}}" style="width:500px; height:500px;">
-                    
-                    </div>
-                </div>
-        <form method="post" action="/{{{auth()->user()->id}}}/{{$post->ID_dog}}/create/post" enctype="multipart/form-data" class="text-center" novalidate >
+            <h1 class="text-center">กรอกข้อมูลโพสสุนัขเพื่อขาย</h1>       
+                    <img class="img-fluid img-thumbnai" src="/storage/public/imagedog/cover_images/{{$post->imagedog}}" style="width:500px; height:500px;">   
+        <form method="post" action="/{{{auth()->user()->id}}}/{{$post->ID_dog}}/create/post" enctype="multipart/form-data" class="text-center container" novalidate >
                         @csrf
                         
-                        <div class="">
+                        <div class="container">
 
                                 <div class="col-md-4">
                                         <div class="input-group mb-2">
@@ -69,6 +61,15 @@
                                             <div class="input-group-text">อายุสุนัข(ตอนนี้)</div>
                                             </div>
                                             <input type="text" class="form-control" id="inlineFormInputGroup3" placeholder="อายุสุนัข(ตอนนี้)" name="Age_Dog">
+                                        </div>
+                                </div>
+                                <div class="col-auto">
+                                        
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                            <div class="input-group-text">น้ำหนัก(หน่วยเป็นกิโลกรัม)</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="inlineFormInputGroup3" placeholder="อายุสุนัข(ตอนนี้)" name="">
                                         </div>
                                 </div>
                                 <div class="col-auto">

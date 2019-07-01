@@ -84,12 +84,13 @@
         <!-- ส่วนของขายดีประจำสัปดาห์-->
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <h1 class="my-4">ขายดีประจำสัปดาห์</h1>
-                @foreach ($post as $item) 
                 <div class="container">
+                    <div class="row">
+                @foreach ($post as $item) 
+                
+                    @if ($item->type == 0)
                         
-                    @if ($item->type ==0)
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-6 mb-4">
+                            <div class="col-lg- col-sm- mb-4 mx-5">
                                 
                                 <div class="card h-100">
                                         <a href="user/{{$item->id}}"><img class="card-img-top" src="/storage/avatars/{{$item->Avatar}}" style="width:300px; height:250px;"></a>
@@ -106,10 +107,12 @@
             
                          
             
-                        </div>
-                    </div>
+                        
                     @endif
+                    
                     @endforeach
+                </div>
+            </div>
 
         </div>
         

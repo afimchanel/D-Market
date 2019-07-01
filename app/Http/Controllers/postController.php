@@ -64,7 +64,7 @@ class postController extends Controller
         error_log('postdog1');
         
 
-        return redirect('user/{id}');
+        return redirect('/');
     }
 
     /**

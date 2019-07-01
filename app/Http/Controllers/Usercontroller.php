@@ -79,7 +79,7 @@ class Usercontroller extends Controller
         $users = User::find($id);
         
 
-        return view('user.Profileuser',compact('users'))->with('Dogs',$users->Dogs);
+        return view('user.Profileuser',compact('users'))->with('Dogs',$users->dogs);
         
     }
 
@@ -121,7 +121,7 @@ class Usercontroller extends Controller
         $user->DateofBirth = request()->input('DateofBirth');
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
-
+        $user->license = request()->input('license');
         error_log('updateuser');
         $user->save();
         

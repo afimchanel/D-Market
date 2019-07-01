@@ -20,8 +20,8 @@ class DogController extends Controller
     public function index()
     {
         error_log('indexdog');
-        $Dog = Dog::all();
-        return view('user.Profileuser',compact('Dog'));
+      
+     return view('/');
 
     }
 
@@ -45,34 +45,28 @@ class DogController extends Controller
     public function store(Request $request)
     {
         
-
-        $files = $request->file('cover_image');
-        
-             // Handle File Upload
-        if($request->hasFile('cover_image')){
+        $data=array();
+        if($request->hasfile('filename'))
+        {
+    
+           foreach($request->file('filename') as $image)
+           {
+               $name=$image->getClientOriginalName();
+               $image->storeAs('public/imagedog/cover_images', $name);  
+               $data[] = $name;  
+           }
+        }
+    
             
-                error_log('storedog0');
-                 // Get filename with the extension
-            $filenameWithExt = $files->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $files->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
+            else {
+                $name = 'noimage.jpg';
+            }
 
-        }
-
-        
-        else {
-            $fileNameToStore = 'noimage.jpg';
-        }
+    
         $imageCP = $request->file('imageCP');
             if($request->hasFile('imageCP')){
                 
-                error_log('updatedog0');
+                error_log('uploaddog0');
                 // Get filename with the extension
             $filenameWithExt = $imageCP->getClientOriginalName();
             // Get just filename
@@ -94,7 +88,7 @@ class DogController extends Controller
             $imageRC = $request->file('imageRC');
                 if($request->hasFile('imageRC')){
                     
-                    error_log('updatedog0');
+                    error_log('uploaddog1');
                     // Get filename with the extension
                 $filenameWithExt = $imageRC->getClientOriginalName();
                 // Get just filename
@@ -130,7 +124,7 @@ class DogController extends Controller
         $Dog->Breedername = $request->Breedername;
         $Dog->Owner = $request->Owner;
         $Dog->Registrationdate = $request->Registrationdate;
-        $Dog->imagedog = $fileNameToStore;
+        $Dog->imagedog = $name;
         $Dog->imageRC = $imageRCStore;
         $Dog->imageCP = $imageCPStore;
         $Dog->user_id = auth()->user()->id;
@@ -139,7 +133,7 @@ class DogController extends Controller
         error_log('storedog1');
         
 
-        return redirect('user/{id}');
+        return redirect('/');
     }
 
     /**
@@ -168,7 +162,7 @@ class DogController extends Controller
         error_log('editdog');
         
         $Dog = Dog::find($iddog); 
-       return view('Dog.editdog',compact('Dog',$Dog));
+       return view('Dog.editdog',compact('Dog'));
     }
 
     /**
@@ -213,13 +207,12 @@ class DogController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
-
         }
-
         
         else {
             $fileNameToStore = 'noimage.jpg';
         }
+
         $imageCP = $request->file('imageCP');
             if($request->hasFile('imageCP')){
                 
@@ -284,11 +277,11 @@ class DogController extends Controller
       
         $Dogs->save();
 
-    error_log($Iddog);
+        error_log($Iddog);
         
         
 
-        return redirect('user/{id}');
+        return redirect('/');
     }
 
     /**
@@ -299,7 +292,9 @@ class DogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dog = Dog::find($id);
+        $dog->delete();
+        return redirect('/');
     }
 
 
@@ -309,15 +304,8 @@ class DogController extends Controller
         error_log($iddog);
         
         $post = Dog::findOrFail($iddog);
-       
-       
         
         return view('post.post',compact('post',$post));
-
-      
-            
-        
-        
         
         //return redirect('user/{id}')->with('Dogs',$post->Dogs);
     }

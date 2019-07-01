@@ -50,19 +50,22 @@
                                           Looks good!
                                       </div>
                                   </div>
-                                  <div class="col-md-4 mb-3">
-                                      <label for="formGroupColor">สี</label>
-                                      <input type="text" class="form-control" id="formGroupColor" placeholder="สี" name="color" required>
-                                      <div class="valid-tooltip">
-                                          Looks good!
-                                      </div>
-                                  </div>
+                                  <div class="form-group col-5">
+                                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สี</label>
+                                    <select class="custom-select" name='color'  required>
+                                      <option value="">เลือกสี</option>
+                                      <option value="1">ขาว</option>
+                                      <option value="2">ดำ</option>
+                                      <option value="3">อื่น</option>
+                                    </select>
+                                </div>
+                             
                                   <div class="form-group">
                                           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
                                           <select class="custom-select" name='SEX'  required>
                                             <option value="">เลือกเพศสุนัข</option>
-                                            <option value="1">ตัวผู้</option>
-                                            <option value="2">ตัวเมีย</option>
+                                            <option value="M">ตัวผู้</option>
+                                            <option value="G">ตัวเมีย</option>
                                            
                                           </select>
                                           <div class="invalid-feedback">กรุณาเลือกเพศ</div>
@@ -129,7 +132,7 @@
                                 <div class="col-md-3 mb-3">
                                       <label  for="formGroup File">อัพโหลดรูปสุนัข</label>
                                       <div class="custom-file">
-                                          <input type="file" name="cover_image"  class="custom-file-input"  multiple accept=".png, .jpg, .jpeg" >
+                                          <input type="file" name="filename[]"  class="custom-file-input"  multiple accept=".png, .jpg, .jpeg" >
                                           <label class="custom-file-label" for="cover_image">Choose file</label>
                                       </div>
                                 </div>

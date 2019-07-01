@@ -10,7 +10,7 @@ class post extends Model
     protected $table = 'posts';
     protected $primaryKey = 'Post_id';
 
-    public function post_dogs()
+    public function postdogs()
     {
         return $this->hasOne('App\Dog');
     }
