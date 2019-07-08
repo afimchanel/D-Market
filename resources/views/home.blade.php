@@ -39,14 +39,7 @@
             </div>
 
             <!--สไลด์ -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 py-6">
-                        <h2>หมวดหมู่สุนัข</h2>
-                        
-                    </div>
-                </div>
-            </div>
+       
 
 
 
@@ -83,7 +76,7 @@
 
         <!-- ส่วนของขายดีประจำสัปดาห์-->
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <h1 class="my-4">ขายดีประจำสัปดาห์</h1>
+                <h1 class="my-4">ผู้ใช้ที่ขายดีขายดีประจำสัปดาห์</h1>
                 <div class="container">
                     <div class="row">
                 @foreach ($post as $item) 

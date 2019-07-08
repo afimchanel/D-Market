@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\order;
+use App\orderdetail;
+use App\orders;
 use App\User;
+use DB;
 use Illuminate\Http\Request;
 
 class ordercontroller extends Controller
@@ -16,7 +18,7 @@ class ordercontroller extends Controller
     public function index()
     {
         error_log('index_order');
-        $order = order::all();
+       
         return view('Shoppingcart');
     }
 
@@ -25,9 +27,9 @@ class ordercontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+       
     }
 
     /**
@@ -38,12 +40,14 @@ class ordercontroller extends Controller
      */
     public function store($id_user,$id_dog,$id_post)
     {
-        $order = new order;
+        error_log('sstore');
+        $order = new orderdetail;
         $order->id_post = $id_post;
         $order->id_the_dog = $id_dog;
         $order->id_user = $id_user;
+        //$order->Status = 1;
         $order->save();
-        return redirect('order.show');
+        return redirect('/home');
     }
 
     /**
@@ -52,12 +56,20 @@ class ordercontroller extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show($id_user)
+    public function show($id)
     {
         //$post = post::find($id_post);
         //$dog = Dog::find($id_dog);
-        $user = User::find($id_user);
-        return view('Shoppingcart',compact('user'));
+          
+        $Order = DB::table('order_detail')
+        ->where('id_user', '=', $id)
+        ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.ID_dog')
+        ->join('users', 'order_detail.id_user', '=', 'users.id')
+        ->join('posts','order_detail.id_post','=','posts.Post_id')
+        ->select('users.*', 'dogs.*', 'posts.*','order_detail.*')
+        ->get();
+        
+        return view('Shoppingcart',compact('Order'));
     }
 
     /**
@@ -89,8 +101,20 @@ class ordercontroller extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order $order)
+    public function destroy($id)
     {
-        //
+        $order = orders::find($id);
+        $order->delete();
+        return redirect()->route('post.index');
     }
+    public function createorder($id)
+    {
+
+        $order = new orders;
+        $order->id_user = $id;
+        $order->save();
+        return redirect('payment',compact('order'));
+    }
+    
+   
 }

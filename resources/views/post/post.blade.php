@@ -63,13 +63,32 @@
                                             <input type="text" class="form-control" id="inlineFormInputGroup3" placeholder="อายุสุนัข(ตอนนี้)" name="Age_Dog">
                                         </div>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-2">
                                         
                                         <div class="input-group mb-2">
                                             <div class="input-group-prepend">
-                                            <div class="input-group-text">น้ำหนัก(หน่วยเป็นกิโลกรัม)</div>
+                                            <div class="input-group-text">สีตา</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup3" placeholder="อายุสุนัข(ตอนนี้)" name="">
+                                            <select class="custom-select" name="vaccine">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">ดำ</option>
+                                                    <option value="2">น้ำตาล</option>
+                                                    <option value="3">ฟ้า</option>
+                                                  </select>
+                                        </div>
+                                </div>
+                                <div class="col-2">
+                                        
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                            <div class="input-group-text">น้ำหนัก</div>
+                                            </div>
+                                            <select class="custom-select" name="vaccine">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">1-5 กิโล</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                  </select>
                                         </div>
                                 </div>
                                 <div class="col-auto">

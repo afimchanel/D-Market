@@ -30,8 +30,14 @@
                     <li>ลักษณะ : {{$post->type_dog}}</li>
                     
                     <li>ราคา : {{$post->price}}</li>
+                    @if (Auth::user()->id == $post->id)
+                        
+                    @else
                     <a class="btn btn-success" href="/create/order/{{ Auth::user()->id}}/{{ $dog->ID_dog }}/{{$post->Post_id}}"
                       >ชื้อ</a>
+                    @endif
+                    
+
                   </div>
                   <!-- /.col-md-4 -->
                 </div>

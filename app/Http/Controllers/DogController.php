@@ -49,11 +49,21 @@ class DogController extends Controller
         if($request->hasfile('filename'))
         {
     
-           foreach($request->file('filename') as $image)
+           foreach($request->file('filename') as $files)
            {
-               $name=$image->getClientOriginalName();
-               $image->storeAs('public/imagedog/cover_images', $name);  
-               $data[] = $name;  
+                 // Get filename with the extension
+            $filenameWithExt = $files->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $files->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
+
+              
+               $data[] = $fileNameToStore;  
            }
         }
     
@@ -124,7 +134,7 @@ class DogController extends Controller
         $Dog->Breedername = $request->Breedername;
         $Dog->Owner = $request->Owner;
         $Dog->Registrationdate = $request->Registrationdate;
-        $Dog->imagedog = $name;
+        $Dog->imagedog = $fileNameToStore;
         $Dog->imageRC = $imageRCStore;
         $Dog->imageCP = $imageCPStore;
         $Dog->user_id = auth()->user()->id;
@@ -142,13 +152,15 @@ class DogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id,$iddog)
+    public function show($iddog)
     {
         error_log('showdog');
         
         $Dog = Dog::find($iddog);
-        $user = User::find($id);
-        return view('Dog.dog-details',compact('Dog','user'));
+        //->join('users', 'dogs.user_id', '=', 'users.id') 
+     
+        
+        return view('Dog.dog-details',compact('Dog'));
     }
 
     /**
@@ -305,7 +317,7 @@ class DogController extends Controller
         
         $post = Dog::findOrFail($iddog);
         
-        return view('post.post',compact('post',$post));
+        return view('post.post',compact('post'));
         
         //return redirect('user/{id}')->with('Dogs',$post->Dogs);
     }

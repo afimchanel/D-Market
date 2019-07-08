@@ -95,7 +95,9 @@
                   <p class="card-text">{{$item->Detail_Dog}}</p>
                   </div>
                   <div class="row justify-content-end">
-                      <button class="btn btn-primary" >Add to cart</button>
+                      <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->ID_dog }}/{{$item->Post_id}}"
+                        >Add to cart</a>
+                     
                     </div>
                 </div>
               </div>

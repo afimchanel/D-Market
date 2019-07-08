@@ -77,9 +77,14 @@ class Usercontroller extends Controller
         
         
         $users = User::find($id);
+        $posts = DB::table('posts')
         
+        //->where('user_id', '=', 3) แก้ตรงนี้
+        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        ->get();
+    
 
-        return view('user.Profileuser',compact('users'))->with('Dogs',$users->dogs);
+        return view('user.Profileuser',compact('users','posts'))->with('Dogs',$users->dogs);
         
     }
 
@@ -126,7 +131,7 @@ class Usercontroller extends Controller
         $user->save();
         
 
-        return redirect('user/{id}');
+        return redirect('/');
     }
 
     /**

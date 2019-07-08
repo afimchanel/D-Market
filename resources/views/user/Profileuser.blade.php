@@ -81,13 +81,13 @@
                                  
                                 <!-- Team Member 1 -->
                                 <div class="row">
-                               @foreach ($users->posts as $item)
+                               @foreach ($posts as $item)
                                
                                 <div class="col-lg-4 col-sm-6 mb-4">
                                   <div class="card h-100">
-                                  <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">
+                                  <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
                                     
-                                    <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt="">
+                                    <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}"style="width:250px; height:250px;">
                                   
                                   </a>
                                     <div class="card-body">
@@ -101,18 +101,6 @@
                               
                                @endforeach
                               </div>
-                               
-                               
-                               
-                               
-                                
-                                 
-                                   
-                               
-                               
-                                
-                              
-                             
                       </div>
                             <!-- /.container -->
                             
@@ -140,21 +128,22 @@
                                     <div class="card h-100">
                                       
 
-                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" style="width:250px; height:250px;" >
+                                      <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}"style="width:250px; height:250px;">
                                     
                                       
                                       <div class="card-body">
                                       <h4 class="card-title">{{$item->Breed}}</h4>
                                       
-                                      <p class="card-text">{{$item->user->address}}</p>
+                                      <!--<p class="card-text"></p>-->
                                       </div>
-
+                                      <div class="card-footer">
+                                      <a href="/view/dog/{{$item->ID_dog}}" class="btn btn-light" >ดูรายละเอียด</a>
                                               @if ($item->user->id == auth()->user()->id)
                                                   
-                                              <div class="card-footer">
+                                              
                                         
                                                 <a href="/edit/dog/{{$item->ID_dog}}" class="btn btn-light">เเก้ไข</a>
-                                                <a href="/view/dog/{{auth()->user()->id}}/{{$item->ID_dog}}" class="btn btn-light" >ดูรายละเอียด</a>
+                                                
                                                 <a href="/post/dog/{{$item->ID_dog}}" class="btn btn-success" >
                                             {{ __('โพสขาย') }}
                                                 </a>
@@ -163,14 +152,15 @@
                                                   @method('DELETE')
                       
                                                   <button type="submit" class="btn btn-danger">Delete</button>
-                                              </form>
+                                                </form>
                                                           
       
       
       
-                                            </div>
+                                            
                                                   
                                               @endif
+                                            </div>
                                    
                                     </div>
                                   </div>
