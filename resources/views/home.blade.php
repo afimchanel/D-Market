@@ -80,14 +80,14 @@
 
         <!-- ส่วนของขายดีประจำสัปดาห์-->
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <h1 class="my-4">ผู้ใช้ที่ขายดีขายดีประจำสัปดาห์</h1>
+                <h1 class="my-4">ผู้ใช้ที่ขายดีประจำสัปดาห์</h1>
                 <div class="container">
                     <div class="row">
-                @foreach ($post as $item) 
+                @foreach ($user as $item) 
                 
                     @if ($item->type == 0)
                         
-                            <div class="col-lg- col-sm- mb-4 mx-5">
+                            <div class="col-lg- col-sm- mb-4 mx-3">
                                 
                                 <div class="card h-100">
                                         <a href="user/{{$item->id}}"><img class="card-img-top" src="/storage/avatars/{{$item->Avatar}}" style="width:300px; height:250px;"></a>

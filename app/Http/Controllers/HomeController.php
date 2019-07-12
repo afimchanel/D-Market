@@ -30,12 +30,13 @@ class HomeController extends Controller
         if(auth()->user()->isAdmin()) {
             return view('admin/dashboard');
         } else {
+            $user = User::all();
             $post = DB::table('posts')
             ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select('users.*', 'dogs.*', 'posts.*')
             ->get();
-            return view('/home', compact('post'));
+            return view('/home', compact('post','user'));
         }
     }
 

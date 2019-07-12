@@ -41,13 +41,21 @@ class ordercontroller extends Controller
     public function store($id_user,$id_dog,$id_post)
     {
         error_log('sstore');
-        $order = new orderdetail;
+        if (orderdetail::find($id_dog)) {
+            $order = new orderdetail;
         $order->id_post = $id_post;
         $order->id_the_dog = $id_dog;
         $order->id_user = $id_user;
         //$order->Status = 1;
         $order->save();
-        return redirect('/home');
+        return redirect('');
+        
+        } else {
+            error_log('error');
+            return redirect('');
+        }
+        
+        
     }
 
     /**
