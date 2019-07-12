@@ -203,6 +203,7 @@ class DogController extends Controller
         
 
     ]);
+    
     $files = $request->file('cover_image');
         
              // Handle File Upload

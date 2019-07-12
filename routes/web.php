@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/as', function () {
-    return view('payment');
+    return view('order.checkorder');
 }); 
 
 

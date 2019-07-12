@@ -43,13 +43,17 @@
 
 
 
-            <h1 class="container font-weight-light text-center text-lg-left mt-4 mb-0">โพสขาย</h1>
-
+            <h1 class="container font-weight-light text-center text-lg-left mt-4 mb-0">โพสขาย  </h1>
+            
             <hr class="mt-2 mb-5">
 
         <!-- ส่วนของโชว์สายพันยอดฮิต-->
         <div class="container">
-        
+            <a href="{{ route('post.index') }}">
+                    <h5 class="text-right" >ดูทั้งหมด</h5>
+            </a>
+            
+
             <div class="row -md-4 mb-5">
                 @foreach ($post as $item)
                 <div class="card" style="width: 18rem;">

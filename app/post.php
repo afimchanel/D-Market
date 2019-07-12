@@ -12,11 +12,11 @@ class post extends Model
 
     public function postdogs()
     {
-        return $this->hasOne('App\Dog');
+        return $this->hasOne('App\Dog','ID_dog');
     }
     public function post_users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','id');
     }
    
 }

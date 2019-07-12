@@ -55,7 +55,7 @@ class postController extends Controller
         $post->type_dog= $request->type_dog;
         $post->price= $request->price;
         $post->Age_Dog= $request->Age_Dog;
-        $post->Farm_name= $request->Farm_name;
+        $post->farm_name= $request->farm_name;
         $post->tel_post= $request->tel_post;
         $post->vaccine= $request->vaccine;
         
@@ -76,28 +76,26 @@ class postController extends Controller
     public function show($iddog,$id)
     {
         
-        //$post = post::find($id);
+        $post = post::findOrFail($id);
         
         //$post = new post;
         //$post -> title_post = 'Watson';
+        $dog = Dog::findOrFail($iddog);
+        //$posts = DB::table('posts')
         
-        $post = post::find($id);
-        $dog = Dog::find($iddog);
-        //->dogs()
-        
-        //->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+       
+        //->where('posts.Post_id', '=', $id)
         
         //->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
         //->join('users', 'posts.user_id', '=', 'users.id')
         //->where('posts.Post_id', '=', '6')
     
         //->select('Post_id')
-        //->where('Post_id',[$Post_id])+
         
 
         //->select('posts.*')
         
-        //->get(['posts.*','dogs.*']);
+        //->get();
        
         //$post -> title_post = 'Watson';
 

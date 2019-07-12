@@ -155,9 +155,7 @@
   
         <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
-            <div class="w3-container">
-                <h5>D-MARKET</h5>
-            </div>
+           
             <div class="w3-bar-block">
                 
                 <a href="/admin/dashboard" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw" ></i>  รายชื่อสมาชิก</a>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dog extends Model
 {
-    protected $guarded = [];
+    protected $fillable = array('imagedog');
     protected $table = 'dogs';
     //protected $table = 'Dogs';
     protected $primaryKey = 'ID_dog';
@@ -19,7 +19,7 @@ class Dog extends Model
    // }
    public function user()
    {
-       return $this->belongsTo('App\User');
+       return $this->belongsTo('App\User','user_id');
  
     }
     public function post()

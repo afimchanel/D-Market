@@ -46,9 +46,9 @@
                                             <div class="input-group-text" name='type_dog'  required>ลักษณะ</div>
                                             </div>
                                             <select class="custom-select" name='type_dog'>
-                                                    <option selected>Open this select menu</option>
+                                                    <option selected>เลือกขนาด</option>
                                                     <option value="1">ตัวเล็ก</option>
-                                                    <option value="2">ตัวใหย๋</option>
+                                                    <option value="2">ตัวใหญ่</option>
                                                     
                                                   </select>
                                         </div>
@@ -69,11 +69,12 @@
                                             <div class="input-group-prepend">
                                             <div class="input-group-text">สีตา</div>
                                             </div>
-                                            <select class="custom-select" name="vaccine">
-                                                    <option selected>Open this select menu</option>
+                                            <select class="custom-select" name="eye_color">
+                                                    <option selected>เลือกสีตา</option>
                                                     <option value="1">ดำ</option>
                                                     <option value="2">น้ำตาล</option>
                                                     <option value="3">ฟ้า</option>
+                                                    <option value="4">อื่นๆ</option>
                                                   </select>
                                         </div>
                                 </div>
@@ -83,11 +84,11 @@
                                             <div class="input-group-prepend">
                                             <div class="input-group-text">น้ำหนัก</div>
                                             </div>
-                                            <select class="custom-select" name="vaccine">
-                                                    <option selected>Open this select menu</option>
+                                            <select class="custom-select" name="weight_dog">
+                                                    <option selected>เลือกน้ำหนัก</option>
                                                     <option value="1">1-5 กิโล</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <option value="2">5-10 กิโล</option>
+                                                    <option value="3">มากว่านั้น</option>
                                                   </select>
                                         </div>
                                 </div>
@@ -97,7 +98,7 @@
                                             <div class="input-group-prepend">
                                             <div class="input-group-text">ชื่อฟาร์ม</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup4" placeholder="ชื่อฟาร์ม" name='Farm_name'>
+                                            <input type="text" class="form-control" id="inlineFormInputGroup4" placeholder="ชื่อฟาร์ม" name='farm_name'>
                                         </div>
                                 </div>
                                 <div class="col-auto">
@@ -116,7 +117,7 @@
                                             <div class="input-group-text">วัคชีน</div>
                                             </div>
                                             <select class="custom-select" name="vaccine">
-                                                    <option selected>Open this select menu</option>
+                                                    <option selected>เลือกจำนวนการฉีด</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option>

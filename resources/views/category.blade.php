@@ -40,14 +40,14 @@
                   <div class="list-group">
                       
                       <label for="customRange2">ราคา</label>
-                      <input type="range" class="custom-range" min="0" max="5" id="customRange2">
+                      <input type="range" class="custom-range" min="0" max="2" id="customRange2">
                   </div>
                
     
           </div>
           <!-- /.col-lg-3 -->
     
-          <div class="col-lg-9 jumbotron">
+          <div class="col-lg-9 ">
               <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                   
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -83,7 +83,7 @@
             <div class="row ">
               @foreach ($post as $item)
               
-              <div class="col-lg-4 col-md-6 mb-4">
+              <div class="col-lg-4 col-md-6 mb-4 py-2">
                 <div class="card h-100">
                   <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt=""></a>
                   <div class="card-body">
