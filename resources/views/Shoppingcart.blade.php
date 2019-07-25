@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
     @section('content')
+    
     <div class="container">
             
 					
@@ -58,7 +59,7 @@
                  <div class="card-footer">
                      
                      <div class="pull-right" style="margin: 10px">
-                     <a href="" class="btn btn-success pull-right">
+                     <a href="/orders/{{Auth::user()->id}}" class="btn btn-success pull-right">
                         @csrf
                         ยืนยันการซื้อ</a>
                          <div class="pull-right" style="margin: 5px">

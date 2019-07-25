@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 }); 
@@ -28,9 +29,11 @@ Route::resource('post', 'postController');
 Route::resource('order','OrderController');
 Route::resource('dog','DogController');
 
+Route::post('/search','searchController@show_index');
+   
 
 Auth::routes(['verify' => true]);
- 
+
 
 //Route for normal user
 Route::group(['middleware' => ['auth']], function () {
@@ -44,12 +47,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/post/dog/{iddog}', 'DogController@post');
         Route::post('/update/dog/{ID_dog}', 'DogController@update');
         Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
+
+        Route::get('createbreeder', 'DogController@createbreeder');
+
         Route::get('/view/dog/{ID_dog}', 'DogController@show');
             Route::get('/view/category', 'PostController@index');
             Route::get('/{ID_dog}/{Post_id}/view/post', 'PostController@show');
             Route::post('/{id}/{ID_dog}/create/post', 'PostController@store');
                 Route::get('/create/order/{id}/{ID_dog}/{id_post}', 'OrderController@store');
                 Route::get('/show/order/{id}', 'OrderController@show');
+                Route::get('/orders/{id}','OrderController@createorder');
     //Route::get('');
 });
 

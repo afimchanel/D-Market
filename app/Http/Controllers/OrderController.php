@@ -117,12 +117,16 @@ class ordercontroller extends Controller
     }
     public function createorder($id)
     {
-
+        
         $order = new orders;
         $order->id_user = $id;
         $order->save();
-        return redirect('payment',compact('order'));
+        $orders = orderdetail::find();
+        $orders->order_id = $order->id_user;
+        $orders->save();
+        return view('payment');
     }
+   
     
    
 }

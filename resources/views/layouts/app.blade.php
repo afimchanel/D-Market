@@ -478,8 +478,12 @@ body {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                            <input class="form-control mr-xl-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success btn-filmm my-2 my-sm-0" type="submit">Search</button>
+                        <form action="/search" method="POST" role="search">
+                            @csrf
+                                <input class="form-control mr-xl-2" type="search" placeholder="Search" aria-label="Search" name="q" >
+                                <button class="btn btn-outline-success btn-filmm my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                            
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -502,9 +506,10 @@ body {
 								 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 									
-									<a class="dropdown-item" href='/user/{{ Auth::user()->id }}' >Profile</a>
-									<a class="dropdown-item" href='/{{ Auth::user()->id }}/edit'  >Editprofile</a>
-									<a class="dropdown-item" href="{{ route('dog.create')}}" >Add_dog</a>
+									<a class="dropdown-item" href='/user/{{ Auth::user()->id }}' >โปรไฟล์</a>
+									<a class="dropdown-item" href='/{{ Auth::user()->id }}/edit'  >แก้ไข้โปรไฟล์</a>
+                                    <a class="dropdown-item" href="{{ route('dog.create')}}" >เพิ่มสุนัข(ยังไม่ขาย)</a>
+                                    <a class="dropdown-item" href="/createbreeder" >เพิ่มพ่อแม่พันธุ์</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

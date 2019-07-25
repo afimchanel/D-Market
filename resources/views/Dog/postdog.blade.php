@@ -23,8 +23,32 @@
                         @csrf
                         <div class="form-row">
                                 <div class="col-md-4 mb-3">
-                                  <label for="formGroup Gen">สายพันธุ์สุนัข</label>
-                                  <input type="text" class="form-control" id="formGroup Gen" placeholder="สายพันธุ์สุนัข(ภาษาไทย)" name="Breed" required>
+                                  
+                                
+                                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สายพันธุ์สุนัข</label>
+                                  <select class="custom-select" name='Breed'  required>
+                                    <option value="">เลือกสายพันธู์</option>
+                                    <option value="ปั๊ก">ปั๊ก (Pug) </option>
+                                    <option value="ชิวาวา">ชิวาวา(Chihuahua)</option>
+                                    <option value="ปอมเมอเรเนียน">ปอมเมอเรเนียน (Pomerania)
+                                    </option>
+                                    <option value="ชิสุ">ชิสุ (Shih Tzu)</option>
+                                    <option value="ยอร์คเชียร์ เทอร์เรียร์">ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)</option>
+                                    <option value="บีเกิล">บีเกิล (Beagle)</option>
+                                    <option value="บูลด็อก">บูลด็อก (Bulldog)</option>
+                                    <option value="ไซบีเรียน ฮัสกี้">ไซบีเรียน ฮัสกี้ (Siberian Husky)</option>
+                                    <option value="โกลเด้น รีทรีฟเวอร์">โกลเด้น รีทรีฟเวอร์ (Golden Retriever)</option>
+                                    <option value="ลาบราดอร์ รีทรีฟเวอร์">ลาบราดอร์ รีทรีฟเวอร์ (Labrador Retriever)</option>
+                                    <option value="0">อื่นๆ</option>
+                                    
+                                  </select>
+                                  <div class="valid-tooltip">
+                                    Looks good!
+                                  </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                  <label for="validationTooltip02">ชื่อสุนัข</label>
+                                  <input type="text" class="form-control" id="validationTooltip02" placeholder="ชื่อสุนัข" name="namedog" required>
                                   <div class="valid-tooltip">
                                     Looks good!
                                   </div>
