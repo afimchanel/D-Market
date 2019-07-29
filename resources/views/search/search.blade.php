@@ -25,7 +25,7 @@
                     </div>  
                     <!-- row--> 
                     
-             
+                    {{$details->links()}}
             @endif
 
            

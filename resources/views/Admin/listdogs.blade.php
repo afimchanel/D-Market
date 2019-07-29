@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
 <div class=" container">
         <div class="card mb-2">
           
@@ -64,6 +64,7 @@
                     
                 </tbody>
               </table>
+              {{$Dogs->links()}}
               ***หมายเหตุ สถานะ 0 เป็นสุนัขที่ยังไม่แสดงให้ใครเห็น, 1 โพสให้คนอื่นเห็น , 2 อยู่ระหว่างรอโอนเงิน ,3 รอส่งสุนัข ,4 ขายเสร็จแล้ว
               @else
               <p>ไม่มีใครมีสุนัข</p>
@@ -71,5 +72,5 @@
             </div>
           </div>
         </div>  
-      </div>  
+       
 @endsection

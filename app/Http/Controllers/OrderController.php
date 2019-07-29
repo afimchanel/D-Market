@@ -42,7 +42,7 @@ class ordercontroller extends Controller
     {
         error_log('sstore');
         if (orderdetail::find($id_dog)) {
-            $order = new orderdetail;
+        $order = new orderdetail;
         $order->id_post = $id_post;
         $order->id_the_dog = $id_dog;
         $order->id_user = $id_user;

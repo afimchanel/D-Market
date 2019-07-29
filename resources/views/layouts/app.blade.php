@@ -501,7 +501,7 @@ body {
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <img class="img-fluid rounded-circle p-3" src="/storage/avatars/{{Auth::user()->Avatar}}" style="width:80px; height:80px;" >  {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 								 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -525,7 +525,7 @@ body {
 							</li>
 							<li class="nav-item dropdown ">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span class="fa fa-bell"></span>
+                                    <span class="fa fa-bell"> <span class="badge badge-light">9</span></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right glyphicon glyphicon-star" aria-labelledby="navbarDropdown">

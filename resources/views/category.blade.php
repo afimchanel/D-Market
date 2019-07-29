@@ -14,38 +14,116 @@
     
           <div class="col-lg-3">
     
-              
-                  
+              <form action="/searchcategory" method="POST" role="search">
+                @csrf
                   <div class="list-group">
-                    <p  class="list-group-item active">สายพันธุ์</p>
-                      <a href="#" class="list-group-item">ชิวาวา</a>
-                      <a href="#" class="list-group-item">ไซบิเรียน</a>
-                      <a href="#" class="list-group-item">โกเด้น</a>
-                  </div>
-                  <div class="list-group">
-                      
-                      <div class="form-group">
-                          <label for="exampleFormControlSelect1">Example select</label>
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                      <p  class="list-group-item active">สายพันธุ์</p>
+                      <select class="custom-select" name='Breed'>
+                        <option selected>เลือกสายพันธู์</option>
+                        <option value="ปั๊ก">ปั๊ก (Pug) </option>
+                        <option value="ชิวาวา">ชิวาวา(Chihuahua)</option>
+                        <option value="ปอมเมอเรเนียน">ปอมเมอเรเนียน (Pomerania)</option>
+                        <option value="ชิสุ">ชิสุ (Shih Tzu)</option>
+                        <option value="ยอร์คเชียร์ เทอร์เรียร์">ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)</option>
+                        <option value="บีเกิล">บีเกิล (Beagle)</option>
+                        <option value="บูลด็อก">บูลด็อก (Bulldog)</option>
+                        <option value="ไซบีเรียน ฮัสกี้">ไซบีเรียน ฮัสกี้ (Siberian Husky)</option>
+                        <option value="โกลเด้น รีทรีฟเวอร์">โกลเด้น รีทรีฟเวอร์ (Golden Retriever)</option>
+                        <option value="ลาบราดอร์ รีทรีฟเวอร์">ลาบราดอร์ รีทรีฟเวอร์ (Labrador Retriever)</option>
+                        <option value="0">อื่นๆ</option>
+                        
+                      </select>
+                    </div>
+                    <div class="list-group">
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">ช่วงอายุสุนัข</label>
+                            <select class="custom-select" name="Age_Dog">
+                              <option selected>เลือกสีตา</option>
+                              <option value="1">1-2</option>
+                              <option value="2">3-4</option>
+                              <option value="3">5-6</option>
+                              <option value="4">อื่นๆ</option>
                           </select>
-                        </div>
+                          </div>
+                      
+                        
+                    </div>
+
                     
+                    <div class="list-group">
+                                        
+                      <div class="form-group">ลักษณะ
+                          <select class="custom-select" name='type_dog'>
+                                  <option selected>เลือกขนาด</option>
+                                  <option value="1">ตัวเล็ก</option>
+                                  <option value="2">ตัวใหญ่</option>
+                                  
+                                </select>
+                      </div>
+                    </div>
+
+                    <div class="list-group">
+                      <div class="form-group">
+                          น้ำหนัก
+                          <select class="custom-select" name="weight_dog">
+                                  <option selected>เลือกน้ำหนัก</option>
+                                  <option value="1">1-5 กิโล</option>
+                                  <option value="2">5-10 กิโล</option>
+                                  <option value="3">มากว่านั้น</option>
+                          </select>
+                      </div>
+                    </div>
+
+
+                    <div class="list-group">
+                                        
+                      <div class="form-group">สีตา
+                          </div>
+                          <select class="custom-select" name="eye_color">
+                                  <option selected>เลือกสีตา</option>
+                                  <option value="1">ดำ</option>
+                                  <option value="2">น้ำตาล</option>
+                                  <option value="3">ฟ้า</option>
+                                  <option value="4">อื่นๆ</option>
+                                </select>
+                      </div>
                       
-                  </div>
-                  <div class="list-group">
-                      
-                      <label for="customRange2">ราคา</label>
-                      <input type="range" class="custom-range" min="0" max="2" id="customRange2">
-                  </div>
+                    <div class="list-group">                     
+                        <label for="customRange2">ราคา</label>
+                        <input type="range" class="custom-range" min="0" max="5" id="customRange2">
+                    </div>
+                 
+                    <div class="form-group ">
+                      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สี</label>
+                      <select class="custom-select" name='color' >
+                        <option selected>เลือกสี</option>
+                        <option value="1">ขาว</option>
+                        <option value="2">ดำ</option>
+                        <option value="3">อื่น</option>
+                      </select>
+                    </div>
+
+
                
-    
+                    <div class="form-group">
+                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
+                            <select class="custom-select" name='SEX'  required>
+                              <option selected>เลือกเพศสุนัข</option>
+                              <option value="M">ตัวผู้</option>
+                              <option value="G">ตัวเมีย</option>
+                             
+                            </select>
+                            <div class="invalid-feedback">กรุณาเลือกเพศ</div>
+                    </div>
+                    <input class="form-control mr-xl-2" type="search" placeholder="Search" aria-label="Search" name="q" >
+                    <button class="btn btn-outline btn-filmm my-2 my-sm-0" type="submit">Search</button>
+              </form>
+                  
+                  
           </div>
           <!-- /.col-lg-3 -->
+
     
           <div class="col-lg-9 ">
               <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -110,7 +188,7 @@
     
             </div>
             <!-- /.row -->
-    
+            {{$post->links()}}
           </div>
           <!-- /.col-lg-9 -->
     

@@ -20,13 +20,16 @@ class AdminController extends Controller
     public function index()
     {
         error_log('dashboardadmin');
-        $users = User::all();
+        $users = User::where('id', '>', 0)
+        ->paginate(5);
+
         return view('admin/dashboard', compact('users'));
     }
     public function indexdogs()
     {
         error_log('listdogsadmin');
-        $Dogs = Dog::all();
+        $Dogs = Dog::where('ID_dog', '>', 0)
+        ->paginate(5);
         return view('admin/listdogs', compact('Dogs'));
         error_log('listdogsadmin2');
     }

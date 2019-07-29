@@ -58,9 +58,16 @@
                                         
                                         <div class="input-group mb-2">
                                             <div class="input-group-prepend">
-                                            <div class="input-group-text">อายุสุนัข(ตอนนี้)</div>
+                                            <div class="input-group-text">อายุสุนัข(ตอนนี้)หน่วยเป็นเดือน</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup3" placeholder="อายุสุนัข(ตอนนี้)" name="Age_Dog">
+                                            <select class="custom-select" name="Age_Dog">
+                                                <option selected>เลือกสีตา</option>
+                                                <option value="1">1-2</option>
+                                                <option value="2">3-4</option>
+                                                <option value="3">5-6</option>
+                                                <option value="4">อื่นๆ</option>
+                                            </select>
+                                            
                                         </div>
                                 </div>
                                 <div class="col-2">
@@ -75,7 +82,7 @@
                                                     <option value="2">น้ำตาล</option>
                                                     <option value="3">ฟ้า</option>
                                                     <option value="4">อื่นๆ</option>
-                                                  </select>
+                                                </select>
                                         </div>
                                 </div>
                                 <div class="col-2">

@@ -30,7 +30,7 @@ Route::resource('order','OrderController');
 Route::resource('dog','DogController');
 
 Route::post('/search','searchController@show_index');
-   
+Route::post('/searchcategory','searchController@show_category');
 
 Auth::routes(['verify' => true]);
 

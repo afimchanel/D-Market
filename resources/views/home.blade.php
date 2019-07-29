@@ -108,7 +108,9 @@
                     @endif
                     
                     @endforeach
+                    
                 </div>
+                {{$user->links()}}
             </div>
 
         </div>

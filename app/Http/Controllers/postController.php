@@ -17,10 +17,14 @@ class postController extends Controller
     public function index()
     {
         $post = DB::table('posts')
+        
         ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
         ->join('users', 'posts.user_id', '=', 'users.id')
-        ->select('users.*', 'dogs.*', 'posts.*')
-        ->get();
+        ->where('posts.Post_id', '>', 0)
+        ->paginate(10);
+        
+
+        //->get();
      
         return view('category', compact('post'));
     }

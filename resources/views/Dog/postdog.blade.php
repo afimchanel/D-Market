@@ -82,7 +82,7 @@
                                       <option value="2">ดำ</option>
                                       <option value="3">อื่น</option>
                                     </select>
-                                </div>
+                                  </div>
                              
                                   <div class="form-group">
                                           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
