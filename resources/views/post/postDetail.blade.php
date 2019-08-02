@@ -25,12 +25,13 @@
                   <!-- /.col-lg-8 -->
                   <div class="col-lg-5">
 
-                  <h1 class="font-weight-light">{{$dog->Breed}}{{$post->title_post}}</h1>
+                  <h1 class="font-weight-light">{{$post->title_post}}</h1>
+                  สายพันธุ์ :{{$dog->Breed}}
                     <p>รายละเอียด : {{$post->Detail_Dog}}</p>
                     <li>ลักษณะ : {{$post->type_dog}}</li>
                     
                     <li>ราคา : {{$post->price}}</li>
-                    @if (Auth::user()->id == $post->id)
+                    @if (Auth::user()->id == $post->user_id)
                         
                     @else
                     <a class="btn btn-success" href="/create/order/{{ Auth::user()->id}}/{{ $dog->ID_dog }}/{{$post->Post_id}}"

@@ -121,10 +121,14 @@ class ordercontroller extends Controller
         $order = new orders;
         $order->id_user = $id;
         $order->save();
-        $orders = orderdetail::find();
-        $orders->order_id = $order->id_user;
+        // เอา id_userของตารางorderdetailมาวนลูปนี้
+        //$orders = orderdetail::find('id_user', '=' , $id);
+        $orders = orderdetail::where('id_user', '=', $id);
+        $orders->order_id = 2
         $orders->save();
-        return view('payment');
+        
+            
+        return view('payment'); //ส่งไปยังหน้าที่เเสดงรายการต้องชำระเงิน
     }
    
     

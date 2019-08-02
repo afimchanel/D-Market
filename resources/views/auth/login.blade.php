@@ -49,9 +49,12 @@
                                     </label>
                                 </div>
                                 <hr>
-                        <a href="#" class="btn btn-primary btn-block">
-                        <i class="fa fa-facebook"></i> Login with Facebook
-                        </a><hr>
+                                
+                        <a href="{{url('/')}}/login/facebook" class="btn btn-primary btn-block">
+                        <i class="fa fa-facebook"></i>&nbsp; Login with Facebook
+                        </a>
+                        
+                        <hr>
                         <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google">
                         </i> Login with Google+
                         </a>

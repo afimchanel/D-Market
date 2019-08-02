@@ -70,3 +70,8 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/listdogs', 'admin\AdminController@indexdogs');
     });
 });
+//Route for facebook
+Route::prefix('login')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
+    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
+});
