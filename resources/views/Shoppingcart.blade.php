@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
     @section('content')
-    
+    {{$total = 0}}
     <div class="container">
             
 					
@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                                 <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                    <h6><strong>ราคา : {{$item->price}} </strong></h6>
+                                    <h6><strong>ราคา : {{$item->price}} </strong></h6>  <?php $total = $total+$item->price ?>
                                 </div>
                               
                                 <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -63,7 +63,7 @@
                         @csrf
                         ยืนยันการซื้อ</a>
                          <div class="pull-right" style="margin: 5px">
-                             Total price: <b>50.00€</b>
+                             Total price: <b>{{$total}}</b>
                          </div>
                      </div>
                  </div>

@@ -109,7 +109,7 @@
                                           <select class="custom-select" name='SEX'  required>
                                             <option value="">เลือกเพศสุนัข</option>
                                             <option value="M">ตัวผู้</option>
-                                            <option value="G">ตัวเมีย</option>
+                                            <option value="F">ตัวเมีย</option>
                                            
                                           </select>
                                           <div class="invalid-feedback">กรุณาเลือกเพศ</div>

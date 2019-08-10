@@ -12,6 +12,7 @@ use App\User;
 use App\post;
 use App\breederf;
 use App\breederm;
+
 class DogController extends Controller
 {
     /**
@@ -71,7 +72,7 @@ class DogController extends Controller
                 // Filename to store
                 $fileNameToStore= $filename.'_'.time().'.'.$extension;
                 // Upload Image
-                $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
+                $path = $files->storeAs('public/imagedog/breederm', $fileNameToStore);
     
                   
                    $data[] = $fileNameToStore;  
@@ -80,7 +81,7 @@ class DogController extends Controller
         
                 
                 else {
-                    $name = 'noimage.jpg';
+                    $fileNameToStore = 'noimage.jpg';
                 }
     
         
@@ -97,7 +98,7 @@ class DogController extends Controller
                 // Filename to store
                 $imageCPStore= $filename.'_'.time().'.'.$extension;
                 // Upload Image
-                $path = $imageCP->storeAs('public/imagedog/cover_images', $imageCPStore);
+                $path = $imageCP->storeAs('public/imagedog/breederm/imageCP', $imageCPStore);
     
                 }
     
@@ -119,7 +120,7 @@ class DogController extends Controller
                     // Filename to store
                     $imageRCStore= $filename.'_'.time().'.'.$extension;
                     // Upload Image
-                    $path = $imageRC->storeAs('public/imagedog/cover_images', $imageRCStore);
+                    $path = $imageRC->storeAs('public/imagedog/breederm/imageCP', $imageRCStore);
     
                     }
     
@@ -144,7 +145,7 @@ class DogController extends Controller
             $Dog->birthday = $request->birthday;
             $Dog->Breedername = $request->Breedername;
             $Dog->Owner = $request->Owner;
-            $Dog->Registrationdate = $request->Registrationdate;
+            $Dog->registrationdate = $request->Registrationdate;
             $Dog->imagedog = $fileNameToStore;
             $Dog->imageRC = $imageRCStore;
             $Dog->imageCP = $imageCPStore;
@@ -405,7 +406,7 @@ class DogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$Iddog, Dog $Dog)
-    {        
+        {        
         $validatedData = $request->validate([
         'Breed' => 'required',
         'IDthedog' => 'required',
@@ -422,102 +423,102 @@ class DogController extends Controller
 
         
 
-    ]);
+        ]);
     
-    $files = $request->file('cover_image');
-        
-             // Handle File Upload
-        if($request->hasFile('cover_image')){
+        $files = $request->file('cover_image');
             
-                error_log('storedog0');
-                 // Get filename with the extension
-            $filenameWithExt = $files->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $files->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
-        }
-        
-        else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-
-        $imageCP = $request->file('imageCP');
-            if($request->hasFile('imageCP')){
+                // Handle File Upload
+            if($request->hasFile('cover_image')){
                 
-                error_log('updatedog0');
-                // Get filename with the extension
-            $filenameWithExt = $imageCP->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $imageCP->getClientOriginalExtension();
-            // Filename to store
-            $imageCPStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $imageCP->storeAs('public/imagedog/cover_images', $imageCPStore);
-
-            }
-
-
-            else {
-            $imageCPStore = 'noimage.jpg';
-            }
-
-            $imageRC = $request->file('imageRC');
-                if($request->hasFile('imageRC')){
-                    
-                    error_log('updatedog0');
+                    error_log('storedog0');
                     // Get filename with the extension
-                $filenameWithExt = $imageRC->getClientOriginalName();
+                $filenameWithExt = $files->getClientOriginalName();
                 // Get just filename
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 // Get just ext
-                $extension = $imageRC->getClientOriginalExtension();
+                $extension = $files->getClientOriginalExtension();
                 // Filename to store
-                $imageRCStore= $filename.'_'.time().'.'.$extension;
+                $fileNameToStore= $filename.'_'.time().'.'.$extension;
                 // Upload Image
-                $path = $imageRC->storeAs('public/imagedog/cover_images', $imageRCStore);
+                $path = $files->storeAs('public/imagedog/cover_images', $fileNameToStore);
+            }
+            
+            else {
+                $fileNameToStore = 'noimage.jpg';
+            }
+
+            $imageCP = $request->file('imageCP');
+                if($request->hasFile('imageCP')){
+                    
+                    error_log('updatedog0');
+                    // Get filename with the extension
+                $filenameWithExt = $imageCP->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $imageCP->getClientOriginalExtension();
+                // Filename to store
+                $imageCPStore= $filename.'_'.time().'.'.$extension;
+                // Upload Image
+                $path = $imageCP->storeAs('public/imagedog/cover_images', $imageCPStore);
 
                 }
 
 
                 else {
-                $imageRCStore = 'noimage.jpg';
+                $imageCPStore = 'noimage.jpg';
                 }
 
-        $Dogs = Dog::find($Iddog);
-        $Dog->namedog = $request->namedog;
-        $Dogs->Breed = $request->Breed;
-        $Dogs->IDthedog = $request->IDthedog;
-        
-        $Dogs->Registrationspecies = $request->Registrationspecies;
-        $Dogs->Nomicrochip = $request->Nomicrochip;
-        $Dogs->color = $request->color;
-        $Dogs->SEX = $request->SEX;
-        $Dogs->Father = $request->Father;
-        $Dogs->Momher = $request->Momher;
-        $Dogs->birthday = $request->birthday;
-        $Dogs->Breedername = $request->Breedername;
-        $Dogs->Owner = $request->Owner;
-        
-        $Dogs->Registrationdate = $request->Registrationdate;
-        $Dogs->imagedog = $fileNameToStore;
-        $Dogs->imageRC = $imageRCStore;
-        $Dogs->imageCP = $imageCPStore;
-        
-      
-        $Dogs->save();
+                $imageRC = $request->file('imageRC');
+                    if($request->hasFile('imageRC')){
+                        
+                        error_log('updatedog0');
+                        // Get filename with the extension
+                    $filenameWithExt = $imageRC->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $imageRC->getClientOriginalExtension();
+                    // Filename to store
+                    $imageRCStore= $filename.'_'.time().'.'.$extension;
+                    // Upload Image
+                    $path = $imageRC->storeAs('public/imagedog/cover_images', $imageRCStore);
 
-        error_log($Iddog);
-        
-        
+                    }
 
-        return redirect('/');
+
+                    else {
+                    $imageRCStore = 'noimage.jpg';
+                    }
+
+            $Dogs = Dog::find($Iddog);
+            $Dog->namedog = $request->namedog;
+            $Dogs->Breed = $request->Breed;
+            $Dogs->IDthedog = $request->IDthedog;
+            
+            $Dogs->Registrationspecies = $request->Registrationspecies;
+            $Dogs->Nomicrochip = $request->Nomicrochip;
+            $Dogs->color = $request->color;
+            $Dogs->SEX = $request->SEX;
+            $Dogs->Father = $request->Father;
+            $Dogs->Momher = $request->Momher;
+            $Dogs->birthday = $request->birthday;
+            $Dogs->Breedername = $request->Breedername;
+            $Dogs->Owner = $request->Owner;
+            
+            $Dogs->Registrationdate = $request->Registrationdate;
+            $Dogs->imagedog = $fileNameToStore;
+            $Dogs->imageRC = $imageRCStore;
+            $Dogs->imageCP = $imageCPStore;
+            
+        
+            $Dogs->save();
+
+            error_log($Iddog);
+            
+            
+
+            return redirect('/');
     }
 
     /**
@@ -545,6 +546,15 @@ class DogController extends Controller
         
         //return redirect('user/{id}')->with('Dogs',$post->Dogs);
     }
-   
+   public function showbreedm(Request $request)
+   {
+       error_log('showbredd');
+        $Dog = new breederm;
+        $Dog ->where('namedog','LIKE',$request);
+        $Dog->get();
+
+        return view('Dog.dogbreed-details',compact('Dog'));
+   }
+
 
 }

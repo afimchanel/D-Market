@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('createbreeder', 'DogController@createbreeder');
 
         Route::get('/view/dog/{ID_dog}', 'DogController@show');
+        Route::get('/view/dog/breed/{namedog}', 'DogController@showbreedm');
             Route::get('/view/category', 'PostController@index');
             Route::get('/{ID_dog}/{Post_id}/view/post', 'PostController@show');
             Route::post('/{id}/{ID_dog}/create/post', 'PostController@store');

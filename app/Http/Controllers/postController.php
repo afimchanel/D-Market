@@ -49,26 +49,29 @@ class postController extends Controller
     {
         
         error_log('postdog');
-
-        $post = new post;
+        $user = new User;
+        if ($user->license = 'noimage.jpg' && $user->Farmaddress = 'NULL') {
+            return view('payment');
+        } else {
+            $post = new post;
+            $post->title_post = $request->title_post;
+            $post->user_id = $id;
+            $post->id_the_dog = $iddog;
+            $post->Detail_Dog= $request->Detail_Dog;
+            $post->type_dog= $request->type_dog;
+            $post->price= $request->price;
+            $post->Age_Dog= $request->Age_Dog;
+            $post->farm_name= $request->farm_name;
+            $post->tel_post= $request->tel_post;
+            $post->vaccine= $request->vaccine;       
+            $post->save();
+            error_log('postdog1');
+            return redirect('/');
+        }
         
-        $post->title_post = $request->title_post;
-        $post->user_id = $id;
-        $post->id_the_dog = $iddog;
-        $post->Detail_Dog= $request->Detail_Dog;
-        $post->type_dog= $request->type_dog;
-        $post->price= $request->price;
-        $post->Age_Dog= $request->Age_Dog;
-        $post->farm_name= $request->farm_name;
-        $post->tel_post= $request->tel_post;
-        $post->vaccine= $request->vaccine;
-        
-        $post->save();
 
-        error_log('postdog1');
-        
 
-        return redirect('/');
+       
     }
 
     /**

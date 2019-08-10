@@ -18,8 +18,7 @@ class ordercontroller extends Controller
     public function index()
     {
         error_log('index_order');
-       
-        return view('Shoppingcart');
+
     }
 
     /**
@@ -123,12 +122,21 @@ class ordercontroller extends Controller
         $order->save();
         // เอา id_userของตารางorderdetailมาวนลูปนี้
         //$orders = orderdetail::find('id_user', '=' , $id);
-        $orders = orderdetail::where('id_user', '=', $id);
-        $orders->order_id = 2
-        $orders->save();
+            error_log($order->Order_ID);
+        //$orders = orderdetail::where('id_user', '=', $id);
+            $orders  = DB::table('order_detail')->where('id_user', '=', $id);
+
+            $orders->order_id = $order->Order_ID;
+            $orders->save();
+            return view('payment');
+      
+          
+        
+        
+        
         
             
-        return view('payment'); //ส่งไปยังหน้าที่เเสดงรายการต้องชำระเงิน
+         //ส่งไปยังหน้าที่เเสดงรายการต้องชำระเงิน
     }
    
     

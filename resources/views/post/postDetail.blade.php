@@ -50,16 +50,21 @@
                     <p class="text-dark m-0">รายละเอียดกเกี่ยวกับสุนัขตัวนี้ {{$post->Detail_Dog}} </p>
                     <p class="text-dark m-0">พันธุ์สุนัข : {{$dog->Breed}} </p>
                     <p class="text-dark m-0">ราคา : {{$post->price}} </p>
-                    <p class="text-dark m-0">ใบอนุญาตจากสมาคม(ถ้ามี) : {{$post->Breed}} </p>
+                    <p class="text-dark m-0">ใบอนุญาตจากสมาคม : {{$post->Breed}} </p>
                     <p class="text-dark m-0">ชื่อ ฟาร์ม : {{$post->farm_name}} </p>
-                    <p class="text-dark m-0">เพศ : {{$dog->SEX}} </p>
+                    <p class="text-dark m-0">เพศ : 
+                      @if ($dog->SEX === 'M')
+                          ตัวผู้
+                      @elseif($dog->SEX === 'F')
+                          ตัวเมีย
+                      @endif </p>
                     <p class="text-dark m-0">สีสุนัข : {{$dog->color}} </p>
                     <p class="text-dark m-0">วันที่เกิด : {{$dog->birthday}} </p>
                     <p class="text-dark m-0">ผู้เพาะพันธุ์ : {{$dog->Owner}} </p>
                     <p class="text-dark m-0">พ่อพันธุ์ : {{$dog->Father}} </p>
                     <p class="text-dark m-0">แม่พันธุ์ : {{$dog->Momher}} </p>
                     <p class="text-dark m-0">อยู่ที่ฟาร์ม : {{$dog->Registrationdate}} </p>
-                    <p class="text-dark m-0">เบอร์โทรติดต่อ : {{$post->Breed}} </p>
+                   
                     
                   </div>
                 </div>

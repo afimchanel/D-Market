@@ -157,7 +157,7 @@
                                       <label  for="formGroup File">อัพโหลดรูปสุนัข</label>
                                       <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imagedog}}" style="width:250px; height:250px;" >
                                       <div class="custom-file">
-                                          <input type="file" name="cover_image"  class="custom-file-input"  multiple accept=".png, .jpg, .jpeg" >
+                                          <input type="file" name="cover_image"  class="custom-file-input"  multiple accept=".png, .jpg, .jpeg" value="/storage/public/imagedog/cover_images/{{$Dog->imagedog}}">
                                           <label class="custom-file-label" for="cover_image">Choose file</label>
                                       </div>
                                 </div>

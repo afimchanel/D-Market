@@ -31,20 +31,20 @@
                                 <h3 class="my-3">รายละเอียด</h3>
                             
                                 <ul>
-                                    <li>สายพันธุ์ :{{$Dog->Breed}}</li>
+                                    <li>สายพันธุ์ :{{$Dog->breed}}</li>
                                     <li>สี :
                                         
                                         {{$Dog->color}}
                                      </li>
                                     <li>เพศ :
-                                        @if ($Dog->SEX === 'M')
+                                        @if ($Dog->sex === 'M')
                                             ตัวผู้
-                                        @elseif($Dog->SEX === 'F')
+                                        @elseif($Dog->sex === 'F')
                                             ตัวเมีย
                                         @endif
                                     </li>
-                                <li>พ่อพันธุ์ :<a href="/view/dog/breed/{{$Dog->Father}}"> @csrf {{$Dog->Father}}</a> </li>
-                                    <li>แม่พันธุ์ : {{$Dog->Momher}}</li>
+                                    <li>พ่อพันธุ์ :<a href="/view/dog/breed/{{$Dog->Father}}">{{$Dog->father}}</a> </li>
+                                    <li>แม่พันธุ์ : {{$Dog->momher}}</li>
                                     <li>วันเกิด :{{$Dog->birthday}}</li>
                                     <li>
                                         ใบCP : @if ($Dog->imageCP = 'noimage.jpg' )

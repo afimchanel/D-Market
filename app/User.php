@@ -48,6 +48,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\post');
     }
+    public function breederms()
+    {
+        return $this->hasMany('App\breederm');
+    }
 
     const ADMIN_TYPE = 1;
     const DEFAULT_TYPE = 0;
