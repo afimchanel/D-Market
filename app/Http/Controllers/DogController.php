@@ -536,13 +536,19 @@ class DogController extends Controller
 
 
 
-    public function post($iddog)
+    public function post($iddog,$id)
     {
         error_log($iddog);
+        $user =  User::find($id);
+        if ($user->license === 'noimage.jpg' && $user->Farmaddress === NULL) {
+            return view('user.EditProfileuser');
+        } else {
+
+            $post = Dog::findOrFail($iddog);
         
-        $post = Dog::findOrFail($iddog);
+            return view('post.post',compact('post'));
+        }
         
-        return view('post.post',compact('post'));
         
         //return redirect('user/{id}')->with('Dogs',$post->Dogs);
     }
