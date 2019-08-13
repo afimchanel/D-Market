@@ -122,13 +122,13 @@ class ordercontroller extends Controller
         $order->save();
         // เอา id_userของตารางorderdetailมาวนลูปนี้
         //$orders = orderdetail::find('id_user', '=' , $id);
-            error_log($order->Order_ID);
+        error_log($order->Order_ID);
         //$orders = orderdetail::where('id_user', '=', $id);
-            $orders  = DB::table('order_detail')->where('id_user', '=', $id);
+        $orders  = DB::table('order_detail')->where('id_user', '=', $id);
 
-            $orders->order_id = $order->Order_ID;
-            $orders->save();
-            return view('payment');
+        $orders->order_id = $order->Order_ID;
+        $orders->save();
+        return view('payment');
       
           
         

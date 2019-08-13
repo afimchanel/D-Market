@@ -49,10 +49,7 @@ class postController extends Controller
     {
         
         error_log('postdog');
-        $user = new User;
-        if ($user->license = 'noimage.jpg' && $user->Farmaddress = 'NULL') {
-            return view('payment');
-        } else {
+       
             $post = new post;
             $post->title_post = $request->title_post;
             $post->user_id = $id;
@@ -67,7 +64,7 @@ class postController extends Controller
             $post->save();
             error_log('postdog1');
             return redirect('/');
-        }
+        
         
 
 

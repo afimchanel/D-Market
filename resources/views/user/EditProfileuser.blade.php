@@ -48,12 +48,16 @@
                                 <label for="address">ที่อยู่ :</label>
                                 <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}"/>
                             </div>
-                            <div class="form-group col">
+                            <div class="form-group ">
                                 <div class="custom-file input-group mb-2">
                                     <input type="file" name="license"  class="custom-file-input"  accept=".png, .jpg, .jpeg" >
                                     <label class="custom-file-label" for="">ใบอนุญาตจากสมาคม(ถ้ามี)</label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">ที่อยู่ฟาร์ม</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Farmaddress"></textarea>
+                              </div>
                               <button type="submit" class="btn btn-primary">Update</button>
                           </form>
                             </div> 

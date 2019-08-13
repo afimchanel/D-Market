@@ -128,6 +128,7 @@ class Usercontroller extends Controller
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
         $user->license = request()->input('license');
+        $user->Farmaddress = request()->input('Farmaddress');
         error_log('updateuser');
         $user->save();
         

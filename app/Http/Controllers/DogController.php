@@ -540,7 +540,7 @@ class DogController extends Controller
     {
         error_log($iddog);
         $user =  User::find($id);
-        if ($user->license === 'noimage.jpg' && $user->Farmaddress === NULL) {
+        if ($user->license === 'noimage.jpg' || $user->Farmaddress === NULL) {
             return view('user.EditProfileuser');
         } else {
 
@@ -552,14 +552,13 @@ class DogController extends Controller
         
         //return redirect('user/{id}')->with('Dogs',$post->Dogs);
     }
-   public function showbreedm(Request $request)
+   public function showbreedm($Father)
    {
-       error_log('showbredd');
-        $Dog = new breederm;
-        $Dog ->where('namedog','LIKE',$request);
-        $Dog->get();
+       error_log('showbredd'); 
+        $Dog = breederm::where('namedog','LIKE','%'.$Father.'%');
+    
 
-        return view('Dog.dogbreed-details',compact('Dog'));
+        return view('Dog.dogbreed-details')->withDetails($Dog);
    }
 
 
