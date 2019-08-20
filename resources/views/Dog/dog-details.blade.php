@@ -23,6 +23,7 @@
                         <div class="row">
 
                                 <div class="col-md-8">
+                                
                                 <img class="img-fluid" src="/storage/public/imagedog/cover_images/{{$Dog->imagedog}}" style="width:750px; height:500px;">
                                
                                 </div>

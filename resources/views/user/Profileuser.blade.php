@@ -108,7 +108,7 @@
 
     <!-- ด้านบนหน้าร้าน -->
    
-        <div class="jumbotron jumbotron-fluid " >
+        <div class="jumbotron jumbotron-fluid  ">
                
 
                 <div class="container ">

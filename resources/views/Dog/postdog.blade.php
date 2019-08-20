@@ -42,9 +42,7 @@
                                     <option value="0">อื่นๆ</option>
                                     
                                   </select>
-                                  <div class="valid-tooltip">
-                                    Looks good!
-                                  </div>
+                                  
                                 </div>
                                 <div class="col-md-4 mb-3">
                                   <label for="validationTooltip02">ชื่อสุนัข</label>
@@ -97,24 +95,18 @@
                                   <div class="col-md-4 mb-3">
                                       <label for="formGroupFather">พ่อพันธุ์</label>
                                       <input type="text" class="form-control" id="formGroupFather" placeholder="กรอกชื่อพ่อพันธุ์ " name="Father" required>
-                                      <div class="valid-tooltip">
-                                          Looks good!
-                                      </div>
+                                    
                                   </div>
       
                                   <div class="col-md-4 mb-3">
                                       <label for="formGroupMather">แม่พันธุ์</label>
                                       <input type="text" class="form-control" id="formGroupMather" placeholder="กรอกชื่อแม่พันธุ์" name="Momher" required>
-                                      <div class="valid-tooltip">
-                                          Looks good!
-                                      </div>
+
                                   </div>
                                   <div class="col-md-4 mb-3">
                                       <label for="formGroupMather">วันเกิดสุนัช</label>
                                       <input type="date" class="form-control" id="formGroupMather" placeholder="กรอกชื่อแม่พันธุ์" name="birthday" required>
-                                      <div class="valid-tooltip">
-                                          Looks good!
-                                      </div>
+                                    
                                   </div>
                                   <div class="col-md-4 mb-3">
                                   <label for="formGroupMather">ชื่อผู้เพาะพันธุ์ </label>

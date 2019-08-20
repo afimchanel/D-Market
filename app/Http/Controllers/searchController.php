@@ -44,7 +44,7 @@ class searchController extends Controller
         //->get();
         error_log('showcategory');
         if(count($post) > 0)
-            return view('search.searchcategory')->withDetails($post);
+            return view('search.searchcategory')->withDetails($post)->withQuery ( $request );
         else 
             return view ('search.searchcategory')->withMessage('No Details found. Try to search again !');
     }

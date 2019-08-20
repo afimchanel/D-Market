@@ -45,11 +45,12 @@
             }
 
             .title {
+                color: #2db0ed;
                 font-size: 84px;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #2db0ed;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -63,8 +64,10 @@
             }
         </style>
     </head>
-    <body>
+    <body  background="Dog-Wallpaper.jpg">
         <div class="flex-center position-ref full-height">
+            
+
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth

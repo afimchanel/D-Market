@@ -25,7 +25,7 @@
                                 <div class="col-md-4 mb-3">
                                   <fieldset class="form-group">
                                     <div class="row">
-                                      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                                      <legend class="col-form-label col-sm-2 pt-0">พ่อหรือแม่</legend>
                                       <div class="col-sm-10">
                                         <div class="form-check">
                                           <input class="form-check-input" type="radio" name="breederm" value="1" checked>

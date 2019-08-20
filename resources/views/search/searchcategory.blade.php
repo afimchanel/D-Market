@@ -18,8 +18,8 @@
               @csrf
                 <div class="list-group">
                     <p  class="list-group-item active">สายพันธุ์</p>
-                    <select class="custom-select" name='Breed'>
-                      <option selected>เลือกสายพันธู์</option>
+                    <select class="custom-select" name='Breed' >
+                      <option selected>{{$query->Breed}}</option>
                       <option value="ปั๊ก">ปั๊ก (Pug) </option>
                       <option value="ชิวาวา">ชิวาวา(Chihuahua)</option>
                       <option value="ปอมเมอเรเนียน">ปอมเมอเรเนียน (Pomerania)</option>
@@ -39,7 +39,7 @@
                       <div class="form-group">
                           <label for="exampleFormControlSelect1">ช่วงอายุสุนัข</label>
                           <select class="custom-select" name="Age_Dog">
-                            <option selected>เลือกสีตา</option>
+                            <option selected>{{$query->Age_Dog}}</option>
                             <option value="1">1-2</option>
                             <option value="2">3-4</option>
                             <option value="3">5-6</option>
@@ -55,7 +55,7 @@
                                       
                     <div class="form-group">ลักษณะ
                         <select class="custom-select" name='type_dog'>
-                                <option selected>เลือกขนาด</option>
+                                <option selected>{{$query->type_dog}}</option>
                                 <option value="1">ตัวเล็ก</option>
                                 <option value="2">ตัวใหญ่</option>
                                 
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         น้ำหนัก
                         <select class="custom-select" name="weight_dog">
-                                <option selected>เลือกน้ำหนัก</option>
+                                <option selected>{{$query->weight_dog}}</option>
                                 <option value="1">1-5 กิโล</option>
                                 <option value="2">5-10 กิโล</option>
                                 <option value="3">มากว่านั้น</option>
@@ -81,7 +81,7 @@
                     <div class="form-group">สีตา
                         </div>
                         <select class="custom-select" name="eye_color">
-                                <option selected>เลือกสีตา</option>
+                                <option selected>{{$query->eye_color}}</option>
                                 <option value="1">ดำ</option>
                                 <option value="2">น้ำตาล</option>
                                 <option value="3">ฟ้า</option>
@@ -97,7 +97,7 @@
                   <div class="form-group ">
                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สี</label>
                     <select class="custom-select" name='color' >
-                      <option selected>เลือกสี</option>
+                      <option selected>{{$query->color}}</option>
                       <option value="1">ขาว</option>
                       <option value="2">ดำ</option>
                       <option value="3">อื่น</option>
@@ -109,15 +109,15 @@
                   <div class="form-group">
                           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
                           <select class="custom-select" name='SEX'  required>
-                            <option selected>เลือกเพศสุนัข</option>
+                            <option selected>{{$query->SEX}}</option>
                             <option value="M">ตัวผู้</option>
                             <option value="G">ตัวเมีย</option>
                            
                           </select>
                           <div class="invalid-feedback">กรุณาเลือกเพศ</div>
                   </div>
-                  <input class="form-control mr-xl-2" type="search" placeholder="Search" aria-label="Search" name="q" >
-                  <button class="btn btn-outline btn-filmm my-2 my-sm-0" type="submit">Search</button>
+                  
+                  <button class="btn btn-outline btn-filmm my-2 my-sm-0" type="submit">ค้นหา</button>
             </form>
                 
                 
