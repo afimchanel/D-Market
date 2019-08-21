@@ -1,0 +1,89 @@
+<!-- แจ้งเตือน -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item  ">
+                    <a id="navbarDropdown" class="nav-link" style="font-size:20px" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <span class="fa fa-bell"> <span class="badge badge-light">9</span></span>
+                    </a>
+                </li>
+            </ul>
+            <!--End แจ้งเตือน -->
+
+
+             <!-- แจ้งเตือน -->
+                        <!-- <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown ">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle " style="font-size:20px" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span class="fa fa-bell"> <span class="badge badge-light">9</span></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right glyphicon glyphicon-star" aria-labelledby="navbarDropdown"></div>
+                            </li>
+                        </ul> -->
+                        <!--End แจ้งเตือน -->
+
+<div class="col-sm-4">
+
+    <div class="card text-dark bg-light">
+ 
+    <div class="card-header bg-primary text-center text-warning"><h4>Our Services</h4></div>
+ 
+      <div class="card-body ">
+ 
+        <h5 class="card-title">Services Title 1</h5>
+ 
+        <p class="card-text text-left">Place some text for the service 1 here. Place some text for the service 1 here. </p>
+ 
+      </div>
+ 
+      <div class="card-footer bg-primary border-warning text-center">
+ 
+      <a href="#" class="btn btn-danger btn-sm">Buy Now</a> <a href="#" class="btn btn-warning btn-sm">More info</a>
+ 
+      </div>
+ 
+    </div>
+ 
+  </div>
+
+
+ <div class="card text-right" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+
+
+
+<div class="row text-center">
+                    @foreach ($Dogs as $item)
+                    <div class="col-lg-3 col-md-6 mb-4 ">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" style="width:250px; height:250px;">
+                            <div class="card-body">
+                                <h4 class="card-title">{{$item->Breed}}</h4>
+                                <!--<p class="card-text"></p>-->
+                            </div>
+                            <div class="card-footer">
+                                <a href="/view/dog/{{$item->ID_dog}}" class="btn btn-light">ดูรายละเอียด</a>
+                                @if ($item->user->id == auth()->user()->id)
+
+                                <a href="/edit/dog/{{$item->ID_dog}}" class="btn btn-light">เเก้ไข</a>
+
+                                <a href="/post/dog/{{$item->ID_dog}}/{{auth()->user()->id}}" class="btn btn-success">
+                                    {{ __('โพสขาย') }}
+                                </a>
+                                <form action="{{ route('dog.destroy',$item->ID_dog) }}" method="GET">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>

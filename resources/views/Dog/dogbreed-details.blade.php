@@ -13,10 +13,10 @@
 @endif
 <!-- Page Content -->
 <div class="container">
-
+    @if(isset($details))
     <!-- Portfolio Item Heading -->
     <h1 class="my-4">
-        <small><a href="/user/{{$details->user_id}}">เจ้าของสุนัข</a></small>
+        <small><a href="/user/{{$details->	user_id}}">เจ้าของสุนัข</a></small>
     </h1>
 
     <!-- Portfolio Item Row -->
@@ -68,7 +68,7 @@
 
     </div>
     <!-- /.row -->
-
+    @endif
 </div>
 <!-- /.container -->
 @endsection

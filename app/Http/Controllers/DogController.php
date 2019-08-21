@@ -508,10 +508,13 @@ class DogController extends Controller
     }
     public function showbreedm($Father)
     {
-        error_log('showbredd');
-        $Dog = breederm::where('namedog', 'LIKE', '%' . $Father . '%');
+        error_log($Father);
 
+        $Dog = DB::table('breederm')->where('namedog', 'LIKE', '%' . โคเฟอร์ . '%')->get();
 
-        return view('Dog.dogbreed-details')->withDetails($Dog);
+        if (count($Dog) > 0)
+            return view('Dog.dogbreed-details')->withDetails($Dog)->withQuery($Father);
+        else
+            return view('/');
     }
 }
