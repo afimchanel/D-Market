@@ -97,9 +97,21 @@ class ordercontroller extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order $order)
+    public function update(Request $request)
     {
-        //
+        error_log('asas');
+        $order = new orders;
+        $order->id_user = $request;
+        $order->save();
+        // เอา id_userของตารางorderdetailมาวนลูปนี้
+        //$orders = orderdetail::find('id_user', '=' , $id);
+        error_log($order->Order_ID);
+        //$orders = orderdetail::where('id_user', '=', $id);
+        $orders = new orderdetail;
+        $orders = orderdetail::where('id_user', '=', $request);
+        $orders->order_id =  $order->Order_ID;
+        $orders->update($orders->all());
+        return view('payment');
     }
 
     /**
@@ -124,19 +136,13 @@ class ordercontroller extends Controller
         //$orders = orderdetail::find('id_user', '=' , $id);
         error_log($order->Order_ID);
         //$orders = orderdetail::where('id_user', '=', $id);
-        $orders  = DB::table('order_detail')->where('id_user',$id)->get();
+        $orders = orderdetail::where('id_user', $id)
+        ->first('id_user', $id);
         $orders->order_id = $order->Order_ID;
+        //  $orders = orderdetail::where('id_user', '=', $id);
+        //  $orders->order_id =  $order->Order_ID;
         $orders->save();
-
-        
         return view('payment');
-      
-          
-        
-        
-        
-        
-            
          //ส่งไปยังหน้าที่เเสดงรายการต้องชำระเงิน
     }
    

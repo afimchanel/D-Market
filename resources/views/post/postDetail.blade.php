@@ -32,7 +32,7 @@
 
       <li>ราคา : {{$post->price}}</li>
       @if (Auth::user()->id == $post->user_id)
-
+      <a href="" class="btn btn-light">เเก้ไข</a>
       @else
       <a class="btn btn-success" href="/create/order/{{ Auth::user()->id}}/{{ $dog->ID_dog }}/{{$post->Post_id}}">ชื้อ</a>
       @endif

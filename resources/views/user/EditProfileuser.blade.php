@@ -49,9 +49,10 @@
                         <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" />
                     </div>
                     <div class="form-group ">
+                            ใบอนุญาตจากสมาคม(ถ้ามี)
                         <div class="custom-file input-group mb-2">
                             <input type="file" name="license" class="custom-file-input" accept=".png, .jpg, .jpeg">
-                            <label class="custom-file-label" for="">ใบอนุญาตจากสมาคม(ถ้ามี)</label>
+                            <label class="custom-file-label" for=""></label>
                         </div>
                     </div>
                     <div class="form-group">

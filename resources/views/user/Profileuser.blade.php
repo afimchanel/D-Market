@@ -125,9 +125,13 @@
 
     /*#endregion*/
 </style>
+
 @section('content')
-
-
+                                @error('Delete')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
 <!-- ด้านบนหน้าร้าน -->
 
 <div class="jumbotron jumbotron-fluid  ">
@@ -236,11 +240,10 @@
                                         {{ __('โพสขาย') }}
                                     </a>
                                 </div>
-                                <form action="{{ route('dog.destroy',$item->ID_dog) }}" method="GET">
-                                    @csrf
-                                    @method('DELETE')
+                                <form action="/delete/dog/{{auth()->user()->id}}" >
+                                   
                                     <div class="card">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
                                     </div>
                                 </form>
 

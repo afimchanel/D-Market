@@ -1,5 +1,14 @@
 @extends('layouts.app')
-
+<?php 
+use App\orderdetail;
+$order = orderdetail::where('id_user',Auth::user()->id)
+->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.ID_dog')
+->join('users', 'order_detail.id_user', '=', 'users.id')
+->join('posts','order_detail.id_post','=','posts.Post_id')
+->get();
+// $order->where('id_user',Auth::user()->id);
+$total = 0
+ ?>
 @section('content')
 
 
@@ -35,9 +44,9 @@
 
 </div>
 
-
+<img class="img-responsive img-fluid" src="/payment.jpg" style="width:120px; height:120px;">
 <table class="table col-md-6 container-fluid">
-    <caption>ราคารวม ทั้งสิ้น</caption>
+    
     <thead>
         <tr>
             <th scope="col"># รหัสการสั่งซ์้อ</th>
@@ -46,26 +55,31 @@
 
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-
-        </tr>
-
+    <tbody> 
+            @foreach($order as $item)
+            <tr>
+                <th scope="row">{{$item->Order_detail}}</th>
+                <td>{{$item->Breed}}{{$item->title_post}}</td>
+                <td>{{$item->price}}</td>
+                <?php $total = $total + $item->price ?>
+                
+            </tr>
+            @endforeach
+      
+            <caption>ราคารวมทั้งสิ้น : {{$total}}</caption>
     </tbody>
-</table><br><br>
+</table>
 
-<form>
+
+<form>เพิ่ม ช่องสถานะในตาราง post 
     <div class="container">
-        <form action="/action_page.php">
+        <form action="{{ route('Payment.store') }}">
             <div class="row">
                 <div class="col-25">
                     <label for="fname">จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี">
+                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment">
                 </div>
             </div>
             <div class="row">
@@ -82,7 +96,7 @@
                     <label for="fname">สนามบินที่ใกล้ที่สุด</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="(เป็นสถานที่รับสุนัข)">
+                    <input type="text" placeholder="(เป็นสถานที่รับสุนัข)" name="receiving_location">
                 </div>
             </div>
             <div class="row">
@@ -91,7 +105,7 @@
                 </div>
                 <div class="col-75">
                     <div class="custom-file ">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image_payment">
                         <label class="custom-file-label" for="inputGroupFile01">หลักฐานการชำระเงิน</label>
                     </div>
                 </div>
@@ -102,7 +116,7 @@
                 </div>
                 <div class="col-75">
                     <div class="custom-file ">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image_payment_IDcardnumber">
                         <label class="custom-file-label" for="inputGroupFile01">สำเนาบัตรประชาชน</label>
                     </div>
                 </div>

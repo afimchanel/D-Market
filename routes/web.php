@@ -18,7 +18,6 @@ Route::get('/', function () {
 
 
 
-
 Route::get('/as', function () {
     return view('order.checkorder');
 });
@@ -28,9 +27,10 @@ Route::get('/as', function () {
 Route::resource('post', 'postController');
 Route::resource('order', 'OrderController');
 Route::resource('dog', 'DogController');
-
+Route::resource('user', 'UserController');
 Route::post('/search', 'searchController@show_index');
 Route::post('/searchcategory', 'searchController@show_category');
+Route::resource('Payment', 'PaymentController');
 
 Auth::routes(['verify' => true]);
 
@@ -44,19 +44,23 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/{id}/edit', 'UserController@edit');
     Route::post('/{id}/updateavater', 'UserController@update_avatar');
     Route::post('/{id}/update', 'UserController@update');
-    Route::get('/post/dog/{iddog}/{id}', 'DogController@post');
-    Route::post('/update/dog/{ID_dog}', 'DogController@update');
-    Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
-    Route::get('createbreeder', 'DogController@createbreeder');
-    Route::get('/view/dog/{ID_dog}', 'DogController@show');
-    Route::get('/view/dog/breed/{namedog}', 'DogController@showbreedm');
-    Route::get('/view/category', 'PostController@index');
-    Route::get('/{ID_dog}/{Post_id}/view/post', 'PostController@show');
-    Route::post('/{id}/{ID_dog}/create/post', 'PostController@store');
-    Route::get('/create/order/{id}/{ID_dog}/{id_post}', 'OrderController@store');
-    Route::get('/show/order/{id}', 'OrderController@show');
-    Route::get('/orders/{id}', 'OrderController@createorder');
-    //Route::get('');
+    //Dog
+        Route::get('/post/dog/{iddog}/{id}', 'DogController@post');
+        Route::post('/update/dog/{ID_dog}', 'DogController@update');
+        Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
+        Route::get('createbreeder', 'DogController@createbreeder');
+        Route::get('/view/dog/{ID_dog}', 'DogController@show');
+        Route::get('/view/dog/breed/{namedog}', 'DogController@showbreedm');
+        Route::get('/delete/dog/{id}', 'DogController@destroy');
+        //Post
+            Route::get('/view/category', 'PostController@index');
+            Route::get('/{ID_dog}/{Post_id}/view/post', 'PostController@show');
+            Route::post('/{id}/{ID_dog}/create/post', 'PostController@store');
+            //Order
+                Route::get('/create/order/{id}/{ID_dog}/{id_post}', 'OrderController@store');
+                Route::get('/show/order/{id}', 'OrderController@show');
+                Route::get('/orders/{id}', 'OrderController@createorder');
+                //Route::get('');
 });
 
 //Route for admin

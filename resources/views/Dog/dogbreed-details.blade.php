@@ -13,17 +13,17 @@
 @endif
 <!-- Page Content -->
 <div class="container">
-    @if(isset($details))
+    
     <!-- Portfolio Item Heading -->
     <h1 class="my-4">
-        <small><a href="/user/{{$details->	user_id}}">เจ้าของสุนัข</a></small>
+        <small><a href="/user/{{$Dog->	user_id}}">เจ้าของสุนัข</a></small>
     </h1>
 
     <!-- Portfolio Item Row -->
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-fluid" src="/storage/public/imagedog/cover_images/{{$details->imagedog}}" style="width:750px; height:500px;">
+            <img class="img-fluid" src="/storage/public/imagedog/cover_images/{{$Dog->imagedog}}" style="width:750px; height:500px;">
 
         </div>
 
@@ -68,7 +68,7 @@
 
     </div>
     <!-- /.row -->
-    @endif
+    
 </div>
 <!-- /.container -->
 @endsection

@@ -482,10 +482,14 @@ class DogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $dog = Dog::find($id);
-        $dog->delete();
-        return redirect('/');
+    {  error_log("asd1");
+        $dog = Dog::findOrFail($id);
+        error_log("asd");
+        if ($dog != null) {
+            $dog->delete();
+            return redirect('/')->with(['message'=> 'Successfully deleted!!']);
+        }
+        return view('user.Profileuser');
     }
 
 
@@ -510,11 +514,8 @@ class DogController extends Controller
     {
         error_log($Father);
 
-        $Dog = DB::table('breederm')->where('namedog', 'LIKE', '%' . โคเฟอร์ . '%')->get();
-
-        if (count($Dog) > 0)
-            return view('Dog.dogbreed-details')->withDetails($Dog)->withQuery($Father);
-        else
-            return view('/');
+        $Dog = breederm::where('namedog',$Father)->first();
+        return view('Dog.dogbreed-details',compact('Dog'));
+       
     }
 }

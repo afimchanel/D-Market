@@ -42,7 +42,7 @@
                     ตัวเมีย
                     @endif
                 </li>
-                <li>พ่อพันธุ์ :<a href="/view/dog/breed/{{$Dog->Father}}">{{$Dog->Father}}</a> </li>
+                <li>พ่อพันธุ์ :<a href="/view/dog/breed/{{$Dog->Father}}"> {{$Dog->Father}}</a> </li>
                 <li>แม่พันธุ์ : {{$Dog->Momher}}</li>
                 <li>วันเกิด :{{$Dog->birthday}}</li>
                 <li>
