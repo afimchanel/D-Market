@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\payment;
 class PaymentController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return view('payment');
     }
 
     /**
@@ -35,17 +35,24 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'share_name'=>'required',
-            'share_price'=> 'required|integer',
-            'share_qty' => 'required|integer'
+            'price_payment'=>'required',
+            'Transferdate'=> 'required',
+            'tel_Customer' => 'required',
+            'receiving_location' => 'required',
+            'image_payment' => 'required',
+            'image_payment_IDcardnumber' => 'required',
           ]); 
-          $share = new Share([
-            'share_name' => $request->get('share_name'),
-            'share_price'=> $request->get('share_price'),
-            'share_qty'=> $request->get('share_qty')
+          $payment = new payment([
+            'price_payment' => $request->get('price_payment'),
+            'Order_ID' => $request->get('Order_ID'),
+            'Transferdate'=> $request->get('Transferdate'),
+            'tel_Customer'=> $request->get('tel_Customer'),
+            'receiving_location'=> $request->get('receiving_location'),
+            'image_payment'=> $request->get('image_payment'),
+            'image_payment_IDcardnumber'=> $request->get('image_payment_IDcardnumber'),
           ]);
-          $share->save();
-          return redirect('/shares')->with('success', 'Stock has been added');
+          $payment->save();
+          return redirect('/')->with('success', 'Stock has been added');
     }
 
     /**

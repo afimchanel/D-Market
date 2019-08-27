@@ -127,11 +127,7 @@
 </style>
 
 @section('content')
-                                @error('Delete')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                               
 <!-- ด้านบนหน้าร้าน -->
 
 <div class="jumbotron jumbotron-fluid  ">
@@ -196,7 +192,7 @@
                     <div class="px-1 ">
                         <div class="card h-100">
                             <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
-                                <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" style="width:250px; height:250px;">
+                                <img class="card-img-top"  style="width:250px; height:250px;">
                             </a>
 
                             <div class="card-body text-center">
@@ -222,17 +218,19 @@
 
                 <!-- Page Features -->
                 <div class="row text-center">
+                   
                     @foreach ($Dogs as $item)
                     <div class="col-lg-3 col-md-6 mb-4 ">
                         <div class="card h-100">
-                            <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" style="width:250px; height:250px;">
+                                
+                            <img class="card-img-top"  src="/storage/public/imagedog/{{$item->image}}" style="width:250px; height:250px;">
                             <div class="card-body">
                                 <h4 class="card-title">{{$item->Breed}}</h4>
                                 <!--<p class="card-text"></p>-->
                             </div>
                             <div class="card-footer">
                                 <a href="/view/dog/{{$item->ID_dog}}" class="btn btn-light">ดูรายละเอียด</a>
-                                @if ($item->user->id == auth()->user()->id)
+                                @if ($item->user_id == auth()->user()->id)
                                 <a href="/edit/dog/{{$item->ID_dog}}" class="btn btn-light">เเก้ไข</a>
 
                                 <div class="card">

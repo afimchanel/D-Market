@@ -135,15 +135,13 @@ class ordercontroller extends Controller
         // เอา id_userของตารางorderdetailมาวนลูปนี้
         //$orders = orderdetail::find('id_user', '=' , $id);
         error_log($order->Order_ID);
-        //$orders = orderdetail::where('id_user', '=', $id);
-        $orders = orderdetail::where('id_user', $id)
-        ->first('id_user', $id);
-        $orders->order_id = $order->Order_ID;
-        //  $orders = orderdetail::where('id_user', '=', $id);
-        //  $orders->order_id =  $order->Order_ID;
-        $orders->save();
-        return view('payment');
-         //ส่งไปยังหน้าที่เเสดงรายการต้องชำระเงิน
+        $orders = orderdetail::where(['id_user'=>$id])->get();
+        foreach($orders as $item){
+            $item->order_id = $order->Order_ID;
+            $item->save();
+        }
+        return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
+         
     }
    
     

@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/as', function () {
-    return view('order.checkorder');
+    return view('payment.description');
 });
 
 
@@ -78,3 +78,6 @@ Route::prefix('login')->group(function () {
     Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
     Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
 });
+//Route for google
+Route::get('/redirect', 'SocialAuthGoogleController@redirect');
+Route::get('/callback', 'SocialAuthGoogleController@callback');

@@ -5,6 +5,7 @@ $order = orderdetail::where('id_user',Auth::user()->id)
 ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.ID_dog')
 ->join('users', 'order_detail.id_user', '=', 'users.id')
 ->join('posts','order_detail.id_post','=','posts.Post_id')
+// ->join('order','order_detail.order_id','=','order.Order_ID')
 ->get();
 // $order->where('id_user',Auth::user()->id);
 $total = 0
@@ -44,9 +45,13 @@ $total = 0
 
 </div>
 
-<img class="img-responsive img-fluid" src="/payment.jpg" style="width:120px; height:120px;">
+<img class="img-responsive img-fluid" src="/payment.jpg" style="width:500px; height:500px;">
 <table class="table col-md-6 container-fluid">
-    
+    @if(session()->get('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}  
+    </div><br />
+  @endif
     <thead>
         <tr>
             <th scope="col"># รหัสการสั่งซ์้อ</th>
@@ -71,15 +76,16 @@ $total = 0
 </table>
 
 
-<form>เพิ่ม ช่องสถานะในตาราง post 
+<form>เพิ่ม ช่องสถานะในตาราง post  ทำเช็คบล้อคที่เลือกธนาคารที่โอนด้วย ทำคำนวนค่าจัดส่ง 
     <div class="container">
         <form action="{{ route('Payment.store') }}">
             <div class="row">
+                
                 <div class="col-25">
-                    <label for="fname">จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
+                    <label>จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment">
+                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment" value="{{$total}}">
                 </div>
             </div>
             <div class="row">
@@ -87,9 +93,17 @@ $total = 0
                     <label for="country">วันที่โอนและเวลาโอนเงิน</label>
                 </div>
                 <div class="col-75">
-                    <input type="datetime-local" name=''>
+                    <input type="datetime-local" name='Transferdate'>
                 </div>
             </div>
+            <div class="row">
+                    <div class="col-25">
+                        <label for="country">เบอร์โทรติดต่อ</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name='tel_Customer'>
+                    </div>
+                </div>
 
             <div class="row">
                 <div class="col-25">
@@ -101,7 +115,7 @@ $total = 0
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="subject">อัพโหลดหลักฐานการชำระเงิน</label>
+                    <label for="subject">หลักฐานการชำระเงิน</label>
                 </div>
                 <div class="col-75">
                     <div class="custom-file ">
@@ -112,7 +126,7 @@ $total = 0
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="subject">อัพโหลดสำเนาบัตรประชาชน</label>
+                    <label for="subject">สำเนาบัตรประชาชน</label>
                 </div>
                 <div class="col-75">
                     <div class="custom-file ">

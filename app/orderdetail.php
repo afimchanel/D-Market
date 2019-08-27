@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use Illuminate\Support\Facades\Session;
 class orderdetail extends Model
 {
     protected $guarded = [];
@@ -12,12 +13,15 @@ class orderdetail extends Model
     
 
     public static function countcart(){
-        $id_user = 4;
-        $orders = new orderdetail; 
-        $orders->where('id_user','=',$id_user)->sum('count');
-        return $orders;
-
+      if (Auth::check()) {
+        $id_user = Auth::user()->id;
+        $cartcount= orderdetail::where(['id_user'=>$id_user])->sum('count');
+        return $cartcount;
+      }
+      
+        
     }
+
     public function orderdetail_order()
     {
         return $this->belongsTo('App\orders');

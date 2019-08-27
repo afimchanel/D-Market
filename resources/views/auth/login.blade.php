@@ -55,8 +55,8 @@
                         </a>
                         
                         <hr>
-                        <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google">
-                        </i> Login with Google+
+                        <a href="{{url('/redirect')}}" class="btn btn-danger btn-block"><i class="fa fa-google">
+                        </i> Login with Google
                         </a>
                         <hr>
                             </div>

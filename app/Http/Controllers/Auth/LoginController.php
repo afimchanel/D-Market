@@ -60,6 +60,7 @@ class LoginController extends Controller
        auth()->login($user);
        return redirect()->to('/home');
     }
+    
     public function createOrGetUser($provider, $providerUser)
     {
         $account = SocialAccount::whereProvider($provider)
@@ -87,7 +88,7 @@ class LoginController extends Controller
     }
     //END SOCIALITE
 
-    
+   
 }
 
 

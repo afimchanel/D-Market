@@ -451,7 +451,10 @@
     </style>
 
 </head>
-
+<?php 
+use App\orderdetail;
+$cartcount = orderdetail::countcart();
+?>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-warning	shadow-sm">
@@ -493,12 +496,14 @@
 
                         @endif
                         @else
-
+                       
                         <!-- แจ้งเตือน -->
                         <div class="navbar-nav mr-md-0 pt-4 px-0">
                             <li class="nav-item  ">
                                 <a id="navbarDropdown" class="nav-link" style="font-size:20px" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span class="fa fa-bell"> <span class="badge badge-light">9</span></span>
+                                    <span class="fa fa-bell"> <span class="badge badge-light">
+                                    
+                                    </span></span>
                                 </a>
                             </li>
                         </div>
@@ -507,7 +512,8 @@
                         <!-- Add to car -->
                         <li class="nav-item mr-md-0 pt-4 px-0 ">
                             <a id="navbar" class="nav-link" style="font-size:20px" href="/show/order/{{ Auth::user()->id}}" role="button">
-                                <span class="fa fa-shopping-cart"></span><span class="badge badge-light"></span>
+                                
+                                <span class="fa fa-shopping-cart">{{$cartcount}}</span>
                             </a>
                         </li>
                         <!--End Add to car -->
@@ -523,6 +529,7 @@
                                 <a class="dropdown-item" href='/{{ Auth::user()->id }}/edit'>แก้ไข้โปรไฟล์</a>
                                 <a class="dropdown-item" href="{{ route('dog.create')}}">เพิ่มสุนัข(ยังไม่ขาย)</a>
                                 <a class="dropdown-item" href="/createbreeder">เพิ่มพ่อแม่พันธุ์</a>
+                                <a class="dropdown-item" href="{{ route('Payment.index') }}">แจ้งชำระเงิน</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

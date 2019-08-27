@@ -77,15 +77,18 @@ class Usercontroller extends Controller
         
         
         $users = User::find($id);
-
         $posts = DB::table('posts')
-        
         ->where('posts.user_id', '=', $id) 
         ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
         ->get();
+        $Dogs = Dog::where('user_id',$id)->get();
+        // ->join('dogimages','dogs.ID_dog','=','dogimages.dog_id')
+        // ->select()
+        // ->first('image');
+        
     
 
-        return view('user.Profileuser',compact('users','posts'))->with('Dogs',$users->dogs);
+        return view('user.Profileuser',compact('users','posts','Dogs'));
         
     }
 

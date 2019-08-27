@@ -35,7 +35,8 @@ class HomeController extends Controller
             $post = DB::table('posts')
             ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('users.*', 'dogs.*', 'posts.*')
+            ->join('dogimages', 'dogs.ID_dog', '=', 'dogimages.dog_id')
+            ->select()
             ->get();
             return view('/home', compact('post','user'));
         }

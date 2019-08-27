@@ -26,4 +26,9 @@ class Dog extends Model
     {
         return $this->belongsTo('App\post');
    }
+   public function dogimages()
+   {
+       return $this->belongsTo('App\dogimages');
+ 
+    }
 }

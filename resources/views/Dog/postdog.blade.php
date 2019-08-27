@@ -28,8 +28,7 @@
             <option value="">เลือกสายพันธู์</option>
             <option value="ปั๊ก">ปั๊ก (Pug) </option>
             <option value="ชิวาวา">ชิวาวา(Chihuahua)</option>
-            <option value="ปอมเมอเรเนียน">ปอมเมอเรเนียน (Pomerania)
-            </option>
+            <option value="ปอมเมอเรเนียน">ปอมเมอเรเนียน (Pomerania)</option>
             <option value="ชิสุ">ชิสุ (Shih Tzu)</option>
             <option value="ยอร์คเชียร์ เทอร์เรียร์">ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)</option>
             <option value="บีเกิล">บีเกิล (Beagle)</option>
