@@ -12,15 +12,36 @@
   </ul>
 </div>
 @endif
-
+<?php
+use App\dogimages;
+$sliders = dogimages::where(['dog_id'=>$dog->ID_dog])->get(); 
+?>
 <!-- Page Content -->
 <div class="container">
 
   <!-- Heading Row -->
   <div class="row align-items-center my-5">
-
+   
     <div class="col-lg-7">
-      <img class="img-fluid rounded mb-4 mb-lg-0" src="/storage/public/imagedog/cover_images/{{$dog->imagedog}}" style="width:900px; height:400px;">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">ทำเป็นรูปปก 
+                @foreach($sliders as $key => $slide)
+                <div class="carousel-item active {{ $key == 0 ? ' active' : '' }}">
+                    <img class="d-block w-100" src="/storage/public/imagedog/{{$slide->image}}" style="width:900px; height:400px;">
+                    
+                </div>
+                @endforeach
+                
+              </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
     </div>
     <!-- /.col-lg-8 -->
     <div class="col-lg-5">
@@ -34,7 +55,7 @@
       @if (Auth::user()->id == $post->user_id)
       <a href="" class="btn btn-light">เเก้ไข</a>
       @else
-      <a class="btn btn-success" href="/create/order/{{ Auth::user()->id}}/{{ $dog->ID_dog }}/{{$post->Post_id}}">ชื้อ</a>
+      <a class="btn btn-success" href="/create/order/{{ Auth::user()->id}}/{{ $dog->id }}/{{$post->Post_id}}">ชื้อ</a>
       @endif
 
 

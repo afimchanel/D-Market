@@ -23,8 +23,8 @@
                     <img class="img-responsive"  alt="prewiew" width="120" height="80">
                 </div>
                 <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                    <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
-                        <h4 class="product-name"><strong>Product Name : {{$item-> Breed}},{{$item->title_post}} </strong></h4>
+                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
+                        <h4 class="product-name"><strong>Product Name : {{$item-> breed}},{{$item->title_post}} </strong></h4>
                     </a>
                     <small>Description : {{$item->Detail_Dog}}</small>
                     </h4>

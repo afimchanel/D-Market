@@ -17,8 +17,9 @@ class postController extends Controller
     public function index()
     {
         $post = DB::table('posts')
-        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
         ->join('users', 'posts.user_id', '=', 'users.id')
+        ->leftJoin('dogimages', 'posts.id_the_dog', '=', 'dogimages.dog_id')
         ->where('posts.Post_id', '>', 0)
         ->paginate(10);
         

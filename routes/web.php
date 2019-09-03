@@ -48,8 +48,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/post/dog/{iddog}/{id}', 'DogController@post');
         Route::post('/update/dog/{ID_dog}', 'DogController@update');
         Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
-        Route::get('createbreeder', 'DogController@createbreeder');
+        
         Route::get('/view/dog/{ID_dog}', 'DogController@show');
+        Route::get('/view/dogbreed/{ID_dog}', 'DogController@showbreed');
         Route::get('/view/dog/breed/{namedog}', 'DogController@showbreedm');
         Route::get('/delete/dog/{id}', 'DogController@destroy');
         //Post

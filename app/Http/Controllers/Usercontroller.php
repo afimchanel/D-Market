@@ -79,7 +79,7 @@ class Usercontroller extends Controller
         $users = User::find($id);
         $posts = DB::table('posts')
         ->where('posts.user_id', '=', $id) 
-        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
         ->get();
         $Dogs = Dog::where('user_id',$id)->get();
         // ->join('dogimages','dogs.ID_dog','=','dogimages.dog_id')

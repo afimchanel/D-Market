@@ -9,7 +9,7 @@ class Dog extends Model
     protected $fillable = array('imagedog');
     protected $table = 'dogs';
     //protected $table = 'Dogs';
-    protected $primaryKey = 'ID_dog';
+    protected $primaryKey = 'id';
     //protected $fillable = ['IDthedog', 'Breed','Registrationspecies','Nomicrochip','color','SEX','Father','Momher','birthday',
     //'Breedername','Owner','Registrationdate',];
 //'imageRC'
@@ -28,7 +28,7 @@ class Dog extends Model
    }
    public function dogimages()
    {
-       return $this->belongsTo('App\dogimages');
+       return $this->hasMany('App\dogimages');
  
     }
 }

@@ -60,7 +60,11 @@ $sliders = dogimages::where(['dog_id'=>$iddog])->get();
 
         <div class="col-md-4">
             <h3 class="my-3">รายละเอียด</h3>
-
+            <video width="400" controls>
+                    <source src="mov_bbb.mp4" type="video/mp4">
+                    <source src="mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support HTML5 video.
+            </video>
             <ul>
                 <li>สายพันธุ์ :{{$Dog->Breed}}</li>
                 <li>สี :

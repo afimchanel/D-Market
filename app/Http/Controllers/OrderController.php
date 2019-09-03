@@ -39,19 +39,22 @@ class ordercontroller extends Controller
      */
     public function store($id_user,$id_dog,$id_post)
     {
-        error_log('sstore');
-        if (orderdetail::find($id_dog)) {
-        $order = new orderdetail;
-        $order->id_post = $id_post;
-        $order->id_the_dog = $id_dog;
-        $order->id_user = $id_user;
-        //$order->Status = 1;
-        $order->save();
-        return redirect('');
+        
+        $new = orderdetail::where('id_post',$id_post)->first();
+        error_log($new);error_log('เพิ่มส่วนที่ว่าต้องกรอกข้อมูลโปรไฟลให้ครบก่อนจะซ์้อด้วย');
+        if ( $new === null) 
+        {
+            error_log('if ');
+            return redirect('');
         
         } else {
-            error_log('error');
-            return redirect('');
+            $order = new orderdetail;
+            $order->id_post = $id_post;
+            $order->id_the_dog = $id_dog;
+            $order->id_user = $id_user;
+            $order->save();
+            error_log('else');
+            return redirect()->route('order.show')->with($order->id_user);
         }
         
         
@@ -70,7 +73,7 @@ class ordercontroller extends Controller
           
         $Order = DB::table('order_detail')
         ->where('id_user', '=', $id)
-        ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.ID_dog')
+        ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
         ->join('users', 'order_detail.id_user', '=', 'users.id')
         ->join('posts','order_detail.id_post','=','posts.Post_id')
         ->select('users.*', 'dogs.*', 'posts.*','order_detail.*')

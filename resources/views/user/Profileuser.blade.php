@@ -125,7 +125,10 @@
 
     /*#endregion*/
 </style>
-
+<?php 
+use App\breederm;
+$breeder = breederm::where('user_id',$users->id)->get();
+?>
 @section('content')
                                
 <!-- ด้านบนหน้าร้าน -->
@@ -171,12 +174,12 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="nav-link " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">สุนัขทั้งหมด</a>
+            <a class="nav-link " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">ลูกสุนัขทั้งหมด</a>
 
         </li>
 
         <li class="nav-item dropdown">
-            <a class="nav-link " id="pills-profile-dog-tab" data-toggle="pill" href="#pills-profile-dog" role="tab" aria-controls="pills-profile-dog" aria-selected="false">ทั้งหมดสายพันธุ์</a>
+            <a class="nav-link " id="pills-profile-dog-tab" data-toggle="pill" href="#pills-profile-dog" role="tab" aria-controls="pills-profile-dog" aria-selected="false">พ่อแม่สุนัขทั้งหมด</a>
         </li>
     </ul>
 
@@ -197,7 +200,7 @@
 
                             <div class="card-body text-center">
                                 <h4 class="card-title ">
-                                    <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
+                                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
                                 </h4>
                                 <p class="card-text">{{$item->Detail_Dog}}</p>
                             </div>
@@ -229,12 +232,12 @@
                                 <!--<p class="card-text"></p>-->
                             </div>
                             <div class="card-footer">
-                                <a href="/view/dog/{{$item->ID_dog}}" class="btn btn-light">ดูรายละเอียด</a>
+                                <a href="/view/dog/{{$item->id}}" class="btn btn-light">ดูรายละเอียด</a>
                                 @if ($item->user_id == auth()->user()->id)
-                                <a href="/edit/dog/{{$item->ID_dog}}" class="btn btn-light">เเก้ไข</a>
+                                <a href="/edit/dog/{{$item->id}}" class="btn btn-light">เเก้ไข</a>
 
                                 <div class="card">
-                                    <a href="/post/dog/{{$item->ID_dog}}/{{auth()->user()->id}}" class="btn btn-success">
+                                    <a href="/post/dog/{{$item->id}}/{{auth()->user()->id}}" class="btn btn-success">
                                         {{ __('โพสขาย') }}
                                     </a>
                                 </div>
@@ -256,112 +259,44 @@
                 <!-- /.row -->
             </div>
         </div>
+
         <!-- tree -->
         <div class="tab-pane fade " id="pills-profile-dog" role="tabpanel" aria-labelledby="pills-profile-dog-tab">
-            <div class="container-fluid" style="margin-top:20px">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="tree">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                Top level
-                                            </div>
-                                            <div class="row" style="margin-top: 35px;">
-                                                <i class="fa fa-exclamation-circle fa-2x"></i>
-                                            </div>
-                                            <div class="row">
-                                                15 Failed Tests
-                                            </div>
+                <div class="row text-center">
+                        @foreach ($breeder as $item)
+                        <div class="col-lg-3 col-md-6 mb-4 ">
+                            <div class="card h-100">
+                                    
+                                <img class="card-img-top"  src="/storage/public/imagedog/{{$item->image}}" style="width:250px; height:250px;">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{$item->Breed}}</h4>
+                                    <!--<p class="card-text"></p>-->
+                                </div>
+                                <div class="card-footer">
+                                    <a  href="/view/dogbreed/{{$item->id_Breeder}}" class="btn btn-light">ดูรายละเอียด</a>
+                                    
+                                    @if ($item->user_id == auth()->user()->id)
+                                    <a href="/edit/dog/{{$item->id_Breeder}}" class="btn btn-light">เเก้ไข</a>
+    
+                                    <div class="card">
+                                        <a href="/post/dog/{{$item->id_Breeder}}/{{auth()->user()->id}}" class="btn btn-success">
+                                            {{ __('โพสขาย') }}
+                                        </a>
+                                    </div>
+                                    <form action="/delete/dog/{{auth()->user()->id}}" >
+                                       
+                                        <div class="card">
+                                            <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
                                         </div>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        Customer
-                                                    </div>
-                                                    <div class="row" style="margin-top: 35px;">
-                                                        <i class="fa fa-exclamation-circle fa-2x"></i>
-                                                    </div>
-                                                    <div class="row">
-                                                        3 Failed Tests
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        Payments
-                                                    </div>
-                                                    <div class="row" style="margin-top: 35px;">
-                                                        <i class="fa fa-exclamation-circle fa-2x"></i>
-                                                    </div>
-                                                    <div class="row">
-                                                        5 Failed Tests
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Send Money
-                                                            </div>
-                                                            <div class="row" style="margin-top: 35px;">
-                                                                <i class="fa fa-exclamation-circle fa-2x"></i>
-                                                            </div>
-                                                            <div class="row">
-                                                                3 Failed Tests
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Send Request
-                                                            </div>
-                                                            <div class="row" style="margin-top: 35px;">
-                                                                <i class="fa fa-exclamation-circle fa-2x"></i>
-                                                            </div>
-                                                            <div class="row">
-                                                                2 Failed Tests
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        Online
-                                                    </div>
-                                                    <div class="row" style="margin-top: 35px;">
-                                                        <i class="fa fa-exclamation-circle fa-inv fa-2x"></i>
-                                                    </div>
-                                                    <div class="row">
-                                                        7 Failed Tests
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                    </form>
+    
+                                    @endif
+    
+                                </div>
+                            </div>
                         </div>
+                        @endforeach
                     </div>
-                </div>
-            </div>
         </div>
         <!-- tree -->
     </div>

@@ -165,17 +165,17 @@
 
         <div class="col-lg-4 col-md-6 mb-4 py-2">
           <div class="card h-100">
-            <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt=""></a>
+            <a href="/{{$item->id}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->image}}" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}} {{$item->Breed}}</a>
+                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}} {{$item->breed}}</a>
 
               </h4>
               <h5>ราคา : {{$item->price}}</h5>
               <p class="card-text">{{$item->Detail_Dog}}</p>
             </div>
             <div class="row justify-content-end">
-              <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->ID_dog }}/{{$item->Post_id}}">Add to cart</a>
+              <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->id }}/{{$item->Post_id}}">Add to cart</a>
 
             </div>
           </div>

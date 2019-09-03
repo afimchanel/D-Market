@@ -19,7 +19,7 @@
   <h3 class="text-center">แก้ไขข้อมูลสุนัข</h3>
 
   <div class="form-group ">
-    <form method="post" action="/update/dog/{{$Dog->ID_dog}}" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <form method="post" action="/update/dog/{{$Dog->id}}" enctype="multipart/form-data" class="needs-validation" novalidate>
       @csrf
       <div class="form-row">
 
@@ -28,7 +28,7 @@
           <label for="formGroup Gen">สายพันธุ์สุนัข</label>
 
           <select class="custom-select" name='Breed' required>
-            <option value="{{$Dog->Breed}}">{{$Dog->Breed}}</option>
+            <option value="{{$Dog->breed}}">{{$Dog->breed}}</option>
             <option value="">เลือกสายพันธู์</option>
             <option value="ปั๊ก">ปั๊ก (Pug) </option>
             <option value="ชิวาวา">ชิวาวา(Chihuahua)</option>
@@ -58,21 +58,21 @@
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationTooltip02">IDสุนัข</label>
-          <input type="text" class="form-control" id="validationTooltip02" name="IDthedog" value='{{$Dog->IDthedog}}' required>
+          <input type="text" class="form-control" id="validationTooltip02" name="IDthedog" value='{{$Dog->idthedog}}' required>
           <div class="valid-tooltip">
             Looks good!
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <label for="formGroup id">เลขทะเบียนพันธุ์</label>
-          <input type="text" class="form-control" id="formGroup id" name="Registrationspecies" value='{{$Dog->Registrationspecies}}' required>
+          <input type="text" class="form-control" id="formGroup id" name="Registrationspecies" value='{{$Dog->registrationspecies}}' required>
           <div class="valid-tooltip">
             Looks good!
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <label for="formGroupNum">เลขไมโครชิพ</label>
-          <input type="text" class="form-control" id="formGroupNum" name="Nomicrochip" value='{{$Dog->Nomicrochip}}' required>
+          <input type="text" class="form-control" id="formGroupNum" name="Nomicrochip" value='{{$Dog->nomicrochip}}' required>
           <div class="valid-tooltip">
             Looks good!
           </div>
@@ -87,7 +87,7 @@
         <div class="form-group">
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
           <select class="custom-select" name='SEX' required>
-            <option value="{{$Dog->SEX}}">{{$Dog->SEX}}</option>
+            <option value="{{$Dog->sex}}">{{$Dog->sex}}</option>
             <option value="1">ตัวผู้</option>
             <option value="2">ตัวเมีย</option>
 
@@ -96,7 +96,7 @@
         </div>
         <div class="col-md-4 mb-3">
           <label for="formGroupFather">พ่อพันธุ์</label>
-          <input type="text" class="form-control" id="formGroupFather" name="Father" value='{{$Dog->Father}}' required>
+          <input type="text" class="form-control" id="formGroupFather" name="Father" value='{{$Dog->father}}' required>
           <div class="valid-tooltip">
             Looks good!
           </div>
@@ -104,7 +104,7 @@
 
         <div class="col-md-4 mb-3">
           <label for="formGroupMather">แม่พันธุ์</label>
-          <input type="text" class="form-control" id="formGroupMather" name="Momher" value='{{$Dog->Momher}}' required>
+          <input type="text" class="form-control" id="formGroupMather" name="Momher" value='{{$Dog->momher}}' required>
           <div class="valid-tooltip">
             Looks good!
           </div>
@@ -118,17 +118,17 @@
         </div>
         <div class="col-md-4 mb-3">
           <label for="formGroupMather">ชื่อผู้เพาะพันธุ์ </label>
-          <input type="text" class="form-control" id="formGroupMather" name="Breedername" value='{{$Dog->Breedername}}' required>
+          <input type="text" class="form-control" id="formGroupMather" name="Breedername" value='{{$Dog->breedername}}' required>
 
         </div>
         <div class="col-md-4 mb-3">
           <label for="formGroup Owder">เจ้าของ</label>
-          <input type="text" class="form-control" id="formGroup Owder" name="Owner" value='{{$Dog->Owner}}' required>
+          <input type="text" class="form-control" id="formGroup Owder" name="Owner" value='{{$Dog->owner}}' required>
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroup Regis">วันออกทะเบียน </label>
-          <input type="date" class="form-control" id="formGroup Regis" name="Registrationdate" value='{{$Dog->Registrationdate}}' required>
+          <input type="date" class="form-control" id="formGroup Regis" name="Registrationdate" value='{{$Dog->registrationdate}}' required>
 
         </div>
 
@@ -162,11 +162,12 @@
             <label class="custom-file-label" for="cover_image">Choose file</label>
           </div>
         </div>
+        
       </div>
 
       <div class="container">
         <div class="row">
-          <div class="col text-center">
+          <div class="col text-center">แก้ตรงนี้เปนเพิ่มหรือลบรูปสุนัข
             <button type="submit" class="btn btn-primary">ตกลง</button>
           </div>
         </div>

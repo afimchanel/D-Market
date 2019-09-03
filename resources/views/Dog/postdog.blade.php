@@ -23,6 +23,7 @@
       @csrf
       <div class="form-row">
         <div class="col-md-4 mb-3">
+
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สายพันธุ์สุนัข</label>
           <select class="custom-select" name='Breed' required>
             <option value="">เลือกสายพันธู์</option>
@@ -137,7 +138,7 @@
         <div class="col-md-4 mb-3">
           <label for="formGroup File">อัพโหลดใบCP</label>
           <div class="custom-file">
-            <input type="file" name="imageCP" id="imageCP" class="custom-file-input">
+            <input type="file" name="imageCP" id="imageCP" class="custom-file-input" accept=".png, .jpg, .jpeg">
             <label class="custom-file-label" for="imageCP">อัปโหลดรูปCERTIFIED PEDIGREE</label>
           </div>
         </div>
@@ -149,10 +150,22 @@
             <label class="custom-file-label" for="cover_image">Choose file</label>
           </div>
         </div>
+        <div class="col-md-4 mb-3">
+            <label for="formGroup File">อัพโหลดวิดิโอสุนัข</label>
+            <div class="custom-file">
+              <input type="file" name="video[]" class="custom-file-input" multiple accept=".mp4">
+              <label class="custom-file-label">Choose file</label>
+            </div>
+          </div>
       </div>
 
-      <br>
-    
+      
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1" name="check">
+          <label class="form-check-label" for="defaultCheck1">
+            เช็คตรงนี้ถ้าเป็นพ่อแม่สุนัข
+          </label>
+        </div>
         <button  type="submit" class="btn btn-primary">ตกลง</button>
       
 

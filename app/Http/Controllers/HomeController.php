@@ -33,11 +33,11 @@ class HomeController extends Controller
             $user = User::where('id', '>', 0)
             ->paginate(15);
             $post = DB::table('posts')
-            ->join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+            ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->join('dogimages', 'dogs.ID_dog', '=', 'dogimages.dog_id')
-            ->select()
-            ->get();
+            
+            
+            ->paginate(7);
             return view('/home', compact('post','user'));
         }
     }

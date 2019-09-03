@@ -13,7 +13,7 @@ class searchController extends Controller
     {
 
         $q = Input::get('q');
-        $user =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        $user =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->where('posts.title_post', 'LIKE', '%' . $q . '%')
             ->orWhere('posts.Detail_Dog', 'LIKE', '%' . $q . '%')
@@ -31,7 +31,7 @@ class searchController extends Controller
     public function show_category(Request $request)
     {
 
-        $post =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.ID_dog')
+        $post =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->where('dogs.Breed', 'LIKE', '%' . $request->Breed . '%')
             ->orWhere('posts.Age_Dog', 'LIKE', '%' . $request->Age_Dog . '%')
