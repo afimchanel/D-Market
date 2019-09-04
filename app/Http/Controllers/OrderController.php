@@ -41,7 +41,8 @@ class ordercontroller extends Controller
     {
         
         $new = orderdetail::where('id_post',$id_post)->first();
-        error_log($new);error_log('เพิ่มส่วนที่ว่าต้องกรอกข้อมูลโปรไฟลให้ครบก่อนจะซ์้อด้วย');
+        error_log($new);
+        error_log('เพิ่มส่วนที่ว่าต้องกรอกข้อมูลโปรไฟลให้ครบก่อนจะซ์้อด้วย');
         if ( $new === null) 
         {
             error_log('if ');

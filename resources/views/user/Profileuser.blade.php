@@ -195,7 +195,7 @@ $breeder = breederm::where('user_id',$users->id)->get();
                     <div class="px-1 ">
                         <div class="card h-100">
                             <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
-                                <img class="card-img-top"  style="width:250px; height:250px;">
+                                <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
                             </a>
 
                             <div class="card-body text-center">
@@ -223,10 +223,11 @@ $breeder = breederm::where('user_id',$users->id)->get();
                 <div class="row text-center">
                    
                     @foreach ($Dogs as $item)
-                    <div class="col-lg-3 col-md-6 mb-4 ">
+                    @if ($item->type === 0)
+                        <div class="col-lg-3 col-md-6 mb-4 ">
                         <div class="card h-100">
                                 
-                            <img class="card-img-top"  src="/storage/public/imagedog/{{$item->image}}" style="width:250px; height:250px;">
+                            <img class="card-img-top"  src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
                             <div class="card-body">
                                 <h4 class="card-title">{{$item->Breed}}</h4>
                                 <!--<p class="card-text"></p>-->
@@ -253,6 +254,8 @@ $breeder = breederm::where('user_id',$users->id)->get();
                             </div>
                         </div>
                     </div>
+                    
+                    @endif
                     @endforeach
                 </div>
 
@@ -267,7 +270,7 @@ $breeder = breederm::where('user_id',$users->id)->get();
                         <div class="col-lg-3 col-md-6 mb-4 ">
                             <div class="card h-100">
                                     
-                                <img class="card-img-top"  src="/storage/public/imagedog/{{$item->image}}" style="width:250px; height:250px;">
+                                <img class="card-img-top"  src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
                                 <div class="card-body">
                                     <h4 class="card-title">{{$item->Breed}}</h4>
                                     <!--<p class="card-text"></p>-->

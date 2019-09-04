@@ -43,10 +43,12 @@
 
         <div class="col-md-4 mb-3">
           <label for="validationTooltip02">ชื่อสุนัข</label>
-          <input type="text" class="form-control" id="validationTooltip02" placeholder="ชื่อสุนัข" name="namedog" required>
-          <div class="valid-tooltip">
-            Looks good!
-          </div>
+          <input type="text" class="form-control @error('namedog') is-invalid @enderror" id="namedog" placeholder="ชื่อสุนัข" name="namedog" required autocomplete="namedog" autofocus>
+          @error('namedog')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
@@ -157,6 +159,14 @@
               <label class="custom-file-label">Choose file</label>
             </div>
           </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="formGroup File">อัพโหลดรูปปกสุนัข</label>
+          <div class="custom-file">
+            <input type="file" name="image" class="custom-file-input"  accept=".png, .jpg, .jpeg">
+            <label class="custom-file-label">Choose file</label>
+          </div>
+        </div>
       </div>
 
       

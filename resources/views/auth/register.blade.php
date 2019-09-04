@@ -41,17 +41,19 @@
 
                         <div class="form-group row">
                             <label for="SEX" class="col-md-4 col-form-label text-md-right">{{ __('เพศ') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="SEX" type="text" class="form-control @error('SEX') is-invalid @enderror" name="SEX" value="{{ old('SEX') }}" required autocomplete="SEX" autofocus>
-
-                                @error('SEX')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                            <select class="custom-select @error('SEX') is-invalid @enderror" name='SEX' required id="SEX" value="{{ old('SEX') }}" required autocomplete="SEX" autofocus>
+                              <option value="">เลือกเพศ</option>
+                              <option value="M">ชาย</option>
+                              <option value="F">หญิง</option>
+                            </select>
+                            @error('SEX')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            
+                          </div>
+                     
 
                         <div class="form-group row">
                             <label for="Tel" class="col-md-4 col-form-label text-md-right">{{ __('เบอร์โทรศัพท์') }}</label>
@@ -67,38 +69,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="IDcardnumber" class="col-md-4 col-form-label text-md-right">{{ __('รหัสบัตรประชาชน') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="IDcardnumber" type="text" class="form-control @error('IDcardnumber') is-invalid @enderror" name="IDcardnumber" value="{{ old('IDcardnumber') }}" required autocomplete="IDcardnumber" autofocus>
-
-                                @error('IDcardnumber')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('ที่อยู่') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
-
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address แก้ไขไม่ได้') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">

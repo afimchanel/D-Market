@@ -150,6 +150,24 @@ class DogController extends Controller
             return redirect('/');
         }  else {
             
+            $imageCP = $request->file('image');
+            if ($request->hasFile('image')) {
+
+                error_log('uploaddog0');
+                // Get filename with the extension
+                $filenameWithExt = $imageCP->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $imageCP->getClientOriginalExtension();
+                // Filename to store
+                $imagecover = $filename . '_image' . time() . '.' . $extension;
+                // Upload Image
+                $path = $imageCP->storeAs('public/imagecover', $imagecover);
+            } else {
+                $imagecover = 'nopicture.jpg';
+            }
+            
             $imageCP = $request->file('imageCP');
             if ($request->hasFile('imageCP')) {
 
@@ -200,6 +218,7 @@ class DogController extends Controller
             $Dog->Breedername = $request->Breedername;
             $Dog->Owner = $request->Owner;
             $Dog->Registrationdate = $request->Registrationdate;   
+            $Dog->image = $imagecover;
             $Dog->imageRC = $imageRCStore;
             $Dog->imageCP = $imageCPStore;
             $Dog->user_id = auth()->user()->id;

@@ -10,6 +10,7 @@ use DB;
 use App\post;
 use App\Dog;
 
+
 class Usercontroller extends Controller
 {
     public function __construct()
@@ -121,8 +122,8 @@ class Usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update()
-    {
+    public function update(Request $request)
+    {       
         
         $user = Auth::user();
     
@@ -130,6 +131,14 @@ class Usercontroller extends Controller
         $user->DateofBirth = request()->input('DateofBirth');
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
+        if ($request->has('profile_image')) {
+        
+        $IDcardnumber = $user->id.'_IDcardnumber'.time().'.'.request()->IDcardnumber->getClientOriginalExtension();
+
+        $request->IDcardnumber->storeAs('idcardnumber',$IDcardnumber);
+
+        $user->IDcardnumber = $IDcardnumber;
+        }
         $user->license = request()->input('license');
         $user->Farmaddress = request()->input('Farmaddress');
         error_log('updateuser');

@@ -50,7 +50,8 @@
                     </div>
                     <div class="form-group">
                         <label for="address">ที่อยู่ :</label>
-                        <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" />
+                        ***กรอกแค่ ต. อ. จ.
+                        <textarea type="text" class="form-control" name="address" value="{{ Auth::user()->address }} "> </textarea>
                     </div>
                     <div class="form-group ">
                             ใบอนุญาตจากสมาคม(ถ้ามี)
@@ -59,8 +60,16 @@
                             <label class="custom-file-label" for=""></label>
                         </div>
                     </div>
+                    <div class="form-group ">
+                        บัตรประจำตัวประชาชน ยังไม่เสจเเก้ด้วย
+                    <div class="custom-file input-group mb-2">
+                        <input type="file" name="IDcardnumber" class="custom-file-input" accept=".png, .jpg, .jpeg">
+                        <label class="custom-file-label" for=""></label>
+                    </div>
+                </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">ที่อยู่ฟาร์ม</label>
+                        ***กรอกแค่ ต. อ. จ.
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Farmaddress"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
