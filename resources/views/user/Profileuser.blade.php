@@ -130,7 +130,7 @@ use App\breederm;
 $breeder = breederm::where('user_id',$users->id)->get();
 ?>
 @section('content')
-                               
+     
 <!-- ด้านบนหน้าร้าน -->
 
 <div class="jumbotron jumbotron-fluid  ">
@@ -223,13 +223,13 @@ $breeder = breederm::where('user_id',$users->id)->get();
                 <div class="row text-center">
                    
                     @foreach ($Dogs as $item)
-                    @if ($item->type === 0)
+                    
                         <div class="col-lg-3 col-md-6 mb-4 ">
                         <div class="card h-100">
                                 
                             <img class="card-img-top"  src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
                             <div class="card-body">
-                                <h4 class="card-title">{{$item->Breed}}</h4>
+                                <h4 class="card-title">{{$item->breed}}</h4>
                                 <!--<p class="card-text"></p>-->
                             </div>
                             <div class="card-footer">
@@ -255,7 +255,7 @@ $breeder = breederm::where('user_id',$users->id)->get();
                         </div>
                     </div>
                     
-                    @endif
+                   
                     @endforeach
                 </div>
 

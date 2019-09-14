@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/as', function () {
-    return view('payment.description');
+    return view('gene.gene');
 });
 
 
@@ -27,8 +27,10 @@ Route::get('/as', function () {
 Route::resource('post', 'postController');
 Route::resource('order', 'OrderController');
 Route::resource('dog', 'DogController');
+
 Route::resource('user', 'UserController');
 Route::post('/search', 'searchController@show_index');
+Route::get('/search/{ss}', 'searchController@search');
 Route::post('/searchcategory', 'searchController@show_category');
 Route::resource('Payment', 'PaymentController');
 

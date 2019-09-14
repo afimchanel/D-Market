@@ -29,11 +29,11 @@ $sliders = dogimages::where(['dog_id'=>$iddog])->get();
         <div class="col-md-8">
                     <div id="demo" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
-                        <ul class="carousel-indicators">
+                        <ol class="carousel-indicators">
                           <li data-target="#demo" data-slide-to="0" class="active"></li>
                           <li data-target="#demo" data-slide-to="1"></li>
                           <li data-target="#demo" data-slide-to="2"></li>
-                        </ul>
+                        </ol>
                         
                         <!-- The slideshow -->
                         <div class="carousel-inner">
@@ -66,20 +66,20 @@ $sliders = dogimages::where(['dog_id'=>$iddog])->get();
                     Your browser does not support HTML5 video.
             </video>
             <ul>
-                <li>สายพันธุ์ :{{$Dog->Breed}}</li>
+                <li>สายพันธุ์ :<a href="/search/{{$Dog->breed}}"> {{$Dog->breed}}</a></li>
                 <li>สี :
 
                     {{$Dog->color}}
                 </li>
                 <li>เพศ :
-                    @if ($Dog->SEX === 'M')
+                    @if ($Dog->sex === 'M')
                     ตัวผู้
-                    @elseif($Dog->SEX === 'F')
+                    @elseif($Dog->sex === 'F')
                     ตัวเมีย
                     @endif
                 </li>
-                <li>พ่อพันธุ์ :<a href="/view/dog/breed/{{$Dog->Father}}"> {{$Dog->Father}}</a> </li>
-                <li>แม่พันธุ์ : {{$Dog->Momher}}</li>
+                <li>พ่อพันธุ์ :<a href="/view/dog/breed/{{$Dog->father}}"> {{$Dog->father}}</a> </li>
+                <li>แม่พันธุ์ : {{$Dog->momher}}</li>
                 ดูสายพันของตัวนี้
                 <li>วันเกิด :{{$Dog->birthday}}</li>
                 <li>
@@ -106,4 +106,6 @@ $sliders = dogimages::where(['dog_id'=>$iddog])->get();
 
 </div>
 <!-- /.container -->
+
+
 @endsection

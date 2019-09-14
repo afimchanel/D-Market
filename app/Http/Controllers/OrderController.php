@@ -6,6 +6,7 @@ use App\orderdetail;
 use App\orders;
 use App\User;
 use DB;
+use Auth;
 use Illuminate\Http\Request;
 
 class ordercontroller extends Controller
@@ -40,22 +41,26 @@ class ordercontroller extends Controller
     public function store($id_user,$id_dog,$id_post)
     {
         
-        $new = orderdetail::where('id_post',$id_post)->first();
-        error_log($new);
+       
         error_log('เพิ่มส่วนที่ว่าต้องกรอกข้อมูลโปรไฟลให้ครบก่อนจะซ์้อด้วย');
-        if ( $new === null) 
-        {
-            error_log('if ');
-            return redirect('');
-        
-        } else {
-            $order = new orderdetail;
-            $order->id_post = $id_post;
-            $order->id_the_dog = $id_dog;
-            $order->id_user = $id_user;
-            $order->save();
-            error_log('else');
-            return redirect()->route('order.show')->with($order->id_user);
+        if (Auth::check()) {
+            $new = orderdetail::where('id_post',$id_post)->first();
+            error_log($new);
+            if ( $new === null) //ทำเงื่อนไขตรงนี้ให้ดี
+            {
+                error_log('if ');
+                return redirect('');
+            
+            } else {
+                $order = new orderdetail;
+                $order->id_post = $id_post;
+                $order->id_the_dog = $id_dog;
+                $order->id_user = $id_user;
+                $order->save();
+                error_log('else');
+                return redirect('/')->with($order->id_user);
+            }
+            
         }
         
         

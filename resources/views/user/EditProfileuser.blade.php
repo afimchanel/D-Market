@@ -13,15 +13,15 @@
         <div class="container">
 
             <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4">โปรไฟล์</h1>
-            @if(session()->get('success'))
-            <div class="alert alert-success">
-              {{ session()->get('success') }}  
-            </div><br />
-            @endif
+         
             <hr class="mt-2 mb-5">
 
             <div class="row text-center text-lg-left">
-
+                    @if(session()->get('error'))
+                    <div class="alert alert-success">
+                      {{ session()->get('error') }}  
+                    </div><br />
+                    @endif
                 <div class="col-sm-3  ">
                     <img class="img-fluid img-thumbnail" src="/storage/avatars/{{ Auth::user()->Avatar }}" alt="" style="width:224px; height:224px;">
                     <form action="/{id}/updateavater" method="post" enctype="multipart/form-data">

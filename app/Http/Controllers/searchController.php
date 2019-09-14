@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\post;
+use App\Dog;
 use Illuminate\Support\Facades\DB;
 
 class searchController extends Controller
@@ -47,5 +48,15 @@ class searchController extends Controller
             return view('search.searchcategory')->withDetails($post)->withQuery($request);
         else
             return view('search.searchcategory')->withMessage('No Details found. Try to search again !');
+    }
+    public function search(Request $request)
+    {
+        $dog = Dog::where('dogs.breed', '=',  $request->breed ) 
+        
+        ->orWhere('dogs.color', 'LIKE', '%' . $request. '%')
+        ->orWhere('dogs.sex', 'LIKE', '%' . $request. '%')->get();
+        return $dog;
+
+
     }
 }

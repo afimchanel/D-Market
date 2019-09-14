@@ -2,7 +2,7 @@
 
 
 @section('content')
-@if (count($errors) > 0)
+{{-- @if (count($errors) > 0)
 <div class="alert alert-danger">
   <strong>Whoops!</strong> There were some problems with your input.<br><br>
   <ul>
@@ -11,7 +11,7 @@
     @endforeach
   </ul>
 </div>
-@endif
+@endif --}}
 
 <div class="container ">
 
@@ -150,6 +150,7 @@
           <div class="custom-file">
             <input type="file" name="filename[]" class="custom-file-input" multiple accept=".png, .jpg, .jpeg">
             <label class="custom-file-label" for="cover_image">Choose file</label>
+            
           </div>
         </div>
         <div class="col-md-4 mb-3">
@@ -167,7 +168,7 @@
             <label class="custom-file-label">Choose file</label>
           </div>
         </div>
-      </div>
+      
 
       
       <div class="form-check">

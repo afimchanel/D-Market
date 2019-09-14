@@ -126,19 +126,19 @@ class Usercontroller extends Controller
     {       
         
         $user = Auth::user();
+        if ($request->has('profile_image')) {
+        
+            $IDcardnumber = $user->id.'_IDcardnumber'.time().'.'.request()->IDcardnumber->getClientOriginalExtension();
     
+            $request->IDcardnumber->storeAs('idcardnumber',$IDcardnumber);
+    
+            $user->IDcardnumber = $IDcardnumber;
+            }
         $user->name = request()->input('name');
         $user->DateofBirth = request()->input('DateofBirth');
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
-        if ($request->has('profile_image')) {
-        
-        $IDcardnumber = $user->id.'_IDcardnumber'.time().'.'.request()->IDcardnumber->getClientOriginalExtension();
 
-        $request->IDcardnumber->storeAs('idcardnumber',$IDcardnumber);
-
-        $user->IDcardnumber = $IDcardnumber;
-        }
         $user->license = request()->input('license');
         $user->Farmaddress = request()->input('Farmaddress');
         error_log('updateuser');

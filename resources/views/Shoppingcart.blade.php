@@ -20,18 +20,18 @@
             <!-- PRODUCT -->
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-2 text-center">
-                    <img class="img-responsive"  alt="prewiew" width="120" height="80">
+                    <img class="img-responsive" src="/storage/public/imagecover/{{$item->image}}" alt="prewiew" width="120" height="80">
                 </div>
                 <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                     <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
                         <h4 class="product-name"><strong>Product Name : {{$item-> breed}},{{$item->title_post}} </strong></h4>
                     </a>
-                    <small>Description : {{$item->Detail_Dog}}</small>
+                    <small>Description : {{$item->Detail_Dog}} </small>
                     </h4>
                 </div>
                 <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                     <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                        <h6><strong>ราคา : {{$item->price}} </strong></h6> <?php $total = $total + $item->price ?>
+                        <h6><strong>ราคา :  {{$item->price}} </strong></h6> <?php $total = $total + $item->price ?>
                     </div>
 
                     <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -65,7 +65,7 @@
                     @csrf
                     ยืนยันการซื้อ</a>
                 <div class="pull-right" style="margin: 5px">
-                    Total price: <b>{{$total}}</b>
+                    Total price: ทำคำนวนน้ำหนักกับค่าขนส่งด้วย หาเรท น้ำหนักของสุนัขด้วย <b>{{$total}}</b>
                 </div>
             </div>
         </div>

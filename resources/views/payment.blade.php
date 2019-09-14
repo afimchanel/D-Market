@@ -1,13 +1,18 @@
 @extends('layouts.app')
 <?php 
 use App\orderdetail;
+use App\orders;
 $order = orderdetail::where('id_user',Auth::user()->id)
-->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.ID_dog')
+->Where('order_id','!=',NULL)
+->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
 ->join('users', 'order_detail.id_user', '=', 'users.id')
 ->join('posts','order_detail.id_post','=','posts.Post_id')
 // ->join('order','order_detail.order_id','=','order.Order_ID')
 ->get();
-// $order->where('id_user',Auth::user()->id);
+
+
+// ->Orderby('order_detail.updated_at','desc')->limit(1)
+
 $total = 0
  ?>
 @section('content')
@@ -70,22 +75,23 @@ $total = 0
                 
             </tr>
             @endforeach
-      
+            <caption>ค่าขนส่ง : ?? จำนวนตัว *(นน+ค่าจักส่ง) </caption>
             <caption>ราคารวมทั้งสิ้น : {{$total}}</caption>
     </tbody>
 </table>
 
 
-<form>เพิ่ม ช่องสถานะในตาราง post  ทำเช็คบล้อคที่เลือกธนาคารที่โอนด้วย ทำคำนวนค่าจัดส่ง 
+เพิ่ม ช่องสถานะในตาราง post  ทำเช็คบล้อคที่เลือกธนาคารที่โอนด้วย ทำคำนวนค่าจัดส่ง 
     <div class="container">
-        <form action="{{ route('Payment.store') }}">
+        <form action="{{ route('Payment.store') }}" enctype="multipart/form-data" method="post">
+            @csrf 
             <div class="row">
                 
                 <div class="col-25">
                     <label>จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment" value="{{$total}}">
+                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment" value="{{$total}}"  required>
                 </div>
             </div>
             <div class="row">
@@ -93,7 +99,7 @@ $total = 0
                     <label for="country">วันที่โอนและเวลาโอนเงิน</label>
                 </div>
                 <div class="col-75">
-                    <input type="datetime-local" name='Transferdate'>
+                    <input type="datetime-local" name='Transferdate' required>
                 </div>
             </div>
             <div class="row">
@@ -101,7 +107,7 @@ $total = 0
                         <label for="country">เบอร์โทรติดต่อ</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name='tel_Customer'>
+                        <input type="text" name='tel_Customer' required>
                     </div>
                 </div>
 
@@ -110,7 +116,7 @@ $total = 0
                     <label for="fname">สนามบินที่ใกล้ที่สุด</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="(เป็นสถานที่รับสุนัข)" name="receiving_location">
+                    <input type="text" placeholder="(เป็นสถานที่รับสุนัข)" name="receiving_location"required>
                 </div>
             </div>
             <div class="row">
@@ -119,7 +125,7 @@ $total = 0
                 </div>
                 <div class="col-75">
                     <div class="custom-file ">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image_payment">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image_payment" required>
                         <label class="custom-file-label" for="inputGroupFile01">หลักฐานการชำระเงิน</label>
                     </div>
                 </div>
@@ -130,17 +136,17 @@ $total = 0
                 </div>
                 <div class="col-75">
                     <div class="custom-file ">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image_payment_IDcardnumber">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image_payment_IDcardnumber" required>
                         <label class="custom-file-label" for="inputGroupFile01">สำเนาบัตรประชาชน</label>
                     </div>
                 </div>
-            </div><br><br>
+            </div>
             <div style="text-align:center;">
                 <input type="submit" value="Submit">
-            </div><br><br>
+            </div>
         </form>
     </div>
-</form>
+
 </div>
 
 
