@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDogimagesTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateDogimagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dogimages', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('messages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('from', FALSE, TRUE);
+            $table->integer('to', FALSE, TRUE);
+            $table->text('message');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateDogimagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dogimages');
+        Schema::dropIfExists('messages');
     }
 }

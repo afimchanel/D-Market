@@ -8,6 +8,7 @@ use App\user;
 use Auth;
 use DB;
 use App\Dog;
+use App\payment;
 class AdminController extends Controller
 {
     
@@ -28,10 +29,20 @@ class AdminController extends Controller
     public function indexdogs()
     {
         error_log('listdogsadmin');
-        $Dogs = Dog::where('ID_dog', '>', 0)
+        $Dogs = Dog::where('id', '>', 0)
         ->paginate(5);
         return view('admin/listdogs', compact('Dogs'));
         error_log('listdogsadmin2');
+    }
+    public function indexpayment()
+    {
+        error_log('payment');
+        $payment = payment::where('Pay_ID', '>', 0)
+        ->join('order', 'payment.Order_ID', '=', 'order.Order_ID')
+        ->paginate(5);
+
+        return view('admin/payment',compact('payment'));
+
     }
     /**
      * Show the form for editing the specified resource.

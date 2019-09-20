@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\payment;
+use App\orders;
 class PaymentController extends Controller
 {
     /**
@@ -127,5 +128,14 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function success($id)
+    {
+        $order = orders::where('id_user',$id)->Orderby('updated_at','desc')->first();
+        
+        $order->Status = 1;
+        $order->save();
+        return $order;
+        
     }
 }

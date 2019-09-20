@@ -163,7 +163,7 @@
                 <a href="/admin/listdogs" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shopping-cart" ></i>  ข้อมูลสุนัข</a>
                 <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user" ></i>  โพสต์</a>
                 <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw" ></i>  ประวัติ</a>
-                <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money" ></i>  การเงิน</a><br><br>
+                <a href="/admin/payment" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money" ></i>  แจ้งจ่ายเงิน</a><br><br>
             </div>
         </nav>   
         <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"

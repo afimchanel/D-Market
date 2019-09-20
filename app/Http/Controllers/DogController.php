@@ -10,6 +10,7 @@ use Redirect;
 use View;
 use App\User;
 use App\post;
+use App\auth;
 use App\breederf;
 use App\breederm;
 use App\dogimages;
@@ -37,7 +38,13 @@ class DogController extends Controller
     public function create()
     {
         error_log('createdog');
-        return view('Dog.postdog');
+        if (auth()->user()->email_verified_at != NULL && (auth()->user()->IDcardnumber != NULL )) {
+            return view('Dog.postdog');
+        } else {
+            # code...
+        }
+        
+        
     }
 
 

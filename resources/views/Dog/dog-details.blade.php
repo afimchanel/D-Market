@@ -13,7 +13,9 @@
 @endif
 <?php
 use App\dogimages;
+use App\dogvideo;
 $sliders = dogimages::where(['dog_id'=>$iddog])->get(); 
+$video = dogvideo::where(['dog_id'=>$iddog])->get(); 
 ?>
 <!-- Page Content -->
 <div class="container">
@@ -61,8 +63,8 @@ $sliders = dogimages::where(['dog_id'=>$iddog])->get();
         <div class="col-md-4">
             <h3 class="my-3">รายละเอียด</h3>
             <video width="400" controls>
-                    <source src="mov_bbb.mp4" type="video/mp4">
-                    <source src="mov_bbb.ogg" type="video/ogg">
+                    <source src="" type="video/mp4">
+                    <source src="" type="video/mov">
                     Your browser does not support HTML5 video.
             </video>
             <ul>

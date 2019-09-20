@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/as', function () {
-    return view('gene.gene');
+    return view('buying.index');
 });
 
 
@@ -33,7 +33,9 @@ Route::post('/search', 'searchController@show_index');
 Route::get('/search/{ss}', 'searchController@search');
 Route::post('/searchcategory', 'searchController@show_category');
 Route::resource('Payment', 'PaymentController');
+Route::post('Payment/success/{id}', 'PaymentController@success');
 
+Route::get('notify/index', 'NotificationController@index');
 Auth::routes(['verify' => true]);
 
 
@@ -74,6 +76,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/dashboard/edit/{id}/update', 'admin\AdminController@update');
         Route::post('/dashboard/edit/{id}/destroy', 'admin\AdminController@destroy');
         Route::get('/listdogs', 'admin\AdminController@indexdogs');
+        Route::get('/payment', 'admin\AdminController@indexpayment');
     });
 });
 //Route for facebook

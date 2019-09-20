@@ -82,7 +82,7 @@ class Usercontroller extends Controller
         ->where('posts.user_id', '=', $id) 
         ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
         ->get();
-        $Dogs = Dog::where('user_id',$id)->get();
+        $Dogs = Dog::where('user_id',$id)->paginate(10);
         // ->join('dogimages','dogs.ID_dog','=','dogimages.dog_id')
         // ->select()
         // ->first('image');

@@ -153,6 +153,7 @@ $breeder = breederm::where('user_id',$users->id)->get();
                     ใบทะเบียนจากสมาคม : สถานะ มี <br>
                     @endif
                     ที่อยู่: {{ $users->address }}
+                    <button > การชื้อของ{{ $users->name }}  </button>
                 </div>
             </div>
         </div>
@@ -258,7 +259,7 @@ $breeder = breederm::where('user_id',$users->id)->get();
                    
                     @endforeach
                 </div>
-
+                {{$Dogs->links()}}
                 <!-- /.row -->
             </div>
         </div>
