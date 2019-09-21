@@ -68,34 +68,40 @@ $video = dogvideo::where(['dog_id'=>$iddog])->get();
                     Your browser does not support HTML5 video.
             </video>
             <ul>
-                <li>สายพันธุ์ :<a href="/search/{{$Dog->breed}}"> {{$Dog->breed}}</a></li>
+                <li>สายพันธุ์ :<a  class="badge badge-success" href="/search/{{$Dog->breed}}"> {{$Dog->breed}}</a></li>
                 <li>สี :
-
-                    {{$Dog->color}}
+                    @if ($Dog->color === '1')
+                    <a href="#" class="badge badge-primary">ขาว</a>
+                    @elseif($Dog->color === '2')
+                    <a href="#" class="badge badge-primary">ดำ</a>
+                    @elseif($Dog->color === '3')
+                    <a href="#" class="badge badge-primary">อื่น*นอกเหนือจากสีขาวและสีดำ</a>
+                    @endif
+                    
                 </li>
                 <li>เพศ :
                     @if ($Dog->sex === 'M')
-                    ตัวผู้
+                    <a href="#" class="badge badge-secondary">ตัวผู้</a>
                     @elseif($Dog->sex === 'F')
-                    ตัวเมีย
+                    <a href="#" class="badge badge-secondary">ตัวเมีย</a>
                     @endif
                 </li>
-                <li>พ่อพันธุ์ :<a href="/view/dog/breed/{{$Dog->father}}"> {{$Dog->father}}</a> </li>
+                <li>พ่อพันธุ์ :<a  class="badge badge-warning" href="/view/dog/breed/{{$Dog->father}}"> {{$Dog->father}}</a> </li>
                 <li>แม่พันธุ์ : {{$Dog->momher}}</li>
                 ดูสายพันของตัวนี้
                 <li>วันเกิด :{{$Dog->birthday}}</li>
                 <li>
                     ใบCP : @if ($Dog->imageCP = 'noimage.jpg' )
-                    ไม่มี
+                    <span class="badge badge-pill badge-danger">ไม่มี</span>
                     @else
-                    มี
+                    <span class="badge badge-pill badge-success">มี</span>
                     @endif
                 </li>
                 <li>
                     ใบRC : @if ($Dog->imageRC = 'noimage.jpg' )
-                    ไม่มี
+                    <span class="badge badge-pill badge-danger">ไม่มี</span>
                     @else
-                    มี
+                    <span class="badge badge-pill badge-success">มี</span>
                     @endif
                 </li>
 

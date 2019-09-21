@@ -155,6 +155,7 @@
           </ul>
         </div>
       </nav>
+      
 
       @if(isset($details))
 

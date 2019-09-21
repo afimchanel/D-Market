@@ -24,11 +24,14 @@ Route::get('/as', function () {
 
 
 
+Route::get('/buying', function () {
+    return view('buying.index');
+});
 Route::resource('post', 'postController');
 Route::resource('order', 'OrderController');
 Route::resource('dog', 'DogController');
-
 Route::resource('user', 'UserController');
+
 Route::post('/search', 'searchController@show_index');
 Route::get('/search/{ss}', 'searchController@search');
 Route::post('/searchcategory', 'searchController@show_category');

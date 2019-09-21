@@ -11,6 +11,7 @@ use App\post;
 use App\Dog;
 
 
+
 class Usercontroller extends Controller
 {
     public function __construct()
@@ -82,7 +83,7 @@ class Usercontroller extends Controller
         ->where('posts.user_id', '=', $id) 
         ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
         ->get();
-        $Dogs = Dog::where('user_id',$id)->paginate(10);
+        $Dogs = Dog::where('user_id',$id)->paginate(8);
         // ->join('dogimages','dogs.ID_dog','=','dogimages.dog_id')
         // ->select()
         // ->first('image');
@@ -177,6 +178,22 @@ class Usercontroller extends Controller
         return redirect('user/{id}');
 
     }
-}
+//     public function poi(){
+//         $orderid = orders::where('id_user',Auth::user()->id)
+//         ->where('Status',1)
+//         ->Orderby('updated_at','desc')->first();
+//         if ($orderid = NULL) {
+//         return $order = NULL;
+//         } else {
+//         $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
+//         ->LEFTjoin('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+//         ->LEFTjoin('posts', 'order_detail.id_post', '=', 'posts.Post_id')
+//         ->LEFTjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
+//         ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
+//         ->where('order_detail.order_id',$orderid->Order_ID)
+//         ->get();
+//         }
+//     }
+ }
 
 

@@ -44,10 +44,15 @@ class searchController extends Controller
             ->paginate(10);
         //->get();
         error_log('showcategory');
-        if (count($post) > 0)
+
+        if (count($post) > 0){
+            error_log('if');
             return view('search.searchcategory')->withDetails($post)->withQuery($request);
-        else
-            return view('search.searchcategory')->withMessage('No Details found. Try to search again !');
+        }
+        else{
+            error_log('else');
+            return view('search.searchcategory')->with('Message','No Details found. Try to search again !')->withDetails($post)->withQuery($request);
+        }            
     }
     public function search(Request $request)
     {

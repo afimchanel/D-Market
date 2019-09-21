@@ -2,12 +2,17 @@
 <?php 
 use App\orderdetail;
 use App\orders;
-$order = orderdetail::where('id_user',Auth::user()->id)
-->Where('order_id','!=',NULL)
+
+$orderid = orders::where('id_user',Auth::user()->id)
+->where('Status',0)
+->Orderby('updated_at','desc')->first();
+$order = orderdetail::where('order_detail.id_user',Auth::user()->id)
+->Where('order_detail.order_id','!=',NULL)
 ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
 ->join('users', 'order_detail.id_user', '=', 'users.id')
 ->join('posts','order_detail.id_post','=','posts.Post_id')
-// ->join('order','order_detail.order_id','=','order.Order_ID')
+->join('order','order_detail.order_id','=','order.Order_ID')
+->where('order_detail.order_id',$orderid->Order_ID)
 ->get();
 
 
@@ -18,37 +23,7 @@ $total = 0
 @section('content')
 
 
-<div id="timeline-wrap">
-    <div id="timeline"></div>
 
-    <!-- This is the individual marker-->
-    <div class="marker mfirst timeline-icon one">
-        <i class="fa fa-pencil"></i>
-    </div>
-    <!-- / marker -->
-
-    <!-- This is the individual marker-->
-    <div class="marker m2 timeline-icon two">
-        <i class="fa fa-usd"></i>
-    </div>
-    <!-- / marker -->
-
-    <!-- This is the individual marker-->
-    <div class="marker m3 timeline-icon three">
-        <i class="fa fa-list"></i>
-    </div>
-    <!-- / marker -->
-
-
-    <!-- This is the individual marker-->
-    <div class="marker mlast timeline-icon four">
-        <i class="fa fa-check"></i>
-    </div>
-    <!-- / marker -->
-
-
-
-</div>
 
 <img class="img-responsive img-fluid" src="/payment.jpg" style="width:500px; height:500px;">
 <table class="table col-md-6 container-fluid">
@@ -57,6 +32,7 @@ $total = 0
       {{ session()->get('success') }}  
     </div><br />
   @endif
+  
     <thead>
         <tr>
             <th scope="col"># รหัสการสั่งซ์้อ</th>
@@ -66,6 +42,7 @@ $total = 0
         </tr>
     </thead>
     <tbody> 
+        @if ($order != NULL)
             @foreach($order as $item)
             <tr>
                 <th scope="row">{{$item->Order_detail}}</th>
@@ -75,6 +52,16 @@ $total = 0
                 
             </tr>
             @endforeach
+        @else
+             <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td>0</td>
+               
+                
+            </tr>
+        @endif
+            
             <caption>ค่าขนส่ง : ?? จำนวนตัว *(นน+ค่าจักส่ง) </caption>
             <caption>ราคารวมทั้งสิ้น : {{$total}}</caption>
     </tbody>

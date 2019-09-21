@@ -134,8 +134,11 @@ $breeder = breederm::where('user_id',$users->id)->get();
 <!-- ด้านบนหน้าร้าน -->
 
 <div class="jumbotron jumbotron-fluid  ">
+
+        
     <div class="container ">
         <div class="container">
+            
             <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์ {{ $users->name }}</h1>
             <hr class="mt-2 mb-5">
             <div class="row text-center text-lg-left">
@@ -143,6 +146,7 @@ $breeder = breederm::where('user_id',$users->id)->get();
                     <img class="img-fluid img-thumbnail" src="/storage/avatars/{{$users->Avatar}}" style="width:300px; height:250px;">
                 </div>
                 <div class="">
+                    
                     E_mail : {{ $users->email }} <br>
                     ชื่อ-นาสกุล : {{ $users->name }} <br>
                     เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
@@ -152,8 +156,20 @@ $breeder = breederm::where('user_id',$users->id)->get();
                     @else
                     ใบทะเบียนจากสมาคม : สถานะ มี <br>
                     @endif
-                    ที่อยู่: {{ $users->address }}
-                    <button > การชื้อของ{{ $users->name }}  </button>
+                    ที่อยู่: 
+                    @if ($users->address === NULL )
+                        @if ($users->id === Auth::user()->id)
+                        <div class="alert alert-danger" role="alert">
+                                กรุณากรอกที่อยู่ !!
+                        </div> 
+                        @else
+                            
+                        @endif
+                        
+                    @else
+                    {{ $users->address }} <br>
+                    @endif
+                    <a href="/buying"><button >การชื้อของ{{ $users->name }}   </button></a>
                 </div>
             </div>
         </div>

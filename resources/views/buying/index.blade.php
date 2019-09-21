@@ -23,6 +23,9 @@
           <a class="nav-link" id="pills-Tobeshipped-tab" data-toggle="pill" href="#pills-Tobeshipped" role="tab" aria-controls="pills-Tobeshipped" aria-selected="false">ที่ต้องจัดส่ง</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" id="pills-Tobeshipped-tab" data-toggle="pill" href="#pills-Tobeshipped" role="tab" aria-controls="pills-Tobeshipped" aria-selected="false">ที่ต้องรอจัดส่ง</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" id="pills-get-tab" data-toggle="pill" href="#pills-get" role="tab" aria-controls="pills-get" aria-selected="false">ที่ต้องได้รับ</a>
         </li>
         <li class="nav-item">
