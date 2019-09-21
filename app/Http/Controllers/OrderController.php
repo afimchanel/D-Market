@@ -142,9 +142,9 @@ class ordercontroller extends Controller
     public function createorder($id)
     {
         if (Auth::check()) {
-            error_log('if');
+            error_log('if1');
             $find = orders::where('id_user',$id)->Orderby('updated_at','desc')->first();
-            if ($find->Status === 0 ) {
+            if ($find === NULL || $find->Status === 0 ) {
                 $order = new orders;
                 $order->id_user = $id;
                 $order->save();
@@ -173,7 +173,7 @@ class ordercontroller extends Controller
             
             
         } else {
-            error_log('else');
+            error_log('else1');
         
     }
    
