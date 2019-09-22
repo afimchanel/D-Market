@@ -34,6 +34,7 @@ class AdminController extends Controller
         return view('admin/listdogs', compact('Dogs'));
         error_log('listdogsadmin2');
     }
+    
     public function indexpayment()
     {
         error_log('payment');

@@ -1,24 +1,25 @@
 @extends('layouts.app')
 <?php 
-use App\orderdetail;
-use App\orders;
+    use App\orderdetail;
+    use App\orders;
 
-$orderid = orders::where('id_user',Auth::user()->id)
-->where('Status',0)
-->Orderby('updated_at','desc')->first();
-$order = orderdetail::where('order_detail.id_user',Auth::user()->id)
-->Where('order_detail.order_id','!=',NULL)
-->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
-->join('users', 'order_detail.id_user', '=', 'users.id')
-->join('posts','order_detail.id_post','=','posts.Post_id')
-->join('order','order_detail.order_id','=','order.Order_ID')
-->where('order_detail.order_id',$orderid->Order_ID)
-->get();
+    $orderid = orders::where('id_user',Auth::user()->id)
+    ->where('Status',0)
+    ->Orderby('updated_at','desc')->first();
+    $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
+    ->Where('order_detail.order_id','!=',NULL)
+    ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+    ->join('users', 'order_detail.id_user', '=', 'users.id')
+    ->join('posts','order_detail.id_post','=','posts.Post_id')
+    ->join('order','order_detail.order_id','=','order.Order_ID')
+    ->where('order_detail.order_id',$orderid->Order_ID)
+    ->get();
 
 
-// ->Orderby('order_detail.updated_at','desc')->limit(1)
+    // ->Orderby('order_detail.updated_at','desc')->limit(1)
 
-$total = 0
+    $total = 0
+    
  ?>
 @section('content')
 

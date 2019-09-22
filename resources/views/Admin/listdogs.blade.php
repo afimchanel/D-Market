@@ -14,23 +14,20 @@
                 <table class="table table-bordered" id="dataTable" width="100%">
                   <thead>
                     <tr>
-                      <th>ID_dog</th>
-                      <th>IDthedog</th>
-                      <th>user_id</th>
+                      
+                      <th>รูป</th>
+                      <th>รหัสสุนัข</th>
                       <!-- <th>user_id(เป็นของคนไหน)</th> -->
-                      <th>Breed</th>
+                      <th>ชื่อสุนัข</th>
+                      <th>รหัสผู้ใช้</th>
                       <!-- <th>สายพันธุ์ลงทะเบียน</th> -->
-                      <th>Registrationspecies</th>
-                      <th>Nomicrochip</th>
-                      <th>color</th>
-                      <th>SEX</th>
-                      <th>Father</th>
-                      <th>Momher</th>
-                      <th>birthday</th>
-                      <th>Breedername</th>
-                      <th>Owner</th>
-                      <th>Registrationdate</th>
-                      <th>Status</th>
+                      <th>ชื่อสายพันธุ์</th>
+                      <th>สี</th>
+                      <th>เพศ</th>
+                      <th>ผู้เพาะพันธุ์</th>
+                      <th>เจ้าของใบ</th>
+                      <th>แก้ไข</th>
+                      <th>ลบ</th>
                     </tr>
                   </thead>
   
@@ -42,22 +39,16 @@
                   <tbody>
                     @foreach($Dogs as $Dog)
                     <tr>
-                      <td>{{ $Dog->ID_dog }}</td>
+                      <td><img class="img-responsive" src="/storage/public/imagecover/{{$Dog->image}}" alt="prewiew" width="120" height="80"></td>
                       <td>{{ $Dog->IDthedog }}</td>
+                      <td>{{ $Dog->namedog}}</td>
                       <td>{{ $Dog->user_id}}</td>
-                      <td>{{ $Dog->Breed}}</td>
-                      <td>{{ $Dog->Registrationspecies}}</td>
-                      <td>{{ $Dog->Nomicrochip}}</td>
+                      <td>{{ $Dog->breed}}</td>
                       <td>{{ $Dog->color}}</td>
-                      <td>{{ $Dog->SEX}}</td>
-                      <td>{{ $Dog->Father}}</td>
-                      <td>{{ $Dog->Momher}}</td>
-                      <td>{{ $Dog->birthday}}</td>
-                      <td>{{ $Dog->Breedername}}</td>
-                      <td>{{ $Dog->Owner}}</td>
-                      <td>{{ $Dog->Registrationdate}}</td>
-                      <td>{{ $Dog->Status}}</td>
-                      <!--<td><a href="/admin/dashboard/edit/" class="btn btn-primary">Edit</a></td>
+                      <td>{{ $Dog->sex}}</td>
+                      <td>{{ $Dog->breedername}}</td>
+                      <td>{{ $Dog->owner}}</td>
+                      <td><a href="/admin/dashboard/edit/" class="btn btn-primary">Edit</a></td>
                             <td>
                                 <form action="/admin/dashboard/edit//destroy" method="post">
                                   @csrf
@@ -65,7 +56,7 @@
                                   <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                                 
-                            </td>-->
+                            </td>
                     </tr>
                     @endforeach
                   </tbody>
