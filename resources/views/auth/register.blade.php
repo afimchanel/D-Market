@@ -41,11 +41,13 @@
 
                         <div class="form-group row">
                             <label for="SEX" class="col-md-4 col-form-label text-md-right">{{ __('เพศ') }}</label>
-                            <select class="custom-select @error('SEX') is-invalid @enderror" name='SEX' required id="SEX" value="{{ old('SEX') }}" required autocomplete="SEX" autofocus>
-                              <option value="">เลือกเพศ</option>
+                            <div class="col-md-6">
+                            <select  class="custom-select @error('SEX') is-invalid @enderror" name='SEX' required id="SEX" value="{{ old('SEX') }}" required autocomplete="SEX" autofocus>
+                              <option value="" >เลือกเพศ</option>
                               <option value="M">ชาย</option>
                               <option value="F">หญิง</option>
                             </select>
+                            </div>
                             @error('SEX')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -43,7 +43,7 @@
           <tbody>
             @foreach($payment as $item)
             <tr>
-                <td>{{ $item->id_user }}</td>
+              <td>{{ $item->id_user}}</td>
 
               <td>{{ $item->Order_ID }}</td>
 
@@ -53,11 +53,8 @@
               <td><button type="button" class="btn btn-outline-info"></button></td>
               <td>{{ $item->tel_Customer }}</td>
               <td>{{ $item->Transferdate }}</td>
-              <td><button type="button" class="btn btn-success" onclick="event.preventDefault();
-                document.getElementById('success-form').submit();">ยืนยัน</button>
-                <form id="success-form" action="/Payment/success/{{$item->id_user}}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+              <td><a href="/Payment/success/{{ $item->Order_ID}}" class="btn btn-success" >ยืนยัน</a>
+              
               </td>
 
             </tr>

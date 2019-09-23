@@ -513,7 +513,7 @@ $cartcount = orderdetail::countcart();
                         <li class="nav-item mr-md-0 pt-4 px-0 ">
                             <a id="navbar" class="nav-link" style="font-size:20px" href="/show/order/{{ Auth::user()->id}}" role="button">
                                 
-                                <span class="fa fa-shopping-cart">{{$cartcount}}</span>
+                                <span class="fa fa-shopping-cart">{{$cartcount}}แก้ให้ORDERID ไม่ขึ้นถ้าจ่ายตังแล้ว</span>
                             </a>
                         </li>
                         <!--End Add to car -->

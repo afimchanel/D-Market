@@ -19,7 +19,7 @@
     // ->Orderby('order_detail.updated_at','desc')->limit(1)
 
     $total = 0
-    
+
  ?>
 @section('content')
 
@@ -63,18 +63,15 @@
             </tr>
         @endif
             
-            <caption>ค่าขนส่ง : ?? จำนวนตัว *(นน+ค่าจักส่ง) </caption>
+            <caption>ค่าขนส่ง : ?? จำนวนตัว{{count($order)*80}}*(ค่าจัดส่ง) </caption>
             <caption>ราคารวมทั้งสิ้น : {{$total}}</caption>
     </tbody>
 </table>
-
-
-เพิ่ม ช่องสถานะในตาราง post  ทำเช็คบล้อคที่เลือกธนาคารที่โอนด้วย ทำคำนวนค่าจัดส่ง 
     <div class="container">
         <form action="{{ route('Payment.store') }}" enctype="multipart/form-data" method="post">
             @csrf 
             <div class="row">
-                
+                <input type="text" name="order_id" value="{{$orderid->Order_ID}}" style="display: none;">
                 <div class="col-25">
                     <label>จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
                 </div>

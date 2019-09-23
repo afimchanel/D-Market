@@ -17,7 +17,7 @@ class postController extends Controller
     public function index()
     {
         $post = DB::table('posts')
-        ->leftJoin('dogs', 'posts.id_the_dog', '=', 'dogs.id')
+        ->Join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
         
         ->leftJoin('dogimages', 'posts.id_the_dog', '=', 'dogimages.dog_id')
         ->where('posts.Post_id', '>', 0)

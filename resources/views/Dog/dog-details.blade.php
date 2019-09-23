@@ -68,7 +68,7 @@ $video = dogvideo::where(['dog_id'=>$iddog])->get();
                     Your browser does not support HTML5 video.
             </video>
             <ul>
-                <li>สายพันธุ์ :<a  class="badge badge-success" href="/search/{{$Dog->breed}}"> {{$Dog->breed}}</a></li>
+                <li>สายพันธุ์ :<a class="badge badge-success" href="/search/{{$Dog->breed}}"> {{$Dog->breed}}</a></li>
                 <li>สี :
                     @if ($Dog->color === '1')
                     <a href="#" class="badge badge-primary">ขาว</a>

@@ -39,7 +39,7 @@ class PaymentController extends Controller
           error_log('store');
           $payment = new payment([
             'price_payment' => $request->get('price_payment'),
-            'Order_ID' => $request->order_id,
+            'Order_ID' => $request->get('order_id'),
             'Transferdate'=> $request->get('Transferdate'),
             'tel_Customer'=> $request->get('tel_Customer'),
             'receiving_location'=> $request->get('receiving_location'),
@@ -82,7 +82,7 @@ class PaymentController extends Controller
             $payment->image_payment_IDcardnumber = $image_payment_IDcardnumberStore;
             $payment->image_payment = $image_paymentStore;
           $payment->save();
-          return redirect('/')->with('success', 'Stock has been added');
+          return redirect('/')->with('success', 'เพิ่มใบเปย์เม้นสำเร็จ');
     }
 
     /**
@@ -131,7 +131,8 @@ class PaymentController extends Controller
     }
     public function success($id)
     {
-        $order = orders::where('id_user',$id)->Orderby('updated_at','desc')->first();
+        error_log($id);
+        $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
         
         $order->Status = 1;
         $order->save();

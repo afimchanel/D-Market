@@ -56,11 +56,8 @@ class searchController extends Controller
     }
     public function search(Request $request)
     {
-        $dog = Dog::where('dogs.breed', '=',  $request->breed ) 
-        
-        ->orWhere('dogs.color', 'LIKE', '%' . $request. '%')
-        ->orWhere('dogs.sex', 'LIKE', '%' . $request. '%')->get();
-        return $dog;
+        $search = Dog::where('dogs.breed', 'LIKE','%' . $request->breed .'%' )->get();
+        return $search;
 
 
     }

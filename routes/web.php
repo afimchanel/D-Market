@@ -36,7 +36,7 @@ Route::post('/search', 'searchController@show_index');
 Route::get('/search/{ss}', 'searchController@search');
 Route::post('/searchcategory', 'searchController@show_category');
 Route::resource('Payment', 'PaymentController');
-Route::post('Payment/success/{id}', 'PaymentController@success');
+Route::get('Payment/success/{id}', 'PaymentController@success');
 
 Route::get('notify/index', 'NotificationController@index');
 Auth::routes(['verify' => true]);
