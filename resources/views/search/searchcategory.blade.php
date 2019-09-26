@@ -132,7 +132,7 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Category 1
+                เรียงจาก
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
@@ -140,7 +140,7 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-4">
-                      <span class="text-uppercase ">Category 1</span>
+                      <span class="text-uppercase ">ราคาน้อยไปมาก </span>
                       <ul class="nav flex-column">
 
                       </ul>
@@ -157,36 +157,46 @@
       </nav>
       
 
-      @if(isset($details))
+     
+    @if(isset($details))
+        <div class="row ">
 
-      <div class="row ">
+          @foreach ($details as $item)
 
-        @foreach ($details as $item)
+          <div class="col-lg-4 col-md-6 mb-4 py-2">
+            <div class="card h-100">
+              <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}} {{$item->Breed}}</a>
 
-        <div class="col-lg-4 col-md-6 mb-4 py-2">
-          <div class="card h-100">
-            <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->imagedog}}" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="/{{$item->ID_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}} {{$item->Breed}}</a>
+                </h4>
+                <h5>ราคา : {{$item->price}}</h5>
+                  @if ($item->order_id == NULL || $item->id_post !== NULL )
+                    <span class="badge badge-success">สถานะ : ปกติ</span>
+                  @elseif ($item->order_id !== NULL && $item->Status == 0)
+                      <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
+                  @elseif ($item->Status == 0)
+                      <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
+                  @elseif ($item->Status == 1)
+                      <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+                  @endif
+                
+              </div>
+              <div class="row justify-content-end">
+                <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->ID_dog }}/{{$item->Post_id}}">Add to cart</a>
 
-              </h4>
-              <h5>ราคา : {{$item->price}}</h5>
-              <p class="card-text">{{$item->Detail_Dog}}</p>
-            </div>
-            <div class="row justify-content-end">
-              <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->ID_dog }}/{{$item->Post_id}}">Add to cart</a>
-
+              </div>
             </div>
           </div>
+          @endforeach
+
         </div>
-        @endforeach
-
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
       {{$details->links()}}
-      @endif
-
+      @else
+      ทำรูปไม่พบสุนัข
+    @endif
     </div>
     <!-- /.col-lg-9 -->
 

@@ -19,6 +19,7 @@
   <h6 class="text-center">REGISTRATION CERTIFICATE</h6>
 
   <div class="form-group ">
+    เพิ่มสุนัขเป็นการเพิ่มเข้าในระบบ แต่ยังไม่ขายเหมืทอนกับว่าให้โปรโมทให้คนสนใจก่อนถ้าหน้าร้านประกาศวันลงขายเมื่อไหร่(วันพร้อมส่ง)
     <form method="post" action="{{ route('dog.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
       @csrf
       <div class="form-row">

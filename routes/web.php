@@ -36,7 +36,7 @@ Route::post('/search', 'searchController@show_index');
 Route::get('/search/{ss}', 'searchController@search');
 Route::post('/searchcategory', 'searchController@show_category');
 Route::resource('Payment', 'PaymentController');
-Route::get('Payment/success/{id}', 'PaymentController@success');
+
 
 Route::get('notify/index', 'NotificationController@index');
 Auth::routes(['verify' => true]);
@@ -68,7 +68,9 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/create/order/{id}/{ID_dog}/{id_post}', 'OrderController@store');
                 Route::get('/show/order/{id}', 'OrderController@show');
                 Route::get('/orders/{id}', 'OrderController@createorder');
-                //Route::get('');
+                //payment
+                    Route::get('Payment/success/{id}', 'PaymentController@success');
+                    Route::get('Payment/geted/{id}', 'PaymentController@geted');
 });
 
 //Route for admin
@@ -80,6 +82,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/dashboard/edit/{id}/destroy', 'admin\AdminController@destroy');
         Route::get('/listdogs', 'admin\AdminController@indexdogs');
         Route::get('/payment', 'admin\AdminController@indexpayment');
+        Route::get('/post', 'admin\AdminController@indexpost');
     });
 });
 //Route for facebook

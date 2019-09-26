@@ -139,4 +139,14 @@ class PaymentController extends Controller
         return $order;
         
     }
+    public function geted($id)
+    {
+        error_log($id);
+        $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
+        
+        $order->Status = 2;
+        $order->save();
+        return view('buying.index');
+        
+    }
 }

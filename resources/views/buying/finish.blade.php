@@ -2,7 +2,7 @@
 use App\orderdetail;
 use App\orders;
 $orderid = orders::where('id_user',Auth::user()->id)
-->where('Status',1)
+->where('Status',2)
 ->Orderby('updated_at','desc')->first();
 if ($orderid === NULL) {
   return $order = NULL;
@@ -19,7 +19,9 @@ if ($orderid === NULL) {
 
 
 ?>
-ยังมีบัคถ้าคนไม่ข้อมูลในตารางorder_detail แก้ด้วย
+ต้องแก้ให้หมาเป็นid ของเจ้าของคนชื้อด้วย
+ทำให้โพสซ้อนด้วย
+ทำประกัน7วันด้วย
 @if(isset($order))
       @foreach ($order as $item)
     {{$item->Order_detail}}
@@ -35,22 +37,21 @@ if ($orderid === NULL) {
                             {{$item->receiving_location}} 
                             @endif
                 </dt>
-              <dd>สถานะ : รอรับสุนัข</dd>
+              <dd>สถานะ : โอนย้ายสำเร็จ</dd>
             </dl>
             <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
               <dl class="param param-inline small">
                 <dt>ราคา: {{$item->price}}</dt>
                 <dd>ดูข้อมูลการชื้อ</dd>
                 
-                <a href="Payment/geted/{{$item->Order_ID}}"><button type="button" class="btn btn-success">ได้รับสุนัขแล้ว</button></a>
+                
               </dl>
             </div>
             
           </figcaption>
         </figure> 
     @endforeach
-@else
-    ;jk
+
 @endif
 
 

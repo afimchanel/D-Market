@@ -18,8 +18,8 @@ class postController extends Controller
     {
         $post = DB::table('posts')
         ->Join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
-        
-        ->leftJoin('dogimages', 'posts.id_the_dog', '=', 'dogimages.dog_id')
+        ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
+        ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
         ->where('posts.Post_id', '>', 0)
         ->paginate(9);
         

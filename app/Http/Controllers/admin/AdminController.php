@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\user;
+use App\post;
 use Auth;
 use DB;
 use App\Dog;
@@ -34,7 +35,13 @@ class AdminController extends Controller
         return view('admin/listdogs', compact('Dogs'));
         error_log('listdogsadmin2');
     }
-    
+    public function indexpost()
+    {
+        $posts = post::all();
+
+        return view('admin.postdog', compact('posts'));
+    }
+
     public function indexpayment()
     {
         error_log('payment');
@@ -87,7 +94,6 @@ class AdminController extends Controller
 
         return redirect('/admin/dashboard');
     }
-
 
 
 }

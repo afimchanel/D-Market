@@ -2,10 +2,11 @@
 <?php 
     use App\orderdetail;
     use App\orders;
-    $x = orderdetail::where('id_user',Auth::user()->id);ต้องหาidคนมาชื้ให้ได้เอามาwhere orderid 
+    $x = orderdetail::where('id_user',Auth::user()->id); //ต้องหาidคนมาชื้ให้ได้เอามาwhere orderid 
     $orderid = orders::where('id_user',3)
     ->where('Status',1)
     ->Orderby('updated_at','desc')->first();
+
     $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
     ->join('users', 'order_detail.id_user', '=', 'users.id')
     ->join('posts','order_detail.id_post','=','posts.Post_id')
@@ -13,8 +14,9 @@
     ->where('posts.user_id',Auth::user()->id)
     ->where('order_detail.id_post',16)
     ->Where('order_detail.order_id','!=',NULL)
-    ->where('order_detail.order_id',$orderid->Order_ID)
+    ->where('order_detail.order_id',200) //9ต้องมาเเก้น่าจา
     ->get();
+    
 
 
     // ->Orderby('order_detail.updated_at','desc')->limit(1)
@@ -22,6 +24,7 @@
     $total = 0
 
  ?>
+
 @foreach ($order as $item)
 
     <figure class="media">

@@ -34,6 +34,8 @@ class searchController extends Controller
 
         $post =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
+            ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
+            ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
             ->where('dogs.Breed', 'LIKE', '%' . $request->Breed . '%')
             ->orWhere('posts.Age_Dog', 'LIKE', '%' . $request->Age_Dog . '%')
             ->orWhere('posts.type_dog', 'LIKE', '%' . $request->type_dog . '%')
@@ -41,7 +43,7 @@ class searchController extends Controller
             ->orWhere('posts.eye_color', 'LIKE', '%' . $request->eye_color . '%')
             ->orWhere('dogs.color', 'LIKE', '%' . $request->color . '%')
             ->orWhere('dogs.SEX', 'LIKE', '%' . $request->SEX . '%')
-            ->paginate(10);
+            ->paginate(9);
         //->get();
         error_log('showcategory');
 
@@ -51,7 +53,7 @@ class searchController extends Controller
         }
         else{
             error_log('else');
-            return view('search.searchcategory')->with('Message','No Details found. Try to search again !')->withDetails($post)->withQuery($request);
+            return view('search.searchcategory')->with('Message','No Details found. Try to search again !')->withQuery($request);
         }            
     }
     public function search(Request $request)

@@ -217,7 +217,18 @@ $breeder = breederm::where('user_id',$users->id)->get();
 
                             <div class="card-body text-center">
                                 <h4 class="card-title ">
-                                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
+                                        <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
+                                    @if ($item->order_id == NULL || $item->id_post !== NULL )
+                                        <span class="badge badge-success">สถานะ : ปกติ</span>
+                                    @elseif ($item->order_id !== NULL && $item->Status == 0)
+                                        <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
+                                    @elseif ($item->Status == 0)
+                                        <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
+                                    @elseif ($item->Status == 1)
+                                        <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+                                    @endif
+                                    
+                                    
                                 </h4>
                                 <p class="card-text">{{$item->Detail_Dog}}</p>
                             </div>

@@ -146,7 +146,8 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-4">
-                      <span class="text-uppercase ">น้อยไปมาก</span>
+                      <span class="text-uppercase ">ราคาน้อยไปมาก</span>
+                      <span class="text-uppercase ">ราคาน้อยไปมาก</span>
                       <ul class="nav flex-column">
                       </ul>
                     </div>
@@ -170,14 +171,23 @@
 
         <div class="col-lg-4 col-md-6 mb-4 py-2">
           <div class="card h-100">
-            <a href="/{{$item->id}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$item->image}}" alt=""></a>
+            <a href="/{{$item->id}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}} {{$item->breed}}</a>
 
               </h4>
               <h5>ราคา : {{$item->price}}</h5>
-              <p class="card-text">{{$item->Detail_Dog}}</p>
+              @if ($item->order_id == NULL || $item->id_post !== NULL )
+                  <span class="badge badge-success">สถานะ : ปกติ</span>
+              @elseif ($item->order_id !== NULL && $item->Status == 0)
+                  <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
+              @elseif ($item->Status == 0)
+                  <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
+              @elseif ($item->Status == 1)
+                  <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+              @endif
+              
             </div>
             <div class="row justify-content-end">
               <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->id_the_dog }}/{{$item->Post_id}}">เพิ่มไปยังตะกร้า</a>

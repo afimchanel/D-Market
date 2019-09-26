@@ -135,9 +135,11 @@ class ordercontroller extends Controller
      */
     public function destroy($id)
     {
-        $order = orders::find($id);
-        $order->delete();
-        return redirect()->route('post.index');
+        error_log($id);
+        $Order = orderdetail::where('Order_detail',$id);
+        $Order->delete();
+        //แก้ให้มัันกดปุ่มแล้วรีกลับหน้าเดิม
+        return view('Shoppingcart',compact('Order'));
     }
     public function createorder($id)
     {

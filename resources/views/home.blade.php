@@ -205,7 +205,7 @@
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
 								<div class="img-box">
-									<a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">แก้ส่วนนี้ ให้เป็นเฉพาะรูปปก
+									<a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
 										<img class="img-responsive img-fluid"  src="/storage/public/imagecover/{{$item->image}}" style="width:120px; height:120px;">
 									</a>
 								</div>

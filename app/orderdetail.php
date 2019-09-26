@@ -16,7 +16,7 @@ class orderdetail extends Model
       if (Auth::check()) {
         
           $id_user = Auth::user()->id;
-          $cartcount= orderdetail::where(['id_user'=>$id_user])->sum('count');
+          $cartcount= orderdetail::where(['id_user'=>$id_user])->where('order_id',Null)->sum('count');
           
           return $cartcount;
       }

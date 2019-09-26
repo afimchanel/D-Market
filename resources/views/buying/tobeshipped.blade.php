@@ -6,8 +6,8 @@ $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
 ->LEFTjoin('posts', 'order_detail.id_post', '=', 'posts.Post_id')
 ->LEFTjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')->get();
 
-?>เ
-ว้นไว้ก่รอ
+?>
+เว้นไว้ก่รอ
 @foreach ($order as $item)
 {{$item->Order_detail}}
     <figure class="media">
