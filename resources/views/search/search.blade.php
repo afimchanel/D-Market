@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="container">
-    
+
     @if(isset($details))
     <p> The Search results for your query <b> {{ $query }} </b> are :</p>
     <h2>Sample User details</h2>
-    
+
     <!-- row-->
     <div class="row">
         @foreach($details as $Dog)

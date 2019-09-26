@@ -48,7 +48,7 @@
             Looks good!
           </div>
         </div>
-        
+
         <div class="col-md-4 mb-3">
           <label for="validationTooltip02">ชื่อสุนัข</label>
           <input type="text" class="form-control" id="validationTooltip02" name="namedog" value='{{$Dog->namedog}}' required>
@@ -162,7 +162,7 @@
             <label class="custom-file-label" for="cover_image">Choose file</label>
           </div>
         </div>
-        
+
       </div>
 
       <div class="container">

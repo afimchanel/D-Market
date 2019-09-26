@@ -17,8 +17,8 @@
 <div class="container  text-center ">
 
         <h1 class="text-center">กรอกข้อมูลโพสสุนัขเพื่อขาย</h1>
-        <img class="img-fluid img-thumbnai" src="/storage/public/imagedog/{{$post->imagedog}}" style="width:500px; height:500px;">
-        <form method="post" action="/{{{auth()->user()->id}}}/{{$post->ID_dog}}/create/post" enctype="multipart/form-data" class="text-center container" novalidate>
+        <img class="img-fluid img-thumbnai" src="/storage/public/imagecover/{{$post->image}}" style="width:500px; height:500px;">
+        <form method="post" action="/{{auth()->user()->id}}/{{$post->ID_dog}}/create/post" enctype="multipart/form-data" class="text-center container" novalidate>
                 @csrf
 
                 <div class="container">
@@ -59,7 +59,7 @@
 
                                 <div class="input-group mb-2">
                                         <div class="input-group-prepend">
-                                                <div class="input-group-text">อายุสุนัข(ตอนนี้)หน่วยเป็นเดือน</div>
+                                                <div class="input-group-text">อายุสุนัขหน่วยเป็นวัน</div>
                                         </div>
                                         <select class="custom-select" name="Age_Dog">
                                                 <option selected>เลือกอายุสุนัข</option>

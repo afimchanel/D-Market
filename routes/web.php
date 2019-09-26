@@ -55,7 +55,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/post/dog/{iddog}/{id}', 'DogController@post');
         Route::post('/update/dog/{ID_dog}', 'DogController@update');
         Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
-        
         Route::get('/view/dog/{ID_dog}', 'DogController@show');
         Route::get('/view/dogbreed/{ID_dog}', 'DogController@showbreed');
         Route::get('/view/dog/breed/{namedog}', 'DogController@showbreedm');
@@ -63,6 +62,9 @@ Route::group(['middleware' => ['auth']], function () {
         //Post
             Route::get('/view/category', 'PostController@index');
             Route::get('/{ID_dog}/{Post_id}/view/post', 'PostController@show');
+            Route::get('/edit/post/{idpost}/', 'postController@edit');
+            Route::get('/update/post/{idpost}/', 'postController@update');
+            
             Route::post('/{id}/{ID_dog}/create/post', 'PostController@store');
             //Order
                 Route::get('/create/order/{id}/{ID_dog}/{id_post}', 'OrderController@store');

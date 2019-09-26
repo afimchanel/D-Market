@@ -13,15 +13,15 @@
         <div class="container">
 
             <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4">โปรไฟล์</h1>
-         
+
             <hr class="mt-2 mb-5">
 
             <div class="row text-center text-lg-left">
-                    @if(session()->get('error'))
-                    <div class="alert alert-success">
-                      {{ session()->get('error') }}  
-                    </div><br />
-                    @endif
+                @if(session()->get('error'))
+                <div class="alert alert-success">
+                    {{ session()->get('error') }}
+                </div><br />
+                @endif
                 <div class="col-sm-3  ">
                     <img class="img-fluid img-thumbnail" src="/storage/avatars/{{ Auth::user()->Avatar }}" alt="" style="width:224px; height:224px;">
                     <form action="/{id}/updateavater" method="post" enctype="multipart/form-data">
@@ -54,7 +54,7 @@
                         <textarea type="text" class="form-control" name="address" value="{{ Auth::user()->address }} "> </textarea>
                     </div>
                     <div class="form-group ">
-                            ใบอนุญาตจากสมาคม(ถ้ามี)
+                        ใบอนุญาตจากสมาคม(ถ้ามี)
                         <div class="custom-file input-group mb-2">
                             <input type="file" name="license" class="custom-file-input" accept=".png, .jpg, .jpeg">
                             <label class="custom-file-label" for=""></label>
@@ -62,11 +62,11 @@
                     </div>
                     <div class="form-group ">
                         บัตรประจำตัวประชาชน ยังไม่เสจเเก้ด้วย
-                    <div class="custom-file input-group mb-2">
-                        <input type="file" name="IDcardnumber" class="custom-file-input" accept=".png, .jpg, .jpeg">
-                        <label class="custom-file-label" for=""></label>
+                        <div class="custom-file input-group mb-2">
+                            <input type="file" name="IDcardnumber" class="custom-file-input" accept=".png, .jpg, .jpeg">
+                            <label class="custom-file-label" for=""></label>
+                        </div>
                     </div>
-                </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">ที่อยู่ฟาร์ม</label>
                         ***กรอกแค่ ต. อ. จ.

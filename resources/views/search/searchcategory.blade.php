@@ -37,13 +37,24 @@
         <div class="list-group">
 
           <div class="form-group">
-            <label for="exampleFormControlSelect1">ช่วงอายุสุนัข</label>
+            <label for="exampleFormControlSelect1">ช่วงอายุสุนัข(หน่วยเป็นวัน)</label>
             <select class="custom-select" name="Age_Dog">
-              <option selected>{{$query->Age_Dog}}</option>
-              <option value="1">1-2</option>
-              <option value="2">3-4</option>
-              <option value="3">5-6</option>
-              <option value="4">อื่นๆ</option>
+              <option selected>         
+                @if ($query->Age_Dog !== 2 && $query->Age_Dog !== 3 && $query->Age_Dog !== 4)
+                  {{$query->Age_Dog}}
+                @elseif ($query->Age_Dog == 2)
+                  30-49 วัน
+                @elseif ($query->Age_Dog == 3)
+                  50-65 วัน
+                @elseif ($query->Age_Dog == 4)
+                  เกินกว่านั้น
+
+                @endif
+              </option>
+              
+              <option value="2">30-49</option>
+              <option value="3">50-65</option>
+              <option value="4">เกินกว่านั้น</option>
             </select>
           </div>
 
@@ -55,7 +66,13 @@
 
           <div class="form-group">ลักษณะ
             <select class="custom-select" name='type_dog'>
-              <option selected>{{$query->type_dog}}</option>
+              <option selected>{{$query->type_dog}}
+                @if ($query->type_dog = 1)
+                  ตัวเล็ก
+                @elseif ($query->type_dog = 2)
+                  ตัวใหญ่
+                @endif
+                </option>
               <option value="1">ตัวเล็ก</option>
               <option value="2">ตัวใหญ่</option>
 
@@ -67,7 +84,15 @@
           <div class="form-group">
             น้ำหนัก
             <select class="custom-select" name="weight_dog">
-              <option selected>{{$query->weight_dog}}</option>
+              <option selected>{{$query->weight_dog}}
+                @if ($query->weight_dog = 1)
+                  1-5 กิโล
+                @elseif ($query->weight_dog = 2)
+                  5-10 กิโล
+                @elseif ($query->weight_dog = 3)
+                  มากว่านั้น
+                @endif
+              </option>
               <option value="1">1-5 กิโล</option>
               <option value="2">5-10 กิโล</option>
               <option value="3">มากว่านั้น</option>
@@ -81,11 +106,21 @@
           <div class="form-group">สีตา
           </div>
           <select class="custom-select" name="eye_color">
-            <option selected>{{$query->eye_color}}</option>
+            <option selected>{{$query->eye_color}}
+              @if ($query->eye_color = 1)
+                สีดำ
+              @elseif ($query->eye_color = 2)
+              สีน้ำตาล
+              @elseif ($query->eye_color = 3)
+              สีฟ้า
+              @elseif ($query->eye_color = 4)
+              นอกเหนือจากนี้
+              @endif
+            </option>
             <option value="1">ดำ</option>
             <option value="2">น้ำตาล</option>
             <option value="3">ฟ้า</option>
-            <option value="4">อื่นๆ</option>
+            <option value="4">นอกเหนือจากนี้</option>
           </select>
         </div>
 
@@ -97,7 +132,15 @@
         <div class="form-group ">
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สี</label>
           <select class="custom-select" name='color'>
-            <option selected>{{$query->color}}</option>
+            <option selected>{{$query->color}}
+              @if ($query->color = 1)
+                สีขาว
+              @elseif ($query->color = 2)
+                สีดำ
+              @elseif ($query->color = 3)
+                อื่นๆ
+              @endif
+            </option>
             <option value="1">ขาว</option>
             <option value="2">ดำ</option>
             <option value="3">อื่น</option>
@@ -109,12 +152,18 @@
         <div class="form-group">
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
           <select class="custom-select" name='SEX' required>
-            <option selected>{{$query->SEX}}</option>
+            <option selected>{{$query->SEX}}
+              @if ($query->SEX = "M")
+                ตัวผู้
+              @elseif ($query->SEX = "G")
+                ตัวเมีย
+              @endif
+            </option>
             <option value="M">ตัวผู้</option>
             <option value="G">ตัวเมีย</option>
 
           </select>
-          <div class="invalid-feedback">กรุณาเลือกเพศ</div>
+          
         </div>
 
         <button class="btn btn-outline btn-filmm my-2 my-sm-0" type="submit">ค้นหา</button>
@@ -125,42 +174,13 @@
     <!-- /.col-lg-3 -->
 
     <div class="col-lg-9 ">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                เรียงจาก
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <span class="text-uppercase ">ราคาน้อยไปมาก </span>
-                      <ul class="nav flex-column">
-
-                      </ul>
-                    </div>
-
-
-                  </div>
-                </div>
-                <!--  /.container  -->
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      
       
 
      
     @if(isset($details))
         <div class="row ">
-
+                  
           @foreach ($details as $item)
 
           <div class="col-lg-4 col-md-6 mb-4 py-2">
@@ -196,6 +216,11 @@
       {{$details->links()}}
       @else
       ทำรูปไม่พบสุนัข
+                  @if(session()->get('Message'))
+                    <div class="alert alert-warning">
+                      {{ session()->get('Message') }}  
+                    </div><br />
+                    @endif 
     @endif
     </div>
     <!-- /.col-lg-9 -->

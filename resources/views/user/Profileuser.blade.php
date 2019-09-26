@@ -125,20 +125,22 @@
 
     /*#endregion*/
 </style>
-<?php 
+<?php
+
 use App\breederm;
-$breeder = breederm::where('user_id',$users->id)->get();
+
+$breeder = breederm::where('user_id', $users->id)->get();
 ?>
 @section('content')
-     
+
 <!-- ด้านบนหน้าร้าน -->
 
 <div class="jumbotron jumbotron-fluid  ">
 
-        
+
     <div class="container ">
         <div class="container">
-            
+
             <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์ {{ $users->name }}</h1>
             <hr class="mt-2 mb-5">
             <div class="row text-center text-lg-left">
@@ -146,7 +148,7 @@ $breeder = breederm::where('user_id',$users->id)->get();
                     <img class="img-fluid img-thumbnail" src="/storage/avatars/{{$users->Avatar}}" style="width:300px; height:250px;">
                 </div>
                 <div class="">
-                    
+
                     E_mail : {{ $users->email }} <br>
                     ชื่อ-นาสกุล : {{ $users->name }} <br>
                     เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
@@ -156,20 +158,20 @@ $breeder = breederm::where('user_id',$users->id)->get();
                     @else
                     ใบทะเบียนจากสมาคม : สถานะ มี <br>
                     @endif
-                    ที่อยู่: 
+                    ที่อยู่:
                     @if ($users->address === NULL )
-                        @if ($users->id === Auth::user()->id)
-                        <div class="alert alert-danger" role="alert">
-                                กรุณากรอกที่อยู่ !!
-                        </div> 
-                        @else
-                            
-                        @endif
-                        
+                    @if ($users->id === Auth::user()->id)
+                    <div class="alert alert-danger" role="alert">
+                        กรุณากรอกที่อยู่ !!
+                    </div>
+                    @else
+
+                    @endif
+
                     @else
                     {{ $users->address }} <br>
                     @endif
-                    <a href="/buying"><button >การชื้อของ{{ $users->name }}   </button></a>
+                    <a href="/buying"><button>การชื้อของ{{ $users->name }} </button></a>
                 </div>
             </div>
         </div>
@@ -217,19 +219,22 @@ $breeder = breederm::where('user_id',$users->id)->get();
 
                             <div class="card-body text-center">
                                 <h4 class="card-title ">
-                                        <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
+                                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
                                     @if ($item->order_id == NULL || $item->id_post !== NULL )
-                                        <span class="badge badge-success">สถานะ : ปกติ</span>
+                                    <span class="badge badge-success">สถานะ : ปกติ</span>
                                     @elseif ($item->order_id !== NULL && $item->Status == 0)
-                                        <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
+                                    <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
                                     @elseif ($item->Status == 0)
-                                        <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
+                                    <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
                                     @elseif ($item->Status == 1)
-                                        <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+                                    <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
                                     @endif
-                                    
-                                    
+
+
                                 </h4>
+                                @if ($item->user_id == auth()->user()->id)
+                                <a href="/edit/post/{{$item->Post_id}}" class="btn btn-light">เเก้ไข</a>
+                                @endif
                                 <p class="card-text">{{$item->Detail_Dog}}</p>
                             </div>
                         </div>
@@ -249,13 +254,13 @@ $breeder = breederm::where('user_id',$users->id)->get();
 
                 <!-- Page Features -->
                 <div class="row text-center">
-                   
+
                     @foreach ($Dogs as $item)
-                    
-                        <div class="col-lg-3 col-md-6 mb-4 ">
+
+                    <div class="col-lg-3 col-md-6 mb-4 ">
                         <div class="card h-100">
-                                
-                            <img class="card-img-top"  src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
+
+                            <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
                             <div class="card-body">
                                 <h4 class="card-title">{{$item->breed}}</h4>
                                 <!--<p class="card-text"></p>-->
@@ -270,8 +275,9 @@ $breeder = breederm::where('user_id',$users->id)->get();
                                         {{ __('โพสขาย') }}
                                     </a>
                                 </div>
-                                <form action="/delete/dog/{{auth()->user()->id}}" >
-                                   
+                                <form action="/delete/dog/{{auth()->user()->id}}">
+                                    @csrf
+                                    @method('DELETE')
                                     <div class="card">
                                         <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
                                     </div>
@@ -282,8 +288,8 @@ $breeder = breederm::where('user_id',$users->id)->get();
                             </div>
                         </div>
                     </div>
-                    
-                   
+
+
                     @endforeach
                 </div>
                 {{$Dogs->links()}}
@@ -293,41 +299,41 @@ $breeder = breederm::where('user_id',$users->id)->get();
 
         <!-- tree -->
         <div class="tab-pane fade " id="pills-profile-dog" role="tabpanel" aria-labelledby="pills-profile-dog-tab">
-                <div class="row text-center">
-                        @foreach ($breeder as $item)
-                        <div class="col-lg-3 col-md-6 mb-4 ">
-                            <div class="card h-100">
-                                    
-                                <img class="card-img-top"  src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{$item->Breed}}</h4>
-                                    <!--<p class="card-text"></p>-->
-                                </div>
-                                <div class="card-footer">
-                                    <a  href="/view/dogbreed/{{$item->id_Breeder}}" class="btn btn-light">ดูรายละเอียด</a>
-                                    
-                                    @if ($item->user_id == auth()->user()->id)
-                                    <a href="/edit/dog/{{$item->id_Breeder}}" class="btn btn-light">เเก้ไข</a>
-    
-                                    <div class="card">
-                                        <a href="/post/dog/{{$item->id_Breeder}}/{{auth()->user()->id}}" class="btn btn-success">
-                                            {{ __('โพสขาย') }}
-                                        </a>
-                                    </div>
-                                    <form action="/delete/dog/{{auth()->user()->id}}" >
-                                       
-                                        <div class="card">
-                                            <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
-                                        </div>
-                                    </form>
-    
-                                    @endif
-    
-                                </div>
-                            </div>
+            <div class="row text-center">
+                @foreach ($breeder as $item)
+                <div class="col-lg-3 col-md-6 mb-4 ">
+                    <div class="card h-100">
+
+                        <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
+                        <div class="card-body">
+                            <h4 class="card-title">{{$item->Breed}}</h4>
+                            <!--<p class="card-text"></p>-->
                         </div>
-                        @endforeach
+                        <div class="card-footer">
+                            <a href="/view/dogbreed/{{$item->id_Breeder}}" class="btn btn-light">ดูรายละเอียด</a>
+
+                            @if ($item->user_id == auth()->user()->id)
+                            <a href="/edit/dog/{{$item->id_Breeder}}" class="btn btn-light">เเก้ไข</a>
+
+                            <div class="card">
+                                <a href="/post/dog/{{$item->id_Breeder}}/{{auth()->user()->id}}" class="btn btn-success">
+                                    {{ __('โพสขาย') }}
+                                </a>
+                            </div>
+                            <form action="/delete/dog/{{auth()->user()->id}}">
+
+                                <div class="card">
+                                    <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
+                                </div>
+                            </form>
+
+                            @endif
+
+                        </div>
                     </div>
+                </div>
+                @endforeach
+            </div>
         </div>
         <!-- tree -->
     </div>

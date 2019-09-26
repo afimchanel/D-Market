@@ -12,10 +12,12 @@
 </div>
 @endif
 <?php
+
 use App\dogimages;
 use App\dogvideo;
-$sliders = dogimages::where(['dog_id'=>$iddog])->get(); 
-$video = dogvideo::where(['dog_id'=>$iddog])->get(); 
+
+$sliders = dogimages::where(['dog_id' => $iddog])->get();
+$video = dogvideo::where(['dog_id' => $iddog])->get();
 ?>
 <!-- Page Content -->
 <div class="container">
@@ -27,45 +29,40 @@ $video = dogvideo::where(['dog_id'=>$iddog])->get();
 
     <!-- Portfolio Item Row -->
     <div class="row">
-            
-        <div class="col-md-8">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                          <li data-target="#demo" data-slide-to="0" class="active"></li>
-                          <li data-target="#demo" data-slide-to="1"></li>
-                          <li data-target="#demo" data-slide-to="2"></li>
-                        </ol>
-                        
-                        <!-- The slideshow -->
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                                @foreach($sliders as $key => $slide)
-                                <div class="item active {{ $key == 0 ? ' active' : '' }}">
-                                    <img class="img-fluid" src="/storage/public/imagedog/{{$slide->image}}" style="width:750px; height:500px;">
-                                </div>
-                                @endforeach
-                          </div>
-                        </div>
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                          <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
-                          <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-     
 
-                   
+        <div class="col-md-8">
+        <!-- The slideshow -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          </ol>
+          <div class="carousel-inner">
+              @foreach($sliders as $key => $slider)
+              <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                  <img src="/storage/public/imagedog/{{$slider->image}}" class="d-block w-100"  alt="..."> 
+              </div>
+              @endforeach
+          </div>
+          <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+
+
+
         </div>
 
         <div class="col-md-4">
             <h3 class="my-3">รายละเอียด</h3>
             <video width="400" controls>
-                    <source src="" type="video/mp4">
-                    <source src="" type="video/mov">
-                    Your browser does not support HTML5 video.
+                <source src="" type="video/mp4">
+                <source src="" type="video/mov">
+                Your browser does not support HTML5 video.
             </video>
             <ul>
                 <li>สายพันธุ์ :<a class="badge badge-success" href="/search/{{$Dog->breed}}"> {{$Dog->breed}}</a></li>
@@ -77,7 +74,7 @@ $video = dogvideo::where(['dog_id'=>$iddog])->get();
                     @elseif($Dog->color === '3')
                     <a href="#" class="badge badge-primary">อื่น*นอกเหนือจากสีขาวและสีดำ</a>
                     @endif
-                    
+
                 </li>
                 <li>เพศ :
                     @if ($Dog->sex === 'M')
@@ -86,7 +83,7 @@ $video = dogvideo::where(['dog_id'=>$iddog])->get();
                     <a href="#" class="badge badge-secondary">ตัวเมีย</a>
                     @endif
                 </li>
-                <li>พ่อพันธุ์ :<a  class="badge badge-warning" href="/view/dog/breed/{{$Dog->father}}"> {{$Dog->father}}</a> </li>
+                <li>พ่อพันธุ์ :<a class="badge badge-warning" href="/view/dog/breed/{{$Dog->father}}"> {{$Dog->father}}</a> </li>
                 <li>แม่พันธุ์ : {{$Dog->momher}}</li>
                 ดูสายพันของตัวนี้
                 <li>วันเกิด :{{$Dog->birthday}}</li>

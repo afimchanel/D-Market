@@ -24,7 +24,7 @@ class searchController extends Controller
             ->orWhere('users.name', 'LIKE', '%' . $q . '%')
             ->paginate(10);
         //->get();
-        if (count($user) > 0)
+        if (count($user) > 0)//แก้หน้าแสดงผลให้ดีขึ้น
             return view('search.search')->withDetails($user)->withQuery($q);
         else
             return view('search.search')->withMessage('No Details found. Try to search again !');

@@ -40,10 +40,9 @@
             <label for="exampleFormControlSelect1">ช่วงอายุสุนัข</label>
             <select class="custom-select" name="Age_Dog">
               <option selected>เลือกช่วงอายุ</option>
-              <option value="1">1-2</option>
-              <option value="2">3-4</option>
-              <option value="3">5-6</option>
-              <option value="4">อื่นๆ</option>
+              <option value="2">30-49</option>
+              <option value="3">50-65</option>
+              <option value="4">เกินกว่านั้น</option>
             </select>
           </div>
 
@@ -85,7 +84,7 @@
             <option value="1">ดำ</option>
             <option value="2">น้ำตาล</option>
             <option value="3">ฟ้า</option>
-            <option value="4">อื่นๆ</option>
+            <option value="4">นอกเหนือจากนี้</option>
           </select>
         </div>
 
@@ -131,42 +130,11 @@
 
 
     <div class="col-lg-9 ">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                เรียงจาก
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <span class="text-uppercase ">ราคาน้อยไปมาก</span>
-                      <span class="text-uppercase ">ราคาน้อยไปมาก</span>
-                      <ul class="nav flex-column">
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <!--  /.container  -->
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
+   
 
 
       <div class="row ">
-          @if(session()->get('Message'))
-                    <div class="alert alert-warning">
-                      {{ session()->get('Message') }}  
-                    </div><br />
-                    @endif 
+
         @foreach ($post as $item)
 
         <div class="col-lg-4 col-md-6 mb-4 py-2">
