@@ -127,22 +127,54 @@ class Usercontroller extends Controller
      */
     public function update(Request $request)
     {       
-        
+        $request->validate([
+            'name' => 'required',
+            'DateofBirth' => 'required',
+            'Tel' => 'required',
+            'address' => 'required',
+
+            'Farmaddress' => 'required',
+        ]);
         $user = Auth::user();
-        if ($request->has('profile_image')) {
-        
-            $IDcardnumber = $user->id.'_IDcardnumber'.time().'.'.request()->IDcardnumber->getClientOriginalExtension();
-    
-            $request->IDcardnumber->storeAs('idcardnumber',$IDcardnumber);
-    
-            $user->IDcardnumber = $IDcardnumber;
-            }
+
+            $IDcardnumber = $request->file('IDcardnumber');
+                if ($request->hasFile('IDcardnumber')) {
+
+                    error_log('upload');
+                    // Get filename with the extension
+                    $filenameWithExt = $IDcardnumber->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $IDcardnumber->getClientOriginalExtension();
+                    // Filename to store
+                    $imageIDcardnumber = $filename . '_IDcardnumber' . time() . '.' . $extension;
+                    // Upload Image
+                    $path = $IDcardnumber->storeAs('public/idcardnumber', $imageIDcardnumber);
+                } 
+            $license = $request->file('license');
+                if ($request->hasFile('license')) {
+
+                    error_log('upload');
+                    // Get filename with the extension
+                    $filenameWithExt = $license->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $license->getClientOriginalExtension();
+                    // Filename to store
+                    $imagelicense = $filename . '_license' . time() . '.' . $extension;
+                    // Upload Image
+                    $path = $license->storeAs('public/license', $imagelicense);
+                } 
+
+
         $user->name = request()->input('name');
         $user->DateofBirth = request()->input('DateofBirth');
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
-
-        $user->license = request()->input('license');
+        $user->IDcardnumber = $request->imageIDcardnumber;
+        $user->license = $request->imagelicense;
         $user->Farmaddress = request()->input('Farmaddress');
         error_log('updateuser');
         $user->save();

@@ -146,7 +146,9 @@ class ordercontroller extends Controller
         if (Auth::check()) {
             error_log('if1');
             $find = orders::where('id_user',$id)->Orderby('updated_at','desc')->first();
-            if ($find === NULL || $find->Status === 0 ) {
+
+            if ($find == NULL ) {
+
                 $order = new orders;
                 $order->id_user = $id;
                 $order->save();
@@ -159,7 +161,7 @@ class ordercontroller extends Controller
                     $item->save();
                 }
                 return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
-            } else {
+            } elseif($find !== NULL && $find->Status == 0 ) {
                 error_log('else');
                 $Order = DB::table('order_detail')
                 ->where('id_user', '=', $id)

@@ -41,7 +41,7 @@ class DogController extends Controller
         if (auth()->user()->email_verified_at != NULL && (auth()->user()->IDcardnumber != NULL )) {
             return view('Dog.postdog');
         } else {
-            # code...
+            return view('user.EditProfileuser');
         }
         
         
@@ -394,7 +394,7 @@ class DogController extends Controller
             // Filename to store
             $imageCPStore = $filename . '_' . time() . '.' . $extension;
             // Upload Image
-            $path = $imageCP->storeAs('public/imagedog/cover_images', $imageCPStore);
+            $path = $imageCP->storeAs('public/imagedog/imageCP', $imageCPStore);
             $Dogs->imageCP = $imageCPStore;
         }
 
@@ -414,7 +414,7 @@ class DogController extends Controller
             // Filename to store
             $imageRCStore = $filename . '_' . time() . '.' . $extension;
             // Upload Image
-            $path = $imageRC->storeAs('public/imagedog/cover_images', $imageRCStore);
+            $path = $imageRC->storeAs('public/imagedog/imageRC', $imageRCStore);
             $Dogs->imageRC = $imageRCStore;
         }
         

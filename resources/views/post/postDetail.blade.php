@@ -45,7 +45,7 @@ $sliders = dogimages::where(['dog_id' => $dog->id])->get();
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
           </a>
-      </div>
+        </div>
       
  
     <!-- /.col-lg-8 -->
@@ -55,9 +55,9 @@ $sliders = dogimages::where(['dog_id' => $dog->id])->get();
       สายพันธุ์ :<a class="badge badge-success" href="/search/{{$dog->breed}}"> {{$dog->breed}}</a>
    
       <li>ลักษณะ :               
-      @if ($post->type_dog = 1)
+      @if ($post->type_dog == 1)
       <a class="badge badge-success" href="/search/{{$post->type_dog}}">ตัวเล็ก</a>
-      @elseif ($query->type_dog = 2)
+      @elseif ($query->type_dog == 2)
       <a class="badge badge-success" href="/search/{{$post->type_dog}}">ตัวใหญ่</a>
       @endif
       </option></li>

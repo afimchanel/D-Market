@@ -56,10 +56,15 @@ class searchController extends Controller
             return view('search.searchcategory')->with('Message','No Details found. Try to search again !')->withQuery($request);
         }            
     }
-    public function search(Request $request)
+
+    public function search($id)
     {
-        $search = Dog::where('dogs.breed', 'LIKE','%' . $request->breed .'%' )->get();
-        return $search;
+        $search = DB::table('posts')
+        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
+        ->where('dogs.breed','LIKE',$id)
+        ->orwhere('posts.type_dog','LIKE',$id)//แก้ๆๆๆๆ เปนแท้กโชวแค่โพสส เพราะถ้าแท้กตารางหมาทำไม่ได้คนที่ไม่ได้โพสหมาก็เหนหมดสิ
+        ->get();
+        return view('search.searchbreed',compact('search'));
 
 
     }

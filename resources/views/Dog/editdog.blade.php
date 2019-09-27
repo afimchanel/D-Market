@@ -147,7 +147,7 @@
       <div class="form-row">
 
         <div class="col-md-4 mb-3">
-          <label for="formGroup File">อัพโหลดใบCP</label>
+          <label for="formGroup File">อัพโหลดใบCP</label>เปลี่ยนพาท การบันทึดรุป
           <img class="card-img-top" src="/storage/public/imagedog/cover_images/{{$Dog->imageCP}}" style="width:250px; height:250px;">
           <div class="custom-file">
             <input type="file" name="imageCP" id="imageCP" class="custom-file-input" accept=".png, .jpg, .jpeg">
