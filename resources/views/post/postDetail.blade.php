@@ -50,8 +50,9 @@ $sliders = dogimages::where(['dog_id' => $dog->id])->get();
  
     <!-- /.col-lg-8 -->
     <div class="col-lg-5">
-
-      <h1 class="font-weight-light">{{$post->title_post}}</h1>
+        
+        <h1 class="font-weight-light">{{$dog->namedog}} </h1>
+      <h1 class="font-weight-light">{{$post->title_post}} </h1>
       สายพันธุ์ :<a class="badge badge-success" href="/search/{{$dog->breed}}"> {{$dog->breed}}</a>
    
       <li>ลักษณะ :               

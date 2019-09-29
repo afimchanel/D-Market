@@ -46,7 +46,7 @@ class ordercontroller extends Controller
         if (Auth::check()) {
             $new = orderdetail::where('id_post',$id_post)->first();
             error_log($new);
-            if ( $new === null) //ทำเงื่อนไขตรงนี้ให้ดี
+            if ( $new == null) //ทำเงื่อนไขตรงนี้ให้ดี
             {
                 error_log('if ');
                 $order = new orderdetail;
@@ -60,7 +60,7 @@ class ordercontroller extends Controller
             
             } else {
                 error_log('else');
-                return redirect('');
+                return redirect('/');
             }
             
         }
@@ -144,11 +144,11 @@ class ordercontroller extends Controller
     public function createorder($id)
     {
         if (Auth::check()) {
-            error_log('if1');
             $find = orders::where('id_user',$id)->Orderby('updated_at','desc')->first();
-
-            if ($find == NULL ) {
-
+            error_log('if1');
+            if ($find == NULL ){
+                //เงื่อนไขที่ไม่เคยสร้างอะไรมาก่อน
+                error_log('if2');
                 $order = new orders;
                 $order->id_user = $id;
                 $order->save();
@@ -162,7 +162,8 @@ class ordercontroller extends Controller
                 }
                 return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
             } elseif($find !== NULL && $find->Status == 0 ) {
-                error_log('else');
+                //ออเดอร์ช้ำ
+                error_log('else1.1');
                 $Order = DB::table('order_detail')
                 ->where('id_user', '=', $id)
                 ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
@@ -173,10 +174,21 @@ class ordercontroller extends Controller
                 ->get();
                 return view('Shoppingcart',compact('Order'));
             }
-            
-            
-            
-        } else {
+            elseif($find !== NULL && $find->Status == 1 ) {
+                //เคยชื้อแล้วชื้ออีก
+                error_log('else1.2');
+                $order = new orders;
+                $order->id_user = $id;
+                $order->save();
+                error_log($order->Order_ID);
+                $orders = orderdetail::where(['id_user'=>$id])->get();
+                foreach($orders as $item){
+                    $item->order_id = $order->Order_ID;
+                    $item->save();
+                }
+                return view('payment.description')->with('success','โปรดชำระเงินภายใน2ช.ม');
+            }
+        }else {
             error_log('else1');
         
     }

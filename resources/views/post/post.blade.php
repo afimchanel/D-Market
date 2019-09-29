@@ -18,7 +18,7 @@
 
         <h1 class="text-center">กรอกข้อมูลโพสสุนัขเพื่อขาย</h1>
         <img class="img-fluid img-thumbnai" src="/storage/public/imagecover/{{$post->image}}" style="width:500px; height:500px;">
-        <form method="post" action="/{{auth()->user()->id}}/{{$post->ID_dog}}/create/post" enctype="multipart/form-data" class="text-center container" novalidate>
+        <form method="post" action="/{{auth()->user()->id}}/{{$post->id}}/create/post" enctype="multipart/form-data" class="text-center container" novalidate>
                 @csrf
 
                 <div class="container">
@@ -63,9 +63,9 @@
                                         </div>
                                         <select class="custom-select" name="Age_Dog">
                                                 <option selected>เลือกอายุสุนัข</option>
-                                                <option value="1">1-2</option>
-                                                <option value="2">3-4</option>
-                                                <option value="3">5-6</option>
+                                                <option value="1">10-20วัน</option>
+                                                <option value="2">21-40วัน</option>
+                                                <option value="3">50-60วัน</option>
                                                 <option value="4">อื่นๆ</option>
                                         </select>
 

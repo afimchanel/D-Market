@@ -152,7 +152,7 @@
             <a href="/{{$item->id}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">{{$item->title_post}} {{$item->breed}}</a>
+                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}{{$item->breed}}</a>
 
               </h4>
               <h5>ราคา : {{$item->price}}</h5>
@@ -171,7 +171,7 @@
               
             </div>
             <div class="row justify-content-end">
-              <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->id_the_dog }}/{{$item->Post_id}}">เพิ่มไปยังตะกร้า</a>
+              <a class="btn btn-primary" href="/create/order/{{ Auth::user()->id}}/{{ $item->id }}/{{$item->Post_id}}">เพิ่มไปยังตะกร้า</a>
 
             </div>
           </div>

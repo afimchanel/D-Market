@@ -31,8 +31,9 @@
 
     // ->Orderby('order_detail.updated_at','desc')->limit(1)
 
-    $total = 0
-
+    $total = 0;
+    $transportation = 0;
+    $t = 590;
  ?>
 @section('content')
 <img class="img-responsive img-fluid" src="/payment.jpg" style="width:500px; height:500px;">
@@ -57,6 +58,15 @@
             <tr>
                 <th scope="row">{{$item->Order_detail}}</th>
                 <td>{{$item->Breed}}{{$item->title_post}}</td>
+                @if ($item->weight_dog == 1)
+                    <?php    $transportation = 800; ?>
+                @elseif($item->weight_dog == 2)
+                    <?php   $transportation = 800;?>
+                @elseif($item->weight_dog == 3)
+                    <?php   $transportation = 1000; ?>
+                @endif  </strong></h6> 
+
+
                 <td>{{$item->price}}</td>
                 <?php $total = $total + $item->price ?>
                 
@@ -64,8 +74,8 @@
             @endforeach
         @endif
             
-            <caption>ค่าขนส่ง : ?? จำนวนตัว{{count($order)*80}}*(ค่าจัดส่ง) </caption>
-            <caption>ราคารวมทั้งสิ้น : {{$total}}</caption>
+            <caption>ค่าขนส่ง : {{$transportation}}+ค่าบล็อคขนสุนัข:{{$t}} </caption>
+            <caption>ราคารวมทั้งสิ้น : {{$total + $transportation +  $t}}</caption>
     </tbody>
 </table>
     <div class="container">
@@ -83,9 +93,11 @@
                 <div class="col-25">
                     <label>จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
                 </div>
+                <fieldset disabled>
                 <div class="col-75">
-                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment" value="{{$total}}"  required>
+                    <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment" value="{{$total+ $transportation +  $t}}"  required>
                 </div>
+                </fieldset>
             </div>
             <div class="row">
                 <div class="col-25">

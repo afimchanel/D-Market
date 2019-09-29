@@ -59,6 +59,8 @@ class postController extends Controller
         $post->type_dog = $request->type_dog;
         $post->price = $request->price;
         $post->Age_Dog = $request->Age_Dog;
+        $post->eye_color = $request->eye_color;
+        $post->weight_dog = $request->weight_dog;
         $post->farm_name = $request->farm_name;
         $post->tel_post = $request->tel_post;
         $post->vaccine = $request->vaccine;

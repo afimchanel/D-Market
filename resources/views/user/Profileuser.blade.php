@@ -222,7 +222,7 @@ $breeder = breederm::where('user_id', $users->id)->get();
 
                             <div class="card-body text-center">
                                 <h4 class="card-title ">
-                                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
+                                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}{{$item->namedog}}</a>
                                     @if ($item->order_id == NULL )
                                     <span class="badge badge-success">สถานะ : ปกติ</span>
                                     @elseif ($item->order_id !== NULL && $item->Status == 0)
@@ -267,7 +267,7 @@ $breeder = breederm::where('user_id', $users->id)->get();
 
                             <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
                             <div class="card-body">
-                                <h4 class="card-title">{{$item->breed}}</h4>
+                                <h4 class="card-title">{{$item->namedog}}</h4>
                                 <!--<p class="card-text"></p>-->
                             </div>
                             <div class="card-footer">

@@ -82,8 +82,8 @@ class Usercontroller extends Controller
         $posts = DB::table('posts')
         ->where('posts.user_id', '=', $id) 
         ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
-        ->rightjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
-        ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
+            ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
+            ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
         ->get();
         $Dogs = Dog::where('dogs.user_id',$id)
 
