@@ -67,9 +67,9 @@
           <div class="form-group">ลักษณะ
             <select class="custom-select" name='type_dog'>
               <option selected>{{$query->type_dog}}
-                @if ($query->type_dog = 1)
+                @if ($query->type_dog == 1)
                   ตัวเล็ก
-                @elseif ($query->type_dog = 2)
+                @elseif ($query->type_dog == 2)
                   ตัวใหญ่
                 @endif
                 </option>
@@ -85,11 +85,11 @@
             น้ำหนัก
             <select class="custom-select" name="weight_dog">
               <option selected>{{$query->weight_dog}}
-                @if ($query->weight_dog = 1)
+                @if ($query->weight_dog == 1)
                   1-5 กิโล
-                @elseif ($query->weight_dog = 2)
+                @elseif ($query->weight_dog == 2)
                   5-10 กิโล
-                @elseif ($query->weight_dog = 3)
+                @elseif ($query->weight_dog == 3)
                   มากว่านั้น
                 @endif
               </option>
@@ -107,13 +107,13 @@
           </div>
           <select class="custom-select" name="eye_color">
             <option selected>{{$query->eye_color}}
-              @if ($query->eye_color = 1)
+              @if ($query->eye_color == 1)
                 สีดำ
-              @elseif ($query->eye_color = 2)
+              @elseif ($query->eye_color == 2)
               สีน้ำตาล
-              @elseif ($query->eye_color = 3)
+              @elseif ($query->eye_color == 3)
               สีฟ้า
-              @elseif ($query->eye_color = 4)
+              @elseif ($query->eye_color == 4)
               นอกเหนือจากนี้
               @endif
             </option>
@@ -133,11 +133,11 @@
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สี</label>
           <select class="custom-select" name='color'>
             <option selected>{{$query->color}}
-              @if ($query->color = 1)
+              @if ($query->color == 1)
                 สีขาว
-              @elseif ($query->color = 2)
+              @elseif ($query->color == 2)
                 สีดำ
-              @elseif ($query->color = 3)
+              @elseif ($query->color == 3)
                 อื่นๆ
               @endif
             </option>
@@ -153,9 +153,9 @@
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
           <select class="custom-select" name='SEX' required>
             <option selected>{{$query->SEX}}
-              @if ($query->SEX = "M")
+              @if ($query->SEX == "M")
                 ตัวผู้
-              @elseif ($query->SEX = "G")
+              @elseif ($query->SEX == "G")
                 ตัวเมีย
               @endif
             </option>

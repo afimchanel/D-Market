@@ -64,7 +64,7 @@ class searchController extends Controller
         ->where('dogs.breed','LIKE',$id)
         ->orwhere('posts.type_dog','LIKE',$id)//แก้ๆๆๆๆ เปนแท้กโชวแค่โพสส เพราะถ้าแท้กตารางหมาทำไม่ได้คนที่ไม่ได้โพสหมาก็เหนหมดสิ
         ->get();
-        return view('search.searchbreed',compact('search'));
+        return view('search.searchbreed',compact('search','id'));
 
 
     }

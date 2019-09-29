@@ -51,14 +51,14 @@
 
         <div class="col-md-4 mb-3">
           <label for="validationTooltip02">ชื่อสุนัข</label>
-          <input type="text" class="form-control" id="validationTooltip02" name="namedog" value='{{$Dog->namedog}}' required>
+          <input type="text" class="form-control"  name="namedog" value='{{$Dog->namedog}}' required>
           <div class="valid-tooltip">
             Looks good!
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationTooltip02">IDสุนัข</label>
-          <input type="text" class="form-control" id="validationTooltip02" name="IDthedog" value='{{$Dog->idthedog}}' required>
+          <input type="text" class="form-control"  name="IDthedog" value='{{$Dog->idthedog}}' required>
           <div class="valid-tooltip">
             Looks good!
           </div>

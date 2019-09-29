@@ -159,19 +159,22 @@ $breeder = breederm::where('user_id', $users->id)->get();
                     ใบทะเบียนจากสมาคม : สถานะ มี <br>
                     @endif
                     ที่อยู่:
-                    @if ($users->address === NULL )
-                    @if ($users->id === Auth::user()->id)
-                    <div class="alert alert-danger" role="alert">
-                        กรุณากรอกที่อยู่ !!
-                    </div>
-                    @else
+                        @if ($users->address === NULL )
+                            @if ($users->id === Auth::user()->id)
+                            <div class="alert alert-danger" role="alert">
+                                กรุณากรอกที่อยู่ !!
+                            </div>
+                            @endif
 
-                    @endif
-
-                    @else
-                    {{ $users->address }} <br>
-                    @endif
-                    <a href="/buying"><button>การชื้อของ{{ $users->name }} </button></a>
+                            
+                            
+                        @else
+                        {{ $users->address }} <br>
+                        @endif
+                        @if ($users->id === Auth::user()->id)
+                        <a href="/buying"><button>การชื้อของ{{ $users->name }} </button></a>
+                        @endif
+                    
                 </div>
             </div>
         </div>
@@ -220,7 +223,7 @@ $breeder = breederm::where('user_id', $users->id)->get();
                             <div class="card-body text-center">
                                 <h4 class="card-title ">
                                     <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}</a>
-                                    @if ($item->order_id == NULL || $item->id_post !== NULL )
+                                    @if ($item->order_id == NULL )
                                     <span class="badge badge-success">สถานะ : ปกติ</span>
                                     @elseif ($item->order_id !== NULL && $item->Status == 0)
                                     <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
@@ -228,6 +231,8 @@ $breeder = breederm::where('user_id', $users->id)->get();
                                     <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
                                     @elseif ($item->Status == 1)
                                     <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+                                    @elseif ($item->Status == 2)
+                                    <span class="badge badge-danger">สถานะ : ขายแล้ว</span>
                                     @endif
 
 

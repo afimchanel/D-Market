@@ -100,11 +100,21 @@ $sliders = dogimages::where(['dog_id' => $dog->id])->get();
       <p class="text-dark m-0">ราคา : {{$post->price}} </p>
       <p class="text-dark m-0">ชื่อ ฟาร์ม : {{$post->farm_name}} </p>
       <p class="text-dark m-0">เพศ :
-        @if ($dog->sex === 'M')
+        @if ($dog->sex == 'M')
         ตัวผู้
-        @elseif($dog->sex === 'F')
+        @elseif($dog->sex == 'F')
         ตัวเมีย
-        @endif </p>
+        @endif 
+      </p>
+      <p class="text-dark m-0">น้ำหนัก :
+        @if ($post->weight_dog == 1)
+        1-5กิโล
+        @elseif($post->weight_dog == 2)
+        5-10กิโล
+        @elseif($post->weight_dog == 3)
+        มากกว่านั้น
+        @endif 
+      </p>
       <p class="text-dark m-0">สีสุนัข :
         @if ($dog->color = 1)
           สีขาว

@@ -41,7 +41,7 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
-                <form method="post" action="{{'/{id}/update'}}">
+                <form method="post" action="{{'/{id}/update'}}" enctype="multipart/form-data">
                     <div class="form-group">
                         @csrf
 
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label for="address">ที่อยู่ :</label>
                         ***กรอกแค่ ต. อ. จ.
-                        <textarea type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ Auth::user()->address }} "> </textarea>
+                        <textarea type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ Auth::user()->address }} ">{{ Auth::user()->address }} </textarea>
                         @error('address')
                         <span class="invalid-feedback" role="alert">
                             <strong>กรอกที่อยู่ด้วยครับ</strong>
@@ -109,7 +109,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">ที่อยู่ฟาร์ม</label>
                         ***กรอกแค่ ต. อ. จ.
-                        <textarea class="form-control @error('Farmaddress') is-invalid @enderror" rows="3" name="Farmaddress"></textarea>
+                        <textarea class="form-control @error('Farmaddress') is-invalid @enderror" rows="3" name="Farmaddress">{{ Auth::user()->Farmaddress }}</textarea>
                         @error('Farmaddress')
                         <span class="invalid-feedback" role="alert">
                             <strong>กรอกรายละเอียดด้วย</strong>

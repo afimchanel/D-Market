@@ -85,10 +85,10 @@ class Usercontroller extends Controller
         ->rightjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
         ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
         ->get();
-        $Dogs = Dog::where('user_id',$id)->paginate(8);
-        // ->join('dogimages','dogs.ID_dog','=','dogimages.dog_id')
-        // ->select()
-        // ->first('image');
+        $Dogs = Dog::where('dogs.user_id',$id)
+
+        ->paginate(8);
+
         
     
 
@@ -134,12 +134,14 @@ class Usercontroller extends Controller
             'address' => 'required',
 
             'Farmaddress' => 'required',
+
         ]);
         $user = Auth::user();
 
             $IDcardnumber = $request->file('IDcardnumber');
                 if ($request->hasFile('IDcardnumber')) {
-
+                    
+                    //echo $path;
                     error_log('upload');
                     // Get filename with the extension
                     $filenameWithExt = $IDcardnumber->getClientOriginalName();
@@ -151,7 +153,9 @@ class Usercontroller extends Controller
                     $imageIDcardnumber = $filename . '_IDcardnumber' . time() . '.' . $extension;
                     // Upload Image
                     $path = $IDcardnumber->storeAs('public/idcardnumber', $imageIDcardnumber);
-                } 
+                }
+
+ 
             $license = $request->file('license');
                 if ($request->hasFile('license')) {
 
@@ -173,8 +177,8 @@ class Usercontroller extends Controller
         $user->DateofBirth = request()->input('DateofBirth');
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
-        $user->IDcardnumber = $request->imageIDcardnumber;
-        $user->license = $request->imagelicense;
+        $user->IDcardnumber = $imageIDcardnumber;
+        $user->license = $imagelicense;
         $user->Farmaddress = request()->input('Farmaddress');
         error_log('updateuser');
         $user->save();

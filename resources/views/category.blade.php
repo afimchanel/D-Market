@@ -3,6 +3,15 @@
 @section('content')
 
 
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+</script>
 
 <!-- Navigation -->
 
@@ -90,12 +99,13 @@
 
         <div class="list-group">
 
-          <div data-role="rangeslider">
-            <label for="price-min">Price:</label>
-            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" class="custom-range">
-            หาทางทำตรงนี้ยู key คือ range slider laravel price range slider
-            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" class="custom-range">
-          </div>
+            <div class="list-group">
+                <div class="rangeslider">
+                  <label for="price-min">Price:</label>
+                  <input type="range" name="price-min"  min="1" max="50000" value="1" class="custom-range" id="price">
+                  <p>Value: <span id="price"></span></p>
+                </div>
+              </div>
         </div>
 
         <div class="form-group ">
@@ -146,7 +156,8 @@
 
               </h4>
               <h5>ราคา : {{$item->price}}</h5>
-              @if ($item->order_id == NULL || $item->id_post !== NULL )
+              
+              @if ($item->order_id == NULL)
                   <span class="badge badge-success">สถานะ : ปกติ</span>
               @elseif ($item->order_id !== NULL && $item->Status == 0)
                   <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
@@ -154,6 +165,8 @@
                   <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
               @elseif ($item->Status == 1)
                   <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+              @elseif ($item->Status == 2)
+                  <span class="badge badge-danger">สถานะ : ขายแล้ว</span>
               @endif
               
             </div>

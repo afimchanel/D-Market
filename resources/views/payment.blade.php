@@ -6,14 +6,27 @@
     $orderid = orders::where('id_user',Auth::user()->id)
     ->where('Status',0)
     ->Orderby('updated_at','desc')->first();
-    $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
-    ->Where('order_detail.order_id','!=',NULL)
-    ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
-    ->join('users', 'order_detail.id_user', '=', 'users.id')
-    ->join('posts','order_detail.id_post','=','posts.Post_id')
-    ->join('order','order_detail.order_id','=','order.Order_ID')
-    ->where('order_detail.order_id',$orderid->Order_ID)
-    ->get();
+    if ($orderid == NULL) {
+        
+        $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
+        ->Where('order_detail.order_id','!=',NULL)
+        ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+        ->join('users', 'order_detail.id_user', '=', 'users.id')
+        ->join('posts','order_detail.id_post','=','posts.Post_id')
+        ->join('order','order_detail.order_id','=','order.Order_ID')
+        ->where('order_detail.order_id',1)
+        ->get();
+    }else {
+        $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
+        ->Where('order_detail.order_id','!=',NULL)
+        ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+        ->join('users', 'order_detail.id_user', '=', 'users.id')
+        ->join('posts','order_detail.id_post','=','posts.Post_id')
+        ->join('order','order_detail.order_id','=','order.Order_ID')
+        ->where('order_detail.order_id',$orderid->Order_ID)
+        ->get();
+    } 
+    
 
 
     // ->Orderby('order_detail.updated_at','desc')->limit(1)
@@ -22,10 +35,6 @@
 
  ?>
 @section('content')
-
-
-
-
 <img class="img-responsive img-fluid" src="/payment.jpg" style="width:500px; height:500px;">
 <table class="table col-md-6 container-fluid">
     @if(session()->get('success'))
@@ -43,7 +52,7 @@
         </tr>
     </thead>
     <tbody> 
-        @if ($order != NULL)
+        @if (isset($order))
             @foreach($order as $item)
             <tr>
                 <th scope="row">{{$item->Order_detail}}</th>
@@ -53,14 +62,6 @@
                 
             </tr>
             @endforeach
-        @else
-             <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td>0</td>
-               
-                
-            </tr>
         @endif
             
             <caption>ค่าขนส่ง : ?? จำนวนตัว{{count($order)*80}}*(ค่าจัดส่ง) </caption>
@@ -71,7 +72,14 @@
         <form action="{{ route('Payment.store') }}" enctype="multipart/form-data" method="post">
             @csrf 
             <div class="row">
-                <input type="text" name="order_id" value="{{$orderid->Order_ID}}" style="display: none;">
+                @if(isset($orderid))
+                <input type="text" name="order_id" value="{{$orderid->Order_ID}}"@error('order_id') is-invalid @enderror style="display: none;">
+                 @endif
+                 @error('order_id')
+                 <span class="invalid-feedback" role="alert">
+                   <strong>{{ ไม่มีออเดอร์ }}</strong>
+                 </span>
+                 @enderror
                 <div class="col-25">
                     <label>จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
                 </div>

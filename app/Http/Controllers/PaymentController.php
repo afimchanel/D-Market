@@ -36,6 +36,9 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
    
+        $request->validate([
+            'order_id'=>'required',      
+          ]);
           error_log('store');
           $payment = new payment([
             'price_payment' => $request->get('price_payment'),
