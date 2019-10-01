@@ -15,7 +15,7 @@
           <a class="nav-link" id="pills-payable-tab" data-toggle="pill" href="#pills-payable" role="tab" aria-controls="pills-payable" aria-selected="false">ที่ต้องชำระ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-transport-tab" data-toggle="pill" href="#pills-transport" role="tab" aria-controls="pills-transport" aria-selected="false">ที่ต้องจัดส่ง</a>
+          <a class="nav-link" id="pills-transport-tab" data-toggle="pill" href="#pills-transport" role="tab" aria-controls="pills-transport" aria-selected="false">ที่เราต้องจัดส่ง</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="pills-Tobeshipped-tab" data-toggle="pill" href="#pills-Tobeshipped" role="tab" aria-controls="pills-Tobeshipped" aria-selected="false">รอจัดส่ง</a>

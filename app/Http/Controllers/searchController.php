@@ -31,7 +31,7 @@ class searchController extends Controller
     }
     public function show_category(Request $request)
     {
-
+        
         $post =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')

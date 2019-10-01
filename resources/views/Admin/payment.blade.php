@@ -15,8 +15,8 @@
             <th>username</th>
             <th>Order_ID</th>
             <th>payment</th>
-            <th>price_payment</th>
-            <th>receiving_location</th>
+            <th>ราคาทั้งหมด</th>
+            <th>สนามบินที่ต้องไปรับ</th>
             <th>บัตรปชช</th>
             <th>tel_Customer</th>
             <th>Transferdate</th>
@@ -113,11 +113,15 @@
 
             <td>{{ $item->tel_Customer }}</td>
             <td>{{ $item->Transferdate }}</td>
-            <td><button type="button" class="btn btn-success" onclick="event.preventDefault();
-                document.getElementById('success-form').submit();">ยืนยัน</button>
-              <form id="success-form" action="/Payment/success/{{$item->id_user}}" method="POST" style="display: none;">
-                @csrf
-              </form>
+            <td>
+              @if ($item->Status == 0)
+              <button type="button" class="btn btn-success" onclick="event.preventDefault();
+              document.getElementById('success-form').submit();">ยืนยัน</button>
+            <form id="success-form" action="/Payment/success/{{$item->id_user}}" method="POST" style="display: none;">
+              @csrf
+            </form>
+              @endif
+
             </td>
 
           </tr>

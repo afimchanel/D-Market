@@ -6,15 +6,16 @@
     $orderid = orders::where('id_user',Auth::user()->id)
     ->where('Status',0)
     ->Orderby('updated_at','desc')->first();
+
     if ($orderid == NULL) {
         
         $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
-        ->Where('order_detail.order_id','!=',NULL)
+    
         ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
         ->join('users', 'order_detail.id_user', '=', 'users.id')
         ->join('posts','order_detail.id_post','=','posts.Post_id')
         ->join('order','order_detail.order_id','=','order.Order_ID')
-        ->where('order_detail.order_id',1)
+        ->where('order_detail.order_id',0)
         ->get();
     }else {
         $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
@@ -23,7 +24,7 @@
         ->join('users', 'order_detail.id_user', '=', 'users.id')
         ->join('posts','order_detail.id_post','=','posts.Post_id')
         ->join('order','order_detail.order_id','=','order.Order_ID')
-        ->where('order_detail.order_id',$orderid->Order_ID)
+        ->where('order.Status',0)
         ->get();
     } 
     
@@ -84,6 +85,7 @@
             <div class="row">
                 @if(isset($orderid))
                 <input type="text" name="order_id" value="{{$orderid->Order_ID}}"@error('order_id') is-invalid @enderror style="display: none;">
+                <input type="text" name="total" value="{{$total + $transportation +  $t}}"style="display: none;">
                  @endif
                  @error('order_id')
                  <span class="invalid-feedback" role="alert">
@@ -93,7 +95,7 @@
                 <div class="col-25">
                     <label>จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี</label>
                 </div>
-                <fieldset disabled>
+                <fieldset >
                 <div class="col-75">
                     <input type="text" placeholder="จำนวนเงินที่เข้าที่โอนเงินเข้าบัญชี" name="price_payment" value="{{$total+ $transportation +  $t}}"  required>
                 </div>
@@ -126,7 +128,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="subject">หลักฐานการชำระเงิน</label>
+                    <label for="subject">หลักฐานการชำระเงิน</label> [ ไฟล์ jpg,gif,png,pdf ไม่เกิน2MB]
                 </div>
                 <div class="col-75">
                     <div class="custom-file ">
@@ -146,10 +148,12 @@
                     </div>
                 </div>
             </div>
+            
             <div style="text-align:center;">
                 <input type="submit" value="Submit">
             </div>
         </form>
+        
     </div>
 
 </div>

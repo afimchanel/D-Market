@@ -75,11 +75,6 @@ $sliders = dogimages::where(['dog_id' => $dog->id])->get();
           </button>
         </a>
       </div>
-      <div class="btn-group wishlist">
-        <button type="button" class="btn btn-danger">
-          Add to wishlist
-        </button>
-      </div>
 
       @endif
 

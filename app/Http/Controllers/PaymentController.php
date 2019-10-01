@@ -40,52 +40,57 @@ class PaymentController extends Controller
             'order_id'=>'required',      
           ]);
           error_log('store');
-          $payment = new payment([
-            'price_payment' => $request->get('price_payment'),
-            'Order_ID' => $request->get('order_id'),
-            'Transferdate'=> $request->get('Transferdate'),
-            'tel_Customer'=> $request->get('tel_Customer'),
-            'receiving_location'=> $request->get('receiving_location'),
-            
-            
-          ]);
-                  
-            $image_payment = $request->file('image_payment');
-            if ($request->hasFile('image_payment')) {
-
-                error_log('image_payment');
-                // Get filename with the extension
-                $filenameWithExt = $image_payment->getClientOriginalName();
-                // Get just filename
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                // Get just ext
-                $extension = $image_payment->getClientOriginalExtension();
-                // Filename to store
-                $image_paymentStore = $filename . '_' . time() . '.' . $extension;
-                // Upload Image
-                $path = $image_payment->storeAs('public/image_payment', $image_paymentStore);
+          if ($request->total == $request->price_payment) {
+            $payment = new payment([
+                'price_payment' => $request->get('price_payment'),
+                'Order_ID' => $request->get('order_id'),
+                'Transferdate'=> $request->get('Transferdate'),
+                'tel_Customer'=> $request->get('tel_Customer'),
+                'price_check'=> $request->get('total'),
+                'receiving_location'=> $request->get('receiving_location'),
                 
-            }
-            $image_payment_IDcardnumber= $request->file('image_payment_IDcardnumber');
-            if ($request->hasFile('image_payment_IDcardnumber')) {
-
-                error_log('image_payment_IDcardnumber');
-                // Get filename with the extension
-                $filenameWithExt = $image_payment->getClientOriginalName();
-                // Get just filename
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                // Get just ext
-                $extension = $image_payment_IDcardnumber->getClientOriginalExtension();
-                // Filename to store
-                $image_payment_IDcardnumberStore = $filename . '_' . time() . '.' . $extension;
-                // Upload Image
-                $path = $image_payment_IDcardnumber->storeAs('public/image_payment_IDcardnumber', $image_payment_IDcardnumberStore);
                 
-            }
-            $payment->image_payment_IDcardnumber = $image_payment_IDcardnumberStore;
-            $payment->image_payment = $image_paymentStore;
-          $payment->save();
-          return redirect('/')->with('success', 'เพิ่มใบเปย์เม้นสำเร็จ');
+              ]);
+                      
+                $image_payment = $request->file('image_payment');
+                if ($request->hasFile('image_payment')) {
+    
+                    error_log('image_payment');
+                    // Get filename with the extension
+                    $filenameWithExt = $image_payment->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $image_payment->getClientOriginalExtension();
+                    // Filename to store
+                    $image_paymentStore = $filename . '_' . time() . '.' . $extension;
+                    // Upload Image
+                    $path = $image_payment->storeAs('public/image_payment', $image_paymentStore);
+                    
+                }
+                $image_payment_IDcardnumber= $request->file('image_payment_IDcardnumber');
+                if ($request->hasFile('image_payment_IDcardnumber')) {
+    
+                    error_log('image_payment_IDcardnumber');
+                    // Get filename with the extension
+                    $filenameWithExt = $image_payment->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $image_payment_IDcardnumber->getClientOriginalExtension();
+                    // Filename to store
+                    $image_payment_IDcardnumberStore = $filename . '_' . time() . '.' . $extension;
+                    // Upload Image
+                    $path = $image_payment_IDcardnumber->storeAs('public/image_payment_IDcardnumber', $image_payment_IDcardnumberStore);
+                    
+                }
+                $payment->image_payment_IDcardnumber = $image_payment_IDcardnumberStore;
+                $payment->image_payment = $image_paymentStore;
+              $payment->save();
+              return redirect('/buying')->with('success', 'เพิ่มใบเปย์เม้นสำเร็จ');
+          }
+          return redirect()->back();
+         
     }
 
     /**

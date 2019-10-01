@@ -420,7 +420,7 @@ class DogController extends Controller
         
         $Dogs->save();
 
-        // ทำไม if else ถ้ามีข้อมูลด้านในยุแล้วถ้าไม่มีเปนยังไง
+        // ทำไม if else ถ้ามีข้อมูลด้านในยุแล้วถ้าไม่มีเปนยังไง้ ถ้าไม่มีก็ทำไม่ได้
         // $data = array();
         // if ($request->hasfile('filename')) {
         //     $dogimages = dogimages::where('dog_id',$Iddog);

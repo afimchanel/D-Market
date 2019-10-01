@@ -1,15 +1,35 @@
 <?php 
-use App\orderdetail;
-$order = orderdetail::where('order_detail.id_user',Auth::user()->id)
-->where('order_detail.order_id',NULL)
-->LEFTjoin('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
-->LEFTjoin('posts', 'order_detail.id_post', '=', 'posts.Post_id')
-->LEFTjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')->get();
+    use App\orderdetail;
+    use App\orders;
 
+    $orderid = orders::where('id_user',Auth::user()->id)
+    ->where('Status',0)
+    ->Orderby('updated_at','desc')->first();
+
+    if ($orderid == NULL) {
+        
+        $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
+    
+        ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+        ->join('users', 'order_detail.id_user', '=', 'users.id')
+        ->join('posts','order_detail.id_post','=','posts.Post_id')
+        ->join('order','order_detail.order_id','=','order.Order_ID')
+        ->where('order_detail.order_id',0)
+        ->get();
+    }else {
+        $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
+        ->Where('order_detail.order_id','!=',NULL)
+        ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+        ->join('users', 'order_detail.id_user', '=', 'users.id')
+        ->join('posts','order_detail.id_post','=','posts.Post_id')
+        ->join('order','order_detail.order_id','=','order.Order_ID')
+        ->where('order.Status',0)
+        ->get();
+    } 
 ?>
 
 @foreach ($order as $item)
-{{$item->Order_detail}}
+{{$item->order_id}}
     <figure class="media">
       <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
       <figcaption class="media-body">
@@ -28,6 +48,8 @@ $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
           <dl class="param param-inline small">
             <dt>ราคา: {{$item->price}}</dt>
             <dd>ดูข้อมูลการชื้อ</dd>
+            <a href="/order/delete/{{$item->order_id}}"><button>ยกการสั่งชื้อ </button></a>
+            
           </dl>
         </div>
         

@@ -36,15 +36,22 @@ $t = 590;
                 <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                     <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
                         <h6><strong>ราคา :  {{$item->price}} </strong></h6> 
-                        <h6><strong>น้ำหนัก :  
+                        น้ำหนัก :  
                             @if ($item->weight_dog == 1)
-                            1-5กิโล <?php    $transportation = 800; ?>
+                            1-5กิโล ราคา 800บาท <?php    $transportation = 800; ?>
                             @elseif($item->weight_dog == 2)
-                            5-10กิโล <?php   $transportation = 800;?>
+                            5-10กิโล ราคา 800บาท <?php   $transportation = 800;?>
                             @elseif($item->weight_dog == 3)
-                            มากกว่านั้น <?php   $transportation = 1000; ?>
-                            @endif  </strong></h6> 
+                            มากกว่า10กิโล ราคา 1000บาท <?php   $transportation = 1000; ?>
+                            @endif  
+                            <Br>
+                            ค่า บล็อค : 
+                            @if ($item->type_dog == 1)
+                            ไซน์ M ราคา 590 <?php    $t = 590; ?>
+                            @elseif($item->type_dog == 2)
+                            ไซน์ L ราคา1300 <?php   $t= 1300;?>
 
+                            @endif
 
                         <?php 
                            
@@ -83,7 +90,7 @@ $t = 590;
                     @csrf
                     ยืนยันการซื้อ</a>
                 <div class="pull-right" style="margin: 5px">
-                Total price: <b>{{$total}}</b>
+                ราคาทั้งหมด: <b>{{$total}}</b>
                 </div>
             </div>
         </div>
