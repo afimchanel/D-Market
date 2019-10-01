@@ -144,9 +144,11 @@ class PaymentController extends Controller
         
         $order->Status = 1;
         $order->save();
-        return $order;
+        return redirect()->back();
         
     }
+
+    
     public function geted($id)
     {
         error_log($id);

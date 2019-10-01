@@ -115,11 +115,8 @@
             <td>{{ $item->Transferdate }}</td>
             <td>
               @if ($item->Status == 0)
-              <button type="button" class="btn btn-success" onclick="event.preventDefault();
-              document.getElementById('success-form').submit();">ยืนยัน</button>
-            <form id="success-form" action="/Payment/success/{{$item->id_user}}" method="POST" style="display: none;">
-              @csrf
-            </form>
+              <a href="/Payment/success/{{$item->Order_ID}}"><button type="button" class="btn btn-success">ยืนยัน</button></a>
+
               @endif
 
             </td>

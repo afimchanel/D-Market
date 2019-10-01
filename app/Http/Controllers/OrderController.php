@@ -178,18 +178,18 @@ class ordercontroller extends Controller
                     $item->save();
                 }
                 return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
-            } elseif($find !== NULL && $find->Status == 0 ) {
+            } elseif($find !== NULL && $finde->Status == 0 ) {
                 //ออเดอร์ช้ำ
                 error_log('else1.1');
                                 
                 error_log('if2');
-                $order = new orders;
-                $order->id_user = $id;
-                $order->save();
-                error_log($order->Order_ID);
+                
+                $finde->id_user = $id;
+                $finde->save();
+                error_log($finde->Order_ID);
                 $orders = orderdetail::where(['id_user'=>$id])->where('order_id',NULL)->get();
                 foreach($orders as $item){
-                    $item->order_id = $order->Order_ID;
+                    $item->order_id = $finde->Order_ID;
                     $item->save();
                 }
                 return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
@@ -209,6 +209,9 @@ class ordercontroller extends Controller
                     $item->save();
                 }
                 return view('payment.description')->with('success','โปรดชำระเงินภายใน2ช.ม');
+            }
+            else{
+                return redirect()->back();
             }
         }else {
             error_log('else1');

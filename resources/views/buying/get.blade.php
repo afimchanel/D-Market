@@ -2,9 +2,9 @@
 use App\orderdetail;
 use App\orders;
 $orderid = orders::where('id_user',Auth::user()->id)
-->where('Status',1)
+->where('Status',3)
 ->Orderby('updated_at','desc')->first();
-if ($orderid === NULL) {
+if ($orderid == NULL) {
   return $order = NULL;
 } else {
   $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
@@ -12,17 +12,17 @@ if ($orderid === NULL) {
 ->LEFTjoin('posts', 'order_detail.id_post', '=', 'posts.Post_id')
 ->LEFTjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
 ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
-->where('order_detail.order_id',$orderid->Order_ID)
+->where('order.Status',3)
 ->get();
 }
 
 
 
 ?>
-ยังมีบัคถ้าคนไม่ข้อมูลในตารางorder_detail แก้ด้วย
+
 @if(isset($order))
       @foreach ($order as $item)
-    {{$item->Order_detail}}
+    {{$item->Order_detail}} ทำที่แบบว่าถ้า10ชมแล้ว คนขายไม่่ส่งหมา ให้ส่งsms เตือน
         <figure class="media">
           <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
           <figcaption class="media-body">
@@ -41,8 +41,10 @@ if ($orderid === NULL) {
               <dl class="param param-inline small">
                 <dt>ราคา: {{$item->price}}</dt>
                 <dd>ดูข้อมูลการชื้อ</dd>
-                
                 <a href="Payment/geted/{{$item->Order_ID}}"><button type="button" class="btn btn-success">ได้รับสุนัขแล้ว</button></a>
+
+
+                
               </dl>
             </div>
             
