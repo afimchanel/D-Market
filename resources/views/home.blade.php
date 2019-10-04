@@ -143,7 +143,21 @@
 	}
 </style>
 @section('content')
-
+@if(session()->get('success'))
+<div class="alert alert-success">
+  {{ session()->get('success') }}  
+</div><br />
+@endif  
+@if(session()->get('postdog1'))
+<div class="alert alert-success">
+  {{ session()->get('postdog1') }}  
+</div><br />
+@endif 
+@if(session()->get('update susscc'))
+<div class="alert alert-success">
+  {{ session()->get('update susscc') }}  
+</div><br />
+@endif 
 <!-- ภาพสไลด์ -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 
@@ -207,11 +221,11 @@
 							<div class="thumb-wrapper">
 								<div class="img-box">
 									<a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
-										<img class="img-responsive img-fluid"  src="/storage/public/imagecover/{{$item->image}}" style="width:120px; height:120px;">
+										<img class="img-responsive img-fluid"  src="/storage/public/imagecover/{{$item->image}}" >
 									</a>
 								</div>
 								<div class="thumb-content">
-									<h4>{{$item->title_post}}</h4>
+									<h4>{{$item->Detail_Dog}}</h4>
 								</div>
 							</div>
 						</div>

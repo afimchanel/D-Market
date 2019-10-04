@@ -36,13 +36,13 @@ class searchController extends Controller
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
             ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
-            ->where('dogs.Breed', 'LIKE', '%' . $request->Breed . '%')
-            ->orWhere('posts.Age_Dog', 'LIKE', '%' . $request->Age_Dog . '%')
-            ->orWhere('posts.type_dog', 'LIKE', '%' . $request->type_dog . '%')
-            ->orWhere('posts.weight_dog', 'LIKE', '%' . $request->weight_dog . '%')
-            ->orWhere('posts.eye_color', 'LIKE', '%' . $request->eye_color . '%')
-            ->orWhere('dogs.color', 'LIKE', '%' . $request->color . '%')
-            ->orWhere('dogs.SEX', 'LIKE', '%' . $request->SEX . '%')
+            ->where('dogs.Breed', 'LIKE', $request->Breed )
+            ->orWhere('posts.Age_Dog', 'LIKE',$request->Age_Dog )
+            ->orWhere('posts.type_dog', 'LIKE',$request->type_dog)
+            ->orWhere('posts.weight_dog', 'LIKE',$request->weight_dog)
+            ->orWhere('posts.eye_color', 'LIKE', $request->eye_color)
+            ->orWhere('dogs.color', 'LIKE',$request->color)
+            ->orWhere('dogs.SEX', 'LIKE',$request->SEX )
             ->paginate(9);
         //->get();
         error_log('showcategory');
@@ -59,10 +59,12 @@ class searchController extends Controller
 
     public function search($id)
     {
+     
+        
         $search = DB::table('posts')
-        ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
-        ->where('dogs.breed','LIKE',$id)
-        ->orwhere('posts.type_dog','LIKE',$id)//แก้ๆๆๆๆ เปนแท้กโชวแค่โพสส เพราะถ้าแท้กตารางหมาทำไม่ได้คนที่ไม่ได้โพสหมาก็เหนหมดสิ
+        ->leftjoin('dogs', 'posts.id_the_dog', '=', 'dogs.id')
+        ->join('breed_dog', 'dogs.breed', '=', 'breed_dog.id')
+        ->where('dogs.breed',$id)
         ->get();
         return view('search.searchbreed',compact('search','id'));
 

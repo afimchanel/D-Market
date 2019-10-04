@@ -18,10 +18,12 @@ class postController extends Controller
     public function index()
     {
         $post = DB::table('posts')
-            ->Join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
+            ->Join('dogs', 'posts.id_the_dog', '=', 'dogs.id') 
             ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
-            ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
-            ->where('posts.Post_id', '>', 0)
+            ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID') 
+            ->where('order.Status')
+          
+
             ->paginate(9);
 
 
@@ -52,7 +54,7 @@ class postController extends Controller
         error_log('postdog');
 
         $post = new post;
-        $post->title_post = $request->title_post;
+
         $post->user_id = $id;
         $post->id_the_dog = $iddog;
         $post->Detail_Dog = $request->Detail_Dog;
@@ -66,7 +68,7 @@ class postController extends Controller
         $post->vaccine = $request->vaccine;
         $post->save();
         error_log('postdog1');
-        return redirect('/');
+        return redirect('/home')->with('postdog1', 'โพสขายสำเร็จ');
     }
 
     /**
@@ -107,7 +109,7 @@ class postController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title_post' => 'required',
+
             'price' => 'required',
             'type_dog' => 'required',
             'Age_Dog' => 'required',
@@ -119,7 +121,6 @@ class postController extends Controller
             'Detail_Dog' => 'required',
         ]);
         $post = post::find($id);
-        $post->title_post = $request->title_post;
         $post->price = $request->price;
         $post->type_dog = $request->type_dog;
         $post->Age_Dog = $request->Age_Dog;
@@ -130,8 +131,9 @@ class postController extends Controller
         $post->vaccine = $request->vaccine;
         $post->Detail_Dog = $request->Detail_Dog;
         $post->save();
-        return $post;
         error_log("update susscc");
+        return redirect('/home')->with('update susscc', 'อัปเดทขายสำเร็จ');
+        
     }
 
     /**

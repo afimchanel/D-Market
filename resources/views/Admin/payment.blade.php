@@ -12,14 +12,14 @@
       <table class="table ">
         <thead>
           <tr>
-            <th>username</th>
-            <th>Order_ID</th>
-            <th>payment</th>
+            <th>ID_ผู้ซื้อ</th>
+            <th>รายการสั่งซื้อที่</th>
+            <th>ใบเพย์เม้น</th>
             <th>ราคาทั้งหมด</th>
             <th>สนามบินที่ต้องไปรับ</th>
             <th>บัตรปชช</th>
-            <th>tel_Customer</th>
-            <th>Transferdate</th>
+            <th>เบอร์ผู้ซื้อ</th>
+            <th>วันเวลาที่จ่ายเงิน</th>
             <th>อนุมัตื</th>
           </tr>
         </thead>

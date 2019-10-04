@@ -141,7 +141,7 @@
                 อื่นๆ
               @endif
             </option>
-            <option value="1">ขาว</option>
+            <option value="1">ขาว</option> 
             <option value="2">ดำ</option>
             <option value="3">อื่น</option>
           </select>

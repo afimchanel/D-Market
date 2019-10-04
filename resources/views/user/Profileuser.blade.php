@@ -127,9 +127,10 @@
 </style>
 <?php
 
-use App\breederm;
 
-$breeder = breederm::where('user_id', $users->id)->get();
+use App\post;
+
+
 ?>
 @section('content')
 
@@ -137,7 +138,7 @@ $breeder = breederm::where('user_id', $users->id)->get();
 
 <div class="jumbotron jumbotron-fluid  ">
 
-
+    
     <div class="container ">
         <div class="container">
 
@@ -153,7 +154,7 @@ $breeder = breederm::where('user_id', $users->id)->get();
                     ชื่อ-นาสกุล : {{ $users->name }} <br>
                     เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
                     วันเดือนปีเกิด : {{ $users->DateofBirth }} <br>
-                    @if ($users->license === 'noimage.jpg' )
+                    @if ($users->license == 'noimage.jpg' || $users->license == NULL)
                     ใบทะเบียนจากสมาคม : สถานะ ไม่มี <br>
                     @else
                     ใบทะเบียนจากสมาคม : สถานะ มี <br>
@@ -165,9 +166,6 @@ $breeder = breederm::where('user_id', $users->id)->get();
                                 กรุณากรอกที่อยู่ !!
                             </div>
                             @endif
-
-                            
-                            
                         @else
                         {{ $users->address }} <br>
                         @endif
@@ -199,10 +197,6 @@ $breeder = breederm::where('user_id', $users->id)->get();
             <a class="nav-link " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">ลูกสุนัขทั้งหมด</a>
 
         </li>
-
-        <li class="nav-item dropdown">
-            <a class="nav-link " id="pills-profile-dog-tab" data-toggle="pill" href="#pills-profile-dog" role="tab" aria-controls="pills-profile-dog" aria-selected="false">พ่อแม่สุนัขทั้งหมด</a>
-        </li>
     </ul>
 
     <div class="tab-content" id="pills-tabContent">
@@ -216,13 +210,14 @@ $breeder = breederm::where('user_id', $users->id)->get();
                     @foreach ($posts as $item)
                     <div class="px-1 ">
                         <div class="card h-100">
-                            <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
+                            <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
                                 <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
                             </a>
 
                             <div class="card-body text-center">
                                 <h4 class="card-title ">
-                                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}{{$item->namedog}}</a>
+                                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->namedog}}</a>
+                                
                                     @if ($item->order_id == NULL )
                                     <span class="badge badge-success">สถานะ : ปกติ</span>
                                     @elseif ($item->order_id !== NULL && $item->Status == 0)
@@ -231,6 +226,8 @@ $breeder = breederm::where('user_id', $users->id)->get();
                                     <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
                                     @elseif ($item->Status == 1)
                                     <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+                                    @elseif ($item->Status == 3)
+                                    <span class="badge badge-warning">สถานะ : ส่งสุนัขแล้ว</span>
                                     @elseif ($item->Status == 2)
                                     <span class="badge badge-danger">สถานะ : ขายแล้ว</span>
                                     @endif
@@ -271,16 +268,21 @@ $breeder = breederm::where('user_id', $users->id)->get();
                                 <!--<p class="card-text"></p>-->
                             </div>
                             <div class="card-footer">
-                                <a href="/view/dog/{{$item->id}}" class="btn btn-light">ดูรายละเอียด</a>
+                                <a href="/view/dog/{{$item->idthedog}}" class="btn btn-light">ดูรายละเอียด</a>
                                 @if ($item->user_id == auth()->user()->id)
                                 <a href="/edit/dog/{{$item->id}}" class="btn btn-light">เเก้ไข</a>
-
+                                <?php $chk = post::where('id_the_dog',$item->id)->get('id_the_dog'); ?>
+                                @if ($chk == '[]')
                                 <div class="card">
                                     <a href="/post/dog/{{$item->id}}/{{auth()->user()->id}}" class="btn btn-success">
                                         {{ __('โพสขาย') }}
                                     </a>
                                 </div>
-                                <form action="/delete/dog/{{auth()->user()->id}}">
+                                @elseif(isset($chk))
+
+                                @endif
+
+                                <form action="/delete/dog/{{$item->id}}">
                                     @csrf
                                     @method('DELETE')
                                     <div class="card">
@@ -302,45 +304,7 @@ $breeder = breederm::where('user_id', $users->id)->get();
             </div>
         </div>
 
-        <!-- tree -->
-        <div class="tab-pane fade " id="pills-profile-dog" role="tabpanel" aria-labelledby="pills-profile-dog-tab">
-            <div class="row text-center">
-                @foreach ($breeder as $item)
-                <div class="col-lg-3 col-md-6 mb-4 ">
-                    <div class="card h-100">
 
-                        <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
-                        <div class="card-body">
-                            <h4 class="card-title">{{$item->Breed}}</h4>
-                            <!--<p class="card-text"></p>-->
-                        </div>
-                        <div class="card-footer">
-                            <a href="/view/dogbreed/{{$item->id_Breeder}}" class="btn btn-light">ดูรายละเอียด</a>
-
-                            @if ($item->user_id == auth()->user()->id)
-                            <a href="/edit/dog/{{$item->id_Breeder}}" class="btn btn-light">เเก้ไข</a>
-
-                            <div class="card">
-                                <a href="/post/dog/{{$item->id_Breeder}}/{{auth()->user()->id}}" class="btn btn-success">
-                                    {{ __('โพสขาย') }}
-                                </a>
-                            </div>
-                            <form action="/delete/dog/{{auth()->user()->id}}">
-
-                                <div class="card">
-                                    <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
-                                </div>
-                            </form>
-
-                            @endif
-
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        <!-- tree -->
     </div>
     <!-- /.container -->
 

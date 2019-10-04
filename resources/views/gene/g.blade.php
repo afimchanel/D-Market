@@ -3,13 +3,13 @@
 <style>
         /*#region Organizational Chart*/
         .tree * {
-            margin: 7px;
+            margin: 10px;
 
             padding: 0;
         }
 
         .tree ul {
-            padding-top: 10px;
+            padding-top: 20px;
             position: relative;
 
             - transition: all 0.5s;
@@ -39,7 +39,7 @@
             right: 50%;
             border-top: 2px solid #696969;
             width: 50%;
-            height: 10px;
+            height: 20px;
         }
 
         .tree li::after {
@@ -133,9 +133,19 @@
 <div class="container-fluid" style="margin-top:20px">
     <h1>รุ่นสุนัข.</h1>
     <div class="row">
-        <div class="">
+        <div class="col-md-12">
             <div class="tree">
-                
+                <ul>
+                    <li>
+                        <a href="as">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    Top level
+                                    <img src="/Dog-Wallpaper.jpg" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                </div>
+                            </div>
+                        </a>
+
                         <ul>
                             <li>
                                 <a href="#">
@@ -155,45 +165,20 @@
                                                     <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
                                                 </div>
                                             </div>
-                                            
+
                                         </a>
-                                        
-                                        <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Money
-                                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                               
-                                            </ul>
                                     </li>
                                     <li>
                                         <a href="#">
+
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     Send Request
                                                     <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
                                                 </div>
                                             </div>
+
                                         </a>
-                                        <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Money
-                                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                               
-                                            </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -207,7 +192,6 @@
                                         </div>
                                     </div>
                                 </a>
-
                                 <ul>
                                     <li>
                                         <a href="#">
@@ -218,42 +202,26 @@
                                                     <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
                                                 </div>
                                             </div>
-                                        </a>
-                                        <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Money
-                                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                
-                                            </ul>
-                                    </li>
 
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="#">
+
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     Send Request
                                                     <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
                                                 </div>
                                             </div>
+
                                         </a>
-                                    
-                                      
-
                                     </li>
-
                                 </ul>
                             </li>
-                            
                         </ul>
-                        
-                   
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

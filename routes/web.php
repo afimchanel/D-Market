@@ -22,6 +22,10 @@ Route::get('/as', function () {
     return view('gene.gene');
 });
 
+Route::get('/s', function () {
+    return view('gene.g');
+});
+
 
 
 Route::get('/buying', function () {
@@ -57,8 +61,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/edit/dog/{ID_dog}/', 'DogController@edit');
         Route::get('/view/dog/{ID_dog}', 'DogController@show');
         Route::get('/view/dogbreed/{ID_dog}', 'DogController@showbreed');
-        Route::get('/view/dog/breed/{namedog}', 'DogController@showbreedm');
+        Route::get('/view/dog/breed/{id}', 'DogController@showbreedm');
         Route::get('/delete/dog/{id}', 'DogController@destroy');
+        Route::get('/delete/dogimages/{id}', 'DogController@destroyimages');
         //Post
             Route::get('/view/category', 'PostController@index');
             Route::get('/{ID_dog}/{Post_id}/view/post', 'PostController@show');

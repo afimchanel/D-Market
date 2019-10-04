@@ -3,16 +3,6 @@
 @section('content')
 
 
-<script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
-</script>
-
 <!-- Navigation -->
 
 
@@ -146,9 +136,7 @@
       <div class="row ">
       
         @foreach ($post as $item)
-        @if ($item->order_id == NULL)
-    
-
+        
         <div class="col-lg-4 col-md-6 mb-4 py-2">
           <div class="card h-100">
             <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
@@ -159,7 +147,7 @@
             </a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->title_post}}{{$item->breed}}</a>
+                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->	Detail_Dog}}</a>
               </h4>
               <h5>ราคา : {{$item->price}}</h5>
               
@@ -182,7 +170,7 @@
             </div>
           </div>
         </div>
-        @endif
+        
         @endforeach
       
       </div>

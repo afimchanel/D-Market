@@ -87,22 +87,17 @@
 
         <div class="content" id="app">
             <div class="title m-b-md">
+                    D-Market
                     @if(session()->get('success'))
                     <div class="alert alert-success">
                       {{ session()->get('success') }}  
                     </div><br />
                     @endif  
-                D-Market
+               
             </div>
 
             <div class="links">
-                <a href="https://laravel.com/docs">Docs</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://blog.laravel.com">Blog</a>
-                <a href="https://nova.laravel.com">Nova</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
+
 
                 <script type="text/javascript" src="js/app.js"></script>
             </div>

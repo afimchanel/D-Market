@@ -108,6 +108,14 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                            <a href="{{url('/')}}/login/facebook" class="btn btn-primary btn-block">
+                            <i class="fa fa-facebook"></i>&nbsp; Register with Facebook
+                            </a>
+                            
+                            <hr>
+                            <a href="{{url('/redirect')}}" class="btn btn-danger btn-block"><i class="fa fa-google">
+                            </i> Register with Google
+                            </a>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

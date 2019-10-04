@@ -45,7 +45,7 @@ class ordercontroller extends Controller
         error_log('เพิ่มส่วนที่ว่าต้องกรอกข้อมูลโปรไฟลให้ครบก่อนจะซ์้อด้วย');
         if (Auth::check()) {
             if (auth()->user()->email_verified_at !== NULL && (auth()->user()->IDcardnumber !== NULL )) {
-                $new = orderdetail::where('id_post',$id_post)->first();
+                $new = orderdetail::where('id_post',$id_post)->where('id_user',$id_user)->first();
 
                 error_log($new);
                 if ( $new == null) //ทำเงื่อนไขตรงนี้ให้ดี
@@ -59,10 +59,12 @@ class ordercontroller extends Controller
                     
                     return redirect()->route('order.show', [$order->id_user])->with($order->id_user);
                 
-            } else {
+                } else {
                 error_log('else');
                 return redirect()->back();
-            }
+                }
+
+
             } else {
                 return view('user.EditProfileuser');
             }
@@ -143,7 +145,7 @@ class ordercontroller extends Controller
         error_log($id);
         $Order = orderdetail::where('Order_detail',$id);
         $Order->delete();
-        return view('Shoppingcart',compact('Order'));
+        return redirect()->back();
     }
 
     public function destroyorder($id)
@@ -161,38 +163,46 @@ class ordercontroller extends Controller
     {
         if (Auth::check()) {
             $finde = orders::where('id_user',$id)->Orderby('updated_at','desc')->first();
-            $find = orders::where('id_user',$id)->Orderby('created_at','desc')->first();
+            
             error_log('if1');
             if ($finde == NULL){
                 //เงื่อนไขที่ไม่เคยสร้างอะไรมาก่อน
                 error_log('if2');
-                $order = new orders;
-                $order->id_user = $id;
-                $order->save();
-                // เอา id_userของตารางorderdetailมาวนลูปนี้
-                //$orders = orderdetail::find('id_user', '=' , $id);
-                error_log($order->Order_ID);
                 $orders = orderdetail::where(['id_user'=>$id])->get();
-                foreach($orders as $item){
-                    $item->order_id = $order->Order_ID;
-                    $item->save();
+                if ($orders == '[]') {
+                    return redirect()->back();
                 }
-                return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
-            } elseif($find !== NULL && $finde->Status == 0 ) {
+
+                    $order = new orders;
+                    $order->id_user = $id;
+                    $order->save();
+                    error_log($order->Order_ID);
+                    
+                    foreach($orders as $item){
+                        $item->order_id = $order->Order_ID;
+                        $item->save();
+                    }
+                    return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
+                    
+
+
+            } elseif($finde !== NULL && $finde->Status == 0 ) {
                 //ออเดอร์ช้ำ
-                error_log('else1.1');
-                                
-                error_log('if2');
-                
+                error_log('else1.1'); 
+                $orders = orderdetail::where(['id_user'=>$id])->where('order_id',NULL)->get();
                 $finde->id_user = $id;
                 $finde->save();
                 error_log($finde->Order_ID);
-                $orders = orderdetail::where(['id_user'=>$id])->where('order_id',NULL)->get();
-                foreach($orders as $item){
-                    $item->order_id = $finde->Order_ID;
-                    $item->save();
-                }
+                
+                error_log($orders);
+              
+                    foreach($orders as $item){
+                        $item->order_id = $finde->Order_ID;
+                        $item->save();
+                    }
                 return view('payment.description')->with('success','คุณได้ยืนยันการชื้อแล้วโปรดแจ้งชำระเงิน');
+                
+                    
                 
 
             }

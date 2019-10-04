@@ -11,17 +11,22 @@
     </ul>
 </div>
 @endif
+@if(session()->get('not'))
+<div class="alert alert-danger">
+  {{ session()->get('not') }}  
+</div><br />
+@endif  
 <?php
 
 use App\dogimages;
 use App\dogvideo;
 
-$sliders = dogimages::where(['dog_id' => $iddog])->get();
-$video = dogvideo::where(['dog_id' => $iddog])->get();
+$sliders = dogimages::where(['dog_id' => $id])->get();
+$video = dogvideo::where(['dog_id' => $id])->get();
 ?>
+@foreach ($Dogs as $Dog)
 <!-- Page Content -->
 <div class="container">
-
     <!-- Portfolio Item Heading -->
     <h1 class="my-4">
         <small><a href="/user/{{$Dog->user_id}}">เจ้าของสุนัข</a></small>
@@ -39,7 +44,7 @@ $video = dogvideo::where(['dog_id' => $iddog])->get();
           <div class="carousel-inner">
               @foreach($sliders as $key => $slider)
               <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                  <img src="/storage/public/imagedog/{{$slider->image}}" class="d-block w-100"  alt="..."> 
+                  <img src="/storage/public/imagedog/{{$slider->image}}" class="d-block w-100"  > 
               </div>
               @endforeach
           </div>
@@ -59,36 +64,65 @@ $video = dogvideo::where(['dog_id' => $iddog])->get();
 
         <div class="col-md-4">
             <h3 class="my-3">รายละเอียด</h3>
-            <video width="400" controls>
-                <source src="" type="video/mp4">
-                <source src="" type="video/mov">
-                Your browser does not support HTML5 video.
-            </video>
+            @foreach ($video as $item)
+                <video width="400" controls>
+                    <source src="/storage/public/videodog/{{$item->video}}" type="video/mp4">
+                </video>
+            @endforeach
+
+            
             <ul>
-                <li>สายพันธุ์ :<a class="badge badge-success" href="/search/{{$Dog->breed}}"> {{$Dog->breed}}</a></li>
+                <li>สายพันธุ์ :<a class="badge badge-success" href="/search/{{$Dog->breed}}">
+                    @if ($Dog->breed == 1)
+                    ปั๊ก (Pug)
+                    @elseif($Dog->breed == 2)
+                    ชิวาวา(Chihuahua)
+                    @elseif($Dog->breed == 3)
+                    ปอมเมอเรเนียน (Pomerania)
+                    @elseif($Dog->breed == 4)
+                    ชิสุ (Shih Tzu)
+                    @elseif($Dog->breed == 5)
+                    ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)
+                    @elseif($Dog->breed == 6)
+                    บีเกิล (Beagle)
+                    @elseif($Dog->breed == 7)
+                    บูลด็อก (Bulldog)
+                    @elseif($Dog->breed == 8)
+                    ไซบีเรียน ฮัสกี้ (Siberian Husky)
+                    @elseif($Dog->breed == 9)
+                    โกลเด้น รีทรีฟเวอร์ (Golden Retriever)
+                    @elseif($Dog->breed == 10)
+                    ลาบราดอร์ รีทรีฟเวอร์ (Labrador Retriever)
+                    @elseif($Dog->breed == 11)
+                    อื่นๆ
+                    @endif
+                
+                </a></li>
+
                 <li>สี :
-                    @if ($Dog->color === '1')
-                    <a href="#" class="badge badge-primary">ขาว</a>
-                    @elseif($Dog->color === '2')
-                    <a href="#" class="badge badge-primary">ดำ</a>
-                    @elseif($Dog->color === '3')
-                    <a href="#" class="badge badge-primary">อื่น*นอกเหนือจากสีขาวและสีดำ</a>
+                    @if ($Dog->color == '1')
+                <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีขาว</a>
+                    @elseif($Dog->color == '2')
+                    <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีดำ</a>
+                    @elseif($Dog->color == '3')
+                    <a href="/search/{{$Dog->color}}" class="badge badge-primary">นอกเหนือจากสีขาวและสีดำ</a>
                     @endif
 
                 </li>
                 <li>เพศ :
-                    @if ($Dog->sex === 'M')
-                    <a href="#" class="badge badge-secondary">ตัวผู้</a>
-                    @elseif($Dog->sex === 'F')
-                    <a href="#" class="badge badge-secondary">ตัวเมีย</a>
+                    @if ($Dog->sex == '1')
+                    <a href="/search/{{$Dog->sex}}#" class="badge badge-secondary">ตัวผู้</a>
+                    @elseif($Dog->sex == '2')
+                    <a href="/search/{{$Dog->sex}}" class="badge badge-secondary">ตัวเมีย</a>
                     @endif
                 </li>
-                <li>พ่อพันธุ์ :<a class="badge badge-warning" href="/view/dog/breed/{{$Dog->father}}"> {{$Dog->father}}</a> </li>
-                <li>แม่พันธุ์ : {{$Dog->momher}}</li>
+                <li>พ่อพันธุ์ :<a class="badge badge-warning" href="/view/dog/breed/{{$Dog->id_father}}">{{$Dog->father}}</a></li>
+                <li>แม่พันธุ์ : <a class="badge badge-warning" href="/view/dog/breed/{{$Dog->id_momher}}">{{$Dog->momher}}</a></li>
                 ดูสายพันของตัวนี้
                 <li>วันเกิด :{{$Dog->birthday}}</li>
                 <li>
-                    ใบCP : @if ($Dog->imageCP == 'noimage.jpg' )
+                    ใบCP : 
+                    @if ($Dog->imageCP == 'noimage.jpg' || $Dog->imageCP == NULL)
                     <span class="badge badge-pill badge-danger">ไม่มี</span>
                     @else
                     <button type="button" class="badge badge-pill badge-success" data-toggle="modal" data-target="#CP" >ดู</button >
@@ -103,7 +137,7 @@ $video = dogvideo::where(['dog_id' => $iddog])->get();
                                             </button>
                                             </div>
                                             <div class="modal-body">
-                                                    <img src="/storage/public/imagedog/{{$Dog->imageCP}}" class="d-block w-100"  alt="..."> 
+                                                    <img src="/storage/public/imagedog/imageCP/{{$Dog->imageCP}}" class="d-block w-100"  alt="..."> 
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -115,7 +149,7 @@ $video = dogvideo::where(['dog_id' => $iddog])->get();
                     @endif
                 </li>
                 <li>
-                    ใบRC : @if ($Dog->imageRC == 'noimage.jpg' )
+                    ใบRC : @if ($Dog->imageRC == 'noimage.jpg'|| $Dog->imageCP == NULL )
                     <span class="badge badge-pill badge-danger" >ไม่มี</span>
                     
                     @else
@@ -153,6 +187,7 @@ $video = dogvideo::where(['dog_id' => $iddog])->get();
 
 </div>
 <!-- /.container -->
-
+    
+@endforeach
 
 @endsection

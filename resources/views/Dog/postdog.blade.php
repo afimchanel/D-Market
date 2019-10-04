@@ -2,44 +2,49 @@
 
 
 @section('content')
-{{-- @if (count($errors) > 0)
-<div class="alert alert-danger">
-  <strong>Whoops!</strong> There were some problems with your input.<br><br>
-  <ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-@endforeach
-</ul>
-</div>
-@endif --}}
+
 
 <div class="container ">
 
   <h3 class="text-center">กรอกข้อมูลใบเพ็ด</h3>
   <h6 class="text-center">REGISTRATION CERTIFICATE</h6>
-
+  @if (count($errors) > 0)
+  <div class="alert alert-danger">
+      <strong>อุ๊ปป!</strong> คุณยังไม่ได้กรอกสิ่งเหล่านี้<br><br>
+      <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+  @endif
   <div class="form-group ">
-    เพิ่มสุนัขเป็นการเพิ่มเข้าในระบบ แต่ยังไม่ขายเหมืทอนกับว่าให้โปรโมทให้คนสนใจก่อนถ้าหน้าร้านประกาศวันลงขายเมื่อไหร่(วันพร้อมส่ง)
+    
     <form method="post" action="{{ route('dog.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
       @csrf
       <div class="form-row">
         <div class="col-md-4 mb-3">
 
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สายพันธุ์สุนัข</label>
-          <select class="custom-select" name='Breed' required>
-            <option value="">เลือกสายพันธู์</option>
-            <option value="ปั๊ก">ปั๊ก (Pug) </option>
-            <option value="ชิวาวา">ชิวาวา(Chihuahua)</option>
-            <option value="ปอมเมอเรเนียน">ปอมเมอเรเนียน (Pomerania)</option>
-            <option value="ชิสุ">ชิสุ (Shih Tzu)</option>
-            <option value="ยอร์คเชียร์ เทอร์เรียร์">ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)</option>
-            <option value="บีเกิล">บีเกิล (Beagle)</option>
-            <option value="บูลด็อก">บูลด็อก (Bulldog)</option>
-            <option value="ไซบีเรียน ฮัสกี้">ไซบีเรียน ฮัสกี้ (Siberian Husky)</option>
-            <option value="โกลเด้น รีทรีฟเวอร์">โกลเด้น รีทรีฟเวอร์ (Golden Retriever)</option>
-            <option value="ลาบราดอร์ รีทรีฟเวอร์">ลาบราดอร์ รีทรีฟเวอร์ (Labrador Retriever)</option>
-            <option value="0">อื่นๆ</option>
+          <select class="custom-select @error('Breed') is-invalid @enderror" name='Breed' required>
+            <option >เลือกสายพันธุ์</option>
+            <option value="1">ปั๊ก (Pug) </option>
+            <option value="2">ชิวาวา(Chihuahua)</option>
+            <option value="3">ปอมเมอเรเนียน (Pomerania)</option>
+            <option value="4">ชิสุ (Shih Tzu)</option>
+            <option value="5">ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)</option>
+            <option value="6">บีเกิล (Beagle)</option>
+            <option value="7">บูลด็อก (Bulldog)</option>
+            <option value="8">ไซบีเรียน ฮัสกี้ (Siberian Husky)</option>
+            <option value="9">โกลเด้น รีทรีฟเวอร์ (Golden Retriever)</option>
+            <option value="10">ลาบราดอร์ รีทรีฟเวอร์ (Labrador Retriever)</option>
+            <option value="11">สายพันธุ์อื่นๆ</option>
           </select>
+          @error('Breed')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณาใส่สายพันธุ์สุนัข</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
@@ -47,113 +52,164 @@
           <input type="text" class="form-control @error('namedog') is-invalid @enderror" id="namedog" placeholder="ชื่อสุนัข" name="namedog" required autocomplete="namedog" autofocus>
           @error('namedog')
           <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
+            <strong>กรุณากรอกชื่อสุนัข</strong>
           </span>
           @enderror
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="validationTooltip02">IDสุนัข</label>
-          <input type="text" class="form-control" id="validationTooltip02" placeholder="IDสุนัข ที่อยู่ในใบ" name="IDthedog" required>
-          <div class="valid-tooltip">
-            Looks good!
-          </div>
+          <input type="text" class="form-control"   @error('IDthedog') is-invalid @enderror placeholder="IDสุนัข ที่อยู่ในใบ" name="IDthedog" required>
+          @error('IDthedog')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกไอดีสุนัข</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroup id">เลขทะเบียนพันธุ์</label>
-          <input type="text" class="form-control" id="formGroup id" placeholder="เลขทะเบียนพันธุ์" name="Registrationspecies" required>
-          <div class="valid-tooltip">
-            Looks good!
-          </div>
+          <input type="text" class="form-control" @error('Registrationspecies') is-invalid @enderror placeholder="เลขทะเบียนพันธุ์" name="Registrationspecies" required>
+          @error('Registrationspecies')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกเลขทะเบียนพันธุ์</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroupNum">เลขไมโครชิพ</label>
-          <input type="text" class="form-control" id="formGroupNum" placeholder="เลขไมโครชิพ" name="Nomicrochip" required>
-          <div class="valid-tooltip">
-            Looks good!
-          </div>
+          <input type="text" class="form-control" @error('Nomicrochip') is-invalid @enderror  placeholder="เลขไมโครชิพ" name="Nomicrochip" required>
+          @error('Nomicrochip')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกเลขไมโครชิพ</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">สี</label>
           <select class="custom-select" name='color' required>
-            <option value="">เลือกสี</option>
-            <option value="1">ขาว</option>
-            <option value="2">ดำ</option>
-            <option value="3">อื่น</option>
+            <option>เลือกสี</option>
+            <option value="1">สีขาว</option>
+            <option value="2">สีดำ</option>
+            <option value="3">นอกจากสีขาวและสีดำ</option>
           </select>
         </div>
 
         <div class="col-md-4 mb-3">
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">เพศสุนัข</label>
           <select class="custom-select" name='SEX' required>
-            <option value="">เลือกเพศสุนัข</option>
-            <option value="M">ตัวผู้</option>
-            <option value="F">ตัวเมีย</option>
+            <option >เลือกเพศสุนัข</option>
+            <option value="1">ตัวผู้</option>
+            <option value="2">ตัวเมีย</option>
           </select>
-          <div class="invalid-feedback">กรุณาเลือกเพศ</div>
+        
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroupFather">พ่อพันธุ์</label>
-          <input type="text" class="form-control" id="formGroupFather" placeholder="กรอกชื่อพ่อพันธุ์ " name="Father" required>
+          <input type="text" class="form-control"  @error('Father') is-invalid @enderror placeholder="กรอกชื่อพ่อพันธุ์ " name="Father" required>
+          @error('Father')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกชื่อพ่อพันธุ์</strong>
+          </span>
+          @enderror
         </div>
+        <div class="col-md-4 mb-3">
+          <label for="formGroupMather">idพ่อพันธุ์  </label>
+          <input type="text" class="form-control"  placeholder=" ถ้าไม่มีข้อมูลไม่ต้องกรอก" name="id_father" >
+        </div>
+
 
         <div class="col-md-4 mb-3">
           <label for="formGroupMather">แม่พันธุ์</label>
-          <input type="text" class="form-control" id="formGroupMather" placeholder="กรอกชื่อแม่พันธุ์" name="Momher" required>
+          <input type="text" class="form-control"  @error('Momher') is-invalid @enderror placeholder="กรอกชื่อแม่พันธุ์" name="Momher" required>
+          @error('Momher')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกชื่อแม่พันธุ์</strong>
+          </span>
+          @enderror
         </div>
+          <div class="col-md-4 mb-3">
+            <label for="formGroupMather">idแม่พันธุ์ </label>
+            <input type="text" class="form-control"  placeholder=" ถ้าไม่มีข้อมูลไม่ต้องกรอก" name="id_momher" >
+          </div>
 
         <div class="col-md-4 mb-3">
-          <label for="formGroupMather">วันเกิดสุนัช</label>
-          <input type="date" class="form-control" id="formGroupMather" placeholder="กรอกชื่อแม่พันธุ์" name="birthday" required>
+          <label for="formGroupMather">วันเกิดสุนัข</label>
+          <input type="date" class="form-control" @error('birthday') is-invalid @enderror placeholder="กรอกวันเกิดสุนัข" name="birthday" required>
+          @error('birthday')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกวันเกิดสุนัข</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroupMather">ชื่อผู้เพาะพันธุ์ </label>
-          <input type="text" class="form-control" id="formGroupMather" placeholder="กรอกชื่อแม่พันธุ์" name="Breedername" required>
+          <input type="text" class="form-control" @error('Breedername') is-invalid @enderror placeholder="กรอกชื่อผู้เพาะพันธุ์" name="Breedername" required>
+          @error('Breedername')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกชื่อผู้เพาะพันธุ์</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroup Owder">เจ้าของ</label>
-          <input type="text" class="form-control" id="formGroup Owder" name="Owner" placeholder="วันออกทะเบียน" required>
+          <input type="text" class="form-control" @error('Owner') is-invalid @enderror  name="Owner" placeholder="กรอกชื่อเจ้าของ" required>
+          @error('Owner')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกชื่อเจ้าของ</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroup Regis">วันออกทะเบียน </label>
-          <input type="date" class="form-control" id="formGroup Regis" placeholder="วันออกทะเบียน" name="Registrationdate" required>
+          <input type="date" class="form-control" @error('Registrationdate') is-invalid @enderror  placeholder="วันออกทะเบียน" name="Registrationdate" required>
+          @error('Registrationdate')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณากรอกวันออกทะเบียน</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="col-md-4 mb-3 ">
-          <label for="formGroup File">อัพโหลดรูป</label>
+          <label for="formGroup File">อัพโหลดรูป REGISTRATION CERTIFICATE</label>
           <div class="custom-file">
             <input type="file" class="custom-file-input" name="imageRC" accept=".png, .jpg, .jpeg">
-            <label class="custom-file-label" for="cover_image2">อัปโหลดรูปREGISTRATION CERTIFICATE</label>
+            <label class="custom-file-label" for="cover_image2"> Choose file</label>
           </div>
         </div>
       </div>
 
       <br><br>
-      <h6 class="text-center">CERTIFIED PEDIGREE</h6>
+
       <div class="form-row">
         <div class="col-md-4 mb-3">
-          <label for="formGroup File">อัพโหลดใบCP</label>
+          <label for="formGroup File">อัพโหลดใบ CERTIFIED PEDIGREE</label>
           <div class="custom-file">
             <input type="file" name="imageCP" id="imageCP" class="custom-file-input" accept=".png, .jpg, .jpeg">
-            <label class="custom-file-label" for="imageCP">อัปโหลดรูปCERTIFIED PEDIGREE</label>
+            <label class="custom-file-label" for="imageCP">Choose file</label>
           </div>
         </div>
 
         <div class="col-md-4 mb-3">
           <label for="formGroup File">อัพโหลดรูปสุนัข</label>
           <div class="custom-file">
-            <input type="file" name="filename[]" class="custom-file-input" multiple accept=".png, .jpg, .jpeg">
+            <input type="file" name="filename[]"  @error('filename[]') is-invalid @enderror class="custom-file-input" multiple accept=".png, .jpg, .jpeg">
             <label class="custom-file-label" for="cover_image">Choose file</label>
+            @error('filename[]')
+            <span class="invalid-feedback" role="alert">
+              <strong>กรุณาอัพโหลดรูปสุนัขและขนาดไฟล์ไม่เกิน2MB</strong>
+            </span>
+            @enderror
 
           </div>
         </div>
+
         <div class="col-md-4 mb-3">
           <label for="formGroup File">อัพโหลดวิดิโอสุนัข</label>
           <div class="custom-file">
@@ -162,21 +218,18 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4 mb-3">
-        <label for="formGroup File">อัพโหลดรูปปกสุนัข</label>
+        <label for="formGroup File">อัพโหลดรูปปกสุนัข </label>
         <div class="custom-file">
-          <input type="file" name="image" class="custom-file-input" accept=".png, .jpg, .jpeg">
+          <input type="file" name="image"  @error('image') is-invalid @enderror class="custom-file-input" accept=".png, .jpg, .jpeg">
           <label class="custom-file-label">Choose file</label>
+          @error('image')
+          <span class="invalid-feedback" role="alert">
+            <strong>กรุณาอัพโหลดรูปปกสุนัขและขนาดไฟล์ไม่เกิน2MB</strong>
+          </span>
+          @enderror
         </div>
-      </div>
-
-
-
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1" name="check">
-        <label class="form-check-label" for="defaultCheck1">
-          เช็คตรงนี้ถ้าเป็นพ่อแม่สุนัข
-        </label>
       </div>
       <button type="submit" class="btn btn-primary">ตกลง</button>
 
