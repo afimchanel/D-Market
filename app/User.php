@@ -39,7 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     ];
     protected $table = 'users';
-    
+
     public function dogs()
     {
         return $this->hasMany('App\Dog');
