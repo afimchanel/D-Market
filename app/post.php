@@ -10,13 +10,18 @@ class post extends Model
     protected $table = 'posts';
     protected $primaryKey = 'Post_id';
 
-    public  function postdogs()
+    public  function dog()
     {
-        return $this->hasOne('App\Dog','ID_dog');
+        return $this->belongsTo('App\Dog','id_the_dog');
     }
-    public function post_users()
+    public function user()
     {
         return $this->belongsTo('App\User','id');
     }
+
+    public function orderDetail(){
+        return $this->hasMany('App\orderdetail','id_post');
+    }
+    
    
 }

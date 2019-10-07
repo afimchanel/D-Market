@@ -47,8 +47,8 @@
         }
 
         .title {
-            color: #2db0ed;
-            font-size: 84px;
+            color :#fff;
+            font-size: 120px;
         }
 
         .links>a {

@@ -20,7 +20,8 @@
             <th>บัตรปชช</th>
             <th>เบอร์ผู้ซื้อ</th>
             <th>วันเวลาที่จ่ายเงิน</th>
-            <th>อนุมัตื</th>
+            <th>อนุมัติ</th>
+            <th>โอนเงิน</th>
           </tr>
         </thead>
 
@@ -120,7 +121,9 @@
               @endif
 
             </td>
-
+           <td>
+              <a href=""><button type="button" class="btn btn-success">โอน</button></a>
+           </td>
           </tr>
           @endforeach
         </tbody>

@@ -85,7 +85,7 @@
                     <div class="form-group ">
                         ใบอนุญาตจากสมาคม(ถ้ามี)
                         <div class="custom-file input-group mb-2">
-                            <input type="file" name="license" class="custom-file-input @error('license') is-invalid @enderror" accept=".png, .jpg, .jpeg">
+                            <input type="file" name="license" class="custom-file-input @error('license') is-invalid @enderror" accept=".png, .jpg, .jpeg" value="{{ Auth::user()->license }}">
                             @error('license')
                             <span class="invalid-feedback" role="alert">
                                 <strong>ใส่รูปด้วยครับ</strong>
@@ -97,7 +97,7 @@
                     <div class="form-group ">
                         บัตรประจำตัวประชาชน 
                         <div class="custom-file input-group mb-2">
-                            <input type="file" name="IDcardnumber" class="custom-file-input @error('IDcardnumber') is-invalid @enderror" accept=".png, .jpg, .jpeg">
+                            <input type="file" name="IDcardnumber" class="custom-file-input @error('IDcardnumber') is-invalid @enderror" accept=".png, .jpg, .jpeg" value="{{ Auth::user()->IDcardnumber }}">
                             @error('IDcardnumber')
                             <span class="invalid-feedback" role="alert">
                                 <strong>ใส่รูปด้วยครับ</strong>

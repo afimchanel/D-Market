@@ -218,7 +218,7 @@ use App\post;
                                 <h4 class="card-title ">
                                 <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->namedog}}</a>
                                 
-                                    @if ($item->order_id == NULL )
+                                    {{-- @if ($item->order_id == NULL )
                                     <span class="badge badge-success">สถานะ : ปกติ</span>
                                     @elseif ($item->order_id !== NULL && $item->Status == 0)
                                     <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
@@ -230,12 +230,12 @@ use App\post;
                                     <span class="badge badge-warning">สถานะ : ส่งสุนัขแล้ว</span>
                                     @elseif ($item->Status == 2)
                                     <span class="badge badge-danger">สถานะ : ขายแล้ว</span>
-                                    @endif
+                                    @endif --}}
 
 
                                 </h4>
                                 @if ($item->user_id == auth()->user()->id)
-                                <a href="/edit/post/{{$item->Post_id}}" class="btn btn-light">เเก้ไข</a>
+                                <a href="/edit/post/{{$item->Post_id}}" class="btn btn-primary">เเก้ไข</a>
                                 @endif
                                 <p class="card-text">{{$item->Detail_Dog}}</p>
                             </div>

@@ -110,11 +110,13 @@ $sliders = dogimages::where(['dog_id' => $dog->idthedog])->get();
     <!-- /.col-md-4 -->
   </div>
   <!-- /.row -->
-  @foreach ($video as $item)
-  <video width="400" controls>
-      <source src="/storage/public/videodog/{{$item->video}}" type="video/mp4">
-  </video>
-  @endforeach
+  {{-- วิดิโอ --}}
+    @foreach ($video as $item)
+    <video width="400" controls>
+        <source src="/storage/public/videodog/{{$item->video}}" type="video/mp4">
+    </video>
+    @endforeach
+  {{-- วิดิโอ --}}
   <!-- Call to Action Well -->
   <div class="card text-dark bg-light my-5 py-4 text-center">
     <div class="card-body">
@@ -153,6 +155,78 @@ $sliders = dogimages::where(['dog_id' => $dog->idthedog])->get();
       <p class="text-dark m-0">ผู้เพาะพันธุ์ : {{$dog->owner}} </p>
       <p class="text-dark m-0">พ่อพันธุ์ : {{$dog->father}} </p>
       <p class="text-dark m-0">แม่พันธุ์ : {{$dog->momher}} </p>
+      <a href="/view/dog/gene/{{$dog->id}}">ดูสายพันของตัวนี้</a>
+      <p>tag</p>
+      <hr>
+      ใบCP : 
+        @if ($dog->imageCP == 'noimage.jpg' || $dog->imageCP == NULL)
+        <span class="badge badge-pill badge-danger">ไม่มี</span>
+        @else
+        <button type="button" class="badge badge-pill badge-success" data-toggle="modal" data-target="#CP" >ดู</button >
+                    <!-- Modal -->
+                    <div class="modal fade" id="CP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                        <img src="/storage/public/imagedog/imageCP/{{$dog->imageCP}}" class="d-block w-100"  alt="..."> 
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+        @endif
+        ใบRC : 
+        @if ($dog->imageRC == 'noimage.jpg'|| $dog->imageCP == NULL )
+          <span class="badge badge-pill badge-danger" >ไม่มี</span>
+          
+          @else
+          <button type="button" class="badge badge-pill badge-success" data-toggle="modal" data-target="#RC" >ดู</button >
+              <!-- Modal -->
+              <div class="modal fade" id="RC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          </div>
+                          <div class="modal-body">
+                                  <img src="/storage/public/imagedog/imageRC/{{$dog->imageRC}}" class="d-block w-100"  alt="..."> 
+                          </div>
+                          <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+          @endif
+                    @if ($dog->sex == '1')
+                    <a href="/search/{{$dog->sex}}#" class="badge badge-secondary">ตัวผู้</a>
+                    @elseif($dog->sex == '2')
+                    <a href="/search/{{$dog->sex}}" class="badge badge-secondary">ตัวเมีย</a>
+                    @endif
+
+                  @if ($dog->color == '1')
+                  <a href="/search/{{$dog->color}}" class="badge badge-primary">สีขาว</a>
+                  @elseif($dog->color == '2')
+                  <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีดำ</a>
+                  @elseif($dog->color == '3')
+                  <a href="/search/{{$dog->color}}" class="badge badge-primary">นอกเหนือจากสีขาวและสีดำ</a>
+                  @endif
+
+
+
     </div>
   </div>
 

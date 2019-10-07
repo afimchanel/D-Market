@@ -40,24 +40,26 @@ class ordercontroller extends Controller
      */
     public function store($id_user,$id_dog,$id_post)
     {
-        
-       
+    
         error_log('เพิ่มส่วนที่ว่าต้องกรอกข้อมูลโปรไฟลให้ครบก่อนจะซ์้อด้วย');
         if (Auth::check()) {
             if (auth()->user()->email_verified_at !== NULL && (auth()->user()->IDcardnumber !== NULL )) {
-                $new = orderdetail::where('id_post',$id_post)->where('id_user',$id_user)->first();
 
+                $new = orderdetail::where('id_post',$id_post)->where('id_user',$id_user)->first();
+                
                 error_log($new);
-                if ( $new == null) //ทำเงื่อนไขตรงนี้ให้ดี
+                error_log(Auth::user()->id);
+                error_log($id_user);
+                if ($id_user != Auth::user()->id && $new == null) //ทำเงื่อนไขตรงนี้ให้ดี
                 {
                     error_log('if ');
                     $order = new orderdetail;
                     $order->id_post = $id_post;
                     $order->id_the_dog = $id_dog;
-                    $order->id_user = $id_user;
+                    $order->id_user = Auth::user()->id;
                     $order->save();
                     
-                    return redirect()->route('order.show', [$order->id_user])->with($order->id_user);
+                    return redirect()->route('order.show', [Auth::user()->id]);
                 
                 } else {
                 error_log('else');
@@ -83,17 +85,15 @@ class ordercontroller extends Controller
      */
     public function show($id)
     {
-        //$post = post::find($id_post);
-        //$dog = Dog::find($id_dog);
+        // $Order = orderdetail::whereHas('post',function($query){
+        //     $query->where('user_id',Auth::user()->id);
+        // })->get();
           
-        $Order = DB::table('order_detail')
-        ->where('id_user', '=', $id)
+        $Order = orderdetail::where('id_user', '=', $id)
         ->join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
         ->join('users', 'order_detail.id_user', '=', 'users.id')
         ->join('posts','order_detail.id_post','=','posts.Post_id')
         ->where('order_id',Null)
-        ->select('users.*', 'dogs.*', 'posts.*','order_detail.*')
-
         ->get();
         
         return view('Shoppingcart',compact('Order'));

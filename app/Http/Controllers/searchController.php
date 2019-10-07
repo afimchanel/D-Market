@@ -31,21 +31,20 @@ class searchController extends Controller
     }
     public function show_category(Request $request)
     {
-        
-        $post =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
-            ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
-            ->where('dogs.Breed', 'LIKE', $request->Breed )
-            ->orWhere('posts.Age_Dog', 'LIKE',$request->Age_Dog )
-            ->orWhere('posts.type_dog', 'LIKE',$request->type_dog)
-            ->orWhere('posts.weight_dog', 'LIKE',$request->weight_dog)
-            ->orWhere('posts.eye_color', 'LIKE', $request->eye_color)
-            ->orWhere('dogs.color', 'LIKE',$request->color)
-            ->orWhere('dogs.SEX', 'LIKE',$request->SEX )
+        error_log($request->breed);
+        error_log($request->Age_Dog);
+        $post =  post::leftjoin('dogs', 'posts.id_the_dog', '=','dogs.id')
+            ->orwhere('dogs.breed','=',$request->breed)
+            ->orWhere('posts.Age_Dog','=',$request->Age_Dog)
+            ->orWhere('posts.type_dog','=',$request->type_dog)
+            ->Where('posts.weight_dog','=',$request->weight_dog)
+            ->Where('posts.eye_color','=',$request->eye_color)
+            ->WhereBetween('posts.price',[$request->price_min,$request->price_max])
+            ->Where('dogs.color','=',$request->color)
+            ->Where('dogs.sex','=',$request->SEX)
             ->paginate(9);
-        //->get();
-        error_log('showcategory');
+
+        error_log($post);
 
         if (count($post) > 0){
             error_log('if');
@@ -53,14 +52,12 @@ class searchController extends Controller
         }
         else{
             error_log('else');
-            return view('search.searchcategory')->with('Message','No Details found. Try to search again !')->withQuery($request);
+            return view('search.searchcategory')->with('searchnot','ไม่พบสุนัขที่คุรตามหาอยู่')->withQuery($request);
         }            
     }
 
     public function search($id)
     {
-     
-        
         $search = DB::table('posts')
         ->leftjoin('dogs', 'posts.id_the_dog', '=', 'dogs.id')
         ->join('breed_dog', 'dogs.breed', '=', 'breed_dog.id')

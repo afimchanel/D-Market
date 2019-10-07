@@ -17,16 +17,17 @@ class orderdetail extends Model
         
           $id_user = Auth::user()->id;
           $cartcount= orderdetail::where(['id_user'=>$id_user])->where('order_id',Null)->sum('count');
-          
           return $cartcount;
-      }
-      
-        
+      }  
     }
 
-    public function orderdetail_order()
+    public function order()
     {
-        return $this->belongsTo('App\orders');
+        return $this->hasMany('App\orders','order_id');
+    }
+    public function post()
+    {
+        return $this->hasMany('App\post','Post_id');
     }
    
 }

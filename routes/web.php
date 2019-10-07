@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/as', function () {
+Route::get('/a', function () {
     return view('gene.gene');
 });
 
@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/view/dog/{ID_dog}', 'DogController@show');
         Route::get('/view/dogbreed/{ID_dog}', 'DogController@showbreed');
         Route::get('/view/dog/breed/{id}', 'DogController@showbreedm');
+        Route::get('/view/dog/gene/{id}', 'DogController@showgene');
         Route::get('/delete/dog/{id}', 'DogController@destroy');
         Route::get('/delete/dogimages/{id}', 'DogController@destroyimages');
         //Post

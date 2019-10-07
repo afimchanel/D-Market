@@ -22,13 +22,10 @@ class Dog extends Model
        return $this->belongsTo('App\User','user_id');
  
     }
-    public function post()
-    {
-        return $this->belongsTo('App\post');
-   }
+
    public function dogimages()
    {
-       return $this->hasMany('App\dogimages');
+       return $this->hasMany('App\dogimages','dog_id');
  
     }
 }

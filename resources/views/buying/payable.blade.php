@@ -48,7 +48,7 @@
           <dl class="param param-inline small">
             <dt>ราคา: {{$item->price}}</dt>
             <dd>ดูข้อมูลการชื้อ</dd>
-            <a href="/order/delete/{{$item->order_id}}"><button>ยกการสั่งชื้อ </button></a>
+            <a href="/order/delete/{{$item->order_id}}"><button>ยกการสั่งชื้อ</button></a>
             
           </dl>
         </div>

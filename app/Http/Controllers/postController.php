@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\post;
 use App\User;
+use App\orderdetail;
+use App\order;
+use \Auth;
 
 class postController extends Controller
 {
@@ -17,17 +20,17 @@ class postController extends Controller
      */
     public function index()
     {
-        $post = DB::table('posts')
-            ->Join('dogs', 'posts.id_the_dog', '=', 'dogs.id') 
-            ->leftjoin('order_detail', 'posts.Post_id', '=', 'order_detail.id_post')
-            ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID') 
-            ->where('order.Status')
-          
+        // $post = post::whereHas('orderDetail',function($query){
+        //     $query->whereNull('order_id');
+        // })->paginate(9);
 
+        $post = orderdetail::rightjoin('posts', 'order_detail.id_post', '=','posts.Post_id')
+            ->Join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
+            ->where('order_id',NULL)
+            // ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID') 
+            // ->where('order.Status')
             ->paginate(9);
 
-
-        //->get();
 
         return view('category', compact('post'));
     }
@@ -54,7 +57,6 @@ class postController extends Controller
         error_log('postdog');
 
         $post = new post;
-
         $post->user_id = $id;
         $post->id_the_dog = $iddog;
         $post->Detail_Dog = $request->Detail_Dog;
@@ -77,7 +79,7 @@ class postController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($iddog, $id)
+    public function show($iddog,$id)
     {
 
         $post = post::findOrFail($id);

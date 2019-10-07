@@ -11,8 +11,6 @@ use View;
 use App\User;
 use App\post;
 use App\auth;
-
-use App\breed_dog;
 use App\dogimages;
 use Illuminate\Support\Facades\Session;
 use App\dogvideo;
@@ -43,8 +41,6 @@ class DogController extends Controller
         } else {
             return view('user.EditProfileuser');
         }
-        
-        
     }
 
 
@@ -210,10 +206,14 @@ class DogController extends Controller
     public function show($id)
     {
         error_log('showdog');
-
-        $Dogs = DB::table('dogs')->where('idthedog','=',$id)->get();
-        error_log($Dogs);
-        return view('Dog.dog-details',compact('Dogs','id'));
+        if ($id <= 0) {
+            return redirect()->back();
+        }else{
+            $Dogs = DB::table('dogs')->where('idthedog','=',$id)->get();
+            error_log($Dogs);
+            return view('Dog.dog-details',compact('Dogs','id'));
+        }
+       
     }
 
 
@@ -421,5 +421,11 @@ class DogController extends Controller
          //ถ้าไม่เจอพ่อก็ให้รีหน้าเดิม
        
     }
+    
+    public function showgene($id){
 
+        $dogs = Dog::find($id);
+        return view('gene.gene',compact('dogs',$dogs));
+
+    }
 }

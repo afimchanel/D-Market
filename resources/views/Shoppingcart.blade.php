@@ -18,7 +18,7 @@ $t = 590;
         </div>
         <div class="card-body">
 
-
+            
             @foreach ($Order as $item)
 
             <!-- PRODUCT -->
@@ -38,18 +38,22 @@ $t = 590;
                         <h6><strong>ราคา :  {{$item->price}} </strong></h6> 
                         น้ำหนัก :  
                             @if ($item->weight_dog == 1)
-                            1-5กิโล ราคา 800บาท <?php    $transportation = 800; ?>
+                            น้อยกว่า10กิโล ราคา 800บาท <?php    $transportation = 800; ?>
                             @elseif($item->weight_dog == 2)
-                            5-10กิโล ราคา 800บาท <?php   $transportation = 800;?>
+                            11กิโล-15กิโล ราคา 1000บาท <?php   $transportation = 1000;?>
                             @elseif($item->weight_dog == 3)
-                            มากกว่า10กิโล ราคา 1000บาท <?php   $transportation = 1000; ?>
+                            16กิโล-20กิโล ราคา 1200บาท <?php   $transportation = 1200; ?>
+                            @elseif($item->weight_dog == 4)
+                            มากกว่า20กิโล ราคา 1500บาท <?php   $transportation = 1500; ?>
                             @endif  
                             <Br>
                             ค่า บล็อค : 
                             @if ($item->type_dog == 1)
-                            ไซน์ M ราคา 590 <?php    $t = 590; ?>
+                            สุนัขพันธุ์เล็ก ไซน์ M ราคา 590 <?php    $t = 590; ?>
                             @elseif($item->type_dog == 2)
-                            ไซน์ L ราคา1300 <?php   $t= 1300;?>
+                            สุนัขพันธุ์กลาง ไซน์ L ราคา1300 <?php   $t= 1299;?>
+                            @elseif($item->type_dog == 3)
+                            สุนัขพันธุ์ใหญ่ ไซน์ xL ราคา1700 <?php   $t= 1700;?>
 
                             @endif
 

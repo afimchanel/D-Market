@@ -9,6 +9,7 @@
         }
 
         .tree ul {
+            
             padding-top: 10px;
             position: relative;
 
@@ -18,6 +19,7 @@
         }
 
         .tree li {
+            
             float: left;
             text-align: center;
             list-style-type: none;
@@ -33,7 +35,7 @@
 
         .tree li::before,
         .tree li::after {
-            content: '';
+            content: 'เส้นแม่';
             position: absolute;
             top: 0;
             right: 50%;
@@ -43,6 +45,7 @@
         }
 
         .tree li::after {
+            content: 'เส้นพ่อ';
             right: auto;
             left: 50%;
             border-left: 2px solid #696969;
@@ -64,6 +67,7 @@
     right connector from last child*/
         .tree li:first-child::before,
         .tree li:last-child::after {
+            content: 'เส้น0';
             border: 0 none;
         }
 
@@ -83,8 +87,9 @@
 
         /*Time to add downward connectors from parents*/
         .tree ul ul::before {
-            content: '';
+            content: 'ลูก';
             position: absolute;
+            
             top: 0;
             left: 50%;
             border-left: 2px solid #696969;
@@ -93,6 +98,7 @@
         }
 
         .tree li a {
+            content: '';
             height: 100px;
             width: 200px;
             padding: 5px 10px;
@@ -130,6 +136,11 @@
 </style>
 
 @section('content')
+<?php 
+use App\Dog;
+
+
+?>
 <div class="container-fluid" style="margin-top:20px">
     <h1>รุ่นสุนัข.</h1>
     <div class="row">
@@ -137,120 +148,113 @@
             <div class="tree">
                 
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            Customer
-                                            <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                            <li><?php  $faher = Dog::where('idthedog',$dogs->id_father)->first();  ?>
+
+                                @if ($faher == NULL || $faher->id_father == NULL)
+                                    <a>
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                    ไม่พบข้อมูลปู
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                @else
+                                <a href="/view/dog/breed/{{$faher->id_father}}">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                {{$faher->father}}
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
                                 <ul>
                                     <li>
-                                        <a href="#">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    Send Money
-                                                    <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                </div>
-                                            </div>
-                                            
-                                        </a>
                                         
+
+                                        @if ($faher == NULL)
+                                            <a>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        {{$dogs->father}}
+                                                        <img src="" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                    </div>
+                                                </div>                                                
+                                            </a>
+                                        @else
+                                        <a href="/view/dog/breed/{{$dogs->id_father}}">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        {{$dogs->father}}
+                                                        <img src="/storage/public/imagecover/{{$faher->image}}" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                    </div>
+                                                </div>                                                
+                                            </a>
+                                        @endif
                                         <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Money
-                                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                            </div>
+                                            <li>
+                                                <a href="/view/dog/breed/{{$dogs->idthedog}}">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            {{$dogs->namedog}}
+                                                            <img src="/storage/public/imagecover/{{$dogs->image}}" style="width:70px; height:70px;" class="css-class" alt="alt text">
                                                         </div>
-                                                    </a>
-                                                </li>
-                                               
-                                            </ul>
+                                                    </div>
+                                                </a>
+
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    Send Request
-                                                    <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Money
-                                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                               
-                                            </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            Dogtryht
-                                            <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <ul>
-                                    <li>
-                                        <a href="#">
-
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    Send Money
-                                                    <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                Money
-                                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                
-                                            </ul>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    Send Request
-                                                    <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                                                </div>
-                                            </div>
-                                        </a>
                                     
-                                      
+                                    <li>
+                                        <?php  $momher = Dog::where('idthedog',$dogs->id_momher)->first();  ?>
+
+                                        @if ($momher == NULL)
+                                            <a>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        {{$dogs->momher}}
+                                                        <img src="" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @else
+                                            <a href="/view/dog/breed/{{$dogs->id_momher}}">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        {{$dogs->momher}}
+                                                        <img src="/storage/public/imagecover/{{$momher->image}}" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @endif
 
                                     </li>
-
                                 </ul>
                             </li>
-                            
+                            <li>
+                                @if ($faher == NULL || $faher->id_momher == NULL)
+                                    <a >
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                ไม่พบข้อมูลย่า
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                            </div>
+                                        </div>
+                                    </a>
+                                @else
+                                    <a ">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
+                                
+                            </li>
                         </ul>
                         
                    

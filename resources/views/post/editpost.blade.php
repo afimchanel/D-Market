@@ -26,13 +26,13 @@
                                         </div>
                                         <select class="custom-select" name='type_dog'>
  
-                                                        @if ($post->type_dog = 1)
-                                                        <option value="1" selected>ตัวเล็ก</option>
-                                                        @elseif ($post->type_dog = 2)
-                                                        <option value="2" selected>ตัวใหญ่</option>
-                                                        @endif                                               
-                                                        <option value="1">ตัวเล็ก</option>
-                                                        <option value="2">ตัวใหญ่</option>
+                                                @if ($post->type_dog == 1)
+                                                <option value="1" selected>ตัวเล็ก</option>
+                                                @elseif ($post->type_dog == 2)
+                                                <option value="2" selected>ตัวใหญ่</option>
+                                                @endif                                               
+                                                <option value="1">ตัวเล็ก</option>
+                                                <option value="2">ตัวใหญ่</option>
 
                                         </select>
                                 </div>
@@ -76,31 +76,31 @@
                                                 <div class="input-group-text">สีตา</div>
                                         </div>
                                         <select class="custom-select" name="eye_color">                           
-                                                        @if ($post->eye_color == 1)
-                                                        <option value="1" selected>สีดำ</option>
-                                                        @elseif ($post->eye_color == 2)
-                                                        <option value="2" selected>สีน้ำตาล</option>
-                                                        @elseif ($post->eye_color == 3)
-                                                        <option value="3" selected>สีฟ้า</option>
-                                                        @elseif ($post->eye_color == 4)
-                                                        <option value="4" selected>สีน้ำตาลอ่อน</option>
-                                                        @elseif ($post->eye_color == 5)
-                                                        <option value="5" selected>สีน้ำตาลเข้ม</option>
-                                                        @elseif ($post->eye_color == 6)
-                                                        <option value="6" selected>สีน้ำตาล – สีฟ้า</option>
-                                                        @elseif ($post->eye_color == 7)
-                                                        <option value="7" selected>สีน้ำตาล- สีเขียว</option>
-                                                        @elseif ($post->eye_color == 8)
-                                                        <option value="8" selected>สีน้ำตาลเข้ม- สีน้ำตาลอ่อน</option>
-                                                        @endif
-                                                        <option value="1">สีดำ</option>
-                                                        <option value="2">สีน้ำตาล</option>
-                                                        <option value="3">สีฟ้า</option>
-                                                        <option value="4">สีน้ำตาลอ่อน</option>
-                                                        <option value="5">สีน้ำตาลเข้ม</option>
-                                                        <option value="6">สีน้ำตาล – สีฟ้า</option>
-                                                        <option value="7">สีน้ำตาล- สีเขียว</option>
-                                                        <option value="8">สีน้ำตาลเข้ม- สีน้ำตาลอ่อน</option>
+                                                @if ($post->eye_color == 1)
+                                                <option value="1" selected>สีดำ</option>
+                                                @elseif ($post->eye_color == 2)
+                                                <option value="2" selected>สีน้ำตาล</option>
+                                                @elseif ($post->eye_color == 3)
+                                                <option value="3" selected>สีฟ้า</option>
+                                                @elseif ($post->eye_color == 4)
+                                                <option value="4" selected>สีน้ำตาลอ่อน</option>
+                                                @elseif ($post->eye_color == 5)
+                                                <option value="5" selected>สีน้ำตาลเข้ม</option>
+                                                @elseif ($post->eye_color == 6)
+                                                <option value="6" selected>สีน้ำตาล – สีฟ้า</option>
+                                                @elseif ($post->eye_color == 7)
+                                                <option value="7" selected>สีน้ำตาล- สีเขียว</option>
+                                                @elseif ($post->eye_color == 8)
+                                                <option value="8" selected>สีน้ำตาลเข้ม- สีน้ำตาลอ่อน</option>
+                                                @endif
+                                                <option value="1">สีดำ</option>
+                                                <option value="2">สีน้ำตาล</option>
+                                                <option value="3">สีฟ้า</option>
+                                                <option value="4">สีน้ำตาลอ่อน</option>
+                                                <option value="5">สีน้ำตาลเข้ม</option>
+                                                <option value="6">สีน้ำตาล – สีฟ้า</option>
+                                                <option value="7">สีน้ำตาล- สีเขียว</option>
+                                                <option value="8">สีน้ำตาลเข้ม- สีน้ำตาลอ่อน</option>
                                         </select>
                                 </div>
                         </div>

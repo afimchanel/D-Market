@@ -37,13 +37,18 @@
     $t = 590;
  ?>
 @section('content')
-<img class="img-responsive img-fluid" src="/payment.jpg" style="width:500px; height:500px;">
+<img class="img-responsive img-fluid" id="imgs" src="/payment.jpg" style="width:500px; height:500px;">
 <table class="table col-md-6 container-fluid">
     @if(session()->get('success'))
     <div class="alert alert-success">
       {{ session()->get('success') }}  
     </div><br />
   @endif
+  @if(session()->get('mm'))
+  <div class="alert alert-danger">
+    {{ session()->get('mm') }}  
+  </div><br />
+@endif
   
     <thead>
         <tr>
@@ -66,8 +71,6 @@
                 @elseif($item->weight_dog == 3)
                     <?php   $transportation = 1000; ?>
                 @endif  </strong></h6> 
-
-
                 <td>{{$item->price}}</td>
                 <?php $total = $total + $item->price ?>
                 

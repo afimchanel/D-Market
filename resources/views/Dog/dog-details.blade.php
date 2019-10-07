@@ -11,6 +11,7 @@
     </ul>
 </div>
 @endif
+
 @if(session()->get('not'))
 <div class="alert alert-danger">
   {{ session()->get('not') }}  
@@ -101,7 +102,7 @@ $video = dogvideo::where(['dog_id' => $id])->get();
 
                 <li>สี :
                     @if ($Dog->color == '1')
-                <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีขาว</a>
+                    <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีขาว</a>
                     @elseif($Dog->color == '2')
                     <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีดำ</a>
                     @elseif($Dog->color == '3')
@@ -116,9 +117,21 @@ $video = dogvideo::where(['dog_id' => $id])->get();
                     <a href="/search/{{$Dog->sex}}" class="badge badge-secondary">ตัวเมีย</a>
                     @endif
                 </li>
-                <li>พ่อพันธุ์ :<a class="badge badge-warning" href="/view/dog/breed/{{$Dog->id_father}}">{{$Dog->father}}</a></li>
-                <li>แม่พันธุ์ : <a class="badge badge-warning" href="/view/dog/breed/{{$Dog->id_momher}}">{{$Dog->momher}}</a></li>
-                ดูสายพันของตัวนี้
+                <li>พ่อพันธุ์ 
+                    @if ($Dog->id_father !== NULL)
+                    <a class="badge badge-warning" href="/view/dog/breed/{{$Dog->id_father}}">{{$Dog->father}}</a>
+                    @else
+                    {{$Dog->father}}
+                    @endif
+                    </li>
+                <li>แม่พันธุ์ :
+                        @if ($Dog->id_momher !== NULL)
+                        <a class="badge badge-warning" href="/view/dog/breed/{{$Dog->id_momher}}">{{$Dog->momher}}</a>
+                        @else
+                        {{$Dog->momher}}
+                        @endif 
+                    </li>
+                <a  href="/view/dog/gene/{{$Dog->id}}">ดูสายพันของตัวนี้</a>
                 <li>วันเกิด :{{$Dog->birthday}}</li>
                 <li>
                     ใบCP : 
