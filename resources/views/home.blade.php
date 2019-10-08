@@ -158,41 +158,6 @@
   {{ session()->get('update susscc') }}  
 </div><br />
 @endif 
-<!-- ภาพสไลด์ -->
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-
-	<div class="carousel-inner" role="listbox">
-		<!-- Slide One - Set the background image for this slide in the line below -->
-		<div class="carousel-item  active" style="background-image:url('/image/Siberian.png')">
-			<div class="carousel-caption d-none d-md-block">
-				<h2 class="display-4">D-Market</h2>
-				<p class="lead">นี้คือเว็บศูนกลางการซื้อ-ขาย สุนัขที่ยอดเยี่ยมที่สุด</p>
-			</div>
-		</div>
-		<!-- Slide Two - Set the background image for this slide in the line below -->
-		<div class="carousel-item" style="background-image: url('/image/Chihuahua1.jpg')">
-			<div class="carousel-caption d-none d-md-block">
-				<h2 class="display-4">D-Market</h2>
-				<p class="lead">นี้คือเว็บศูนกลางการซื้อ-ขาย สุนัขที่ยอดเยี่ยมที่สุด</p>
-			</div>
-		</div>
-		<!-- Slide Three - Set the background image for this slide in the line below -->
-		<div class="carousel-item" style="background-image: url('/image/Siberian3.jpg')">
-			<div class="carousel-caption d-none d-md-block">
-				<h2 class="display-4">D-Market</h2>
-				<p class="lead">นี้คือเว็บศูนกลางการซื้อ-ขาย สุนัขที่ยอดเยี่ยมที่สุด</p>
-			</div>
-		</div>
-	</div>
-	<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	</a>
-</div>
 
 <!--สไลด์ -->
 
@@ -247,7 +212,7 @@
 
 		<!-- ส่วนของขายดีประจำสัปดาห์-->
 		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-			<h1 class="my-4">ผู้ใช้ที่ขายดีประจำสัปดาห์</h1>
+			<h1 class="my-4">ผู้ใช้ทั้งหมด</h1>
 			<div class="container">
 				<div class="row">
 					@foreach ($user as $item)

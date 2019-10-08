@@ -393,7 +393,7 @@ class DogController extends Controller
     {
         error_log($iddog);
         $user =  User::find($id);
-        if ($user->license === 'noimage.jpg' || $user->Farmaddress === NULL) {
+        if ($user->license == 'noimage.jpg' || $user->Farmaddress == NULL) {
             return view('user.EditProfileuser')->with('error','กรุณาเพิ่มที่อยู่ฟาร์มหรือใบอนุญาตจำกสมาคม');
         } else {
 
@@ -426,6 +426,19 @@ class DogController extends Controller
 
         $dogs = Dog::find($id);
         return view('gene.gene',compact('dogs',$dogs));
+
+    }
+    public function  Requestpost($id){
+        $dog = Dog::find($id);
+        $dog->Status = 1;
+        $dog->save();
+        return redirect()->back();
+    }
+    public function  Allowpost($id){
+        $dog = Dog::find($id);
+        $dog->Status = 2;
+        $dog->save();
+        return redirect()->back();
 
     }
 }

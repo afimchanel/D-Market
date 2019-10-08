@@ -1,7 +1,10 @@
 @extends('layouts.app1')
 
 @section('content')
+<?php 
+use App\breed_dog;
 
+?>
 
 <div class="w3-main" style="margin-left:200px;margin-top:50px;">
     <div class=" container">
@@ -17,15 +20,11 @@
                       
                       <th>รูป</th>
                       <th>รหัสสุนัข</th>
-                      <!-- <th>user_id(เป็นของคนไหน)</th> -->
                       <th>ชื่อสุนัข</th>
                       <th>รหัสผู้ใช้</th>
-                      <!-- <th>สายพันธุ์ลงทะเบียน</th> -->
                       <th>ชื่อสายพันธุ์</th>
-                      <th>สี</th>
-                      <th>เพศ</th>
-                      <th>ผู้เพาะพันธุ์</th>
-                      <th>เจ้าของใบ</th>
+                      <th>รายละเอียด</th>
+                      <th>ตรวจสอบ</th>
                       <th>แก้ไข</th>
                       <th>ลบ</th>
                     </tr>
@@ -40,20 +39,182 @@
                     @foreach($Dogs as $Dog)
                     <tr>
                       <td><img class="img-responsive" src="/storage/public/imagecover/{{$Dog->image}}" alt="prewiew" width="120" height="80"></td>
-                      <td>{{ $Dog->IDthedog }}</td>
+                      <td>
+                          {{ $Dog->idthedog}}
+                      </td>
                       <td>{{ $Dog->namedog}}</td>
                       <td>{{ $Dog->user_id}}</td>
                       <td>{{ $Dog->breed}}</td>
-                      <td>{{ $Dog->color}}</td>
-                      <td>{{ $Dog->sex}}</td>
-                      <td>{{ $Dog->breedername}}</td>
-                      <td>{{ $Dog->owner}}</td>
-                      <td><a href="/admin/dashboard/edit/" class="btn btn-primary">Edit</a></td>
+                      <td>
+                        <div class="container">
+                          <!-- Button to Open the Modal -->
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ $Dog->idthedog}}">ดู</button>
+          
+                          <!-- The Modal -->
+                          <div class="modal" id="myModal{{ $Dog->idthedog}}">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+          
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title">รูปภาพบัตรประจำตัวประชาชน</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+          
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <ul>
+                                        <li>สายพันธุ์ :
+                                            @if ($Dog->breed == 1)
+                                            ปั๊ก (Pug)
+                                            @elseif($Dog->breed == 2)
+                                            ชิวาวา(Chihuahua)
+                                            @elseif($Dog->breed == 3)
+                                            ปอมเมอเรเนียน (Pomerania)
+                                            @elseif($Dog->breed == 4)
+                                            ชิสุ (Shih Tzu)
+                                            @elseif($Dog->breed == 5)
+                                            ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)
+                                            @elseif($Dog->breed == 6)
+                                            บีเกิล (Beagle)
+                                            @elseif($Dog->breed == 7)
+                                            บูลด็อก (Bulldog)
+                                            @elseif($Dog->breed == 8)
+                                            ไซบีเรียน ฮัสกี้ (Siberian Husky)
+                                            @elseif($Dog->breed == 9)
+                                            โกลเด้น รีทรีฟเวอร์ (Golden Retriever)
+                                            @elseif($Dog->breed == 10)
+                                            ลาบราดอร์ รีทรีฟเวอร์ (Labrador Retriever)
+                                            @elseif($Dog->breed == 11)
+                                            อื่นๆ
+                                            @endif
+                                        
+                                        </li>
+                                      <li>สายพันธุ์ลงทะเบียน : {{$Dog->registrationspecies}}</li>
+                                      <li>รหัสไมโครชิพ: {{$Dog->nomicrochip}}</li>
+                                      
+                                        <li>สี :
+                                            @if ($Dog->color == '1')
+                                             สีขาว
+                                            @elseif($Dog->color == '2')
+                                            สีดำ
+                                            @elseif($Dog->color == '3')
+                                            นอกเหนือจากสีขาวและสีดำ
+                                            @endif
+                        
+                                        </li>
+                                        <li>เพศ :
+                                            @if ($Dog->sex == '1')
+                                            ตัวผู้
+                                            @elseif($Dog->sex == '2')
+                                            ตัวเมีย
+                                            @endif
+                                        </li>
+                                        <li>พ่อพันธุ์ 
+                                            @if ($Dog->id_father !== NULL)
+                                            {{$Dog->father}}
+                                            @else
+                                            {{$Dog->father}}
+                                            @endif
+                                            </li>
+                                        <li>แม่พันธุ์ :
+                                                @if ($Dog->id_momher !== NULL)
+                                                {{$Dog->momher}}
+                                                @else
+                                                {{$Dog->momher}}
+                                                @endif 
+                                            </li>
+                                        
+                                        <li>วันเกิด :{{$Dog->birthday}}</li>
+                                        <li>ชื่อผู้เพาะพันธุ์ :{{$Dog->breedername}}</li>
+                                        <li>เจ้าของ :{{$Dog->owner}}</li>
+                                        <li>วันออกทะเบียน :{{$Dog->registrationdate}}</li>
+
+                                        <li>
+                                            ใบCP : 
+                                            @if ($Dog->imageCP == 'noimage.jpg' || $Dog->imageCP == NULL)
+                                            <span class="badge badge-pill badge-danger">ไม่มี</span>
+                                            @else
+                                            <button type="button" class="badge badge-pill badge-success" data-toggle="modal" data-target="#CP" >ดู</button >
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="CP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                            <img src="/storage/public/imagedog/imageCP/{{$Dog->imageCP}}" class="d-block w-100"  alt="..."> 
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                            @endif
+                                        </li>
+                                        <li>
+                                            ใบRC : @if ($Dog->imageRC == 'noimage.jpg'|| $Dog->imageCP == NULL )
+                                            <span class="badge badge-pill badge-danger" >ไม่มี</span>
+                                            
+                                            @else
+                                            <button type="button" class="badge badge-pill badge-success" data-toggle="modal" data-target="#RC" >ดู</button >
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="RC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                        
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                    <img src="/storage/public/imagedog/imageRC/{{$Dog->imageRC}}" class="d-block w-100"  alt="..."> 
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                            @endif
+                        
+                                        </li>
+                        
+                                    </ul>
+                                </div>
+          
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        @if ($Dog->Status == 1)
+                      <a href="/Allowpost/{{$Dog->id}}"><button class="btn btn-primary" type="submit">อนุญาตโพส</button></a>
+                        @else
+                            
+                        @endif
+                        
+                      </td>
+                      <td><a href="/admin/dashboard/edit/" class="btn btn-primary">แก้ไข</a></td>
                             <td>
-                                <form action="/admin/dashboard/edit//destroy" method="post">
+                                <form action="" method="post">
                                   @csrf
                                   
-                                  <button class="btn btn-danger" type="submit">Delete</button>
+                                  <button class="btn btn-danger" type="submit">ลบ</button>
                                 </form>
                                 
                             </td>
@@ -63,7 +224,6 @@
                 </table>
   
                 {{$Dogs->links()}}
-                ***หมายเหตุ สถานะ 0 เป็นสุนัขที่ยังไม่แสดงให้ใครเห็น, 1 โพสให้คนอื่นเห็น , 2 อยู่ระหว่างรอโอนเงิน ,3 รอส่งสุนัข ,4 ขายเสร็จแล้ว
                 @else
                 <p>ไม่มีใครมีสุนัข</p>
                 @endif
@@ -72,74 +232,5 @@
           </div>
 
 
-{{-- <div class=" container">
-        <div class="card mb-2">
-          
-          <div class="card-body ">
-            <div class="table-responsive">
-              @if(count($Dogs) > 0)
-              <table class="table table-bordered" id="dataTable" width="100%" >
-                <thead>
-                  <tr>
-                    <th>ID_dog</th>
-                    <th>IDthedog</th>
-                    <th>user_id(เป็นของคนไหน)</th>
-                    <th>Breed</th>
-                    <th>Registrationspecies</th>
-                    <th>Nomicrochip</th>
-                    <th>color</th>
-                    <th>SEX</th>
-                    <th>Father</th>
-                    <th>Momher</th>
-                    <th>birthday</th>
-                    <th>Breedername</th>
-                    <th>Owner</th>
-                    <th>Registrationdate</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
 
-                <tbody>
-                  
-                    @foreach($Dogs as $Dog)
-                      <tr>
-                          <td>{{ $Dog->ID_dog }}</td>
-                          <td>{{ $Dog->IDthedog }}</td>
-                          <td>{{ $Dog->user_id}}</td>
-                          <td>{{ $Dog->Breed}}</td>
-                          <td>{{ $Dog->Registrationspecies}}</td>
-                          <td>{{ $Dog->Nomicrochip}}</td>
-                          <td>{{ $Dog->color}}</td>
-                          <td>{{ $Dog->SEX}}</td>
-                          <td>{{ $Dog->Father}}</td>
-                          <td>{{ $Dog->Momher}}</td>
-                          <td>{{ $Dog->birthday}}</td>
-                          <td>{{ $Dog->Breedername}}</td>
-                          <td>{{ $Dog->Owner}}</td>
-                          <td>{{ $Dog->Registrationdate}}</td>
-                          <td>{{ $Dog->Status}}</td> --}}
-                        <!--<td><a href="/admin/dashboard/edit/" class="btn btn-primary">Edit</a></td>
-                          <td>
-                              <form action="/admin/dashboard/edit//destroy" method="post">
-                                {{-- @csrf --}}
-                                
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                              </form>
-                              
-                          </td>-->
-                          
-                      {{-- </tr>
-                    @endforeach
-                    
-                </tbody>
-              </table>
-              {{$Dogs->links()}}
-              ***หมายเหตุ สถานะ 0 เป็นสุนัขที่ยังไม่แสดงให้ใครเห็น, 1 โพสให้คนอื่นเห็น , 2 อยู่ระหว่างรอโอนเงิน ,3 รอส่งสุนัข ,4 ขายเสร็จแล้ว
-              @else
-              <p>ไม่มีใครมีสุนัข</p>
-          @endif
-            </div>
-          </div>
-        </div>   --}}
-       
 @endsection

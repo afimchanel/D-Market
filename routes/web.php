@@ -64,6 +64,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/view/dog/breed/{id}', 'DogController@showbreedm');
         Route::get('/view/dog/gene/{id}', 'DogController@showgene');
         Route::get('/delete/dog/{id}', 'DogController@destroy');
+        Route::get('/Requestpost/{id}', 'DogController@Requestpost');
+        Route::get('/Allowpost/{id}', 'DogController@Allowpost');
+        
         Route::get('/delete/dogimages/{id}', 'DogController@destroyimages');
         //Post
             Route::get('/view/category', 'PostController@index');

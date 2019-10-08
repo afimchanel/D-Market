@@ -22,6 +22,10 @@
     <link href="{{ asset('../../css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+
+
     <!-- Styles -->
     <style>
 
@@ -30,383 +34,7 @@
         margin-left: auto;
         margin-right: auto;
         }
-        .carousel-item {
-            height: 100vh;
-            min-height: 350px;
-            background: no-repeat center center scroll;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
-        #sidebar-wrapper {
-            min-height: 100vh;
-            margin-left: -15rem;
-            -webkit-transition: margin .25s ease-out;
-            -moz-transition: margin .25s ease-out;
-            -o-transition: margin .25s ease-out;
-            transition: margin .25s ease-out;
-        }
-
-        #sidebar-wrapper .sidebar-heading {
-            padding: 0.875rem 1.25rem;
-            font-size: 1.2rem;
-        }
-
-        #sidebar-wrapper .list-group {
-            width: 15rem;
-        }
-
-        #page-content-wrapper {
-            min-width: 100vw;
-        }
-
-        #wrapper.toggled #sidebar-wrapper {
-            margin-left: 0;
-        }
-
-        @media (min-width: 768px) {
-            #sidebar-wrapper {
-                margin-left: 0;
-            }
-
-            #page-content-wrapper {
-                min-width: 0;
-                width: 100%;
-            }
-
-            #wrapper.toggled #sidebar-wrapper {
-                margin-left: -15rem;
-            }
-        }
-
-
-
-        body {
-            background: #ebebeb;
-            font-family: "Open Sans", sans-serif;
-        }
-
-        .carousel {
-            margin-top: 20px;
-        }
-
-        .carousel-item {
-            text-align: center;
-            min-height: 280px;
-            /* Prevent carousel from being distorted if for some reason image doesn't load */
-        }
-
-        .bs-example {
-            margin: 20px;
-        }
-
-        /* กำหนดขนาดรูแภาพให้เป็นวงกลม */
-        .circle {
-            /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
-            height: 150px;
-            /* ความสูงปรับให้เป็นออโต้ */
-            width: 150px;
-            /* ความสูงปรับให้เป็นออโต้ */
-            border: 3px solid #fff;
-            /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
-            border-radius: 100px;
-            /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/
-
-        }
-
-        /* บล็อกกรอบของทั้งรูปภาพ */
-        .carousel .thumb-wrapper {
-            padding: 25px 15px;
-            background: #fff;
-            border-radius: 6px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        /* บล็อกรูปภาพ */
-        .carousel .item .img-box {
-            height: 120px;
-            margin-bottom: 20px;
-            width: 100%;
-            position: relative;
-        }
-
-        /* การกำหนดสไลด์ว่าจะให้อยู่ตรงไหน */
-        .col-center {
-            margin: 0 auto;
-            float: none !important;
-        }
-
-        /* การกำหนดระยะของปุ่มกดเลือน */
-        .carousel {
-            margin: 30px auto 60px;
-            padding: 0 80px;
-        }
-
-        /* ตัวหนังสือ */
-        .carousel .item h4 {
-            font-family: 'Varela Round', sans-serif;
-        }
-
-        /* บล็อกรูปภาพ */
-        .carousel .item .img-box {
-            height: 120px;
-            margin-bottom: 20px;
-            width: 100%;
-            position: relative;
-        }
-
-        /* บล็อกของกรอบ */
-        .carousel .thumb-wrapper {
-            margin: 5px;
-            text-align: center;
-            background: #fff;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        /* ขนาดกรอบของแต่ละกรอบ */
-        .carousel .thumb-content {
-            padding: 15px;
-            font-size: 13px;
-        }
-
-        /* กรอบของสไลด์ */
-        .carousel .carousel-control {
-            height: 44px;
-            width: 44px;
-            background: none;
-            margin: auto 0;
-            border-radius: 50%;
-            border: 3px solid rgba(0, 0, 0, 0.8);
-        }
-
-        /* ขนาดของตัวคลิกเพื่อเลือนไปยังหน้าอื่น */
-        .carousel .carousel-control i {
-            font-size: 36px;
-            position: absolute;
-            top: 50%;
-            display: inline-block;
-            margin: -19px 0 0 0;
-            z-index: 5;
-            left: 0;
-            right: 0;
-            color: rgba(0, 0, 0, 0.8);
-            text-shadow: none;
-            font-weight: bold;
-        }
-
-        /* ระยะการวางจุดเลือน */
-        .carousel .carousel-control.left i {
-            margin-left: -3px;
-        }
-
-        .carousel .carousel-control.right i {
-            margin-right: -3px;
-        }
-
-        .carousel .carousel-indicators {
-            bottom: -50px;
-        }
-
-        /* ระยะการวางจุดเลือน */
-        .carousel1 .carousel-control.left i {
-            margin-left: -3px;
-        }
-
-        .carousel1 .carousel-control.left i {
-            margin-right: -3px;
-        }
-
-        .carousel1 .carousel-indicators {
-            bottom: -50px;
-        }
-
-        /* สีของจุดเลื่อน */
-        .carousel-indicators li {
-            background: #ababab;
-        }
-
-        .carousel-indicators li.active {
-            background: #555;
-        }
-
-        /* แบบของตัว Add to cart */
-        .carousel .thumb-content .btn {
-            color: #a177ff;
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: bold;
-            background: none;
-            border: 1px solid #a177ff;
-            padding: 6px 14px;
-            margin-top: 5px;
-            line-height: 16px;
-            border-radius: 20px;
-        }
-
-        /* กดหัวใจ */
-        .carousel .wish-icon .fa-heart {
-            color: #ff6161;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-
-        /* Timeline */
-        #timeline-wrap {
-            margin: 10% 10%;
-            top: 50;
-            position: relative;
-
-        }
-
-        #timeline {
-            height: 1px;
-            width: 100%;
-            background-color: #aabbc4;
-            position: relative;
-
-        }
-
-        .marker {
-            z-index: 1000;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            font-size: 1.4em;
-            text-align: center;
-            position: absolute;
-            margin-left: -25px;
-            background-color: #999999;
-            border-radius: 50%;
-        }
-
-        .marker:hover {
-            -moz-transform: scale(1.2);
-            -webkit-transform: scale(1.2);
-            -o-transform: scale(1.2);
-            -ms-transform: scale(1.2);
-            transform: scale(1.2);
-
-            -webkit-transition: all 300ms ease;
-            -moz-transition: all 300ms ease;
-            -ms-transition: all 300ms ease;
-            -o-transition: all 300ms ease;
-            transition: all 300ms ease;
-        }
-
-        .timeline-icon.one {
-            background-color: #3e4f88 !important;
-        }
-
-        .timeline-icon.two {
-            background-color: #536295 !important;
-        }
-
-        .timeline-icon.three {
-            background-color: #6976a2 !important;
-        }
-
-        .timeline-icon.four {
-            background-color: #7e8aaf !important;
-        }
-
-        .mfirst {
-            top: -25px;
-        }
-
-        .m2 {
-            top: -25px;
-            left: 32.5%
-        }
-
-        .m3 {
-            top: -25px;
-            left: 66%
-        }
-
-        .mlast {
-            top: -25px;
-            left: 100%
-        }
-
-        .timeline-panel {
-            margin-top: 20%;
-            width: 500px;
-            height: 200px;
-            background-color: #cbd0df;
-            border-radius: 2px;
-            position: relative;
-            text-align: left;
-            padding: 10px;
-            font-size: 20px;
-            font-weight: bold;
-            line-height: 20px;
-            float: left;
-        }
-
-        .timeline-panel:after {
-            content: '';
-            position: absolute;
-            margin-top: -12%;
-            left: 10%;
-            width: 0;
-            height: 0;
-            border: 12px solid transparent;
-            border-bottom: 15px solid #cbd0df;
-        }
-
-
+        
         /* ส่วนที่เพิ่มที่อยู่และอัพรูป */
         * {
             box-sizing: border-box;
@@ -461,100 +89,105 @@ use App\orderdetail;
 $cartcount = orderdetail::countcart();
 ?>
 <body>
+
+   
+
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning	shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                    {{ config('app.name', 'D-Market') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+      <nav class="navbar navbar-expand-md navbar-light bg-light	shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="../image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+                
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- เป็นส่วน Bar ฝั่งขวา -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- เป็นส่วน Bar ฝั่งขวา -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    @guest
 
-                    <!-- search -->
-                    <ul class="navbar-nav mr-auto">
-                        <form action="/search" method="POST" role="search">
-                            @csrf
-                            <input class="form-control mr-xl-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                    @else
 
-                        </form>
-                    </ul>
-                    <!--End search -->
+                <!-- search -->
+                <ul class="navbar-nav mr-auto">
+                    <form action="/search" method="POST" role="search">
+                        @csrf
+                        <input class="form-control mr-xl-5" type="search" placeholder="Search" aria-label="Search" name="q">
+                    </form>
+                </ul>
+                <!--End search -->
+                @endguest
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+
+                    @if (Route::has('register'))
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+
+                    @endif
+                    @else
+                
+                    <!-- แจ้งเตือน -->
+                    <div class="navbar-nav mr-md-0 pt-4 px-0">
+                        <li class="nav-item  ">
+                            <a id="navbarDropdown" class="nav-link" style="font-size:20px" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <span class="fa fa-bell"> <span class="badge badge-light">
+                                
+                                </span></span>
+                            </a>
                         </li>
+                    </div>
+                    <!--End แจ้งเตือน -->
 
-                        @if (Route::has('register'))
+                    <!-- Add to car -->
+                    <li class="nav-item mr-md-0 pt-4 px-0 ">
+                        <a id="navbar" class="nav-link" style="font-size:20px" href="/show/order/{{ Auth::user()->id}}" role="button">
+                            
+                            <span class="fa fa-shopping-cart">{{$cartcount}}</span>
+                        </a>
+                    </li>
+                    <!--End Add to car -->
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
+                    <!-- User dropdown -->
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img class="img-fluid rounded-circle p-3" src="/storage/avatars/{{Auth::user()->Avatar}}" style="width:80px; height:80px;"> {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
-                        @endif
-                        @else
-                       
-                        <!-- แจ้งเตือน -->
-                        <div class="navbar-nav mr-md-0 pt-4 px-0">
-                            <li class="nav-item  ">
-                                <a id="navbarDropdown" class="nav-link" style="font-size:20px" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span class="fa fa-bell"> <span class="badge badge-light">
-                                    
-                                    </span></span>
-                                </a>
-                            </li>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href='/user/{{ Auth::user()->id }}'>โปรไฟล์</a>
+                            <a class="dropdown-item" href='/{{ Auth::user()->id }}/edit'>แก้ไข้โปรไฟล์</a>
+                            <a class="dropdown-item" href="{{ route('dog.create')}}">เพิ่มลูกสุนัข</a>
+                            
+                            <a class="dropdown-item" href="{{ route('Payment.index') }}">แจ้งชำระเงิน</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
-                        <!--End แจ้งเตือน -->
+                    </li>
+                    <!--End User dropdown -->
 
-                        <!-- Add to car -->
-                        <li class="nav-item mr-md-0 pt-4 px-0 ">
-                            <a id="navbar" class="nav-link" style="font-size:20px" href="/show/order/{{ Auth::user()->id}}" role="button">
-                                
-                                <span class="fa fa-shopping-cart">{{$cartcount}}</span>
-                            </a>
-                        </li>
-                        <!--End Add to car -->
-
-                        <!-- User dropdown -->
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img class="img-fluid rounded-circle p-3" src="/storage/avatars/{{Auth::user()->Avatar}}" style="width:80px; height:80px;"> {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href='/user/{{ Auth::user()->id }}'>โปรไฟล์</a>
-                                <a class="dropdown-item" href='/{{ Auth::user()->id }}/edit'>แก้ไข้โปรไฟล์</a>
-                                <a class="dropdown-item" href="{{ route('dog.create')}}">เพิ่มลูกสุนัข</a>
-                                
-                                <a class="dropdown-item" href="{{ route('Payment.index') }}">แจ้งชำระเงิน</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        <!--End User dropdown -->
-
-                        @endguest
-                    </ul>
-                </div>
-                <!--End เป็นส่วน Bar ฝั่งขวา -->
-
+                    @endguest
+                </ul>
             </div>
-        </nav>
+            <!--End เป็นส่วน Bar ฝั่งขวา -->
 
+    </div>
+</nav>
         <main class="py-4 bg-white">
             @yield('content')
         </main>

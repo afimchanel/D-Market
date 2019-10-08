@@ -271,16 +271,32 @@ use App\post;
                                 <a href="/view/dog/{{$item->idthedog}}" class="btn btn-light">ดูรายละเอียด</a>
                                 @if ($item->user_id == auth()->user()->id)
                                 <a href="/edit/dog/{{$item->id}}" class="btn btn-light">เเก้ไข</a>
-                                <?php $chk = post::where('id_the_dog',$item->id)->get('id_the_dog'); ?>
-                                @if ($chk == '[]')
-                                <div class="card">
-                                    <a href="/post/dog/{{$item->id}}/{{auth()->user()->id}}" class="btn btn-success">
-                                        {{ __('โพสขาย') }}
-                                    </a>
-                                </div>
-                                @elseif(isset($chk))
 
+                                @if ($item->Status == 2)
+                                    <?php $chk = post::where('id_the_dog',$item->id)->get('id_the_dog'); ?>
+                                    @if ($chk == '[]')
+
+                                        <div class="card">
+                                            <a href="/post/dog/{{$item->id}}/{{auth()->user()->id}}" class="btn btn-success">
+                                                {{ __('โพสขาย') }}
+                                            </a>
+                                        </div>
+
+                                    @elseif(isset($chk))
+
+                                    @endif
+
+                                @elseif($item->Status < 1)
+                                    <div class="card">
+                                    <a href="/Requestpost/{{$item->id}}" class="btn btn-success">
+                                        {{ __('ขอโพส') }}
+                                    </a>
+                                    </div>
+
+                                @else
+                                    
                                 @endif
+                               
 
                                 <form action="/delete/dog/{{$item->id}}">
                                     @csrf
