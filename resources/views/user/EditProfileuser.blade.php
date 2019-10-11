@@ -66,11 +66,18 @@
                     <div class="form-group">
                         <label for="DateofBirth">วันเดือนปีเกิด :</label>
                         <input type="date" class="form-control @error('DateofBirth') is-invalid @enderror" name="DateofBirth" value="{{ Auth::user()->DateofBirth }}" />
+                        
                         @error('DateofBirth')
                         <span class="invalid-feedback" role="alert">
                             <strong>กรอกวันเดือนปีเกิดด้วยครับ</strong>
                         </span>
                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="DateofBirth">เลขที่บัญชี:</label>
+                        <input type="text" class="form-control" name="accountnumber" value="{{ Auth::user()->accountnumber }}" />
+                        
+
                     </div>
                     <div class="form-group">
                         <label for="address">ที่อยู่ :</label>

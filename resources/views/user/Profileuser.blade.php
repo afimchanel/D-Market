@@ -170,7 +170,7 @@ use App\post;
                         {{ $users->address }} <br>
                         @endif
                         @if ($users->id === Auth::user()->id)
-                        <a href="/buying"><button>การชื้อของ{{ $users->name }} </button></a>
+                        <a href="/buying"><button>การชื้อขายของ{{ $users->name }} </button></a>
                         @endif
                     
                 </div>

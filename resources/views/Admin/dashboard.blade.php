@@ -23,21 +23,6 @@
             </tr>
           </thead>
   
-          <!-- <div class="card-header">รายชื่อสมาชิกทั้งหมด</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>ชื่อ-นามสกุล</th>
-                      <th>E-Mail</th>
-                      <th>Tel</th>
-                      <th>IDcardnumber</th>
-                      <th>แก้ไข</th>
-                      <th>ลบ</th>
-                    </tr>
-                  </thead> -->
   
           <tbody>
             @foreach($users as $user)
@@ -45,7 +30,7 @@
               <td>{{ $user->id }}</td>
               <td class="avatar">
                 <div class="round-img">
-                  <a href="#"><img class="rounded-circle" src="public/image/text.jpg" alt=""></a>
+                  <img class="img-fluid img-thumbnail" src="/storage/avatars/{{$user->Avatar}}" >
                 </div>
               </td>
               <td>{{ $user->name }}</td>

@@ -165,7 +165,7 @@ class PaymentController extends Controller
         //wได้รับของแล้ว
         $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get();
         error_log($orderdetail);
-        $post = post::where('Post_id',$orderdetail->Post_id)->get();
+        $post = post::where(['Post_id'=>$orderdetail->Post_id])->get();
         foreach($post as $item){           
             $item->Status = 2;
             $item->save();
@@ -175,25 +175,44 @@ class PaymentController extends Controller
         
         $order->Status = 2;
         $order->save();
+        
         return redirect()->back();
         
     }
 
-    public function finish($id)
+    public function finish($id,$image)
     {   //ส่งของแล้ว
-        $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get();
+        $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get('Post_id');
         error_log($orderdetail);
-        $post = post::where('Post_id',$orderdetail->Post_id)->get();
+        $post = post::where('Post_id',$orderdetail);
         foreach($post as $item){           
             $item->Status = 3;
             $item->save();
+            error_log('5');
         }
         error_log($id);
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
         
+            $imagedeliveryreceipt1 = $image->file('deliveryreceipt');
+            if ($image->hasFile('deliveryreceipt')) {
+
+                error_log('uploaddog0');
+                // Get filename with the extension
+                $filenameWithExt = $imagedeliveryreceipt1->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $imagedeliveryreceipt1->getClientOriginalExtension();
+                // Filename to store
+                $imagedeliveryreceipt = $filename . '_imagedeliveryreceipt' . time() . '.' . $extension;
+                // Upload Image
+                $path = $imagedeliveryreceipt1->storeAs('public/imagedeliveryreceipt', $imagedeliveryreceipt);
+                
+            }
+        $order->deliveryreceipt = $imagedeliveryreceipt;
         $order->Status = 3;
         $order->save();
-        return redirect()->back();
+        return redirect()->back();//ทำระยะเวลา7วันหลังจากกดส่งของแล้วเค้าดาวโอนเงินทันที 
         
     }
     public function finished($id)

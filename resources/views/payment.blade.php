@@ -2,7 +2,7 @@
 <?php 
     use App\orderdetail;
     use App\orders;
-
+    
     $orderid = orders::where('id_user',Auth::user()->id)
     ->where('Status',0)
     ->Orderby('updated_at','desc')->first();
@@ -49,7 +49,7 @@
     {{ session()->get('mm') }}  
   </div><br />
 @endif
-  
+
     <thead>
         <tr>
             <th scope="col"># รหัสการสั่งซ์้อ</th>
@@ -61,9 +61,24 @@
     <tbody> 
         @if (isset($order))
             @foreach($order as $item)
-            <tr>
+            <tr>    
+                    {{time()}}
+                    <?php 
+                    if(date("Y-m-d H:i:s",strtotime($item->updated_at)) <= date("Y-m-d H:i:s")){
+                        
+                        $delete = orders::find($item->Order_ID);
+                        $delete->delete();
+                        // $user = Auth::user()->id == $item->id_user;
+                        // $user->score = $user->score - 1 ;
+                        // $user->save();
+                        return redirect()->back();
+                    }
+
+                    ?>
+                    
+
                 <th scope="row">{{$item->Order_detail}}</th>
-                <td>{{$item->Breed}}{{$item->title_post}}</td>
+                <td>{{$item->Detail_Dog}}</td>
                 @if ($item->weight_dog == 1)
                     <?php    $transportation = 800; ?>
                 @elseif($item->weight_dog == 2)

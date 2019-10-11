@@ -74,7 +74,6 @@ class ordercontroller extends Controller
             
         }
         
-        
     }
 
     /**
@@ -190,8 +189,7 @@ class ordercontroller extends Controller
                 //ออเดอร์ช้ำ
                 error_log('else1.1'); 
                 $orders = orderdetail::where(['id_user'=>$id])->where('order_id',NULL)->get();
-                $finde->id_user = $id;
-                $finde->save();
+
                 error_log($finde->Order_ID);
                 
                 error_log($orders);
@@ -208,16 +206,26 @@ class ordercontroller extends Controller
             }
             elseif($finde !== NULL && $finde->Status == 1 ) {
                 //เคยชื้อแล้วชื้ออีก
+
                 error_log('else1.2');
                 $order = new orders;
                 $order->id_user = $id;
                 $order->save();
+                
+                session()->flush();
+                session()->forget('key');
+                // if ($order->updated_at->diffInMinutes() > 1) {
+                //     $order->session()->forget('order_id');
+                //     return abort(403, 'No tienes permisos para editar ya este articulo');
+                // }
                 error_log($order->Order_ID);
                 $orders = orderdetail::where(['id_user'=>$id])->where('order_id',NULL)->get();
                 foreach($orders as $item){
                     $item->order_id = $order->Order_ID;
                     $item->save();
                 }
+                
+
                 return view('payment.description')->with('success','โปรดชำระเงินภายใน2ช.ม');
             }
             else{

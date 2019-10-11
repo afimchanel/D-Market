@@ -15,7 +15,7 @@ use App\order;
 
     <div class="col-lg-3">
 
-      <form action="/searchcategory" method="POST" role="search">
+      <form action="/searchcategory" method="POST" role="search" autocomplete="off">
         @csrf
         <div class="list-group">
           <p class="list-group-item active">สายพันธุ์</p>
@@ -133,9 +133,7 @@ use App\order;
       <div class="row ">
       
         @foreach ($post as $item)
-          @if ($item->Status > 0)
 
-          @else 
           <div class="col-lg-4 col-md-6 mb-4 py-2">
             <div class="card h-100">
               <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
@@ -153,7 +151,7 @@ use App\order;
                 <a class="btn btn-success fa fa-cart-plus" href="/create/order/{{$item->user_id}}/{{ $item->id }}/{{$item->Post_id}}"></a>
             </div>
           </div>
-          @endif
+        
 
           {{-- @endif --}}
 

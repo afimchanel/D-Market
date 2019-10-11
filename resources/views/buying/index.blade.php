@@ -9,7 +9,7 @@
     <div class="col-lg-9 ">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">ทั้งหมด</a>
+          <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">ขายแล้ว</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="pills-payable-tab" data-toggle="pill" href="#pills-payable" role="tab" aria-controls="pills-payable" aria-selected="false">ที่ต้องชำระ</a>

@@ -37,11 +37,11 @@ class searchController extends Controller
             ->orwhere('dogs.breed','=',$request->breed)
             ->orWhere('posts.Age_Dog','=',$request->Age_Dog)
             ->orWhere('posts.type_dog','=',$request->type_dog)
-            ->Where('posts.weight_dog','=',$request->weight_dog)
-            ->Where('posts.eye_color','=',$request->eye_color)
-            ->WhereBetween('posts.price',[$request->price_min,$request->price_max])
-            ->Where('dogs.color','=',$request->color)
-            ->Where('dogs.sex','=',$request->SEX)
+            ->orWhere('posts.weight_dog','=',$request->weight_dog)
+            ->orWhere('posts.eye_color','=',$request->eye_color)
+            ->orWhereBetween('posts.price',[$request->price_min,$request->price_max])
+            ->orWhere('dogs.color','=',$request->color)
+            ->orWhere('dogs.sex','=',$request->SEX)
             ->paginate(9);
 
         error_log($post);

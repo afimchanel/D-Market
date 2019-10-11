@@ -9,7 +9,7 @@
 
     <div class="col-lg-3">
 
-      <form action="/searchcategory" method="POST" role="search">
+      <form action="/searchcategory" method="POST" role="search" autocomplete="off">
         @csrf
         <div class="list-group">
           <p class="list-group-item active">สายพันธุ์</p>
@@ -220,7 +220,7 @@
           </select>
           
         </div>
-
+        
         <button class="btn btn-outline btn-filmm my-2 my-sm-0 fa fa-search search__ico" type="submit"></button>
       </form>
     </div>

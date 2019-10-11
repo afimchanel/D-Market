@@ -3,6 +3,7 @@
 @section('content')
 
 <?php 
+
 $total = 0;
 $transportation = 0;
 $t = 590;
@@ -27,7 +28,7 @@ $t = 590;
                     <img class="img-responsive" src="/storage/public/imagecover/{{$item->image}}" alt="prewiew" width="120" height="80">
                 </div>
                 <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
+                    <a href="/{{$item->id_the_dog}}/{{$item->Post_id}}/view/post">
                         <h4 class="product-name"><strong>ชื่อสุนัข : {{$item->namedog}}</strong></h4>
                     </a>
                     <small>คำบรรยาย : {{$item->Detail_Dog}} </small>

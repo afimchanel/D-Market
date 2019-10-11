@@ -211,9 +211,9 @@ use App\breed_dog;
                       </td>
                       <td><a href="/admin/dashboard/edit/" class="btn btn-primary">แก้ไข</a></td>
                             <td>
-                                <form action="" method="post">
+                                <form action="/delete/dog/{{$Dog->id}}" method="post">
                                   @csrf
-                                  
+                                  @method('DELETE')
                                   <button class="btn btn-danger" type="submit">ลบ</button>
                                 </form>
                                 

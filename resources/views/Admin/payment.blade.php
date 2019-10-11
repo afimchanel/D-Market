@@ -13,6 +13,7 @@
         <thead>
           <tr>
             <th>ID_ผู้ซื้อ</th>
+            <th>ID_ผู้ขาย</th>
             <th>รายการสั่งซื้อที่</th>
             <th>ใบเพย์เม้น</th>
             <th>ราคาทั้งหมด</th>
@@ -25,26 +26,12 @@
           </tr>
         </thead>
 
-        <!-- <div class="card-header">รายชื่อสมาชิกทั้งหมด</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>ชื่อ-นามสกุล</th>
-                      <th>E-Mail</th>
-                      <th>Tel</th>
-                      <th>IDcardnumber</th>
-                      <th>แก้ไข</th>
-                      <th>ลบ</th>
-                    </tr>
-                  </thead> -->
 
         <tbody>
           @foreach($payment as $item)
           <tr>
             <td>{{ $item->id_user }}</td>
+            <td>{{ $item->user_id }}</td>
             <td>{{ $item->Order_ID }}</td>
 
             <td>
@@ -117,12 +104,13 @@
             <td>
               @if ($item->Status == 0)
               <a href="/Payment/success/{{$item->Order_ID}}"><button type="button" class="btn btn-success">ยืนยัน</button></a>
-
               @endif
 
             </td>
            <td>
+             @if ($item->Status == 2)
               <a href=""><button type="button" class="btn btn-success">โอน</button></a>
+              @endif
            </td>
           </tr>
           @endforeach

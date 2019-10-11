@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
                 //payment
                     Route::get('Payment/success/{id}', 'PaymentController@success');
                     Route::get('Payment/geted/{id}', 'PaymentController@geted');
+                    Route::get('Payment/finish/{id}', 'PaymentController@finish');
 });
 
 //Route for admin

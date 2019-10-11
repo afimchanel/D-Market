@@ -47,6 +47,8 @@ class AdminController extends Controller
         error_log('payment');
         $payment = payment::where('Pay_ID', '>', 0)
         ->join('order', 'payment.Order_ID', '=', 'order.Order_ID')
+        ->LEFTjoin('order_detail', 'order.Order_ID', '=', 'order_detail.order_id')
+        ->LEFTjoin('posts', 'order_detail.id_post', '=', 'posts.Post_id')
         ->paginate(5);
 
         return view('admin/payment',compact('payment'));
@@ -71,8 +73,7 @@ class AdminController extends Controller
     public function update($id)
     {
         error_log('updateuseradmin');
-        
-        
+
         $user = User::find($id);
         $user->name = request()->input('name');
         $user->DateofBirth = request()->input('DateofBirth');

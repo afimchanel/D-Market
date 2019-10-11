@@ -103,7 +103,7 @@ class Usercontroller extends Controller
     public function edit($user)
     {
         error_log('edituser');
-        if(auth()->user()->type === 0)
+        if(auth()->user()->type == 0)
         {
           return view('user.EditProfileuser')->withUser($user);
         }
@@ -132,6 +132,8 @@ class Usercontroller extends Controller
             'address' => 'required',
 
             'Farmaddress' => 'required',
+            'IDcardnumber' => 'required',
+            'license' => 'required',
 
         ]);
         $user = Auth::user();
@@ -178,6 +180,7 @@ class Usercontroller extends Controller
         $user->IDcardnumber = $imageIDcardnumber;
         $user->license = $imagelicense;
         $user->Farmaddress = request()->input('Farmaddress');
+        $user->accountnumber = request()->input('accountnumber');
         error_log('updateuser');
         $user->save();
         
