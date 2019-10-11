@@ -96,7 +96,7 @@ $cartcount = orderdetail::countcart();
       <nav class="navbar navbar-expand-md navbar-light bg-light	shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="../image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+                <img src="/../image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
                 
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

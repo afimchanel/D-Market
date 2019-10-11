@@ -141,7 +141,7 @@ use App\Dog;
 
 
 ?>
-<div class="container-fluid" style="margin-top:20px">
+<div class="container" style="margin-top:20px">
     <h1>รุ่นสุนัข.</h1>
     <div class="row">
         <div class="">

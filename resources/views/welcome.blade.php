@@ -113,17 +113,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">    
-              <div class="portfolio-list">   
-                <ul class="nav list-unstyled" id="portfolio-flters">
-                  <li class="filter filter-active" data-filter=".all">all</li>
-                  <li class="filter" data-filter=".branding">branding</li>
-                  <li class="filter" data-filter=".mockups">mockups</li>
-                  <li class="filter" data-filter=".uikits">ui kits</li>
-                  <li class="filter" data-filter=".webdesign">web design</li>
-                  <li class="filter" data-filter=".photography">photography</li>
-                </ul>    
-              </div>  
-
+              
               <div class="portfolio-container">   
                 <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits webdesign" style="width:350px; height:270px;">
                   <a class="popup-img" href="image/portfolio/1.jpg">
