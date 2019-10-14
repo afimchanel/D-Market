@@ -69,22 +69,22 @@ class DogController extends Controller
             'image'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
 
           ]);
-                $imageCP = $request->file('image');
+                $imagecover = $request->file('image');
                 if ($request->hasFile('image')) {
 
                     error_log('uploaddog0');
                     // Get filename with the extension
-                    $filenameWithExt = $imageCP->getClientOriginalName();
+                    $filenameWithExt = $imagecover->getClientOriginalName();
                     // Get just filename
                     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                     // Get just ext
-                    $extension = $imageCP->getClientOriginalExtension();
+                    $extension = $imagecover->getClientOriginalExtension();
                     // Filename to store
-                    $imagecover = $filename . '_image' . time() . '.' . $extension;
+                    $imagecoverStore = $filename . '_image' . time() . '.' . $extension;
                     // Upload Image
-                    $path = $imageCP->storeAs('public/imagecover', $imagecover);
+                    $path = $imagecover->storeAs('public/imagecover', $imagecoverStore);
                 } else {
-                    $imagecover = 'nopicture.jpg';
+                    $imagecoverStore = 'nopicture.jpg';
                 }
                 
                 $imageCP = $request->file('imageCP');
@@ -139,7 +139,7 @@ class DogController extends Controller
                 $Dog->Breedername = $request->Breedername;
                 $Dog->Owner = $request->Owner;
                 $Dog->Registrationdate = $request->Registrationdate;   
-                $Dog->image = $imagecover;
+                $Dog->image = $imagecoverStore;
                 $Dog->imageRC = $imageRCStore;
                 $Dog->imageCP = $imageCPStore;
                 $Dog->user_id = auth()->user()->id;
@@ -238,7 +238,7 @@ class DogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$Iddog) //มีให้แก้
+    public function update(Request $request,$Iddog) 
     {
         $request->validate([
             'Breed' => 'required',
@@ -430,14 +430,23 @@ class DogController extends Controller
     }
     public function  Requestpost($id){
         $dog = Dog::find($id);
-        $dog->Status = 1;
-        $dog->save();
-        return redirect()->back();
+        if ($dog->imageCP != "noimage.jpg") {
+            $dog->Status = 1;
+            $dog->save();
+            return redirect()->back();
+        } elseif($dog->imageCP == "noimage.jpg") {
+            return redirect()->back()->with('nocp','กรุณาเพิ่มใบ Certified Pedigree');
+        }
+        
+ 
     }
     public function  Allowpost($id){
         $dog = Dog::find($id);
         $dog->Status = 2;
         $dog->save();
+        $user = User::find($dog->user_id);
+        $user->score = $user->score + 3;
+        $user->save();
         return redirect()->back();
 
     }

@@ -34,7 +34,7 @@
 
     $total = 0;
     $transportation = 0;
-    $t = 590;
+    $t = 0;
  ?>
 @section('content')
 <img class="img-responsive img-fluid" id="imgs" src="/payment.jpg" style="width:500px; height:500px;">
@@ -64,7 +64,7 @@
             <tr>    
                     
                     <?php 
-                    if(date("Y-m-d H:i:s",strtotime($item->updated_at)) <= date("Y-m-d H:i:s")){
+                    if(date("Y-m-d H:i:s",strtotime($item->created_at."+30 minute")) <= date("Y-m-d H:i:s")){
                         
                         $delete = orders::find($item->Order_ID);
                         $delete->delete();
@@ -72,10 +72,9 @@
                         foreach ($delete1 as $item1) {
                             $item1->delete();
                         }
-                        
-                        // $user = Auth::user()->id == $item->id_user;
-                        // $user->score = $user->score - 1 ;
-                        // $user->save();
+                        $user = Auth::user();
+                        $user->score = $user->score - 1 ;
+                        $user->save();
                         return redirect()->back();
                     }
 
@@ -90,7 +89,15 @@
                     <?php   $transportation = 800;?>
                 @elseif($item->weight_dog == 3)
                     <?php   $transportation = 1000; ?>
-                @endif  </strong></h6> 
+                @endif  
+                @if ($item->type_dog	 == 1)
+                <?php    $t = 590; ?>
+                @elseif($item->	type_dog	 == 2)
+                    <?php   $t = 790;?>
+                @elseif($item->	type_dog	 == 3)
+                    <?php   $t = 1299; ?>
+                @endif
+                </h6> 
                 <td>{{$item->price}}</td>
                 <?php $total = $total + $item->price ?>
                 
@@ -139,14 +146,20 @@
                     <div class="col-75">
                         <input type="text" name='tel_Customer' required>
                     </div>
-                </div>
+            </div>
 
             <div class="row">
-                <div class="col-25">
-                    <label for="fname">สนามบินที่ใกล้ที่สุด</label>
+                <div class="col-3">
+                    <label for="fname">สะดวกรับสุนัขแบบไหน</label>
                 </div>
-                <div class="col-75">
-                    <input type="text" placeholder="(เป็นสถานที่รับสุนัข)" name="receiving_location"required>
+                <div class="col-4">
+                    <input type="text" placeholder="(ถ้ามารับเองให้พิม มารับเอง ช่องนี้)" name="pick_your_own">
+                </div>
+                <div class="col-4">
+                    <input type="text" placeholder="(ถ้าสะดวกสนามบินให้พิม ชื่อสนามบิน ช่องนี้)" name="receiving_location">
+                </div>
+                <div class="col-4">
+                    <input type="text" placeholder="(ถ้าส่งทางรถยนต์ให้พิม ที่อยู่ ช่องนี้ )" name="address">
                 </div>
             </div>
             <div class="row">

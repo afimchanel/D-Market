@@ -17,7 +17,7 @@
               <th>ชื่อ-นามสกุล</th>
               <th>E-Mail</th>
               <th>Tel</th>
-              <th>IDcardnumber</th>
+              <th>เลขบัญชี</th>
               <th>แก้ไข</th>
               <th>ลบ</th>
             </tr>
@@ -36,7 +36,7 @@
               <td>{{ $user->name }}</td>
               <td>{{ $user->email }}</td>
               <td>{{ $user->Tel }}</td>
-              <td>{{ $user->IDcardnumber }}</td>
+              <td>{{ $user->accountnumber}}</td>
               <td><a href="/admin/dashboard/edit/{{$user->id}}" class="btn btn-primary">Edit</a></td>
               <td>
                 <form action="/admin/dashboard/edit/{{$user->id}}/destroy" method="post">

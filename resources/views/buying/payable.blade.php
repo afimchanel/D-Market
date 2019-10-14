@@ -42,7 +42,7 @@
                         {{$item->receiving_location}} 
                         @endif
             </dt>
-          <dd>สถานะ</dd>
+            
         </dl>
         <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
           <dl class="param param-inline small">

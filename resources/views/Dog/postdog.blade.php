@@ -222,7 +222,7 @@
       <div class="col-md-4 mb-3">
         <label for="formGroup File">อัพโหลดรูปปกสุนัข </label>
         <div class="custom-file">
-          <input type="file" name="image"  @error('image') is-invalid @enderror class="custom-file-input" accept=".png, .jpg, .jpeg">
+          <input type="file" name="image"  @error('image') is-invalid @enderror class="custom-file-input" accept=".png, .jpg, .jpeg" required>
           <label class="custom-file-label">Choose file</label>
           @error('image')
           <span class="invalid-feedback" role="alert">

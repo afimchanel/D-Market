@@ -16,13 +16,26 @@ class searchController extends Controller
         $q = Input::get('q');
         $user =  post::join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->where('posts.title_post', 'LIKE', '%' . $q . '%')
+                ->leftjoin('breed_dog', 'dogs.breed', '=', 'breed_dog.id')
+                ->leftjoin('color_dog', 'dogs.color', '=', 'color_dog.id')
+                ->leftjoin('sex_dog', 'dogs.sex', '=', 'sex_dog.id')
+                ->leftjoin('type_dog', 'posts.type_dog', '=', 'type_dog.id')
+                ->leftjoin('age_dog', 'posts.Age_Dog', '=', 'age_dog.id')
+                ->leftjoin('eyecolor_dog', 'posts.eye_color', '=', 'eyecolor_dog.id')
+                ->leftjoin('weight_dog', 'posts.weight_dog', '=', 'weight_dog.id')
             ->orWhere('posts.Detail_Dog', 'LIKE', '%' . $q . '%')
             ->orWhere('posts.price', 'LIKE', '%' . $q . '%')
             ->orWhere('posts.farm_name', 'LIKE', '%' . $q . '%')
-            ->orWhere('dogs.Breed', 'LIKE', '%' . $q . '%')
+            ->orWhere('breed_dog.name_breed', 'LIKE', '%' . $q . '%')
+            ->orWhere('color_dog.name_color', 'LIKE', '%' . $q . '%')
+            ->orWhere('sex_dog.name_sex', 'LIKE', '%' . $q . '%')
+            ->orWhere('type_dog.name_type', 'LIKE', '%' . $q . '%')
+            ->orWhere('age_dog.name_age', 'LIKE', '%' . $q . '%')
+            ->orWhere('eyecolor_dog.name_eyecolor', 'LIKE', '%' . $q . '%')
+            ->orWhere('weight_dog.weight_dog', 'LIKE', '%' . $q . '%')
+            ->orWhere('dogs.idthedog', 'LIKE', '%' . $q . '%')
             ->orWhere('users.name', 'LIKE', '%' . $q . '%')
-            ->paginate(10);
+            ->paginate(9);
         //->get();
         if (count($user) > 0)//แก้หน้าแสดงผลให้ดีขึ้น
             return view('search.search')->withDetails($user)->withQuery($q);

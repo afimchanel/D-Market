@@ -29,9 +29,9 @@ $video = dogvideo::where(['dog_id' => $id])->get();
 <!-- Page Content -->
 <div class="container">
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4">
-        <small><a href="/user/{{$Dog->user_id}}">เจ้าของสุนัข</a></small>
-    </h1>
+    <h4 class="my-4">
+        {{$Dog->namedog}}
+    </h4>
 
     <!-- Portfolio Item Row -->
     <div class="row">
@@ -73,6 +73,7 @@ $video = dogvideo::where(['dog_id' => $id])->get();
 
             
             <ul>
+                <li><a href="/user/{{$Dog->user_id}}">เจ้าของสุนัข</a></li>
                 <li>สายพันธุ์ :<a class="badge badge-success" href="/search/{{$Dog->breed}}">
                     @if ($Dog->breed == 1)
                     ปั๊ก (Pug)

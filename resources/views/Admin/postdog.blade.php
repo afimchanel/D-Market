@@ -25,7 +25,7 @@
                     @foreach ($posts as $post)
                     <tr>
                         <td>{{$post->Post_id}}</td>
-                        <td>{{$post->Post_id_the_dog}}</td>
+                        <td>{{$post->id_the_dog}}</td>
                         <td>{{$post->user_id}}</td>
                         <td>{{$post->price}}</td>
                         <td>{{$post->farm_name}}</td>

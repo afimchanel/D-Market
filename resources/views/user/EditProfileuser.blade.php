@@ -92,7 +92,7 @@
                     <div class="form-group ">
                         ใบอนุญาตจากสมาคม(ถ้ามี)
                         <div class="custom-file input-group mb-2">
-                            <input type="file" name="license" class="custom-file-input @error('license') is-invalid @enderror" accept=".png, .jpg, .jpeg" value="{{ Auth::user()->license }}">
+                            <input type="file" name="license" class="custom-file-input @error('license') is-invalid @enderror" accept=".png, .jpg, .jpeg" value="{{ Auth::user()->license}}" />
                             @error('license')
                             <span class="invalid-feedback" role="alert">
                                 <strong>ใส่รูปด้วยครับ</strong>
@@ -104,7 +104,7 @@
                     <div class="form-group ">
                         บัตรประจำตัวประชาชน 
                         <div class="custom-file input-group mb-2">
-                            <input type="file" name="IDcardnumber" class="custom-file-input @error('IDcardnumber') is-invalid @enderror" accept=".png, .jpg, .jpeg" value="{{ Auth::user()->IDcardnumber }}">
+                            <input type="file" name="IDcardnumber" class="custom-file-input @error('IDcardnumber') is-invalid @enderror" accept=".png, .jpg, .jpeg" value="{{ Auth::user()->IDcardnumber}}"/>
                             @error('IDcardnumber')
                             <span class="invalid-feedback" role="alert">
                                 <strong>ใส่รูปด้วยครับ</strong>
@@ -116,7 +116,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">ที่อยู่ฟาร์ม</label>
                         ***กรอกแค่ ต. อ. จ.
-                        <textarea class="form-control @error('Farmaddress') is-invalid @enderror" rows="3" name="Farmaddress">{{ Auth::user()->Farmaddress }}</textarea>
+                        <textarea class="form-control @error('Farmaddress') is-invalid @enderror" rows="3" name="Farmaddress">{{ Auth::user()->Farmaddress}}</textarea>
                         @error('Farmaddress')
                         <span class="invalid-feedback" role="alert">
                             <strong>กรอกรายละเอียดด้วย</strong>

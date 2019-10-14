@@ -159,7 +159,7 @@
             <div class="w3-bar-block">
                 
                 <a href="/admin/dashboard" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw" ></i>  รายชื่อสมาชิก</a>
-                <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw" ></i>  การแจ้งเตือน</a>
+                
                 <a href="/admin/listdogs" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shopping-cart" ></i>  ข้อมูลสุนัข</a>
                 <a href="/admin/post" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user" ></i>  โพสต์</a>
                 

@@ -50,7 +50,7 @@ class ordercontroller extends Controller
                 error_log($new);
                 error_log(Auth::user()->id);
                 error_log($id_user);
-                if ($id_user != Auth::user()->id && $new == null) //ทำเงื่อนไขตรงนี้ให้ดี
+                if ($id_user != Auth::user()->id && $new == null) 
                 {
                     error_log('if ');
                     $order = new orderdetail;
@@ -212,12 +212,6 @@ class ordercontroller extends Controller
                 $order->id_user = $id;
                 $order->save();
                 
-                session()->flush();
-                session()->forget('key');
-                // if ($order->updated_at->diffInMinutes() > 1) {
-                //     $order->session()->forget('order_id');
-                //     return abort(403, 'No tienes permisos para editar ya este articulo');
-                // }
                 error_log($order->Order_ID);
                 $orders = orderdetail::where(['id_user'=>$id])->where('order_id',NULL)->get();
                 foreach($orders as $item){

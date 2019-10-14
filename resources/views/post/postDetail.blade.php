@@ -89,18 +89,20 @@ $sliders = dogimages::where(['dog_id' => $dog->idthedog])->get();
       <a class="badge badge-success" href="">สุนัขพันธุ์ใหญ่</a>
       @endif
       </option></li>
-
+      <li><a href="/user/{{$post->user_id}}">เจ้าของโพส</a></li>
       <li>ราคา : {{$post->price}}</li>
       @if (Auth::user()->id == $post->user_id)
       <a href="/edit/post/{{$post->Post_id}}" class="btn btn-light">เเก้ไข</a>
       @else
 
       <div class="btn-group cart">
-        <a href="/create/order/{{ Auth::user()->id}}/{{ $dog->id }}/{{$post->Post_id}}">
+        @if($post->Status != 2)
+        <a href="/create/order/{{ $post->user_id }}/{{ $dog->id }}/{{$post->Post_id}}">
           <button type="button" class="btn btn-success">
             เพิ่มลงในตะกร้า
           </button>
         </a>
+        @endif
       </div>
 
       @endif

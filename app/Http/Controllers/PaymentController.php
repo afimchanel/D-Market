@@ -7,6 +7,7 @@ use App\payment;
 use App\orders;
 use App\orderdetail;
 use App\post;
+use App\Dog;
 class PaymentController extends Controller
 {
     /**
@@ -50,6 +51,9 @@ class PaymentController extends Controller
                 'tel_Customer'=> $request->get('tel_Customer'),
                 'price_check'=> $request->get('total'),
                 'receiving_location'=> $request->get('receiving_location'),
+                'pick_your_own'=> $request->get('pick_your_own'),
+                'address'=> $request->get('address'),
+
 
               ]);
                       
@@ -143,15 +147,14 @@ class PaymentController extends Controller
         //ยืนยันการโอนแล้ว
         error_log($id);
         //ให้idวนกับออเดอดีเทว
-        $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get();
+        $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->first();
         error_log($orderdetail);
-        $post = post::where('Post_id',$orderdetail->Post_id)->get();
-        foreach($post as $item){           
-            $item->Status = 1;
-            $item->save();
-        }
-        // return $post;
-
+        $post = post::where('Post_id',$orderdetail->Post_id)->first();
+          
+            $post->Status = 1;
+            $post->save();
+        
+     
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
         $order->Status = 1;
         $order->save();
@@ -160,30 +163,34 @@ class PaymentController extends Controller
     }
 
     
-    public function geted($id)
+    public function geted($id,$id_post)
     {
         //wได้รับของแล้ว
-        $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get();
-        error_log($orderdetail);
-        $post = post::where(['Post_id'=>$orderdetail->Post_id])->get();
-        foreach($post as $item){           
-            $item->Status = 2;
-            $item->save();
-        }
+
+        $post = post::where('Post_id',$id_post)->first(); 
+        $dog= Dog::where('id',$post->id_the_dog)->first();
+        $dog->Status = 3;
+        $dog->save();
+        $post->Status = 2;
+        $post->save();
+        
         error_log($id);
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
-        
         $order->Status = 2;
         $order->save();
-        
+        $score=auth()->user();
+        $score->score = $score->score + 10 ;
+        $score->save();
         return redirect()->back();
         
     }
 
-    public function finish($id,$image)
+    public function finish(Request $request,$id,$id_post)
     {   //ส่งของแล้ว
         $request->validate([
             'deliveryreceipt' => 'required',
+            'description' => 'required',
+            
         ]);
 
         $post = post::where('Post_id',$id_post)->first(); 
@@ -192,23 +199,24 @@ class PaymentController extends Controller
             
         error_log($id);
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
-        
-            $imagedeliveryreceipt1 = $image->file('deliveryreceipt');
-            if ($image->hasFile('deliveryreceipt')) {
 
-                error_log('uploaddog0');
-                // Get filename with the extension
-                $filenameWithExt = $imagedeliveryreceipt1->getClientOriginalName();
-                // Get just filename
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                // Get just ext
-                $extension = $imagedeliveryreceipt1->getClientOriginalExtension();
-                // Filename to store
-                $imagedeliveryreceipt = $filename . '_imagedeliveryreceipt' . time() . '.' . $extension;
-                // Upload Image
-                $path = $imagedeliveryreceipt1->storeAs('public/imagedeliveryreceipt', $imagedeliveryreceipt);
-                
-            }
+        $imagedeliveryreceipt1 = $request->file('deliveryreceipt');
+        if ($request->hasFile('deliveryreceipt')){
+
+            error_log('uploaddog0');
+            // Get filename with the extension
+            $filenameWithExt = $imagedeliveryreceipt1->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $imagedeliveryreceipt1->getClientOriginalExtension();
+            // Filename to store
+            $imagedeliveryreceipt = $filename . '_imagedeliveryreceipt' . time() . '.' . $extension;
+            // Upload Image
+            $path = $imagedeliveryreceipt1->storeAs('public/imagedeliveryreceipt', $imagedeliveryreceipt);
+        }
+        
+        $order->description = $request->description;
         $order->deliveryreceipt = $imagedeliveryreceipt;
         $order->Status = 3;
         $order->save();
@@ -217,7 +225,7 @@ class PaymentController extends Controller
     }
     public function finished($id)
     {   //จบการขาย
-        $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get();
+        $orderdetail = orderdetail::fulljoin('posts','order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get();
         error_log($orderdetail);
         $post = post::where('Post_id',$orderdetail->Post_id)->get();
         foreach($post as $item){           
@@ -226,7 +234,6 @@ class PaymentController extends Controller
         }
         error_log($id);
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
-        
         $order->Status = 4;
         $order->save();
         return redirect()->back();

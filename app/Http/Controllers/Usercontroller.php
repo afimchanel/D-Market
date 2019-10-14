@@ -132,8 +132,7 @@ class Usercontroller extends Controller
             'address' => 'required',
 
             'Farmaddress' => 'required',
-            'IDcardnumber' => 'required',
-            'license' => 'required',
+
 
         ]);
         $user = Auth::user();
@@ -153,6 +152,7 @@ class Usercontroller extends Controller
                     $imageIDcardnumber = $filename . '_IDcardnumber' . time() . '.' . $extension;
                     // Upload Image
                     $path = $IDcardnumber->storeAs('public/idcardnumber', $imageIDcardnumber);
+                    $user->IDcardnumber = $imageIDcardnumber;
                 }
 
  
@@ -170,6 +170,7 @@ class Usercontroller extends Controller
                     $imagelicense = $filename . '_license' . time() . '.' . $extension;
                     // Upload Image
                     $path = $license->storeAs('public/license', $imagelicense);
+                    $user->license = $imagelicense;
                 } 
 
 
@@ -177,8 +178,8 @@ class Usercontroller extends Controller
         $user->DateofBirth = request()->input('DateofBirth');
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
-        $user->IDcardnumber = $imageIDcardnumber;
-        $user->license = $imagelicense;
+        
+        
         $user->Farmaddress = request()->input('Farmaddress');
         $user->accountnumber = request()->input('accountnumber');
         error_log('updateuser');
@@ -214,25 +215,10 @@ class Usercontroller extends Controller
         $user->avatar = $avatarName;
         $user->save();
 
-        return redirect('user/{id}');
+        return redirect()->back();
 
     }
-//     public function poi(){
-//         $orderid = orders::where('id_user',Auth::user()->id)
-//         ->where('Status',1)
-//         ->Orderby('updated_at','desc')->first();
-//         if ($orderid = NULL) {
-//         return $order = NULL;
-//         } else {
-//         $order = orderdetail::where('order_detail.id_user',Auth::user()->id)
-//         ->LEFTjoin('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
-//         ->LEFTjoin('posts', 'order_detail.id_post', '=', 'posts.Post_id')
-//         ->LEFTjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
-//         ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
-//         ->where('order_detail.order_id',$orderid->Order_ID)
-//         ->get();
-//         }
-//     }
+
  }
 
 

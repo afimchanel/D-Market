@@ -133,7 +133,11 @@ use App\post;
 
 ?>
 @section('content')
-
+@if(session()->get('nocp'))
+<div class="alert alert-success">
+  {{ session()->get('nocp') }}  
+</div><br />
+@endif 
 <!-- ด้านบนหน้าร้าน -->
 
 <div class="jumbotron jumbotron-fluid  ">
@@ -141,7 +145,6 @@ use App\post;
     
     <div class="container ">
         <div class="container">
-
             <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์ {{ $users->name }}</h1>
             <hr class="mt-2 mb-5">
             <div class="row text-center text-lg-left">
@@ -171,8 +174,9 @@ use App\post;
                         @endif
                         @if ($users->id === Auth::user()->id)
                         <a href="/buying"><button>การชื้อขายของ{{ $users->name }} </button></a>
-                        @endif
-                    
+                        @endif<br>
+                        ที่อยู่ฟาร์ม : {{ $users->	Farmaddress }}<br>
+                        คะแนน : {{$users->score}}
                 </div>
             </div>
         </div>
@@ -208,40 +212,26 @@ use App\post;
                 <!-- Team Member 1 -->
                 <div class="row">
                     @foreach ($posts as $item)
-                    <div class="px-1 ">
-                        <div class="card h-100">
-                            <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
-                                <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
-                            </a>
+                        @if($item->Status == 0)
+                        <div class="px-1 ">
+                            <div class="card h-100">
+                                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
+                                    <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
+                                </a>
 
-                            <div class="card-body text-center">
-                                <h4 class="card-title ">
-                                <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->namedog}}</a>
+                                <div class="card-body text-center">
+                                    <h4 class="card-title ">
+                                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->namedog}}</a>
                                 
-                                    {{-- @if ($item->order_id == NULL )
-                                    <span class="badge badge-success">สถานะ : ปกติ</span>
-                                    @elseif ($item->order_id !== NULL && $item->Status == 0)
-                                    <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
-                                    @elseif ($item->Status == 0)
-                                    <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
-                                    @elseif ($item->Status == 1)
-                                    <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
-                                    @elseif ($item->Status == 3)
-                                    <span class="badge badge-warning">สถานะ : ส่งสุนัขแล้ว</span>
-                                    @elseif ($item->Status == 2)
-                                    <span class="badge badge-danger">สถานะ : ขายแล้ว</span>
-                                    @endif --}}
-
-
-                                </h4>
-                                @if ($item->user_id == auth()->user()->id)
-                                <a href="/edit/post/{{$item->Post_id}}" class="btn btn-primary">เเก้ไข</a>
-                                @endif
-                                <p class="card-text">{{$item->Detail_Dog}}</p>
+                                    </h4>
+                                    @if ($item->user_id == auth()->user()->id)
+                                    <a href="/edit/post/{{$item->Post_id}}" class="btn btn-primary">เเก้ไข</a>
+                                    @endif
+                                    <p class="card-text">{{$item->Detail_Dog}}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -257,54 +247,56 @@ use App\post;
                 <!-- Page Features -->
                 <div class="row text-center">
 
-                    @foreach ($Dogs as $item)
+                    @foreach ($Dogs as $item1)
 
                     <div class="col-lg-3 col-md-6 mb-4 ">
                         <div class="card h-100">
 
-                            <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" style="width:250px; height:250px;">
+                            <img class="card-img-top" src="/storage/public/imagecover/{{$item1->image}}" style="width:250px; height:250px;">
                             <div class="card-body">
-                                <h4 class="card-title">{{$item->namedog}}</h4>
+                                <h4 class="card-title">{{$item1->namedog}}</h4>
                                 <!--<p class="card-text"></p>-->
                             </div>
                             <div class="card-footer">
-                                <a href="/view/dog/{{$item->idthedog}}" class="btn btn-light">ดูรายละเอียด</a>
-                                @if ($item->user_id == auth()->user()->id)
-                                <a href="/edit/dog/{{$item->id}}" class="btn btn-light">เเก้ไข</a>
+                                <a href="/view/dog/{{$item1->idthedog}}" class="btn btn-light">ดูรายละเอียด</a>
+                                @if ($item1->user_id == auth()->user()->id)
+                                    <a href="/edit/dog/{{$item1->id}}" class="btn btn-light">เเก้ไข</a>
+                                  
+                                    @if ($item1->Status == 2)
+                                        <?php $chk = post::where('id_the_dog',$item1->id)->get('id_the_dog'); ?>
+                                        @if ($chk == '[]')
 
-                                @if ($item->Status == 2)
-                                    <?php $chk = post::where('id_the_dog',$item->id)->get('id_the_dog'); ?>
-                                    @if ($chk == '[]')
+                                            <div class="card">
+                                                <a href="/post/dog/{{$item1->id}}/{{auth()->user()->id}}" class="btn btn-success">
+                                                    {{ __('โพสขาย') }}
+                                                </a>
+                                            </div>
 
+                                        @elseif(isset($chk))
+
+                                        @endif
+
+                                    @elseif($item1->Status < 1)
                                         <div class="card">
-                                            <a href="/post/dog/{{$item->id}}/{{auth()->user()->id}}" class="btn btn-success">
-                                                {{ __('โพสขาย') }}
-                                            </a>
+                                        <a href="/Requestpost/{{$item1->id}}" class="btn btn-success">
+                                            {{ __('ขอโพส') }}
+                                        </a>
                                         </div>
 
-                                    @elseif(isset($chk))
-
+                                    @elseif($item1->Status == 3)    
+                                    ขายไปแล้ว
+                                    @else
+                                        
                                     @endif
+                                
 
-                                @elseif($item->Status < 1)
-                                    <div class="card">
-                                    <a href="/Requestpost/{{$item->id}}" class="btn btn-success">
-                                        {{ __('ขอโพส') }}
-                                    </a>
-                                    </div>
-
-                                @else
-                                    
-                                @endif
-                               
-
-                                <form action="/delete/dog/{{$item->id}}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <div class="card">
-                                        <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
-                                    </div>
-                                </form>
+                                    <form action="/delete/dog/{{$item1->id}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="card">
+                                            <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
+                                        </div>
+                                    </form>
 
                                 @endif
 

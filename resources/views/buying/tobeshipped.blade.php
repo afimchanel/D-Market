@@ -22,7 +22,7 @@ if ($orderid == NULL) {
 
 @if(isset($order))
       @foreach ($order as $item)
-    {{$item->Order_detail}} ทำที่แบบว่าถ้า10ชมแล้ว คนขายไม่่ส่งหมา ให้ส่งsms เตือน
+    {{$item->Order_detail}}
         <figure class="media">
           <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm" style="width:250px; height:250px;"></div>
           <figcaption class="media-body">

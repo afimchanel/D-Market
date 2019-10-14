@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
- ผลลัพของการค้นหา {{$id}}
     @if(isset($search))
 
 

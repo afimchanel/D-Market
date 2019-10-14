@@ -35,7 +35,7 @@
 
         .tree li::before,
         .tree li::after {
-            content: 'เส้นแม่';
+            content: '';
             position: absolute;
             top: 0;
             right: 50%;
@@ -45,7 +45,7 @@
         }
 
         .tree li::after {
-            content: 'เส้นพ่อ';
+            content: '';
             right: auto;
             left: 50%;
             border-left: 2px solid #696969;
@@ -67,7 +67,7 @@
     right connector from last child*/
         .tree li:first-child::before,
         .tree li:last-child::after {
-            content: 'เส้น0';
+            content: '';
             border: 0 none;
         }
 
@@ -87,7 +87,7 @@
 
         /*Time to add downward connectors from parents*/
         .tree ul ul::before {
-            content: 'ลูก';
+            content: '';
             position: absolute;
             
             top: 0;
@@ -155,7 +155,7 @@ use App\Dog;
                                         <div class="container-fluid">
                                             <div class="row">
                                                     ไม่พบข้อมูลปู
-                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                             </div>
                                         </div>
                                     </a>
@@ -164,7 +164,7 @@ use App\Dog;
                                         <div class="container-fluid">
                                             <div class="row">
                                                 {{$faher->father}}
-                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                             </div>
                                         </div>
                                     </a>
@@ -178,7 +178,7 @@ use App\Dog;
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         {{$dogs->father}}
-                                                        <img src="" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                        <img src="" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                                     </div>
                                                 </div>                                                
                                             </a>
@@ -187,7 +187,7 @@ use App\Dog;
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         {{$dogs->father}}
-                                                        <img src="/storage/public/imagecover/{{$faher->image}}" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                        <img src="/storage/public/imagecover/{{$faher->image}}" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                                     </div>
                                                 </div>                                                
                                             </a>
@@ -198,7 +198,7 @@ use App\Dog;
                                                     <div class="container-fluid">
                                                         <div class="row">
                                                             {{$dogs->namedog}}
-                                                            <img src="/storage/public/imagecover/{{$dogs->image}}" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                            <img src="/storage/public/imagecover/{{$dogs->image}}" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                                         </div>
                                                     </div>
                                                 </a>
@@ -215,7 +215,7 @@ use App\Dog;
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         {{$dogs->momher}}
-                                                        <img src="" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                        <img src="" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                                     </div>
                                                 </div>
                                             </a>
@@ -224,7 +224,7 @@ use App\Dog;
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         {{$dogs->momher}}
-                                                        <img src="/storage/public/imagecover/{{$momher->image}}" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                        <img src="/storage/public/imagecover/{{$momher->image}}" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                                     </div>
                                                 </div>
                                             </a>
@@ -239,7 +239,7 @@ use App\Dog;
                                         <div class="container-fluid">
                                             <div class="row">
                                                 ไม่พบข้อมูลย่า
-                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                             </div>
                                         </div>
                                     </a>
@@ -248,7 +248,7 @@ use App\Dog;
                                         <div class="container-fluid">
                                             <div class="row">
                                                 
-                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="alt text">
+                                                <img src="/img/M.jpg/" style="width:70px; height:70px;" class="css-class" alt="ไม่พบรูป">
                                             </div>
                                         </div>
                                     </a>

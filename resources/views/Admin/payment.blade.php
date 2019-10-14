@@ -108,8 +108,9 @@
 
             </td>
            <td>
-             @if ($item->Status == 2)
-              <a href=""><button type="button" class="btn btn-success">โอน</button></a>
+             @if ($item->Status == 2 )
+             {{-- //ทำเงื่อนไข ถ้าเลย7 วันให้โอนเงิน --}}
+           <a href="Payment/finish/{{$item->Order_ID}}"><button type="button" class="btn btn-success">โอน</button></a>
               @endif
            </td>
           </tr>

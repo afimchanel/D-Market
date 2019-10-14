@@ -24,7 +24,7 @@
           <a class="nav-link" id="pills-get-tab" data-toggle="pill" href="#pills-get" role="tab" aria-controls="pills-get" aria-selected="false">ที่ต้องได้รับ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-finish-tab" data-toggle="pill" href="#pills-finish" role="tab" aria-controls="pills-finish" aria-selected="false">สำเร็จแล้ว</a>
+          <a class="nav-link" id="pills-finish-tab" data-toggle="pill" href="#pills-finish" role="tab" aria-controls="pills-finish" aria-selected="false">ชื้อสำเร็จแล้ว</a>
         </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">

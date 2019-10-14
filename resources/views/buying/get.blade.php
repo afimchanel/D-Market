@@ -22,31 +22,46 @@ if ($orderid == NULL) {
 
 @if(isset($order))
       @foreach ($order as $item)
-    {{$item->Order_detail}} ทำที่แบบว่าถ้า10ชมแล้ว คนขายไม่่ส่งหมา ให้ส่งsms เตือน
+   
         <figure class="media">
           <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
           <figcaption class="media-body">
-          <h6 class="title text-truncate">{{$item->title_post}}</h6>
+              <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"><h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
             <dl class="param param-inline small">
-              <dt>ส่งไปที่ไหน: 
-                  @if ($item->receiving_location === NULL)
-                                ยังไม่ไดส่ง
-                        @else
-                            {{$item->receiving_location}} 
-                            @endif
+              <dt>ต้องรับที่: 
+                      @if ($item->receiving_location != NUll)
+                      สนามบิน{{$item->receiving_location}}
+                      @elseif($item->pick_your_own != NULL)
+                        จะมารับเอง
+                      @elseif($item->address != NULL)
+                        ที่อยู่{{$item->address}}
+                      @endif
+                      
                 </dt>
-              <dd>สถานะ : รอรับสุนัข</dd>
-            </dl>
-            <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-              <dl class="param param-inline small">
-                <dt>ราคา: {{$item->price}}</dt>
-                <dd>ดูข้อมูลการชื้อ</dd>
-                <a href="Payment/geted/{{$item->Order_ID}}"><button type="button" class="btn btn-success">ได้รับสุนัขแล้ว</button></a>
-
-
+                <dt>
+                  หลักฐานการส่ง : {{$item->description}}
+                </dt>
+                <dt>
+                    ราคา: {{$item->price}}
+                </dt>
+                <dt>
                 
-              </dl>
-            </div>
+                    <dl class="param param-inline small">
+                      
+                      <div class="col-sm-9"> หลักฐานการส่งเพิ่มเติม :
+                        <img src="/storage/public/imagedeliveryreceipt/{{$item->deliveryreceipt}}" style="width:300px; height:250px;">  
+                      </div>
+                      <a href="Payment/geted/{{$item->Order_ID}}/{{$item->id_post}}"><button type="button" class="btn btn-success">ได้รับสุนัขแล้ว</button></a>
+      
+                    </dl>
+                      
+                </dt>
+
+            </dl>
+
+
+
+            
             
           </figcaption>
         </figure> 
