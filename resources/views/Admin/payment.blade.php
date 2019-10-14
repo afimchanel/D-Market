@@ -110,7 +110,7 @@
            <td>
              @if ($item->Status == 2 )
              {{-- //ทำเงื่อนไข ถ้าเลย7 วันให้โอนเงิน --}}
-           <a href="Payment/finish/{{$item->Order_ID}}"><button type="button" class="btn btn-success">โอน</button></a>
+           ต้องโอนไปยังคนขายด่วนๆ
               @endif
            </td>
           </tr>

@@ -223,20 +223,5 @@ class PaymentController extends Controller
         return redirect()->back();//ทำระยะเวลา7วันหลังจากกดส่งของแล้วเค้าดาวโอนเงินทันที 
         
     }
-    public function finished($id)
-    {   //จบการขาย
-        $orderdetail = orderdetail::fulljoin('posts','order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get();
-        error_log($orderdetail);
-        $post = post::where('Post_id',$orderdetail->Post_id)->get();
-        foreach($post as $item){           
-            $item->Status = 4;
-            $item->save();
-        }
-        error_log($id);
-        $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
-        $order->Status = 4;
-        $order->save();
-        return redirect()->back();
-        
-    }
+
 }

@@ -162,6 +162,7 @@
       <!-- start section footer -->
       <div id="footer" class="text-center">
         <div class="container">
+          แจ้งหรือรายงานได้ที่ 0901234567
           <div class="socials-media text-center">
     
             <ul class="list-unstyled">
@@ -172,7 +173,7 @@
               <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
               <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
             </ul>
-    
+            
           </div>
     
         </div>
