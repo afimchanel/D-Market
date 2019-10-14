@@ -182,14 +182,14 @@ class PaymentController extends Controller
 
     public function finish($id,$image)
     {   //ส่งของแล้ว
-        $orderdetail = orderdetail::join('posts', 'order_detail.id_post', '=','posts.Post_id')->where('order_detail.order_id',$id)->get('Post_id');
-        error_log($orderdetail);
-        $post = post::where('Post_id',$orderdetail);
-        foreach($post as $item){           
-            $item->Status = 3;
-            $item->save();
-            error_log('5');
-        }
+        $request->validate([
+            'deliveryreceipt' => 'required',
+        ]);
+
+        $post = post::where('Post_id',$id_post)->first(); 
+        $post->Status = 3;
+        $post->save();
+            
         error_log($id);
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
         
