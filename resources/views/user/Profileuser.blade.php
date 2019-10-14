@@ -259,47 +259,53 @@ use App\post;
                             </div>
                             <div class="card-footer">
                                 <a href="/view/dog/{{$item1->idthedog}}" class="btn btn-light">ดูรายละเอียด</a>
-                                @if ($item1->user_id == auth()->user()->id)
-                                    <a href="/edit/dog/{{$item1->id}}" class="btn btn-light">เเก้ไข</a>
-                                  
-                                    @if ($item1->Status == 2)
-                                        <?php $chk = post::where('id_the_dog',$item1->id)->get('id_the_dog'); ?>
-                                        @if ($chk == '[]')
+                                @if ($item->Status != 3)
+                                    
+                                
+                                    @if ($item1->user_id == auth()->user()->id)
+                                        
+                                        <a href="/edit/dog/{{$item1->id}}" class="btn btn-light">เเก้ไข</a>
+                                    
+                                        @if ($item1->Status == 2)
+                                            <?php $chk = post::where('id_the_dog',$item1->id)->get('id_the_dog'); ?>
+                                            @if ($chk == '[]')
 
+                                                <div class="card">
+                                                    <a href="/post/dog/{{$item1->id}}/{{auth()->user()->id}}" class="btn btn-success">
+                                                        {{ __('โพสขาย') }}
+                                                    </a>
+                                                </div>
+
+                                            @elseif(isset($chk))
+
+                                            @endif
+
+                                        @elseif($item1->Status < 1)
                                             <div class="card">
-                                                <a href="/post/dog/{{$item1->id}}/{{auth()->user()->id}}" class="btn btn-success">
-                                                    {{ __('โพสขาย') }}
-                                                </a>
+                                            <a href="/Requestpost/{{$item1->id}}" class="btn btn-success">
+                                                {{ __('ขอโพส') }}
+                                            </a>
                                             </div>
 
-                                        @elseif(isset($chk))
+
+                                        @else
+                                            
+                                        @endif
+                                    
+
+                                        <form action="/delete/dog/{{$item1->id}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class="card">
+                                                <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
+                                            </div>
+                                        </form>
 
                                         @endif
-
-                                    @elseif($item1->Status < 1)
-                                        <div class="card">
-                                        <a href="/Requestpost/{{$item1->id}}" class="btn btn-success">
-                                            {{ __('ขอโพส') }}
-                                        </a>
-                                        </div>
-
+                                        
                                     @elseif($item1->Status == 3)    
                                     ขายไปแล้ว
-                                    @else
-                                        
                                     @endif
-                                
-
-                                    <form action="/delete/dog/{{$item1->id}}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <div class="card">
-                                            <button type="submit" class="btn btn-danger @error('Delete') is-invalid @enderror">Delete</button>
-                                        </div>
-                                    </form>
-
-                                @endif
-
                             </div>
                         </div>
                     </div>

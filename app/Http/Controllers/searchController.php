@@ -23,6 +23,8 @@ class searchController extends Controller
                 ->leftjoin('age_dog', 'posts.Age_Dog', '=', 'age_dog.id')
                 ->leftjoin('eyecolor_dog', 'posts.eye_color', '=', 'eyecolor_dog.id')
                 ->leftjoin('weight_dog', 'posts.weight_dog', '=', 'weight_dog.id')
+                ->where('posts.Status',0)
+                ->where('dogs.Status',0)
             ->orWhere('posts.Detail_Dog', 'LIKE', '%' . $q . '%')
             ->orWhere('posts.price', 'LIKE', '%' . $q . '%')
             ->orWhere('posts.farm_name', 'LIKE', '%' . $q . '%')

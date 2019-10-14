@@ -49,6 +49,21 @@
             <?php 
             $findid = user::find($item->id_user);
             $findorder = payment::find($item->order_id);
+           
+                    if(date("Y-m-d H:i:s",strtotime($item->updated_at."+24 hour")) <= date("Y-m-d H:i:s")){
+                        
+                        $delete = orders::find($item->Order_ID);
+                        $delete->delete();
+                        $delete1 = orderdetail::where('order_id',$item->Order_ID)->get();
+                        foreach ($delete1 as $item1) {
+                            $item1->delete();
+                        }
+                        $user = Auth::user();
+                        $user->score = $user->score - 1 ;
+                        $user->save();
+                        return redirect()->back();
+                    }
+
             ?>
             
             

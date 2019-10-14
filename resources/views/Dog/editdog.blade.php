@@ -172,14 +172,7 @@ $dogimages = dogimages::where('dog_id',$Dog->idthedog)->get();
 
         </div>
 
-        <div class="form-group ">
-          <label for="formGroup File">อัพโหลดรูป</label>
-          <img class="card-img-top" src="/storage/public/imagedog/imageRC/{{$Dog->imageRC}}" style="width:250px; height:250px;">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" name="imageRC" accept=".png, .jpg, .jpeg"  value="{{$Dog->imageRC}}">
-            <label class="custom-file-label" for="imageRC">Choose file</label>
-          </div>
-        </div>
+
 
 
       </div>

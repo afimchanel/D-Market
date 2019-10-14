@@ -103,19 +103,19 @@ $video = dogvideo::where(['dog_id' => $id])->get();
 
                 <li>สี :
                     @if ($Dog->color == '1')
-                    <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีขาว</a>
+                    <a href="" class="badge badge-primary">สีขาว</a>
                     @elseif($Dog->color == '2')
-                    <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีดำ</a>
+                    <a href="" class="badge badge-primary">สีดำ</a>
                     @elseif($Dog->color == '3')
-                    <a href="/search/{{$Dog->color}}" class="badge badge-primary">นอกเหนือจากสีขาวและสีดำ</a>
+                    <a href="" class="badge badge-primary">นอกเหนือจากสีขาวและสีดำ</a>
                     @endif
 
                 </li>
                 <li>เพศ :
                     @if ($Dog->sex == '1')
-                    <a href="/search/{{$Dog->sex}}#" class="badge badge-secondary">ตัวผู้</a>
+                    <a href="" class="badge badge-secondary">ตัวผู้</a>
                     @elseif($Dog->sex == '2')
-                    <a href="/search/{{$Dog->sex}}" class="badge badge-secondary">ตัวเมีย</a>
+                    <a href="" class="badge badge-secondary">ตัวเมีย</a>
                     @endif
                 </li>
                 <li>พ่อพันธุ์ 
@@ -161,35 +161,6 @@ $video = dogvideo::where(['dog_id' => $id])->get();
                                         </div>
                                     </div>
                     @endif
-                </li>
-                <li>
-                    ใบRC : @if ($Dog->imageRC == 'noimage.jpg'|| $Dog->imageCP == NULL )
-                    <span class="badge badge-pill badge-danger" >ไม่มี</span>
-                    
-                    @else
-                    <button type="button" class="badge badge-pill badge-success" data-toggle="modal" data-target="#RC" >ดู</button >
-                        <!-- Modal -->
-                        <div class="modal fade" id="RC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body">
-                                            <img src="/storage/public/imagedog/imageRC/{{$Dog->imageRC}}" class="d-block w-100"  alt="..."> 
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                    @endif
-
                 </li>
 
             </ul>

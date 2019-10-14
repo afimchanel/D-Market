@@ -176,13 +176,6 @@
           @enderror
         </div>
 
-        <div class="col-md-4 mb-3 ">
-          <label for="formGroup File">อัพโหลดรูป REGISTRATION CERTIFICATE</label>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" name="imageRC" accept=".png, .jpg, .jpeg">
-            <label class="custom-file-label" for="cover_image2"> Choose file</label>
-          </div>
-        </div>
       </div>
 
       <br><br>

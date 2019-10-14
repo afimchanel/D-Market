@@ -64,7 +64,7 @@
             <tr>    
                     
                     <?php 
-                    if(date("Y-m-d H:i:s",strtotime($item->created_at."+30 minute")) <= date("Y-m-d H:i:s")){
+                    if(date("Y-m-d H:i:s",strtotime($item->created_at."+6 hour")) <= date("Y-m-d H:i:s")){
                         
                         $delete = orders::find($item->Order_ID);
                         $delete->delete();

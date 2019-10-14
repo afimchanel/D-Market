@@ -178,8 +178,11 @@ class PaymentController extends Controller
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
         $order->Status = 2;
         $order->save();
+        $score1 = User::find($post->user_id);
+        $score1->score = $score1->score + 1;
+        $score1->save();
         $score=auth()->user();
-        $score->score = $score->score + 10 ;
+        $score->score = $score->score + 1;
         $score->save();
         return redirect()->back();
         
@@ -220,7 +223,7 @@ class PaymentController extends Controller
         $order->deliveryreceipt = $imagedeliveryreceipt;
         $order->Status = 3;
         $order->save();
-        return redirect()->back();//ทำระยะเวลา7วันหลังจากกดส่งของแล้วเค้าดาวโอนเงินทันที 
+        return redirect()->back();
         
     }
 

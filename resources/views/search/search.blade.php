@@ -16,7 +16,7 @@
                 <a href="/{{$Dog->id_the_dog}}/{{$Dog->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagecover/{{$Dog->image}}" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">{{$Dog->Detail_Dog}}</a>
+                        <a href="/{{$Dog->id_the_dog}}/{{$Dog->Post_id}}/view/post">{{$Dog->Detail_Dog}}</a>
                     </h4>
                     <p class="card-text">{{$Dog->Detail_Dog}}</p>
                 </div>

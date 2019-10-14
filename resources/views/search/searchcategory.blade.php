@@ -266,7 +266,7 @@
         <!-- /.row -->
       {{$details->links()}}
       @else
-      หดกเ
+      ไม่พบ
         @if(session()->get('searchnot'))
         <div class="alert alert-success">
           {{ session()->get('searchnot') }}  

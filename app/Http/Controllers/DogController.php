@@ -105,23 +105,23 @@ class DogController extends Controller
                     $imageCPStore = 'noimage.jpg';
                 }
 
-                $imageRC = $request->file('imageRC');
-                if ($request->hasFile('imageRC')) {
+                // $imageRC = $request->file('imageRC');
+                // if ($request->hasFile('imageRC')) {
 
-                    error_log('uploaddog1');
-                    // Get filename with the extension
-                    $filenameWithExt = $imageRC->getClientOriginalName();
-                    // Get just filename
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    // Get just ext
-                    $extension = $imageRC->getClientOriginalExtension();
-                    // Filename to store
-                    $imageRCStore = $filename . '_' . time() . '.' . $extension;
-                    // Upload Image
-                    $path = $imageRC->storeAs('public/imagedog/imageRC', $imageRCStore);
-                } else {
-                    $imageRCStore = 'noimage.jpg';
-                }
+                //     error_log('uploaddog1');
+                //     // Get filename with the extension
+                //     $filenameWithExt = $imageRC->getClientOriginalName();
+                //     // Get just filename
+                //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                //     // Get just ext
+                //     $extension = $imageRC->getClientOriginalExtension();
+                //     // Filename to store
+                //     $imageRCStore = $filename . '_' . time() . '.' . $extension;
+                //     // Upload Image
+                //     $path = $imageRC->storeAs('public/imagedog/imageRC', $imageRCStore);
+                // } else {
+                //     $imageRCStore = 'noimage.jpg';
+                // }
                 
                 $Dog = new Dog;
                 $Dog->Breed = $request->Breed;
@@ -140,7 +140,7 @@ class DogController extends Controller
                 $Dog->Owner = $request->Owner;
                 $Dog->Registrationdate = $request->Registrationdate;   
                 $Dog->image = $imagecoverStore;
-                $Dog->imageRC = $imageRCStore;
+                // $Dog->imageRC = $imageRCStore;
                 $Dog->imageCP = $imageCPStore;
                 $Dog->user_id = auth()->user()->id;
                 $Dog->save();
@@ -289,22 +289,22 @@ class DogController extends Controller
             $Dogs->imageCP = $imageCPStore;
         }
 
-        $imageRC = $request->file('imageRC');
-        if ($request->hasFile('imageRC')) {
+        // $imageRC = $request->file('imageRC');
+        // if ($request->hasFile('imageRC')) {
 
-            error_log('updatedog0');
-            // Get filename with the extension
-            $filenameWithExt = $imageRC->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $imageRC->getClientOriginalExtension();
-            // Filename to store
-            $imageRCStore = $filename . '_' . time() . '.' . $extension;
-            // Upload Image
-            $path = $imageRC->storeAs('public/imagedog/imageRC', $imageRCStore);
-            $Dogs->imageRC = $imageRCStore;
-        }
+        //     error_log('updatedog0');
+        //     // Get filename with the extension
+        //     $filenameWithExt = $imageRC->getClientOriginalName();
+        //     // Get just filename
+        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //     // Get just ext
+        //     $extension = $imageRC->getClientOriginalExtension();
+        //     // Filename to store
+        //     $imageRCStore = $filename . '_' . time() . '.' . $extension;
+        //     // Upload Image
+        //     $path = $imageRC->storeAs('public/imagedog/imageRC', $imageRCStore);
+        //     $Dogs->imageRC = $imageRCStore;
+        // }
         
         $Dogs->save();
 
