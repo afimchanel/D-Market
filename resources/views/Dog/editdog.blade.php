@@ -192,7 +192,7 @@ $dogimages = dogimages::where('dog_id',$Dog->idthedog)->get();
           <img class="card-img-top" src="/storage/public/imagecover/{{$Dog->image}}" style="width:250px; height:250px;">
           <div class="custom-file">
             <input type="file" name="cover_image" class="custom-file-input" multiple accept=".png, .jpg, .jpeg" value="{{$Dog->image}}">
-            <label class="custom-file-label" for="cover_image">Choose file</label>
+            <label class="custom-file-label" >Choose file</label>
           </div>
         </div>
 
@@ -201,7 +201,7 @@ $dogimages = dogimages::where('dog_id',$Dog->idthedog)->get();
         <label for="formGroup File">อัพโหลดรูปสุนัข</label>
         <div class="custom-file">
           <input type="file" name="filename[]"  @error('filename[]') is-invalid @enderror class="custom-file-input" multiple accept=".png, .jpg, .jpeg">
-          <label class="custom-file-label" for="cover_image">Choose file</label>
+          <label class="custom-file-label" >Choose file</label>
           @error('filename[]')
           <span class="invalid-feedback" role="alert">
             <strong>กรุณาอัพโหลดรูปสุนัขและขนาดไฟล์ไม่เกิน2MB</strong>

@@ -11,6 +11,11 @@
     <div class="container ">
 
         <div class="container">
+                @if(session()->get('vd'))
+                <div class="alert alert-danger">
+                  {{ session()->get('vd') }}  
+                </div><br />
+                @endif 
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> กรุณากรอกข้อมูลเหล่านี้ให้ครบ<br><br>

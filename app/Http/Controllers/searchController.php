@@ -86,14 +86,14 @@ class searchController extends Controller
         ->where('dogs.Status',0)
         ->orwhere('dogs.breed',$id)
         ->orWhere('posts.Detail_Dog',$id)
-            ->orWhere('posts.farm_name',$id)
-            ->orWhere('color_dog.id',$id)
-            ->orWhere('sex_dog.id',$id)
-            ->orWhere('type_dog.id',$id)
-            ->orWhere('age_dog.id',$id)
-            ->orWhere('eyecolor_dog.id',$id)
-            ->orWhere('weight_dog.id',$id)
-            
+        ->orWhere('posts.farm_name',$id)
+        ->orWhere('color_dog.id',$id)
+        ->orWhere('sex_dog.id',$id)
+        ->orWhere('type_dog.id',$id)
+        ->orWhere('age_dog.id',$id)
+        ->orWhere('eyecolor_dog.id',$id)
+        ->orWhere('weight_dog.id',$id)
+        
         ->get();
         return view('search.searchbreed',compact('search','id'));
 

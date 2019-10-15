@@ -39,7 +39,7 @@ class DogController extends Controller
         if (auth()->user()->email_verified_at != NULL && (auth()->user()->IDcardnumber != NULL )) {
             return view('Dog.postdog');
         } else {
-            return view('user.EditProfileuser');
+            return view('user.EditProfileuser')->with('vd', 'กรุณาอัปรูปบัตรประชาชน');
         }
     }
 
@@ -69,8 +69,8 @@ class DogController extends Controller
             'image'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
 
           ]);
-                $imagecover = $request->file('image');
-                if ($request->hasFile('image')) {
+                $imagecover = $request->file('cover_image');
+                if ($request->hasFile('cover_image')) {
 
                     error_log('uploaddog0');
                     // Get filename with the extension
@@ -255,6 +255,24 @@ class DogController extends Controller
             'Registrationdate' => 'required',
             
         ]);
+        $imagecover = $request->file('cover_image');
+                if ($request->hasFile('cover_image')) {
+
+                    error_log('uploaddog0');
+                    // Get filename with the extension
+                    $filenameWithExt = $imagecover->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $imagecover->getClientOriginalExtension();
+                    // Filename to store
+                    $imagecoverStore = $filename . '_image' . time() . '.' . $extension;
+                    // Upload Image
+                    $path = $imagecover->storeAs('public/imagecover', $imagecoverStore);
+                } else {
+                    $imagecoverStore = 'nopicture.jpg';
+                }
+                
         $Dogs = Dog::find($Iddog);
         $Dogs->namedog = $request->namedog;
         $Dogs->Breed = $request->Breed;
@@ -270,6 +288,7 @@ class DogController extends Controller
         $Dogs->birthday = $request->birthday;
         $Dogs->Breedername = $request->Breedername;
         $Dogs->Owner = $request->Owner;
+        $Dogs->image = $imagecoverStore;
         $Dogs->Registrationdate = $request->Registrationdate;
         
         $imageCP = $request->file('imageCP');
