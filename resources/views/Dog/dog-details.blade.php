@@ -103,19 +103,19 @@ $video = dogvideo::where(['dog_id' => $id])->get();
 
                 <li>สี :
                     @if ($Dog->color == '1')
-                    <a href="" class="badge badge-primary">สีขาว</a>
+                <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีขาว</a>
                     @elseif($Dog->color == '2')
-                    <a href="" class="badge badge-primary">สีดำ</a>
+                    <a href="/search/{{$Dog->color}}" class="badge badge-primary">สีดำ</a>
                     @elseif($Dog->color == '3')
-                    <a href="" class="badge badge-primary">นอกเหนือจากสีขาวและสีดำ</a>
+                <a href="/search/{{$Dog->color}}" class="badge badge-primary">นอกเหนือจากสีขาวและสีดำ</a>
                     @endif
 
                 </li>
                 <li>เพศ :
                     @if ($Dog->sex == '1')
-                    <a href="" class="badge badge-secondary">ตัวผู้</a>
+                <a href="/search/{{$Dog->sex}}" class="badge badge-secondary">ตัวผู้</a>
                     @elseif($Dog->sex == '2')
-                    <a href="" class="badge badge-secondary">ตัวเมีย</a>
+                <a href="/search/{{$Dog->sex}}" class="badge badge-secondary">ตัวเมีย</a>
                     @endif
                 </li>
                 <li>พ่อพันธุ์ 

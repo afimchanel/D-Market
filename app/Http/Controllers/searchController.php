@@ -48,7 +48,7 @@ class searchController extends Controller
     {
         error_log($request->breed);
         error_log($request->Age_Dog);
-        $post =  post::leftjoin('dogs', 'posts.id_the_dog', '=','dogs.id')
+        $post =  post::join('dogs', 'posts.id_the_dog', '=','dogs.id')
             ->orwhere('dogs.breed','=',$request->breed)
             ->orWhere('posts.Age_Dog','=',$request->Age_Dog)
             ->orWhere('posts.type_dog','=',$request->type_dog)
@@ -75,8 +75,25 @@ class searchController extends Controller
     {
         $search = DB::table('posts')
         ->leftjoin('dogs', 'posts.id_the_dog', '=', 'dogs.id')
-        ->join('breed_dog', 'dogs.breed', '=', 'breed_dog.id')
-        ->where('dogs.breed',$id)
+        ->leftjoin('breed_dog', 'dogs.breed', '=', 'breed_dog.id')
+        ->leftjoin('color_dog', 'dogs.color', '=', 'color_dog.id')
+        ->leftjoin('sex_dog', 'dogs.sex', '=', 'sex_dog.id')
+        ->leftjoin('type_dog', 'posts.type_dog', '=', 'type_dog.id')
+        ->leftjoin('age_dog', 'posts.Age_Dog', '=', 'age_dog.id')
+        ->leftjoin('eyecolor_dog', 'posts.eye_color', '=', 'eyecolor_dog.id')
+        ->leftjoin('weight_dog', 'posts.weight_dog', '=', 'weight_dog.id')
+        ->where('posts.Status',0)
+        ->where('dogs.Status',0)
+        ->orwhere('dogs.breed',$id)
+        ->orWhere('posts.Detail_Dog',$id)
+            ->orWhere('posts.farm_name',$id)
+            ->orWhere('color_dog.id',$id)
+            ->orWhere('sex_dog.id',$id)
+            ->orWhere('type_dog.id',$id)
+            ->orWhere('age_dog.id',$id)
+            ->orWhere('eyecolor_dog.id',$id)
+            ->orWhere('weight_dog.id',$id)
+            
         ->get();
         return view('search.searchbreed',compact('search','id'));
 

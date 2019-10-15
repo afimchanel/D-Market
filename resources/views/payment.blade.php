@@ -73,7 +73,7 @@
                             $item1->delete();
                         }
                         $user = Auth::user();
-                        $user->score = $user->score - 1 ;
+                        $user->score = $user->score - 2 ;
                         $user->save();
                         return redirect()->back();
                     }

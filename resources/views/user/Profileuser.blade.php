@@ -158,9 +158,9 @@ use App\post;
                     เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
                     วันเดือนปีเกิด : {{ $users->DateofBirth }} <br>
                     @if ($users->license == 'noimage.jpg' || $users->license == NULL)
-                    ใบทะเบียนจากสมาคม : สถานะ ไม่มี <br>
+                    ใบทะเบียนจากสมาคม : <span class="badge badge-pill badge-danger">สถานะ ไม่มี </span> <br>
                     @else
-                    ใบทะเบียนจากสมาคม : สถานะ มี <br>
+                    ใบทะเบียนจากสมาคม : <span class="badge badge-pill badge-success">สถานะ มี </span><br>
                     @endif
                     ที่อยู่:
                         @if ($users->address === NULL )

@@ -88,11 +88,11 @@ $sliders = dogimages::where(['dog_id' => $dog->idthedog])->get();
       </a>
       <li>ลักษณะ :               
       @if ($post->type_dog == 1)
-      <a class="badge badge-success" href="">สุนัขพันธุ์เล็ก</a>
+      <a class="badge badge-success" href="/search/{{$post->type_dog}}">สุนัขพันธุ์เล็ก</a>
       @elseif ($post->type_dog == 2)
-      <a class="badge badge-success" href="">สุนัขพันธุ์กลาง</a>
+      <a class="badge badge-success" href="/search/{{$post->type_dog}}">สุนัขพันธุ์กลาง</a>
       @elseif ($post->type_dog == 3)
-      <a class="badge badge-success" href="">สุนัขพันธุ์ใหญ่</a>
+      <a class="badge badge-success" href="/search/{{$post->type_dog}}">สุนัขพันธุ์ใหญ่</a>
       @endif
       </option></li>
       <li><a href="/user/{{$post->user_id}}">เจ้าของโพส</a></li>

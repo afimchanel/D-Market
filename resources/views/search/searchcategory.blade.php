@@ -228,52 +228,52 @@
 
     <div class="col-lg-9 ">
     @if(isset($details))
-        <div class="row ">
-          @foreach ($details as $item)
-          @if ($item->Status > 0)
+          <div class="row ">
+            @foreach ($details as $item)
+                @if ($item->Status == 2)
+                <div class="col-lg-4 col-md-6 mb-4 py-2">
+                  <div class="card h-100">
+                    <a href="/{{$item->id}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->Detail_Dog}}</a>
 
-          @else 
-          <div class="col-lg-4 col-md-6 mb-4 py-2">
-            <div class="card h-100">
-              <a href="/{{$item->id}}/{{$item->Post_id}}/view/post"><img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">{{$item->Detail_Dog}}</a>
+                      </h4>
+                      <h5>ราคา : {{$item->price}}</h5>
+                        {{-- @if ($item->order_id == NULL || $item->id_post !== NULL )
+                          <span class="badge badge-success">สถานะ : ปกติ</span>
+                        @elseif ($item->order_id !== NULL && $item->Status == 0)
+                            <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
+                        @elseif ($item->Status == 0)
+                            <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
+                        @elseif ($item->Status == 1)
+                            <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
+                        @endif --}}
+                      
+                    </div>
+                    <div class="row justify-content-end">
+                      <a class="btn btn-success fa fa-cart-plus" href="/create/order/{{ Auth::user()->id}}/{{ $item->id }}/{{$item->Post_id}}"></a>
 
-                </h4>
-                <h5>ราคา : {{$item->price}}</h5>
-                  {{-- @if ($item->order_id == NULL || $item->id_post !== NULL )
-                    <span class="badge badge-success">สถานะ : ปกติ</span>
-                  @elseif ($item->order_id !== NULL && $item->Status == 0)
-                      <span class="badge badge-warning">สถานะ : รอจ่ายเงิน</span>
-                  @elseif ($item->Status == 0)
-                      <span class="badge badge-warning">สถานะ : รอยืนยันการจ่ายเงิน</span>
-                  @elseif ($item->Status == 1)
-                      <span class="badge badge-warning">สถานะ : รอส่งสุนัข</span>
-                  @endif --}}
+                    </div>
+                  </div>
+                </div>
+                @else 
                 
-              </div>
-              <div class="row justify-content-end">
-                <a class="btn btn-success fa fa-cart-plus" href="/create/order/{{ Auth::user()->id}}/{{ $item->id }}/{{$item->Post_id}}"></a>
+                @endif
+            @endforeach
 
-              </div>
-            </div>
           </div>
-          @endif
-          @endforeach
-
-        </div>
-        <!-- /.row -->
-      {{$details->links()}}
+          <!-- /.row -->
+        {{$details->links()}}
       @else
-      ไม่พบ
-        @if(session()->get('searchnot'))
-        <div class="alert alert-success">
-          {{ session()->get('searchnot') }}  
-        </div><br />
-        @endif
+        ไม่พบ
+          @if(session()->get('searchnot'))
+          <div class="alert alert-success">
+            {{ session()->get('searchnot') }}  
+          </div><br />
+          @endif
 
-      @endif
+    @endif
     </div>
     <!-- /.col-lg-9 -->
 

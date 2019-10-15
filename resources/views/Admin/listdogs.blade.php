@@ -25,7 +25,7 @@ use App\breed_dog;
                       <th>ชื่อสายพันธุ์</th>
                       <th>รายละเอียด</th>
                       <th>ตรวจสอบ</th>
-                      <th>แก้ไข</th>
+                      {{-- <th>แก้ไข</th> --}}
                       <th>ลบ</th>
                     </tr>
                   </thead>
@@ -158,7 +158,7 @@ use App\breed_dog;
                                                             </div>
                                             @endif
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             ใบRC : @if ($Dog->imageRC == 'noimage.jpg'|| $Dog->imageCP == NULL )
                                             <span class="badge badge-pill badge-danger" >ไม่มี</span>
                                             
@@ -186,7 +186,7 @@ use App\breed_dog;
                                                     </div>
                                             @endif
                         
-                                        </li>
+                                        </li> --}}
                         
                                     </ul>
                                 </div>
@@ -209,9 +209,9 @@ use App\breed_dog;
                         @endif
                         
                       </td>
-                      <td><a href="/admin/dashboard/edit/" class="btn btn-primary">แก้ไข</a></td>
+                      {{-- <td><a href="/admin/dashboard/edit/" class="btn btn-primary">แก้ไข</a></td> --}}
                             <td>
-                                <form action="/delete/dog/{{$Dog->id}}" method="post">
+                                <form action="/delete/dog/{{$Dog->id}}" >
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger" type="submit">ลบ</button>
