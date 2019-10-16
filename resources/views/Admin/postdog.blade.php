@@ -12,13 +12,14 @@
             <table class="table ">
                 <thead>
                     <tr>
-                    <th>Post_id</th>
-                    <th>id_the_dog</th>
-                    <th>user_id</th>
-                    <th>price</th>
-                    <th>farm_name</th>
-                    <th>tel_post</th>
-                    <th>vaccine</th>
+                    <th>idโพส</th>
+                    <th>idสุนัข</th>
+                    <th>idเจ้าของโพส</th>
+                    <th>ราคา</th>
+                    <th>ชื่อฟาร์ม</th>
+                    <th>เบอร์โทร</th>
+                    <th>จำนวนวัคซีน</th>
+                    <th>ขายแล้ว</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,11 @@
                         <td>{{$post->farm_name}}</td>
                         <td>{{$post->tel_post}}</td>
                         <td>{{$post->vaccine}}</td>
+                        <td>
+                            @if ($post->Status == 2 )
+                                ได้ไปแล้ว
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

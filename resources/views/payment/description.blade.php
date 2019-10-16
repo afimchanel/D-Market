@@ -7,6 +7,6 @@
 </div><br />
 @endif
 <img class="img-responsive img-fluid" id="imgs" src="/payment.jpg" style="width:500px; height:500px;">
-<div class="container"><a href="/Payment"><button>แจ้งชำระเงิน กรุณาชำระภานยใน2ช.ม</button></a></div>
+<div class="container"><a href="/Payment"><button>แจ้งชำระเงิน กรุณาชำระภานยใน6ช.ม ไม่งั้นคุณจะโดนหักคะแนน </button></a></div>
 
 @endsection
