@@ -153,7 +153,7 @@
                     <label for="fname">สะดวกรับสุนัขแบบไหน</label>
                 </div>
                 <div class="col-4">
-                    <input type="text" placeholder="(ถ้ามารับเองให้พิม มารับเอง ช่องนี้)" name="pick_your_own">
+                    <input type="text" placeholder="(ถ้ามารับเองให้พิม มารับเองแจ้งวันเวลาตรงนี้ด้วยเลย ช่องนี้)" name="pickyourown">
                 </div>
                 <div class="col-4">
                     <input type="text" placeholder="(ถ้าสะดวกสนามบินให้พิม ชื่อสนามบิน ช่องนี้)" name="receiving_location">

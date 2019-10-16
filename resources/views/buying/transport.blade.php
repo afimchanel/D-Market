@@ -45,10 +45,9 @@
         </dl>
         <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
           <dl class="param param-inline small">
-            
             <?php 
             $findid = user::find($item->id_user);
-            $findorder = payment::find($item->order_id);
+            $findorder = payment::where('Order_ID',$item->order_id)->first();
            
                     if(date("Y-m-d H:i:s",strtotime($item->updated_at."+24 hour")) <= date("Y-m-d H:i:s")){
                         
@@ -73,11 +72,10 @@
           @csrf
           <label for="formGroup File">อัพโหลดหลักฐานการส่ง</label>
           <input type="file" name="deliveryreceipt" accept=".png,.jpg,.jpeg">
-
             @if ($findorder->receiving_location != NUll)
-            สนามบิน{{$findorder->receiving_location}} 
+              สนามบิน{{$findorder->receiving_location}} 
             <input type="text" class="form-control" name="description" placeholder="กรอกรายละเอียด ไฟต์การส่งเวลาไหน ส่งไหนจากที่ไปที่{{$findorder->receiving_location}} "  required>
-            @elseif($findorder->pick_your_own != NULL)
+            @elseif($findorder->pickyourown != NULL)
               มารับเอง
               <input type="text" class="form-control"  name="description" value="มารับเอง" required>
             @elseif($findorder->address != NULL)

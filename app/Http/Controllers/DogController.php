@@ -69,8 +69,8 @@ class DogController extends Controller
             'image'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
 
           ]);
-                $imagecover = $request->file('cover_image');
-                if ($request->hasFile('cover_image')) {
+                $imagecover = $request->file('image');
+                if ($request->hasFile('image')) {
 
                     error_log('uploaddog0');
                     // Get filename with the extension
@@ -464,7 +464,7 @@ class DogController extends Controller
         $dog->Status = 2;
         $dog->save();
         $user = User::find($dog->user_id);
-        $user->score = $user->score + 3;
+        $user->score = $user->score + 1;
         $user->save();
         return redirect()->back();
 

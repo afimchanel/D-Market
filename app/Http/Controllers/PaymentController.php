@@ -8,6 +8,7 @@ use App\orders;
 use App\orderdetail;
 use App\post;
 use App\Dog;
+use App\User;
 class PaymentController extends Controller
 {
     /**
@@ -38,7 +39,6 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-   
         $request->validate([
             'order_id'=>'required',      
           ]);
@@ -51,7 +51,7 @@ class PaymentController extends Controller
                 'tel_Customer'=> $request->get('tel_Customer'),
                 'price_check'=> $request->get('total'),
                 'receiving_location'=> $request->get('receiving_location'),
-                'pick_your_own'=> $request->get('pick_your_own'),
+                'pickyourown'=> $request->get('pickyourown'),
                 'address'=> $request->get('address'),
 
 

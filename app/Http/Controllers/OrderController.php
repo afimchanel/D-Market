@@ -164,10 +164,10 @@ class ordercontroller extends Controller
             $finde = orders::where('id_user',$id)->Orderby('updated_at','desc')->first();
             
             error_log('if1');
-            if ($finde == NULL){
+            if ($finde == NULL || $finde->Status == 2){
                 //เงื่อนไขที่ไม่เคยสร้างอะไรมาก่อน
                 error_log('if2');
-                $orders = orderdetail::where(['id_user'=>$id])->get();
+                $orders = orderdetail::where(['id_user'=>$id])->where('order_id',NULL)->get();
                 if ($orders == '[]') {
                     return redirect()->back();
                 }
