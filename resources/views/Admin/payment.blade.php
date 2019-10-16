@@ -17,7 +17,7 @@
             <th>รายการสั่งซื้อที่</th>
             <th>ใบเพย์เม้น</th>
             <th>ราคาทั้งหมด</th>
-            <th>สนามบินที่ต้องไปรับ</th>
+            <th>สถานที่ต้องไปรับ</th>
             <th>บัตรปชช</th>
             <th>เบอร์ผู้ซื้อ</th>
             <th>วันเวลาที่จ่ายเงิน</th>
@@ -66,7 +66,15 @@
             </td>
 
             <td>{{ $item->price_payment }}</td>
-            <td>{{ $item->receiving_location }}</td>
+            <td>
+              @if ($item->receiving_location != NUll)
+                สนามบิน{{$item->receiving_location}}
+              @elseif($item->pick_your_own != NULL)
+                จะมารับเองที่{{$item->pickyourown}}
+              @elseif($item->address != NULL)
+                ที่อยู่{{$item->address}}
+              @endif
+            </td>
 
             <td>
               <div class="container">
@@ -123,56 +131,4 @@
 </div>
 
 
-{{-- <div class="w3-main" style="margin-left:300px;margin-top:43px;">
-<div class=" container">
-        <div class="card mb-3">
-          <div class="card-header">
-            รายชื่อสมาชิกทั้งหมด</div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>ชื่อ-นามสกุล</th>
-                    <th>E-Mail</th>
-                    <th>Tel</th>
-                    <th>IDcardnumber</th>
-                    <th>แก้ไข</th>
-                    <th>ลบ</th>
-                    
-                  </tr>
-                </thead>
-
-                <tbody>
-                  
-                    @foreach($users as $user)
-                      <tr>
-                          <td>{{ $user->id }}</td>
-<td>{{ $user->name }}</td>
-<td>{{ $user->email }}</td>
-<td>{{ $user->Tel }}</td>
-<td>{{ $user->IDcardnumber }}</td>
-<td><a href="/admin/dashboard/edit/{{$user->id}}" class="btn btn-primary">Edit</a></td>
-<td>
-  <form action="/admin/dashboard/edit/{{$user->id}}/destroy" method="post">
-    @csrf
-
-    <button class="btn btn-danger" type="submit">Delete</button>
-  </form>
-
-</td>
-
-</tr>
-@endforeach
-
-
-</tbody>
-
-</table>
-{{$users->links()}}
-</div>
-</div>
-</div>
-</div> --}}
 @endsection

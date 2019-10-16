@@ -259,9 +259,8 @@ use App\post;
                             </div>
                             <div class="card-footer">
                                 <a href="/view/dog/{{$item1->idthedog}}" class="btn btn-light">ดูรายละเอียด</a>
-                                @if ($item->Status != 3)
+                                @if ($item1->Status != 3)
                                     
-                                
                                     @if ($item1->user_id == auth()->user()->id)
                                         
                                         <a href="/edit/dog/{{$item1->id}}" class="btn btn-light">เเก้ไข</a>
@@ -305,7 +304,7 @@ use App\post;
                                         
                                     @elseif($item1->Status == 3)    
                                     ขายไปแล้ว
-                                    @endif
+                                @endif
                             </div>
                         </div>
                     </div>

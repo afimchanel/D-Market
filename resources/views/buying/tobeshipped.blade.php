@@ -26,7 +26,7 @@ if ($orderid == NULL) {
         <figure class="media">
           <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm" style="width:250px; height:250px;"></div>
           <figcaption class="media-body">
-          <h6 class="title text-truncate">{{$item->title_post}}</h6>
+            <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"> <h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
             <dl class="param param-inline small">
               <dt>ส่งไปที่ไหน: 
                   @if ($item->receiving_location === NULL)

@@ -137,9 +137,7 @@ use App\order;
           <div class="col-lg-4 col-md-6 mb-4 py-2">
             <div class="card h-100">
               <a href="/{{$item->id}}/{{$item->Post_id}}/view/post">
-                @if ($item->image == NULL )
-                <img class="card-img-top" src="/storage/public/imagecover/nopicture.jpg">
-                @endif
+
                 <img class="card-img-top" src="/storage/public/imagecover/{{$item->image}}" >
               </a>
               <div class="card-body">

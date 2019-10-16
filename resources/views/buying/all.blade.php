@@ -25,18 +25,11 @@ $total = 0
 @foreach ($order as $item)
 
 <figure class="media">
-  <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
+  <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm" style="width:250px; height:250px;"></div>
   <figcaption class="media-body">
-  <h6 class="title text-truncate">{{$item->title_post}}</h6>
-    <dl class="param param-inline small">
-      <dd>สถานะ</dd>
-    </dl>
-    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-      <dl class="param param-inline small">
-        <dt>ราคา: {{$item->price}}</dt>
-        
-      </dl>
-    </div>
+    <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"><h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
+    <dt>ราคา: {{$item->price}}</dt>
+
 
   </figcaption>
 </figure> 

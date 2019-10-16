@@ -34,7 +34,7 @@
                         <td>{{$post->vaccine}}</td>
                         <td>
                             @if ($post->Status == 2 )
-                                ได้ไปแล้ว
+                                ได้ขายไปแล้ว
                             @endif
                         </td>
                     </tr>

@@ -29,7 +29,7 @@
 
 {{$item->Order_detail}}
     <figure class="media">
-      <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
+      <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm" style="width:250px; height:250px;"></div>
       <figcaption class="media-body">
           <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"> <h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
         <dl class="param param-inline small">
@@ -77,7 +77,7 @@
             <input type="text" class="form-control" name="description" placeholder="กรอกรายละเอียด ไฟต์การส่งเวลาไหน ส่งไหนจากที่ไปที่{{$findorder->receiving_location}} "  required>
             @elseif($findorder->pickyourown != NULL)
               มารับเอง
-              <input type="text" class="form-control"  name="description" value="มารับเอง" required>
+              <input type="text" class="form-control"  name="description" value="{{$findorder->pickyourown}}" required>
             @elseif($findorder->address != NULL)
               ที่อยู่{{$findorder->address}}
               <input type="text" class="form-control"  name="description" placeholder="เวลาออกรถเวลาคาดว่าจะถึงหน่วยเป็น H:M " required>

@@ -448,6 +448,7 @@ class DogController extends Controller
 
     }
     public function  Requestpost($id){
+        //ขอโพส
         $dog = Dog::find($id);
         if ($dog->imageCP != "noimage.jpg") {
             $dog->Status = 1;
@@ -460,6 +461,8 @@ class DogController extends Controller
  
     }
     public function  Allowpost($id){
+
+        //อณุยาทแล้ว
         $dog = Dog::find($id);
         $dog->Status = 2;
         $dog->save();

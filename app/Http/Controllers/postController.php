@@ -26,10 +26,10 @@ class postController extends Controller
 
         $post = orderdetail::rightjoin('posts', 'order_detail.id_post', '=','posts.Post_id')
             ->Join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
-            ->where('order_detail.order_id',NULL)
             ->where('posts.Status',0)
-            // ->leftjoin('order', 'order_detail.order_id', '=', 'order.Order_ID') 
-            // ->where('order.Status')
+            ->where('order_detail.order_id',NULL)
+            
+
             ->paginate(9);
 
 

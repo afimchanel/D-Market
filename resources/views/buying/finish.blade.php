@@ -24,18 +24,11 @@ if ($orderid == NULL) {
       @foreach ($order as $item)
  
         <figure class="media">
-            <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
+            <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"  style="width:250px; height:250px;"></div>
           <figcaption class="media-body">
             <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"><h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
-            <dl class="param param-inline small">
-              
-            </dl>
-            <div class="col-3  col-md-6 text-md-right" style="padding-top: 5px">
-              <dl class="param param-inline small">
-                <dt>ราคา: {{$item->price}}</dt>
-                <dt> </dt>
-              </dl>
-            </div>
+            ราคา: {{$item->price}}
+
             
           </figcaption>
         </figure> 
