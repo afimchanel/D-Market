@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ชื่อ-นามสกุล') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ชื่อฟาร์ม') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,36 +26,46 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="DateofBirth" class="col-md-4 col-form-label text-md-right">{{ __('วันเดือนปีเกิด') }}</label>
+                            <label for="Farmaddress" class="col-md-4 col-form-label text-md-right">{{ __('ที่อยู่ฟาร์ม') }}</label>
 
                             <div class="col-md-6">
-                                <input id="DateofBirth" type="date" class="form-control @error('DateofBirth') is-invalid @enderror" name="DateofBirth" value="{{ old('DateofBirth') }}" required autocomplete="DateofBirth" autofocus>
+                                <input id="Farmaddress" type="text" class="form-control @error('Farmaddress') is-invalid @enderror" name="Farmaddress" value="{{ old('Farmaddress') }}" required autocomplete="Farmaddress" autofocus>
 
-                                @error('DateofBirth')
+                                @error('Farmaddress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                                <label for="IDcardnumber" class="col-md-4 col-form-label text-md-right">{{ __('เลขบัตรประชาชน') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="IDcardnumber" type="text" class="form-control @error('IDcardnumber') is-invalid @enderror" name="IDcardnumber" value="{{ old('IDcardnumber') }}" required autocomplete="IDcardnumber" autofocus>
+    
+                                    @error('IDcardnumber')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                         <div class="form-group row">
-                            <label for="SEX" class="col-md-4 col-form-label text-md-right">{{ __('เพศ') }}</label>
-                            <div class="col-md-6">
-                            <select  class="custom-select @error('SEX') is-invalid @enderror" name='SEX' required id="SEX" value="{{ old('SEX') }}" required autocomplete="SEX" autofocus>
-                              <option value="" >เลือกเพศ</option>
-                              <option value="M">ชาย</option>
-                              <option value="F">หญิง</option>
-                            </select>
+                                <label for="NameSurname" class="col-md-4 col-form-label text-md-right">{{ __('ชื่อ-นามสกุล') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="NameSurname" type="text" class="form-control @error('NameSurname') is-invalid @enderror" name="NameSurname" value="{{ old('NameSurname') }}" required autocomplete="NameSurname" autofocus>
+    
+                                    @error('NameSurname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                            @error('SEX')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            
-                          </div>
-                     
+                       
 
                         <div class="form-group row">
                             <label for="Tel" class="col-md-4 col-form-label text-md-right">{{ __('เบอร์โทรศัพท์') }}</label>
@@ -64,6 +74,21 @@
                                 <input id="Tel" type="text" class="form-control @error('Tel') is-invalid @enderror" name="Tel" value="{{ old('Tel') }}" required autocomplete="Tel" autofocus>
 
                                 @error('Tel')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group row">
+                            <label for="membercode" class="col-md-4 col-form-label text-md-right">{{ __('รหัสสมาชิก') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="membercode" type="text" class="form-control @error('membercode') is-invalid @enderror" name="membercode" value="{{ old('membercode') }}" required autocomplete="membercode" autofocus>
+
+                                @error('membercode')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

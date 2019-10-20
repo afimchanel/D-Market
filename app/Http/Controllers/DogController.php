@@ -36,7 +36,7 @@ class DogController extends Controller
     public function create()
     {
         error_log('createdog');
-        if (auth()->user()->email_verified_at != NULL && (auth()->user()->IDcardnumber != NULL )) {
+        if (auth()->user()->accountnumber != NULL && (auth()->user()->IDcardnumber != NULL )) {
             return view('Dog.postdog');
         } else {
             return view('user.EditProfileuser')->with('vd', 'กรุณาอัปรูปบัตรประชาชน');
@@ -165,6 +165,7 @@ class DogController extends Controller
                         $data[] = $fileNameToStore;
                         $dogimages = new dogimages;
                         $dogimages->dog_id = $Dog->IDthedog;
+                        $dogimages->user_id = auth()->user()->id;
                         $dogimages->image = $fileNameToStore;
                         $dogimages->save();
                     }
@@ -185,6 +186,7 @@ class DogController extends Controller
                         $data1[] = $fileNameToStore;
                         $dogvideo = new dogvideo;
                         $dogvideo->dog_id = $Dog->IDthedog;
+                        $dogvideo->user_id = auth()->user()->id;
                         $dogvideo->video = $fileNameToStore;
                         $dogvideo->save();
                     }
@@ -209,9 +211,10 @@ class DogController extends Controller
         if ($id <= 0) {
             return redirect()->back();
         }else{
-            $Dogs = DB::table('dogs')->where('idthedog','=',$id)->get();
+            $Dogs = DB::table('dogs')->where('idthedog','=',$id)->where('user_id',auth()->user()->id)->get();
+            $gene = DB::table('dogs')->where('idthedog','=',$id)->get();
             error_log($Dogs);
-            return view('Dog.dog-details',compact('Dogs','id'));
+            return view('Dog.dog-details',compact('Dogs','id','gene'));
         }
        
     }

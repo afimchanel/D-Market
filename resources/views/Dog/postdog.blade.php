@@ -7,7 +7,7 @@
 <div class="container ">
 
   <h3 class="text-center">กรอกข้อมูลใบเพ็ด</h3>
-  <h6 class="text-center">CERTIFIED PEDIGREE  </h6>
+  <h6 class="text-center"> Registration Certificate  </h6>
   @if (count($errors) > 0)
   <div class="alert alert-danger">
       <strong>อุ๊ปป!</strong> คุณยังไม่ได้กรอกสิ่งเหล่านี้<br><br>

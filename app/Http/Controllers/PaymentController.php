@@ -153,8 +153,6 @@ class PaymentController extends Controller
           
             $post->Status = 1;
             $post->save();
-        
-     
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
         $order->Status = 1;
         $order->save();

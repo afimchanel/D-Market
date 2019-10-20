@@ -21,7 +21,7 @@
 
 use App\dogimages;
 use App\dogvideo;
-
+use App\User;
 $sliders = dogimages::where(['dog_id' => $id])->get();
 $video = dogvideo::where(['dog_id' => $id])->get();
 ?>
@@ -162,7 +162,23 @@ $video = dogvideo::where(['dog_id' => $id])->get();
                                     </div>
                     @endif
                 </li>
-
+                <li>
+                    คนที่เคยเป็นเจ้าของ :
+                    @foreach ($gene as $item)
+                    <?php 
+                    $ownnow1 = User::find($item->user_id);
+                    ?>
+                        <li>{{$ownnow1->NameSurname}}</li>           
+                    @endforeach
+                    
+                </li>
+                <li>
+                        <?php 
+                        $ownnow = User::find($Dog->user_id);
+                        ?>
+                    เจ้าของปันจุบัน : คุณ {{$ownnow->NameSurname}} 
+                   
+                </li>
             </ul>
 
         </div>

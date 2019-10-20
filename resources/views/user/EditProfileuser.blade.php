@@ -50,10 +50,22 @@
                     <div class="form-group">
                         @csrf
 
-                        <label for="name">Name :</label>
+                        <label for="name">ชื่อฟาร์ม :</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" />
                                                     
                         @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>ใส่รูปด้วยครับ</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        @csrf
+
+                        <label for="NameSurname">ชื่อ-นามสกุล:</label>
+                        <input type="text" class="form-control @error('NameSurname') is-invalid @enderror" name="NameSurname" value="{{ Auth::user()->NameSurname }}" />
+                                                    
+                        @error('NameSurname')
                         <span class="invalid-feedback" role="alert">
                             <strong>ใส่รูปด้วยครับ</strong>
                         </span>
@@ -68,27 +80,19 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="DateofBirth">วันเดือนปีเกิด :</label>
-                        <input type="date" class="form-control @error('DateofBirth') is-invalid @enderror" name="DateofBirth" value="{{ Auth::user()->DateofBirth }}" />
-                        
-                        @error('DateofBirth')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>กรอกวันเดือนปีเกิดด้วยครับ</strong>
-                        </span>
-                        @enderror
-                    </div>
+                    
                     <div class="form-group">
                         <label for="DateofBirth">เลขที่บัญชี:</label>
                         <input type="text" class="form-control" name="accountnumber" value="{{ Auth::user()->accountnumber }}" />
                         
 
                     </div>
+                    
                     <div class="form-group">
-                        <label for="address">ที่อยู่ :</label>
-                        ***กรอกแค่ ต. อ. จ.
-                        <textarea type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ Auth::user()->address }} ">{{ Auth::user()->address }} </textarea>
-                        @error('address')
+                        <label for="membercode">รหัสสมาชิก:</label>
+                       
+                        <input type="text" class="form-control @error('membercode') is-invalid @enderror" name="membercode" value="{{ Auth::user()->membercode }}" >
+                        @error('membercode')
                         <span class="invalid-feedback" role="alert">
                             <strong>กรอกที่อยู่ด้วยครับ</strong>
                         </span>
@@ -108,19 +112,18 @@
                     </div>
                     <div class="form-group ">
                         บัตรประจำตัวประชาชน 
-                        <div class="custom-file input-group mb-2">
-                            <input type="file" name="IDcardnumber" class="custom-file-input @error('IDcardnumber') is-invalid @enderror" accept=".png, .jpg, .jpeg" value="{{ Auth::user()->IDcardnumber}}"/>
+                        
+                            <input type="text" name="IDcardnumber" @error('IDcardnumber') is-invalid @enderror  value="{{ Auth::user()->IDcardnumber}}" />
                             @error('IDcardnumber')
                             <span class="invalid-feedback" role="alert">
                                 <strong>ใส่รูปด้วยครับ</strong>
                             </span>
                             @enderror
                             <label class="custom-file-label" for=""></label>
-                        </div>
+                        
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">ที่อยู่ฟาร์ม</label>
-                        ***กรอกแค่ ต. อ. จ.
                         <textarea class="form-control @error('Farmaddress') is-invalid @enderror" rows="3" name="Farmaddress">{{ Auth::user()->Farmaddress}}</textarea>
                         @error('Farmaddress')
                         <span class="invalid-feedback" role="alert">
@@ -134,7 +137,7 @@
         </div>
     </div>
 </div>
-</div>
+
 
 <!-- Header -->
 

@@ -145,7 +145,7 @@ use App\post;
     
     <div class="container ">
         <div class="container">
-            <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์ {{ $users->name }}</h1>
+            <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0 display-4 ">โปรไฟล์ {{ $users->NameSurname }}</h1>
             <hr class="mt-2 mb-5">
             <div class="row text-center text-lg-left">
                 <div class="col-sm-3">
@@ -153,29 +153,20 @@ use App\post;
                 </div>
                 <div class="">
 
-                    E_mail : {{ $users->email }} <br>
-                    ชื่อ-นาสกุล : {{ $users->name }} <br>
+                    ชื่อฟาร์ม : {{ $users->name }} <br>
+                    ชื่อ-นาสกุล : {{ $users->NameSurname }} <br>
                     เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
-                    วันเดือนปีเกิด : {{ $users->DateofBirth }} <br>
+                
                     @if ($users->license == 'noimage.jpg' || $users->license == NULL)
                     ใบทะเบียนจากสมาคม : <span class="badge badge-pill badge-danger">สถานะ ไม่มี </span> <br>
                     @else
                     ใบทะเบียนจากสมาคม : <span class="badge badge-pill badge-success">สถานะ มี </span><br>
                     @endif
-                    ที่อยู่:
-                        @if ($users->address === NULL )
-                            @if ($users->id === Auth::user()->id)
-                            <div class="alert alert-danger" role="alert">
-                                กรุณากรอกที่อยู่ !!
-                            </div>
-                            @endif
-                        @else
-                        {{ $users->address }} <br>
-                        @endif
+
                         @if ($users->id === Auth::user()->id)
                         <a href="/buying"><button>การชื้อขายของ{{ $users->name }} </button></a>
                         @endif<br>
-                        ที่อยู่ฟาร์ม : {{ $users->	Farmaddress }}<br>
+                        ที่อยู่ฟาร์ม : {{ $users->Farmaddress }}<br>
                         คะแนน : {{$users->score}}
                 </div>
             </div>
