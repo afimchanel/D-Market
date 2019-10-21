@@ -167,7 +167,8 @@ use App\post;
                         <a href="/buying"><button>การชื้อขายของ{{ $users->name }} </button></a>
                         @endif<br>
                         ที่อยู่ฟาร์ม : {{ $users->Farmaddress }}<br>
-                        คะแนน : {{$users->score}}
+                        คะแนนการชื้อ : {{$users->score}}
+                        คะแนนการขาย : {{$users->scoreseller}}
                 </div>
             </div>
         </div>

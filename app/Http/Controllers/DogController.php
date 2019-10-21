@@ -212,6 +212,11 @@ class DogController extends Controller
             return redirect()->back();
         }else{
             $Dogs = DB::table('dogs')->where('idthedog','=',$id)->where('user_id',auth()->user()->id)->get();
+            if ($Dogs == '[]') {
+                $Dogs = DB::table('dogs')->where('idthedog','=',$id)->get();
+                $gene = DB::table('dogs')->where('idthedog','=',$id)->get();
+                return view('Dog.dog-details',compact('Dogs','id','gene'));
+            }
             $gene = DB::table('dogs')->where('idthedog','=',$id)->get();
             error_log($Dogs);
             return view('Dog.dog-details',compact('Dogs','id','gene'));
@@ -431,13 +436,14 @@ class DogController extends Controller
     {
         error_log($id);
         $Dogs = DB::table('dogs')->where('idthedog',$id)->get();
+        $gene = DB::table('dogs')->where('idthedog','=',$id)->get();
         error_log($Dogs);
         if ($Dogs == '[]') {
             error_log('if');
             return redirect()->back()->with('not','ไม่มี');
         } else {
             error_log('else');
-            return view('Dog.dog-details',compact('Dogs','id'));
+            return view('Dog.dog-details',compact('Dogs','id','gene'));
         }
         
          //ถ้าไม่เจอพ่อก็ให้รีหน้าเดิม
@@ -470,7 +476,7 @@ class DogController extends Controller
         $dog->Status = 2;
         $dog->save();
         $user = User::find($dog->user_id);
-        $user->score = $user->score + 1;
+        $user->scoreseller = $user->scoreseller + 1;
         $user->save();
         return redirect()->back();
 

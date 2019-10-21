@@ -2,7 +2,7 @@
 use App\orderdetail;
 use App\orders;
 $orderid = orders::where('id_user',Auth::user()->id)
-->where('Status',2)
+->where('Status',4)
 ->Orderby('updated_at','desc')->first();
 if ($orderid == NULL) {
   return $order = NULL;
@@ -12,7 +12,7 @@ if ($orderid == NULL) {
 ->LEFTjoin('posts', 'order_detail.id_post', '=', 'posts.Post_id')
 ->LEFTjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
 ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
-->where('order.Status',2)
+->where('order.Status',4)
 ->get();
 }
 

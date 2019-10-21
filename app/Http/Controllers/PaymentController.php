@@ -225,4 +225,39 @@ class PaymentController extends Controller
         
     }
 
+    public function finished(Request $request,$id,$id_post)
+    {   //โอนเงินแล้ว
+        $request->validate([
+            'proofoftransfer' => 'required',
+        ]);
+        $post = post::where('Post_id',$id_post)->first(); 
+        $post->Status = 3;
+        $post->save();
+            
+        error_log($id);
+        $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
+
+        $imageproofoftransfer1 = $request->file('proofoftransfer');
+        if ($request->hasFile('proofoftransfer')){
+
+            error_log('uploaddog0');
+            // Get filename with the extension
+            $filenameWithExt = $imageproofoftransfer1->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $imageproofoftransfer1->getClientOriginalExtension();
+            // Filename to store
+            $imageproofoftransfer = $filename . '_imageproofoftransfer' . time() . '.' . $extension;
+            // Upload Image
+            $path = $imageproofoftransfer1->storeAs('public/imageproofoftransfer', $imageproofoftransfer);
+        }
+
+        $order->proofoftransfer = $imageproofoftransfer;
+        $order->Status = 4;
+        $order->save();
+        return redirect()->back();
+        
+    }
+
 }

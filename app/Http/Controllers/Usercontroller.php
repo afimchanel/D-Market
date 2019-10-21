@@ -130,32 +130,10 @@ class Usercontroller extends Controller
             'DateofBirth' => 'required',
             'Tel' => 'required',
             'address' => 'required',
-
             'Farmaddress' => 'required',
-
-
         ]);
         $user = Auth::user();
-
-            $IDcardnumber = $request->file('IDcardnumber');
-                if ($request->hasFile('IDcardnumber')) {
-                    
-                    //echo $path;
-                    error_log('upload');
-                    // Get filename with the extension
-                    $filenameWithExt = $IDcardnumber->getClientOriginalName();
-                    // Get just filename
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    // Get just ext
-                    $extension = $IDcardnumber->getClientOriginalExtension();
-                    // Filename to store
-                    $imageIDcardnumber = $filename . '_IDcardnumber' . time() . '.' . $extension;
-                    // Upload Image
-                    $path = $IDcardnumber->storeAs('public/idcardnumber', $imageIDcardnumber);
-                    $user->IDcardnumber = $imageIDcardnumber;
-                }
-
- 
+        $user->IDcardnumber = request()->input('IDcardnumber');
             $license = $request->file('license');
                 if ($request->hasFile('license')) {
 
@@ -172,14 +150,12 @@ class Usercontroller extends Controller
                     $path = $license->storeAs('public/license', $imagelicense);
                     $user->license = $imagelicense;
                 } 
-
-
+        $user->membercode = request()->input('membercode');
+        $user->NameSurname = request()->input('NameSurname');
         $user->name = request()->input('name');
         $user->DateofBirth = request()->input('DateofBirth');
         $user->Tel = request()->input('Tel');
         $user->address = request()->input('address');
-        
-        
         $user->Farmaddress = request()->input('Farmaddress');
         $user->accountnumber = request()->input('accountnumber');
         error_log('updateuser');

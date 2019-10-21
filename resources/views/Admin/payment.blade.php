@@ -118,7 +118,13 @@
            <td>
              @if ($item->Status == 2 )
              {{-- //ทำเงื่อนไข ถ้าเลย7 วันให้โอนเงิน --}}
-           ต้องโอนไปยังคนขายด่วนๆ
+
+             <form method="POST" action="/Payment/finished/{{$item->order_id}}/{{$item->id_post}}" enctype="multipart/form-data" class="needs-validation" >
+              @csrf
+              <label for="formGroup File">อัพโหลดหลักฐานการโอน</label>
+              <input type="file" name="proofoftransfer" accept=".png,.jpg,.jpeg">
+              <button type="submit" class="btn btn-primary">โอนเงิน</button>
+            </form>
               @endif
            </td>
           </tr>

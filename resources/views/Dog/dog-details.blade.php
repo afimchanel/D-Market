@@ -22,6 +22,7 @@
 use App\dogimages;
 use App\dogvideo;
 use App\User;
+use App\Dog;
 $sliders = dogimages::where(['dog_id' => $id])->get();
 $video = dogvideo::where(['dog_id' => $id])->get();
 ?>
@@ -174,9 +175,15 @@ $video = dogvideo::where(['dog_id' => $id])->get();
                 </li>
                 <li>
                         <?php 
-                        $ownnow = User::find($Dog->user_id);
+                        $ownnow = Dog::where('idthedog',$Dog->idthedog)->Orderby('id','DESC')->first();
+                        $ownnow2 = User::find($ownnow->user_id);
                         ?>
-                    เจ้าของปันจุบัน : คุณ {{$ownnow->NameSurname}} 
+                        @if ($ownnow->Status == 3)
+                            เจ้าของปันจุบันยังไม่ได้เพิ่มสุนัขเข้าในเว็บ
+                        @else
+                            เจ้าของปันจุบัน : คุณ {{$ownnow2->NameSurname}}
+                        @endif
+                    
                    
                 </li>
             </ul>
