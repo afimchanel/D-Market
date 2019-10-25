@@ -33,7 +33,7 @@
     // ->Orderby('order_detail.updated_at','desc')->limit(1)
 
     $total = 0;
-    $transportation = 0;
+    $transportation = 1500;
     $t = 0;
  ?>
 @section('content')
@@ -83,13 +83,7 @@
 
                 <th scope="row">{{$item->Order_detail}}</th>
                 <td>{{$item->Detail_Dog}}</td>
-                @if ($item->weight_dog == 1)
-                    <?php    $transportation = 800; ?>
-                @elseif($item->weight_dog == 2)
-                    <?php   $transportation = 800;?>
-                @elseif($item->weight_dog == 3)
-                    <?php   $transportation = 1000; ?>
-                @endif  
+ 
                 @if ($item->type_dog	 == 1)
                 <?php    $t = 590; ?>
                 @elseif($item->	type_dog	 == 2)
@@ -105,7 +99,7 @@
             @endforeach
         @endif
             
-            <caption>ค่าขนส่ง : {{$transportation}}+ค่าบล็อคขนสุนัข:{{$t}} </caption>
+            <caption>ค่าขนส่ง : {{$transportation}}+ ค่าบล็อคขนสุนัข:{{$t}} </caption>
             <caption>ราคารวมทั้งสิ้น : {{$total + $transportation +  $t}}</caption>
     </tbody>
 </table>

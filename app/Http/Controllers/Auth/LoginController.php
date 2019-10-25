@@ -44,6 +44,9 @@ class LoginController extends Controller
     {
         if(auth()->user()->isAdmin()) {
             return '/admin/dashboard';
+        }
+        elseif(auth()->user()->type == 2) {
+            return '/transport';
         } else {
             return '/home';
         }

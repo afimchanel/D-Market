@@ -5,8 +5,8 @@
 <?php 
 
 $total = 0;
-$transportation = 0;
-$t = 590;
+$transportation = 1500;
+$t = 0;
 ?>
 
 <div class="container">
@@ -37,16 +37,6 @@ $t = 590;
                 <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                     <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
                         <h6><strong>ราคา :  {{$item->price}} </strong></h6> 
-                        น้ำหนัก :  
-                            @if ($item->weight_dog == 1)
-                            น้อยกว่า10กิโล ราคา 800บาท <?php    $transportation = 800; ?>
-                            @elseif($item->weight_dog == 2)
-                            11กิโล-15กิโล ราคา 1000บาท <?php   $transportation = 1000;?>
-                            @elseif($item->weight_dog == 3)
-                            16กิโล-20กิโล ราคา 1200บาท <?php   $transportation = 1200; ?>
-                            @elseif($item->weight_dog == 4)
-                            มากกว่า20กิโล ราคา 1500บาท <?php   $transportation = 1500; ?>
-                            @endif  
                             <Br>
                             ค่า บล็อค : 
                             @if ($item->type_dog == 1)
@@ -57,10 +47,10 @@ $t = 590;
                             สุนัขพันธุ์ใหญ่ ไซน์ xL ราคา1700 <?php   $t= 1700;?>
 
                             @endif
-
+                            ค่าส่ง {{$transportation}}
                         <?php 
                            
-                            $total = $total + $item->price + $transportation +  $t
+                            $total = $total + $item->price + $t + $transportation
                         ?>
                     </div>
 

@@ -22,7 +22,7 @@ Route::get('/a', function () {
     return view('gene.gene');
 });
 
-Route::get('/s', function () {
+Route::get('/transport', function () {
     return view('transport.index');
 });
 

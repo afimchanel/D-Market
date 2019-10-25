@@ -193,7 +193,7 @@ class PaymentController extends Controller
         $order->Status = 2;
         $order->save();
         $score1 = User::find($post->user_id);
-        $score1->score = $score1->score + 1;
+        $score1->scoreseller = $score1->scoreseller + 1;
         $score1->save();
         $score=auth()->user();
         $score->score = $score->score + 1;
@@ -269,7 +269,10 @@ class PaymentController extends Controller
             // Upload Image
             $path = $imageproofoftransfer1->storeAs('public/imageproofoftransfer', $imageproofoftransfer);
         }
-
+        $post = post::where('Post_id',$id_post)->first();
+        $score1 = User::find($post->user_id);
+        $score1->scoreseller = $score1->scoreseller + 1;
+        $score1->save();
         $order->proofoftransfer = $imageproofoftransfer;
         $order->Status = 4;
         $order->save();
