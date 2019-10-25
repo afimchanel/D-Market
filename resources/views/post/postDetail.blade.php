@@ -102,7 +102,7 @@ $sliders = dogimages::where(['dog_id' => $dog->idthedog])->get();
       @else
 
       <div class="btn-group cart">
-        @if($post->Status != 2)
+        @if($post->Status < 0)
         <a href="/create/order/{{ $post->user_id }}/{{ $dog->id }}/{{$post->Post_id}}">
           <button type="button" class="btn btn-success">
             เพิ่มลงในตะกร้า

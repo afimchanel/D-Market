@@ -50,11 +50,7 @@ class PaymentController extends Controller
                 'Transferdate'=> $request->get('Transferdate'),
                 'tel_Customer'=> $request->get('tel_Customer'),
                 'price_check'=> $request->get('total'),
-                'receiving_location'=> $request->get('receiving_location'),
-                'pickyourown'=> $request->get('pickyourown'),
                 'address'=> $request->get('address'),
-
-
               ]);
                       
                 $image_payment = $request->file('image_payment');
@@ -73,23 +69,23 @@ class PaymentController extends Controller
                     $path = $image_payment->storeAs('public/image_payment', $image_paymentStore);
                     
                 }
-                $image_payment_IDcardnumber= $request->file('image_payment_IDcardnumber');
-                if ($request->hasFile('image_payment_IDcardnumber')) {
+                // $image_payment_IDcardnumber= $request->file('image_payment_IDcardnumber');
+                // if ($request->hasFile('image_payment_IDcardnumber')) {
     
-                    error_log('image_payment_IDcardnumber');
-                    // Get filename with the extension
-                    $filenameWithExt = $image_payment->getClientOriginalName();
-                    // Get just filename
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    // Get just ext
-                    $extension = $image_payment_IDcardnumber->getClientOriginalExtension();
-                    // Filename to store
-                    $image_payment_IDcardnumberStore = $filename . '_' . time() . '.' . $extension;
-                    // Upload Image
-                    $path = $image_payment_IDcardnumber->storeAs('public/image_payment_IDcardnumber', $image_payment_IDcardnumberStore);
+                //     error_log('image_payment_IDcardnumber');
+                //     // Get filename with the extension
+                //     $filenameWithExt = $image_payment->getClientOriginalName();
+                //     // Get just filename
+                //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                //     // Get just ext
+                //     $extension = $image_payment_IDcardnumber->getClientOriginalExtension();
+                //     // Filename to store
+                //     $image_payment_IDcardnumberStore = $filename . '_' . time() . '.' . $extension;
+                //     // Upload Image
+                //     $path = $image_payment_IDcardnumber->storeAs('public/image_payment_IDcardnumber', $image_payment_IDcardnumberStore);
                     
-                }
-                $payment->image_payment_IDcardnumber = $image_payment_IDcardnumberStore;
+                // // }
+                // $payment->image_payment_IDcardnumber = $image_payment_IDcardnumberStore;
                 $payment->image_payment = $image_paymentStore;
               $payment->save();
               return redirect('/buying')->with('success', 'เพิ่มใบเปย์เม้นสำเร็จ');
@@ -161,10 +157,14 @@ class PaymentController extends Controller
     }
 
     
-    public function geted($id,$id_post)
+    public function geted(Request $request,$id,$id_post)
     {
         //wได้รับของแล้ว
-
+        $request->validate([
+        
+            'signature' => 'required',
+            
+        ]);
         $post = post::where('Post_id',$id_post)->first(); 
         $dog= Dog::where('id',$post->id_the_dog)->first();
         $dog->Status = 3;
@@ -174,6 +174,22 @@ class PaymentController extends Controller
         
         error_log($id);
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
+                $imagesignature1 = $request->file('signature');
+                if ($request->hasFile('signature')){
+
+                    error_log('uploaddog0');
+                    // Get filename with the extension
+                    $filenameWithExt = $imagesignature1->getClientOriginalName();
+                    // Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just ext
+                    $extension = $imagesignature1->getClientOriginalExtension();
+                    // Filename to store
+                    $imagesignature = $filename . '_imagesignature' . time() . '.' . $extension;
+                    // Upload Image
+                    $path = $imagesignature1->storeAs('public/imagesignature', $imagesignature);
+                    $order->signature = $imagesignature;
+                }
         $order->Status = 2;
         $order->save();
         $score1 = User::find($post->user_id);
@@ -186,13 +202,14 @@ class PaymentController extends Controller
         
     }
 
-    public function finish(Request $request,$id,$id_post)
+
+    public function finish($id,$id_post)
     {   //ส่งของแล้ว
-        $request->validate([
-            'deliveryreceipt' => 'required',
-            'description' => 'required',
+        // $request->validate([
+        //     'deliveryreceipt' => 'required',
+        //     'description' => 'required',
             
-        ]);
+        // ]);
 
         $post = post::where('Post_id',$id_post)->first(); 
         $post->Status = 3;
@@ -201,24 +218,24 @@ class PaymentController extends Controller
         error_log($id);
         $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
 
-        $imagedeliveryreceipt1 = $request->file('deliveryreceipt');
-        if ($request->hasFile('deliveryreceipt')){
+        // $imagedeliveryreceipt1 = $request->file('deliveryreceipt');
+        // if ($request->hasFile('deliveryreceipt')){
 
-            error_log('uploaddog0');
-            // Get filename with the extension
-            $filenameWithExt = $imagedeliveryreceipt1->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $imagedeliveryreceipt1->getClientOriginalExtension();
-            // Filename to store
-            $imagedeliveryreceipt = $filename . '_imagedeliveryreceipt' . time() . '.' . $extension;
-            // Upload Image
-            $path = $imagedeliveryreceipt1->storeAs('public/imagedeliveryreceipt', $imagedeliveryreceipt);
-        }
+        //     error_log('uploaddog0');
+        //     // Get filename with the extension
+        //     $filenameWithExt = $imagedeliveryreceipt1->getClientOriginalName();
+        //     // Get just filename
+        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //     // Get just ext
+        //     $extension = $imagedeliveryreceipt1->getClientOriginalExtension();
+        //     // Filename to store
+        //     $imagedeliveryreceipt = $filename . '_imagedeliveryreceipt' . time() . '.' . $extension;
+        //     // Upload Image
+        //     $path = $imagedeliveryreceipt1->storeAs('public/imagedeliveryreceipt', $imagedeliveryreceipt);
+        // }
         
-        $order->description = $request->description;
-        $order->deliveryreceipt = $imagedeliveryreceipt;
+        // $order->description = $request->description;
+        // $order->deliveryreceipt = $imagedeliveryreceipt;
         $order->Status = 3;
         $order->save();
         return redirect()->back();

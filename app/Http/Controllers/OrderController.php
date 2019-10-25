@@ -204,7 +204,7 @@ class ordercontroller extends Controller
                 
 
             }
-            elseif($finde !== NULL && $finde->Status == 1 ) {
+            elseif($finde !== NULL && $finde->Status > 0 ) {
                 //เคยชื้อแล้วชื้ออีก
 
                 error_log('else1.2');

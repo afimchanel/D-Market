@@ -150,16 +150,10 @@
 
             <div class="row">
                 <div class="col-3">
-                    <label for="fname">สะดวกรับสุนัขแบบไหน</label>
+                    <label for="fname">กรอกที่อยู่ของคุณทางD-Marketจะไปส่ง</label>
                 </div>
                 <div class="col-4">
-                    <input type="text" placeholder="(ถ้ามารับเองให้พิม มารับเองแจ้งวันเวลาตรงนี้ด้วยเลย ช่องนี้)" name="pickyourown">
-                </div>
-                <div class="col-4">
-                    <input type="text" placeholder="(ถ้าสะดวกสนามบินให้พิม ชื่อสนามบิน ช่องนี้)" name="receiving_location">
-                </div>
-                <div class="col-4">
-                    <input type="text" placeholder="(ถ้าส่งทางรถยนต์ให้พิม ที่อยู่ ช่องนี้ )" name="address">
+                    <input type="text" name="address">
                 </div>
             </div>
             <div class="row">
@@ -173,7 +167,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-25">
                     <label for="subject">สำเนาบัตรประชาชน</label>
                 </div>
@@ -183,7 +177,7 @@
                         <label class="custom-file-label" for="inputGroupFile01">สำเนาบัตรประชาชน</label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             
             <div style="text-align:center;">
                 <input type="submit" value="Submit">

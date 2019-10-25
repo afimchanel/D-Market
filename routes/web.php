@@ -23,7 +23,7 @@ Route::get('/a', function () {
 });
 
 Route::get('/s', function () {
-    return view('gene.g');
+    return view('transport.index');
 });
 
 
@@ -81,8 +81,8 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/order/delete/{id}', 'OrderController@destroyorder');
                 //payment
                     Route::get('Payment/success/{id}', 'PaymentController@success');
-                    Route::get('Payment/geted/{id}/{idpost}', 'PaymentController@geted');
-                    Route::post('Payment/finish/{id}/{idpost}', 'PaymentController@finish');
+                    Route::post('Payment/geted/{id}/{idpost}', 'PaymentController@geted');
+                    Route::get('Payment/finish/{id}/{idpost}', 'PaymentController@finish');
                     Route::post('/Payment/finished/{id}/{idpost}', 'PaymentController@finished');
 
 });

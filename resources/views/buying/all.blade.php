@@ -11,7 +11,7 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
 ->join('order','order_detail.order_id','=','order.Order_ID')
 ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
 ->where('order_detail.id_user','!=',Auth::user()->id)
-->where('order.Status',4)
+->where('order.Status','>=',3)
 ->get();
 
 
@@ -30,9 +30,18 @@ $total = 0
 
     <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"><h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
     <dt>ราคา: {{$item->price}}</dt>
-
+          
+    @if ($item->Status == 3)
+    สถานะ : ไปส่งแล้ว
+   
+    @elseif($item->Status == 4)
+    สถานะ : ทางD-market โอนเงินมายังคุณแล้ว
+    @endif
     <div class="col-sm-9"> หลักฐานการโอน :
         <img src="/storage/public/imageproofoftransfer/{{$item->proofoftransfer}}" style="width:300px; height:250px;">  
+    </div>
+    <div class="col-sm-9"> ลายเซ็นผู้รับสุนัข :
+        <img src="/storage/public/imagesignature/{{$item->signature}}" style="width:150px; height:250px;">  
     </div>
   </figcaption>
 </figure> 
