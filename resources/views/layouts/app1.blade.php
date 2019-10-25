@@ -159,11 +159,10 @@
             <div class="w3-bar-block">
                 
                 <a href="/admin/dashboard" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw" ></i>  รายชื่อสมาชิก</a>
-                
                 <a href="/admin/listdogs" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shopping-cart" ></i>  ข้อมูลสุนัข</a>
                 <a href="/admin/post" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user" ></i>  โพสต์</a>
-                
-                <a href="/admin/payment" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money" ></i>  แจ้งจ่ายเงิน</a><br><br>
+                <a href="/admin/report" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user" ></i>  ดูการแจ้ง</a>
+                <a href="/admin/payment" class="w3-bar-item w3-button w3-padding"><i class="fa fa-money" ></i>  แจ้งจ่ายเงิน</a>
             </div>
         </nav>   
         <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"

@@ -31,6 +31,9 @@ Route::get('/transport', function () {
 Route::get('/buying', function () {
     return view('buying.index');
 });
+Route::get('/report', function () {
+    return view('report');
+});
 Route::resource('post', 'postController');
 Route::resource('order', 'OrderController');
 Route::resource('dog', 'DogController');
@@ -53,6 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('user', 'UserController@index');
     Route::get('user/{id}', 'UserController@show');
     Route::get('/{id}/edit', 'UserController@edit');
+    Route::post('/report', 'UserController@report');
     Route::post('/{id}/updateavater', 'UserController@update_avatar');
     Route::post('/{id}/update', 'UserController@update');
     //Dog
@@ -97,6 +101,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/listdogs', 'admin\AdminController@indexdogs');
         Route::get('/payment', 'admin\AdminController@indexpayment');
         Route::get('/post', 'admin\AdminController@indexpost');
+        Route::get('/report', 'admin\AdminController@indexreport');
     });
 });
 //Route for facebook

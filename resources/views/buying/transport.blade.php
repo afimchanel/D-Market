@@ -43,8 +43,6 @@
             $findorder = payment::where('Order_ID',$item->order_id)->first();
            
                     if(date("Y-m-d H:i:s",strtotime($item->updated_at."+24 hour")) <= date("Y-m-d H:i:s")){
-                        
-
                         $user = Auth::user();
                         $user->scoreseller = $user->scoreseller - 1 ;
                         $user->save();

@@ -25,7 +25,7 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
             <th>สถานที่ไปส่ง</th>
             <th>ผู้ขายมาส่งแล้ว</th>
             <th>ผู้ขื้อมารับสุนัขแล้ว</th>
-            <th>โอนเงินคืน</th>
+            {{-- <th>โอนเงินคืน</th> --}}
           </tr>
         </thead>
 
@@ -63,26 +63,30 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
                   <form method="POST" action="Payment/geted/{{$item->Order_ID}}/{{$item->id_post}}" enctype="multipart/form-data" class="needs-validation" >
                     @csrf
                     <label for="formGroup File">อัพโหลดลายเซ็นการรับสุนัข</label>
-                    
                     <input type="file" name="signature" accept=".png,.jpg,.jpeg">
+                    
                     <button type="submit" class="btn btn-success">ผู้ชื้อได้รับสุนัขแล้ว</button>
                   </form>
                 
                   @endif
                     
                 </td>
-                <td>
+                {{-- <td>
+                  @if ($item->Status == 3)
                     @if (date("Y-m-d H:i:s",strtotime($item->updated_at."+24 hour")) <= date("Y-m-d H:i:s"))
-                  <button>โอนเงินคืน
-                      $delete = orders::find($item->Order_ID);
-                      $delete->delete();
-                      $delete1 = orderdetail::where('order_id',$item->Order_ID)->get();
-                      foreach ($delete1 as $item1) {
-                          $item1->delete();
-                      }
-                    </button> 
+                    <button>โอนเงินคืน
+                      
+                        $delete = orders::find($item->Order_ID);
+                        $delete->delete();
+                        $delete1 = orderdetail::where('order_id',$item->Order_ID)->get();
+                        foreach ($delete1 as $item1) {
+                            $item1->delete();
+                        }
+                      </button> 
+                    @endif
                   @endif
-                </td>
+                    
+                </td> --}}
                 </tr> 
           
 

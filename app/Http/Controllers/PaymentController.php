@@ -248,7 +248,7 @@ class PaymentController extends Controller
             'proofoftransfer' => 'required',
         ]);
         $post = post::where('Post_id',$id_post)->first(); 
-        $post->Status = 3;
+        $post->Status = 4;
         $post->save();
             
         error_log($id);

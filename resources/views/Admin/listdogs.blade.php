@@ -44,7 +44,30 @@ use App\breed_dog;
                       </td>
                       <td>{{ $Dog->namedog}}</td>
                       <td>{{ $Dog->user_id}}</td>
-                      <td>{{ $Dog->breed}}</td>
+                      <td>
+                        @if ($Dog->breed == 1)
+                        ปั๊ก (Pug)
+                        @elseif($Dog->breed == 2)
+                        ชิวาวา(Chihuahua)
+                        @elseif($Dog->breed == 3)
+                        ปอมเมอเรเนียน (Pomerania)
+                        @elseif($Dog->breed == 4)
+                        ชิสุ (Shih Tzu)
+                        @elseif($Dog->breed == 5)
+                        ยอร์คเชียร์ เทอร์เรียร์ (Yorkshire Terrier)
+                        @elseif($Dog->breed == 6)
+                        บีเกิล (Beagle)
+                        @elseif($Dog->breed == 7)
+                        บูลด็อก (Bulldog)
+                        @elseif($Dog->breed == 8)
+                        ไซบีเรียน ฮัสกี้ (Siberian Husky)
+                        @elseif($Dog->breed == 9)
+                        โกลเด้น รีทรีฟเวอร์ (Golden Retriever)
+                        @elseif($Dog->breed == 10)
+                        ลาบราดอร์ รีทรีฟเวอร์ (Labrador Retriever)
+                        @elseif($Dog->breed == 11)
+                        อื่นๆ
+                        @endif</td>
                       <td>
                         <div class="container">
                           <!-- Button to Open the Modal -->

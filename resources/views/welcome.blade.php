@@ -162,7 +162,7 @@
       <!-- start section footer -->
       <div id="footer" class="text-center">
         <div class="container">
-          แจ้งหรือรายงานได้ที่ 0901234567
+          แจ้งหรือรายงานได้ที่ 0901234567 
           <div class="socials-media text-center">
     
             <ul class="list-unstyled">

@@ -82,7 +82,7 @@ if ($orderid == NULL) {
               @endif
             
             </p>
-      
+
             <p class="text-dark m-0">วันที่เกิด : {{$item->birthday}} </p>
             <p class="text-dark m-0">ผู้เพาะพันธุ์ : {{$item->owner}} </p>
             <p class="text-dark m-0">พ่อพันธุ์ : {{$item->father}} </p>

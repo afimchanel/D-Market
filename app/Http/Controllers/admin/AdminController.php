@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\user;
 use App\post;
+use App\report;
 use Auth;
 use DB;
 use App\Dog;
@@ -42,6 +43,12 @@ class AdminController extends Controller
         return view('admin.postdog', compact('posts'));
     }
 
+    public function indexreport()
+    {
+        $report = report::all();
+
+        return view('admin.report', compact('report'));
+    }
     public function indexpayment()
     {
         error_log('payment');

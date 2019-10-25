@@ -12,13 +12,12 @@
       <table class="table ">
         <thead>
           <tr>
+              <th>รายการสั่งซื้อที่</th>
             <th>ID_ผู้ซื้อ</th>
             <th>ID_ผู้ขาย</th>
-            <th>รายการสั่งซื้อที่</th>
             <th>ใบเพย์เม้น</th>
             <th>ราคาทั้งหมด</th>
             <th>สถานที่ต้องไปรับ</th>
-            <th>บัตรปชช</th>
             <th>เบอร์ผู้ซื้อ</th>
             <th>วันเวลาที่จ่ายเงิน</th>
             <th>อนุมัติ</th>
@@ -30,9 +29,10 @@
         <tbody>
           @foreach($payment as $item)
           <tr>
+              <td>{{ $item->Order_ID }}</td>
             <td>{{ $item->id_user }}</td>
             <td>{{ $item->user_id }}</td>
-            <td>{{ $item->Order_ID }}</td>
+            
 
             <td>
               <div class="container">
@@ -76,36 +76,7 @@
               @endif
             </td>
 
-            <td>
-              <div class="container">
-                <!-- Button to Open the Modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ $item->Pay_ID }}">ดูรูป</button>
 
-                <!-- The Modal -->
-                <div class="modal" id="myModal{{ $item->Pay_ID }}">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <h4 class="modal-title">รูปภาพบัตรประจำตัวประชาชน</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-
-                      <!-- Modal body -->
-                      <div class="modal-body">
-                          <img src="/storage/public/image_payment_IDcardnumber/{{$item->image_payment_IDcardnumber}}" style="width:70px; height:70px;" class="css-class" alt="alt text">
-                      </div>
-
-                      <!-- Modal footer -->
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </td>
 
             <td>{{ $item->tel_Customer }}</td>
             <td>{{ $item->Transferdate }}</td>
@@ -115,8 +86,8 @@
               @endif
 
             </td>
-           <td>
-             @if ($item->Status == 2 )
+           <td>{{$item->Status}}
+             @if ($item->Status == 3 )
              {{-- //ทำเงื่อนไข ถ้าเลย7 วันให้โอนเงิน --}}
 
              <form method="POST" action="/Payment/finished/{{$item->order_id}}/{{$item->id_post}}" enctype="multipart/form-data" class="needs-validation" >

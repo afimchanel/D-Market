@@ -152,7 +152,7 @@ use App\post;
                     <img class="img-fluid img-thumbnail" src="/storage/avatars/{{$users->Avatar}}" style="width:300px; height:250px;">
                 </div>
                 <div class="">
-
+                    
                     ชื่อฟาร์ม : {{ $users->name }} <br>
                     ชื่อ-นาสกุล : {{ $users->NameSurname }} <br>
                     เบอร์โทรศัพท์ : {{ $users->Tel }} <br>
@@ -169,6 +169,7 @@ use App\post;
                         ที่อยู่ฟาร์ม : {{ $users->Farmaddress }}<br>
                         คะแนนการชื้อ : {{$users->score}}
                         คะแนนการขาย : {{$users->scoreseller}}
+                        <a href="/report">แจ้งเหตุหรือคำแนะนำ </a>
                 </div>
             </div>
         </div>

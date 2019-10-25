@@ -6,7 +6,7 @@
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
     <div class=" container">
         <div class="card-header">
-            <strong class="card-title">รายชื่อสมาชิกทั้งหมด</strong>
+            <strong class="card-title">โพสทั้งหมด</strong>
         </div>
         <div class="table-stats order-table ov-h">
             <table class="table ">
@@ -33,7 +33,7 @@
                         <td>{{$post->tel_post}}</td>
                         <td>{{$post->vaccine}}</td>
                         <td>
-                            @if ($post->Status == 2 )
+                            @if ($post->Status == 4 )
                                 ได้ขายไปแล้ว
                             @endif
                         </td>

@@ -7,7 +7,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Auth;
 use DB;
-use App\post;
+use App\report;
 use App\Dog;
 
 
@@ -194,7 +194,14 @@ class Usercontroller extends Controller
         return redirect()->back();
 
     }
-
+    public function report(Request $request)
+    {
+        $report = new report;
+        $report->name = $request->name;
+        $report->id_user = auth()->user()->id;
+        $report->save();
+        return redirect()->back();
+    }
  }
 
 
