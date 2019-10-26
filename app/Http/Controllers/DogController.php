@@ -277,9 +277,7 @@ class DogController extends Controller
                     $imagecoverStore = $filename . '_image' . time() . '.' . $extension;
                     // Upload Image
                     $path = $imagecover->storeAs('public/imagecover', $imagecoverStore);
-                } else {
-                    $imagecoverStore = 'nopicture.jpg';
-                }
+                } 
                 
         $Dogs = Dog::find($Iddog);
         $Dogs->namedog = $request->namedog;

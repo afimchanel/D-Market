@@ -82,14 +82,11 @@ class Usercontroller extends Controller
         $posts = DB::table('posts')
         ->where('posts.user_id', '=', $id) 
         ->join('dogs', 'posts.id_the_dog', '=', 'dogs.id')
+        ->select('posts.*','dogs.image','dogs.namedog','dogs.id')
         ->get();
         $Dogs = Dog::where('dogs.user_id',$id)
 
         ->paginate(8);
-
-        
-    
-
         return view('user.Profileuser',compact('users','posts','Dogs'));
         
     }
