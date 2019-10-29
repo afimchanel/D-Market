@@ -24,8 +24,12 @@
           <a class="nav-link" id="pills-get-tab" data-toggle="pill" href="#pills-get" role="tab" aria-controls="pills-get" aria-selected="false">ที่ต้องได้รับ</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" id="pills-confirm-tab" data-toggle="pill" href="#pills-confirm" role="tab" aria-controls="pills-confirm" aria-selected="false">ยืนยันการรับสุนัข</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" id="pills-finish-tab" data-toggle="pill" href="#pills-finish" role="tab" aria-controls="pills-finish" aria-selected="false">ชื้อสำเร็จแล้ว</a>
         </li>
+        
       </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">@include('buying.all')</div>
@@ -33,6 +37,7 @@
         <div class="tab-pane fade" id="pills-transport" role="tabpanel" aria-labelledby="pills-transport-tab">@include('buying.transport')</div>
         <div class="tab-pane fade" id="pills-Tobeshipped" role="tabpanel" aria-labelledby="pills-Tobeshipped-tab">@include('buying.tobeshipped')</div>
         <div class="tab-pane fade" id="pills-get" role="tabpanel" aria-labelledby="pills-get-tab">@include('buying.get')</div>
+        <div class="tab-pane fade" id="pills-confirm" role="tabpanel" aria-labelledby="pills-confirm-tab">@include('buying.confirm')</div>
         <div class="tab-pane fade" id="pills-finish" role="tabpanel" aria-labelledby="pills-finish-tab">@include('buying.finish')</div>
       </div>
 

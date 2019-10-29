@@ -16,7 +16,7 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
 ?>
 <table class="table ">
         <thead>
-          <tr>
+          <tr>ทำให้ดูประวัติการชื้อได้
             <th>#รหัสออเดอร์</th>
             <th>#รหัสผู้ชื้อ</th>
             <th>รหัสผู้ขาย</th>
@@ -52,7 +52,7 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
                 <td>{{ $item->idthedog}}</td>
                 
                 <td>{{ $item->tel_Customer }}</td>
-                <td>{{ $item->address }}</td>
+                <td>{{ $item->address }}{{$item->district}}{{$item->province}}</td>
                 <td>
                   @if ($item->Status == 1)
                   <a href="Payment/finish/{{$item->order_id}}/{{$item->id_post}}"><button >มาส่งแล้ว</button></a>

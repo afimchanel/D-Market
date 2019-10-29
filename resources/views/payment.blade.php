@@ -147,7 +147,9 @@
                     <label for="fname">กรอกที่อยู่ของคุณทางD-Marketจะไปส่ง</label>
                 </div>
                 <div class="col-4">
-                    <input type="text" name="address">
+                    <input type="text" name="province" placeholder="จังหวัด" required>
+                    <input type="text" name="district" placeholder="อำเภอ" required>
+                    <input type="text" name="address" placeholder="รายละเอียดที่อยู่ เลขที่บ้าน ตำบล หมู่บ้าน" required>
                 </div>
             </div>
             <div class="row">

@@ -72,7 +72,9 @@
               @elseif($item->pick_your_own != NULL)
                 จะมารับเองที่{{$item->pickyourown}}
               @elseif($item->address != NULL)
-                ที่อยู่{{$item->address}}
+                {{$item->address}}
+                {{$item->district}}
+                {{$item->province}}
               @endif
             </td>
 
@@ -81,21 +83,31 @@
             <td>{{ $item->tel_Customer }}</td>
             <td>{{ $item->Transferdate }}</td>
             <td>
-              @if ($item->Status == 0)
+              @if ($item->Status == 0 )
               <a href="/Payment/success/{{$item->Order_ID}}"><button type="button" class="btn btn-success">ยืนยัน</button></a>
               @endif
 
             </td>
            <td>{{$item->Status}}
-             @if ($item->Status == 3 )
-             {{-- //ทำเงื่อนไข ถ้าเลย7 วันให้โอนเงิน --}}
+             @if ($item->Status == 2 || $item->Status == 5 )
 
-             <form method="POST" action="/Payment/finished/{{$item->order_id}}/{{$item->id_post}}" enctype="multipart/form-data" class="needs-validation" >
-              @csrf
-              <label for="formGroup File">อัพโหลดหลักฐานการโอน</label>
-              <input type="file" name="proofoftransfer" accept=".png,.jpg,.jpeg">
-              <button type="submit" class="btn btn-primary">โอนเงิน</button>
-            </form>
+             
+             
+             {{-- //ทำเงื่อนไข ถ้าเลย7 วันให้โอนเงิน --}}
+                @if ($item->Status == 2)
+                   @if (date("Y-m-d H:i:s") >= date("Y-m-d H:i:s",strtotime($item->updated_at." +2 day")))
+                       กรุณาโอนเงินไปยังผู้ขาย เพราะเลยเวลาแจ้งเหตุแล้ว
+                   @endif   
+                   {{-- {{date("Y-m-d H:i:s",strtotime($item->updated_at." +2 day"))}}
+                    รอผู้ชื้อแจ้งเหตุ 2 วัน --}}
+                @endif
+
+                <form method="POST" action="/Payment/finished/{{$item->order_id}}/{{$item->id_post}}" enctype="multipart/form-data" class="needs-validation" >
+                  @csrf
+                  <label for="formGroup File">อัพโหลดหลักฐานการโอน</label>
+                  <input type="file" name="proofoftransfer" accept=".png,.jpg,.jpeg">
+                  <button type="submit" class="btn btn-primary">โอนเงิน</button>
+                </form>
               @endif
            </td>
           </tr>

@@ -51,6 +51,8 @@ class PaymentController extends Controller
                 'tel_Customer'=> $request->get('tel_Customer'),
                 'price_check'=> $request->get('total'),
                 'address'=> $request->get('address'),
+                'district'=> $request->get('district'),
+                'province'=> $request->get('province'),
               ]);
                       
                 $image_payment = $request->file('image_payment');
@@ -279,5 +281,26 @@ class PaymentController extends Controller
         return redirect()->back();
         
     }
+    public function confirm($id,$id_post)
+    {
+        //wยืนยันการรับสุนัข
+        
+        // สถานะ 0 รอยืนยันการชำระเงิน
+        // สถานะ 1 ชำระเงินแล้ว
+        // สถานะ 2 ได้รับสุุนัขแล้ว
+        // สถานะ 3 ส่งสุนัขแล้ว
+        // สถานะ 4 โอนเงินเเก่ผู้ขายแล้ว
+        // สถานะ 5 ยืนยันการรับสุนัข 
+        $post = post::where('Post_id',$id_post)->first(); 
+        $post->Status = 5;
+        $post->save();
+        error_log($id);
+        $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
+        $order->Status = 5;
+        $order->save();
+        return redirect()->back();
+        
+    }
+
 
 }

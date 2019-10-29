@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
                     Route::get('Payment/success/{id}', 'PaymentController@success');
                     Route::post('Payment/geted/{id}/{idpost}', 'PaymentController@geted');
                     Route::get('Payment/finish/{id}/{idpost}', 'PaymentController@finish');
+                    Route::get('Payment/confirm/{id}/{idpost}', 'PaymentController@confirm');
                     Route::post('/Payment/finished/{id}/{idpost}', 'PaymentController@finished');
 
 });
