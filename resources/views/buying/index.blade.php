@@ -12,11 +12,12 @@
           <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">ขายไปแล้ว</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-payable-tab" data-toggle="pill" href="#pills-payable" role="tab" aria-controls="pills-payable" aria-selected="false">ที่ต้องชำระ</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" id="pills-transport-tab" data-toggle="pill" href="#pills-transport" role="tab" aria-controls="pills-transport" aria-selected="false">ที่เราต้องจัดส่ง</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-payable-tab" data-toggle="pill" href="#pills-payable" role="tab" aria-controls="pills-payable" aria-selected="false">ที่ต้องชำระ</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" id="pills-Tobeshipped-tab" data-toggle="pill" href="#pills-Tobeshipped" role="tab" aria-controls="pills-Tobeshipped" aria-selected="false">รอจัดส่ง</a>
         </li>
@@ -26,6 +27,9 @@
         <li class="nav-item">
           <a class="nav-link" id="pills-confirm-tab" data-toggle="pill" href="#pills-confirm" role="tab" aria-controls="pills-confirm" aria-selected="false">ยืนยันการรับสุนัข</a>
         </li>
+        {{-- <li class="nav-item">
+            <a class="nav-link" id="pills-status-tab" data-toggle="pill" href="#pills-status" role="tab" aria-controls="pills-status" aria-selected="false">สถานะสุนัข</a>
+        </li> --}}
         <li class="nav-item">
           <a class="nav-link" id="pills-finish-tab" data-toggle="pill" href="#pills-finish" role="tab" aria-controls="pills-finish" aria-selected="false">ชื้อสำเร็จแล้ว</a>
         </li>
@@ -37,6 +41,7 @@
         <div class="tab-pane fade" id="pills-transport" role="tabpanel" aria-labelledby="pills-transport-tab">@include('buying.transport')</div>
         <div class="tab-pane fade" id="pills-Tobeshipped" role="tabpanel" aria-labelledby="pills-Tobeshipped-tab">@include('buying.tobeshipped')</div>
         <div class="tab-pane fade" id="pills-get" role="tabpanel" aria-labelledby="pills-get-tab">@include('buying.get')</div>
+        {{-- <div class="tab-pane fade" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">@include('buying.status')</div> --}}
         <div class="tab-pane fade" id="pills-confirm" role="tabpanel" aria-labelledby="pills-confirm-tab">@include('buying.confirm')</div>
         <div class="tab-pane fade" id="pills-finish" role="tabpanel" aria-labelledby="pills-finish-tab">@include('buying.finish')</div>
       </div>

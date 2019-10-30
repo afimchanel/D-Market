@@ -5,7 +5,7 @@
 <?php 
 
 $total = 0;
-$transportation = 1500;
+$transportation = 100;
 $t = 0;
 ?>
 

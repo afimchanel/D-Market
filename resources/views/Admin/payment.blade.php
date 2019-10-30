@@ -92,7 +92,7 @@
              @if ($item->Status == 2 || $item->Status == 5 )
 
              
-             
+             {{date("Y-m-d H:i:s",strtotime($item->updated_at." +2 day"))}}
              {{-- //ทำเงื่อนไข ถ้าเลย7 วันให้โอนเงิน --}}
                 @if ($item->Status == 2)
                    @if (date("Y-m-d H:i:s") >= date("Y-m-d H:i:s",strtotime($item->updated_at." +2 day")))

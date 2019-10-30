@@ -33,7 +33,7 @@
     // ->Orderby('order_detail.updated_at','desc')->limit(1)
 
     $total = 0;
-    $transportation = 1500;
+    $transportation = 100;
     $t = 0;
  ?>
 @section('content')

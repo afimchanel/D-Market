@@ -140,6 +140,7 @@ class PaymentController extends Controller
     {
         //
     }
+
     public function success($id)
     {
         //ยืนยันการโอนแล้ว
@@ -204,7 +205,6 @@ class PaymentController extends Controller
         
     }
 
-
     public function finish($id,$id_post)
     {   //ส่งของแล้ว
         // $request->validate([
@@ -238,6 +238,7 @@ class PaymentController extends Controller
         
         // $order->description = $request->description;
         // $order->deliveryreceipt = $imagedeliveryreceipt;
+
         $order->Status = 3;
         $order->save();
         return redirect()->back();
@@ -281,9 +282,9 @@ class PaymentController extends Controller
         return redirect()->back();
         
     }
+
     public function confirm($id,$id_post)
-    {
-        //wยืนยันการรับสุนัข
+    {//wยืนยันการรับสุนัข
         
         // สถานะ 0 รอยืนยันการชำระเงิน
         // สถานะ 1 ชำระเงินแล้ว
@@ -301,6 +302,22 @@ class PaymentController extends Controller
         return redirect()->back();
         
     }
+     public function deliverystatus(Request $request,$id)
+        {//wยืนยันการรับสุนัข
+            
+            // สถานะ 0 รอยืนยันการชำระเงิน
+            // สถานะ 1 ชำระเงินแล้ว
+            // สถานะ 2 ได้รับสุุนัขแล้ว
+            // สถานะ 3 ส่งสุนัขแล้ว
+            // สถานะ 4 โอนเงินเเก่ผู้ขายแล้ว
+            // สถานะ 5 ยืนยันการรับสุนัข 
 
+            error_log($id);
+            $order = orders::where('Order_ID',$id)->Orderby('updated_at','desc')->first();
+            $order->provincename = $request->provincename;
+            $order->save();
+            return redirect()->back();
+            
+        }
 
 }

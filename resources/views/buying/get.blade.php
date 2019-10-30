@@ -13,6 +13,8 @@ if ($orderid == NULL) {
 ->LEFTjoin('order', 'order_detail.order_id', '=', 'order.Order_ID')
 ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
 ->where('order.Status',3)
+->select('posts.Detail_Dog','posts.price','dogs.image','posts.id_the_dog','posts.Detail_Dog','dogs.breed','dogs.sex','dogs.birthday','posts.farm_name','posts.weight_dog'
+,'dogs.color','posts.price','dogs.owner','dogs.father','dogs.momher','payment.address','payment.district','payment.province','order.*')
 ->get();
 }
 
@@ -22,7 +24,7 @@ if ($orderid == NULL) {
       @foreach ($order as $item)
    
         <figure class="media">
-          <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
+          <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm" style="width:250px; height:250px;"></div>
           <figcaption class="media-body">
               <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"><h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
             <dl class="param param-inline small">
@@ -95,15 +97,16 @@ if ($orderid == NULL) {
                 </dt>
                 <dt>                   
                 </dt>
-
+                สุนัขถึง : {{$item->provincename}} ณ เวลา {{$item->updated_at}}
             </dl>
 
-
+            
 
             
             
           </figcaption>
         </figure> 
+        
     @endforeach
 @else
     

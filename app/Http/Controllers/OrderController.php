@@ -158,6 +158,7 @@ class ordercontroller extends Controller
         return redirect('/buying');
     }
 
+
     public function createorder($id)
     {
         if (Auth::check()) {

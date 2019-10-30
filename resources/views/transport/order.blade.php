@@ -4,7 +4,7 @@ use App\orders;
 use App\User;
 use App\orderdetail;
 
-$order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+    $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
     ->join('posts','order_detail.id_post','=','posts.Post_id')
     ->join('order','order_detail.order_id','=','order.Order_ID')
     ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
@@ -16,16 +16,17 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
 ?>
 <table class="table ">
         <thead>
-          <tr>ทำให้ดูประวัติการชื้อได้
+          <tr>
+            {{-- ทำให้ดูประวัติการชื้อได้ --}}
             <th>#รหัสออเดอร์</th>
-            <th>#รหัสผู้ชื้อ</th>
-            <th>รหัสผู้ขาย</th>
+            <th>ชื่อผู้ชื้อ</th>
+            <th>ชื่อผู้ขาย</th>
             <th>#รหัสสุนัข</th>
             <th>เบอร์โทรติดต่อกับผู้ชื้อ</th>
             <th>สถานที่ไปส่ง</th>
             <th>ผู้ขายมาส่งแล้ว</th>
             <th>ผู้ขื้อมารับสุนัขแล้ว</th>
-            {{-- <th>โอนเงินคืน</th> --}}
+            <th>ถึงไหนแล้ว</th>
           </tr>
         </thead>
 
@@ -52,10 +53,10 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
                 <td>{{ $item->idthedog}}</td>
                 
                 <td>{{ $item->tel_Customer }}</td>
-                <td>{{ $item->address }}{{$item->district}}{{$item->province}}</td>
+                <td>{{ $item->address }}อ ำเภอ :{{$item->district}} จังหวัด :{{$item->province}}</td>
                 <td>
                   @if ($item->Status == 1)
-                  <a href="Payment/finish/{{$item->order_id}}/{{$item->id_post}}"><button >มาส่งแล้ว</button></a>
+                  <a class="btn btn-success" href="Payment/finish/{{$item->order_id}}/{{$item->id_post}}">มาส่งแล้ว</a>
                   @endif
                 </td>
                 <td>
@@ -70,6 +71,27 @@ $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
                 
                   @endif
                     
+                </td>
+                <td>
+                    @if ($item->Status == 3 )
+                      <form method="POST" action="Payment/deliverystatus/{{$item->Order_ID}}">
+                        @csrf
+                          <div class="form-group">
+                              <select class="form-control"  name='provincename'>
+                                <option value="เชียงราย">เชียงราย</option>
+                                <option value="เชียงใหม่">เชียงใหม่</option>
+                                <option value="น่าน">น่าน</option>
+                                <option value="พะเยา">พะเยา</option>
+                                <option value="แพร่">แพร่</option>
+                                <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+                                <option value="ลำปาง">ลำปาง</option>
+                                <option value="ลำพูน">ลำพูน</option>
+                                <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+                              </select>
+                            </div>
+                            <button type="submit" class="btn btn-success">กด</button>
+                      </form>
+                    @endif
                 </td>
                 {{-- <td>
                   @if ($item->Status == 3)
