@@ -169,7 +169,7 @@ $video = dogvideo::where(['dog_id' => $id])->get();
                     <?php 
                     $ownnow1 = User::find($item->user_id);
                     ?>
-                        <li><a href="/user/{{$item->user_id}}">{{$ownnow1->NameSurname}}</a></li>           
+                        <li><a href="/user/{{$item->user_id}}">{{$ownnow1->NameSurname}}</a>เวลาควบครองครั้งสุดท้าย{{$item->updated_at}}</li>           
                     @endforeach
                     
                 </li>

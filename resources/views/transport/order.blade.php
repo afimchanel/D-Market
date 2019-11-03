@@ -60,7 +60,7 @@ use App\orderdetail;
                   @endif
                 </td>
                 <td>
-                  @if ($item->Status == 3 )
+                  @if ($item->Status == 3 && $item->provincename == 'ถึงที่หมายแล้ว')
                   <form method="POST" action="Payment/geted/{{$item->Order_ID}}/{{$item->id_post}}" enctype="multipart/form-data" class="needs-validation" >
                     @csrf
                     <label for="formGroup File">อัพโหลดลายเซ็นการรับสุนัข</label>
@@ -87,6 +87,7 @@ use App\orderdetail;
                                 <option value="ลำปาง">ลำปาง</option>
                                 <option value="ลำพูน">ลำพูน</option>
                                 <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+                                <option value="ถึงที่หมายแล้ว">ถึงที่หมายแล้ว</option>
                               </select>
                             </div>
                             <button type="submit" class="btn btn-success">กด</button>
