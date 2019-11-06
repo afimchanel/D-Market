@@ -1,6 +1,7 @@
 <?php 
 use App\orderdetail;
 use App\orders;
+use App\User;
 $orderid = orders::where('id_user',Auth::user()->id)
 ->where('Status',4)
 ->Orderby('updated_at','desc')->first();
@@ -26,6 +27,10 @@ if ($orderid == NULL) {
         <figure class="media">
             <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"  style="width:250px; height:250px;"></div>
           <figcaption class="media-body">
+          <?php 
+            $ownnow1 = User::find($item->user_id);
+          ?>
+            ผู้ขาย : <a href="/user/{{$item->user_id}}">{{$ownnow1->NameSurname}}</a>
             <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"><h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
             ราคา: {{$item->price}}
             สายพันธุ์ :<a class="badge badge-success" href="/search/{{$item->breed}}">
@@ -87,6 +92,8 @@ if ($orderid == NULL) {
             <p class="text-dark m-0">ผู้เพาะพันธุ์ : {{$item->owner}} </p>
             <p class="text-dark m-0">พ่อพันธุ์ : {{$item->father}} </p>
             <p class="text-dark m-0">แม่พันธุ์ : {{$item->momher}} </p>
+            <p class="text-dark m-0"> เวลาสำเร็จ {{$item->updated_at}} </p>
+           
             <div class="col-sm-9"> หลักฐานการรับสุนัข :
                 <img src="/storage/public/imagesignature/{{$item->signature}}" style="width:150px; height:250px;">  
             </div>

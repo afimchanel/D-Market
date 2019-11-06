@@ -1,6 +1,7 @@
 <?php 
 use App\orderdetail;
 use App\orders;
+use App\User;
 $orderid = orders::where('id_user',Auth::user()->id)
 ->where('Status',2)
 ->Orderby('updated_at','desc')->first();
@@ -15,16 +16,19 @@ if ($orderid == NULL) {
 ->where('order.Status',2)
 ->get();
 }
-
 ?>
 
 @if(isset($order))
       @foreach ($order as $item)
-   
+
         <figure class="media">
           <div class="img-wrap"><img src="/storage/public/imagecover/{{$item->image}}" class="img-thumbnail img-sm"></div>
           <figcaption class="media-body">
               <a href="/{{$item->id_the_dog}}/{{$item->id_post}}/view/post"><h6 class="title text-truncate">{{$item->Detail_Dog}}</h6></a>
+              <?php 
+                $ownnow1 = User::find($item->user_id);
+              ?>
+              ผู้ขาย : <a href="/user/{{$item->user_id}}">{{$ownnow1->NameSurname}}</a>
             <dl class="param param-inline small">
                 สายพันธุ์ :<a class="badge badge-success" href="/search/{{$item->breed}}">
                   @if ($item->breed == 1)
@@ -78,9 +82,9 @@ if ($orderid == NULL) {
                   @elseif ($item->color = 3)
                   นอกจากสีขาวและสีดำ
                   @endif
-                
+
                 </p>
-          
+
                 <p class="text-dark m-0">วันที่เกิด : {{$item->birthday}} </p>
                 <p class="text-dark m-0">ผู้เพาะพันธุ์ : {{$item->owner}} </p>
                 <p class="text-dark m-0">พ่อพันธุ์ : {{$item->father}} </p>
@@ -100,15 +104,13 @@ if ($orderid == NULL) {
             <div class="alert alert-danger" role="alert">
             ถ้าเกิดเหตุหรือมีข้อผิดพลาดทางการชื้อขายประการใด อย่ากดยืนยัน ให้ไปแจ้งเหตุอย่าางละเอียดภายใน 2 วัน
             </div>
-        
+
             <a class="btn btn-success" href="Payment/confirm/{{$item->Order_ID}}/{{$item->id_post}}" >ยืนยันการรับสุนัข</a>
-            
-            
+
+
           </figcaption>
         </figure> 
     @endforeach
 @else
-    
+
 @endif
-
-

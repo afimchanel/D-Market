@@ -14,7 +14,7 @@
                     <th>รหัส</th>
                     <th>รายละเอียด</th>
                     <th>ชื่อผู้ส่ง</th>
-
+                    <th>เวลาสที่่ง</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                             ?>
                                 {{$finduser->NameSurname}}
                         </td>
-
+                        <td>{{$item->created_at}}</td>
                     </tr>
                     @endforeach
                 </tbody>

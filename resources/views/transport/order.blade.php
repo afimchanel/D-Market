@@ -4,7 +4,7 @@ use App\orders;
 use App\User;
 use App\orderdetail;
 
-    $order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
+$order = orderdetail::join('dogs', 'order_detail.id_the_dog', '=', 'dogs.id')
     ->join('posts','order_detail.id_post','=','posts.Post_id')
     ->join('order','order_detail.order_id','=','order.Order_ID')
     ->LEFTjoin('payment', 'order.Order_ID', '=', 'payment.Order_ID')
@@ -17,7 +17,6 @@ use App\orderdetail;
 <table class="table ">
         <thead>
           <tr>
-            {{-- ทำให้ดูประวัติการชื้อได้ --}}
             <th>#รหัสออเดอร์</th>
             <th>ชื่อผู้ชื้อ</th>
             <th>ชื่อผู้ขาย</th>
@@ -53,14 +52,15 @@ use App\orderdetail;
                 <td>{{ $item->idthedog}}</td>
                 
                 <td>{{ $item->tel_Customer }}</td>
-                <td>{{ $item->address }}อ ำเภอ :{{$item->district}} จังหวัด :{{$item->province}}</td>
+                <td>{{ $item->address }}อำเภอ :{{$item->district}} จังหวัด :{{$item->province}}</td>
                 <td>
                   @if ($item->Status == 1)
                   <a class="btn btn-success" href="Payment/finish/{{$item->order_id}}/{{$item->id_post}}">มาส่งแล้ว</a>
                   @endif
                 </td>
                 <td>
-                  @if ($item->Status == 3 && $item->provincename == 'ถึงที่หมายแล้ว')
+                <!-- && $item->statusname == 'ส่งสำเร็จ' -->
+                  @if ($item->Status == 3 )
                   <form method="POST" action="Payment/geted/{{$item->Order_ID}}/{{$item->id_post}}" enctype="multipart/form-data" class="needs-validation" >
                     @csrf
                     <label for="formGroup File">อัพโหลดลายเซ็นการรับสุนัข</label>
@@ -73,11 +73,16 @@ use App\orderdetail;
                     
                 </td>
                 <td>
+                  
                     @if ($item->Status == 3 )
                       <form method="POST" action="Payment/deliverystatus/{{$item->Order_ID}}">
-                        @csrf
+                        @csrf 
+                        เวลาที่เริ่มส่ง
+                        <input type="datetime-local" name='deliverytime' >
                           <div class="form-group">
+                            จังหวัดปัจจุบัน
                               <select class="form-control"  name='provincename'>
+                              
                                 <option value="เชียงราย">เชียงราย</option>
                                 <option value="เชียงใหม่">เชียงใหม่</option>
                                 <option value="น่าน">น่าน</option>
@@ -87,29 +92,22 @@ use App\orderdetail;
                                 <option value="ลำปาง">ลำปาง</option>
                                 <option value="ลำพูน">ลำพูน</option>
                                 <option value="อุตรดิตถ์">อุตรดิตถ์</option>
-                                <option value="ถึงที่หมายแล้ว">ถึงที่หมายแล้ว</option>
+                                
+                              </select>
+                            </div>
+                            <div class="form-group">
+                            สถานะสุนัข :
+                              <select class="form-control"  name='statusname'>
+                              <option value="กำลังไปส่ง" >กำลังไปส่ง</option>
+                                <option value="อยู่ระหว่างการส่ง">อยู่ระหว่างการส่ง</option>
+                                <option value="ส่งสำเร็จ">ส่งสำเร็จ</option>
                               </select>
                             </div>
                             <button type="submit" class="btn btn-success">กด</button>
                       </form>
                     @endif
                 </td>
-                {{-- <td>
-                  @if ($item->Status == 3)
-                    @if (date("Y-m-d H:i:s",strtotime($item->updated_at."+24 hour")) <= date("Y-m-d H:i:s"))
-                    <button>โอนเงินคืน
-                      
-                        $delete = orders::find($item->Order_ID);
-                        $delete->delete();
-                        $delete1 = orderdetail::where('order_id',$item->Order_ID)->get();
-                        foreach ($delete1 as $item1) {
-                            $item1->delete();
-                        }
-                      </button> 
-                    @endif
-                  @endif
-                    
-                </td> --}}
+                
                 </tr> 
           
 
